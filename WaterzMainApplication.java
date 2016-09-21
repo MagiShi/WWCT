@@ -12,5 +12,3 @@ public class WaterzMainApplication extends Application {
 
         }
     }
-
-// test
