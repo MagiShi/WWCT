@@ -2,6 +2,7 @@ package src.fxapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -30,6 +31,14 @@ public class WaterzMainFXApplication extends Application {
             rootLayout = loader.load();
 
             MainScreenController controller = loader.getController();
+            controller.setMainApp(this);
+
+            mainScreen.setTitle("To Change Later");
+
+            Scene scene = new Scene(rootLayout);
+            mainScreen.setScene(scene);
+            mainScreen.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
