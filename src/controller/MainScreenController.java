@@ -1,6 +1,7 @@
 package src.controller;
 
 /**
+<<<<<<< HEAD
  * Created by Maggie on 9/20/2016.
  */
 
@@ -52,3 +53,9 @@ public class MainScreenController {
 
 }
 
+=======
+ * Created by Dain on 9/20/2016.
+ */
+public class MainScreenController {
+}
+>>>>>>> origin/LoginScreen
