@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import src.controller.MainScreenController;
+
+import java.io.IOException;
 
 public class WaterzMainFXApplication extends Application {
 
@@ -22,7 +25,15 @@ public class WaterzMainFXApplication extends Application {
     }
 
     private void initRootLayout(Stage mainScreen) {
-        FXMLLoader loader = new FXMLLoader();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(WaterzMainFXApplication.class.getResource("../view/MainScreen.fxml"));
+            rootLayout = loader.load();
+
+            MainScreenController controller = loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
