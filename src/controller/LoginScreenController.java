@@ -3,6 +3,8 @@ package src.controller;
 /**
  * Created by Dain on 9/20/2016.
  */
+import javafx.event.ActionEvent;
+import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,6 +16,11 @@ public class LoginScreenController {
 
     /* references to the widgets in the fxml file */
 
+    @FXML private Button loginButton;
+
+    @FXML protected void handleLoginButtonAction() {
+    }
+
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -22,6 +29,7 @@ public class LoginScreenController {
      */
     @FXML
     private void initialize() {
+
     }
 
 
