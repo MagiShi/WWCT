@@ -1,15 +1,14 @@
 package src.controller;
 
 /**
-<<<<<<< HEAD
  * Created by Maggie on 9/20/2016.
  */
 
-        import src.fxapp.WaterzMainFXApplication;
+import src.fxapp.WaterzMainFXApplication;
 
-        import javafx.fxml.FXML;
+import javafx.fxml.FXML;
 
-        import javafx.scene.control.Alert;
+import javafx.scene.control.Alert;
 
 /**
  * The controller for the root/main window
@@ -53,9 +52,3 @@ public class MainScreenController {
 
 }
 
-=======
- * Created by Dain on 9/20/2016.
- */
-public class MainScreenController {
-}
->>>>>>> origin/LoginScreen
