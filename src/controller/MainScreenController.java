@@ -42,9 +42,9 @@ public class MainScreenController {
     @FXML
     private void handleAboutMenu() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("M3 Individual Project");
-        alert.setHeaderText("About");
-        alert.setContentText("Student Registration with code from Marco Jakob\nWebsite: http://code.makery.ch");
+        alert.setTitle("WaterZ");
+        alert.setHeaderText("Login Screen");
+        alert.setContentText("Please login");
 
         alert.showAndWait();
 
