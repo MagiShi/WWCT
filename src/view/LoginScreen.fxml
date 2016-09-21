@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginScreenController">
+    <children>
+        <SplitPane dividerPositions="0.5" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                <AnchorPane prefHeight="214.0" prefWidth="330.0">
+                    <children>
+                        <VBox layoutY="74.0" prefHeight="274.0" prefWidth="341.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+                            <children>
+                                <GridPane prefHeight="286.0" prefWidth="341.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.5333251953125" minWidth="10.0" prefWidth="24.199951171875" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.86666870117188" minWidth="10.0" prefWidth="98.26669311523438" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.2000427246094" minWidth="10.0" prefWidth="178.73330688476562" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.86666870117188" minWidth="10.0" prefWidth="61.9332275390625" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="127.73332214355469" minHeight="10.0" prefHeight="65.86666870117188" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="50.80000305175781" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="160.80001831054688" minHeight="10.0" prefHeight="49.19999694824219" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="160.80001831054688" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                        <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                        <Label text="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <GridPane GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.60003662109375" minWidth="10.0" prefWidth="90.066650390625" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="52.13330078125" minWidth="10.0" prefWidth="30.73333740234375" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.13330078125" minWidth="10.0" prefWidth="54.26666259765625" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Login" GridPane.rowIndex="1" />
+                                    <Button mnemonicParsing="false" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+</AnchorPane>
