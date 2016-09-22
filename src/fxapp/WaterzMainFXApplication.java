@@ -15,6 +15,7 @@ import java.io.IOException;
 public class WaterzMainFXApplication extends Application {
 
     private Stage mainScreen;
+    private Stage welcomeScene;
     private Scene loginScene;
     private Scene mapScene;
 
