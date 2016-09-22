@@ -25,28 +25,38 @@ public class LoginScreenController {
 
     @FXML private Button loginButton;
     @FXML private Button cancelButton;
+    @FXML private TextField usernameInput;
+    @FXML private TextField passwordInput;
 
     private BorderPane rootLayout;
 
 
     @FXML protected void handleLoginButtonAction() throws IOException{
-        //check login
+        if (usernameInput.getText().equals("user") && passwordInput.getText().equals("pass")) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+
+                rootLayout = fxmlLoader.load();
+                MapScreenController msc = fxmlLoader.getController();
+
+                Scene scene2 = new Scene(rootLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+
+                msc.setMainApp(mainApplication);
 
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Wrong Credentials");
+            alert.setHeaderText("Wrong Credentials");
+            alert.setContentText("Wrong username and/or password. Please try again.");
 
-            rootLayout = fxmlLoader.load();
-            MapScreenController msc = fxmlLoader.getController();
-
-            Scene scene2 = new Scene(rootLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-
-            msc.setMainApp(mainApplication);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            alert.showAndWait();
+            usernameInput.clear();
+            passwordInput.clear();
         }
     }
 
