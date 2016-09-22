@@ -1,6 +1,9 @@
 package src.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.event.ActionEvent;
@@ -20,6 +23,17 @@ public class MapScreenController {
 
         @FXML protected void handleLogoutButtonAction() {
             //logout stuff :)
+
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginScreen.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+
+                Scene scene2 = new Scene(root1);
+
+                mainApplication.getMainScreen().setScene(scene2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
 
@@ -41,5 +55,6 @@ public class MapScreenController {
      * @param mainFXApplication  a reference (link) to our main class
      */
     public void setMainApp(WaterzMainFXApplication mainFXApplication) {
+        mainApplication = mainFXApplication;
     }
 }

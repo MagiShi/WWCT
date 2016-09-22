@@ -14,6 +14,8 @@ import java.io.IOException;
 public class WaterzMainFXApplication extends Application {
 
     private Stage mainScreen;
+    private Scene loginScene;
+    private Scene mapScene;
 
     private BorderPane rootLayout;
 
@@ -22,6 +24,8 @@ public class WaterzMainFXApplication extends Application {
         mainScreen = primaryStage;
         initRootLayout(mainScreen);
         showLogin(mainScreen);
+
+
     }
 
     public Stage getMainScreen() {

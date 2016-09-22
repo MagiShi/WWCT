@@ -4,10 +4,16 @@ package src.controller;
  * Created by Dain on 9/20/2016.
  */
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.io.IOException;
 
 public class LoginScreenController {
 
@@ -19,8 +25,20 @@ public class LoginScreenController {
     @FXML private Button loginButton;
     @FXML private Button cancelButton;
 
-    @FXML protected void handleLoginButtonAction() {
+    @FXML protected void handleLoginButtonAction() throws IOException{
         //check login
+
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+
+            Scene scene2 = new Scene(root1);
+
+            mainApplication.getMainScreen().setScene(scene2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -42,6 +60,8 @@ public class LoginScreenController {
      * @param mainFXApplication  a reference (link) to our main class
      */
     public void setMainApp(WaterzMainFXApplication mainFXApplication) {
+        mainApplication = mainFXApplication;
+
     }
 }
 
