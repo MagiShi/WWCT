@@ -17,8 +17,10 @@ public class LoginScreenController {
     /* references to the widgets in the fxml file */
 
     @FXML private Button loginButton;
+    @FXML private Button cancelButton;
 
     @FXML protected void handleLoginButtonAction() {
+        //check login
     }
 
 
@@ -29,7 +31,7 @@ public class LoginScreenController {
      */
     @FXML
     private void initialize() {
-
+        //load animation here?
     }
 
 
