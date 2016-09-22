@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
@@ -25,17 +26,25 @@ public class LoginScreenController {
     @FXML private Button loginButton;
     @FXML private Button cancelButton;
 
+    private BorderPane rootLayout;
+
+
     @FXML protected void handleLoginButtonAction() throws IOException{
         //check login
 
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
 
-            Scene scene2 = new Scene(root1);
+            rootLayout = fxmlLoader.load();
+            MapScreenController msc = fxmlLoader.getController();
 
+            Scene scene2 = new Scene(rootLayout);
             mainApplication.getMainScreen().setScene(scene2);
+
+            msc.setMainApp(mainApplication);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.event.ActionEvent;
 import javafx.scene.text.Text;
@@ -16,6 +19,8 @@ public class MapScreenController {
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
 
+    private AnchorPane rootLayout;
+
     /* references to the widgets in the fxml file */
 
         @FXML
@@ -23,14 +28,18 @@ public class MapScreenController {
 
         @FXML protected void handleLogoutButtonAction() {
             //logout stuff :)
-
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginScreen.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
 
-                Scene scene2 = new Scene(root1);
+                rootLayout = fxmlLoader.load();
+                LoginScreenController controller = fxmlLoader.getController();
 
+                Scene scene2 = new Scene(rootLayout);
                 mainApplication.getMainScreen().setScene(scene2);
+
+                controller.setMainApp(mainApplication);
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
