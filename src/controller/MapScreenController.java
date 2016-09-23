@@ -19,7 +19,7 @@ public class MapScreenController {
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
 
-    private AnchorPane rootLayout;
+    private AnchorPane anchorLayout;
 
     /* references to the widgets in the fxml file */
 
@@ -31,10 +31,10 @@ public class MapScreenController {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
 
-                rootLayout = fxmlLoader.load();
+                anchorLayout = fxmlLoader.load();
                 WelcomeScreenController controller = fxmlLoader.getController();
 
-                Scene scene2 = new Scene(rootLayout);
+                Scene scene2 = new Scene(anchorLayout);
                 mainApplication.getMainScreen().setScene(scene2);
 
                 controller.setMainApp(mainApplication);

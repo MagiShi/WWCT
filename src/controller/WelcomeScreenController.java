@@ -24,17 +24,17 @@ public class WelcomeScreenController {
     @FXML private Button welcomeLoginButton;
     @FXML private Button welcomeRegisterButton;
 
-    private AnchorPane rootLayout;
+    private AnchorPane anchorLayout;
 
 
     @FXML protected void handleWelcomeLoginButtonAction() throws IOException{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginScreen.fxml"));
 
-            rootLayout = fxmlLoader.load();
+            anchorLayout = fxmlLoader.load();
             LoginScreenController controller = fxmlLoader.getController();
 
-            Scene scene = new Scene(rootLayout);
+            Scene scene = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene);
 
             controller.setMainApp(mainApplication);

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -28,7 +29,8 @@ public class LoginScreenController {
     @FXML private TextField usernameInput;
     @FXML private TextField passwordInput;
 
-    private BorderPane rootLayout;
+    private BorderPane borderLayout;
+    private AnchorPane anchorLayout;
 
 
     @FXML protected void handleLoginButtonAction() throws IOException{
@@ -36,10 +38,10 @@ public class LoginScreenController {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
-                rootLayout = fxmlLoader.load();
+                borderLayout = fxmlLoader.load();
                 MapScreenController msc = fxmlLoader.getController();
 
-                Scene scene2 = new Scene(rootLayout);
+                Scene scene2 = new Scene(borderLayout);
                 mainApplication.getMainScreen().setScene(scene2);
 
                 msc.setMainApp(mainApplication);
@@ -57,6 +59,25 @@ public class LoginScreenController {
             alert.showAndWait();
             usernameInput.clear();
             passwordInput.clear();
+        }
+    }
+
+    @FXML
+    protected void handleCancelButtonAction() throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            WelcomeScreenController controller = fxmlLoader.getController();
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

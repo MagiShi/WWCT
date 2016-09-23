@@ -51,7 +51,7 @@
                                 </rowConstraints>
                                  <children>
                                     <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" text="Login" GridPane.rowIndex="1" />
-                                    <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
                                     </children>

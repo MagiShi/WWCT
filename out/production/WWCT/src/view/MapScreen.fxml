@@ -19,7 +19,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction" text="Button" GridPane.columnIndex="1" />
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction" text="Logout" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </left>

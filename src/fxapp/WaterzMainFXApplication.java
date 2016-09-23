@@ -20,7 +20,7 @@ public class WaterzMainFXApplication extends Application {
     private Scene loginScene;
     private Scene mapScene;
 
-    private BorderPane rootLayout;
+    private BorderPane borderLayout;
 
     @Override
     public void start(Stage primaryStage) {
@@ -39,13 +39,13 @@ public class WaterzMainFXApplication extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(WaterzMainFXApplication.class.getResource("../view/MainScreen.fxml"));
-            rootLayout = loader.load();
+            borderLayout = loader.load();
             MainScreenController controller = loader.getController();
             controller.setMainApp(this);
 
             mainScreen.setTitle("To Change Later");
 
-            Scene scene = new Scene(rootLayout);
+            Scene scene = new Scene(borderLayout);
             mainScreen.setScene(scene);
             mainScreen.show();
 
@@ -61,7 +61,7 @@ public class WaterzMainFXApplication extends Application {
             loader.setLocation(WaterzMainFXApplication.class.getResource("../view/WelcomeScreen.fxml"));
             AnchorPane welcomeScreen = loader.load();
 
-            rootLayout.setCenter(welcomeScreen);
+            borderLayout.setCenter(welcomeScreen);
 
             WelcomeScreenController controller = loader.getController();
             controller.setMainApp(this);
