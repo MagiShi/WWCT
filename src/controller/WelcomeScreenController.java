@@ -7,9 +7,7 @@ package src.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import src.fxapp.WaterzMainFXApplication;
 
@@ -30,15 +28,15 @@ public class WelcomeScreenController {
 
     @FXML protected void handleWelcomeLoginButtonAction() throws IOException{
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginScreen.fxml"));
 
             rootLayout = fxmlLoader.load();
-            LoginScreenController lsc = fxmlLoader.getController();
+            LoginScreenController controller = fxmlLoader.getController();
 
-            Scene scene2 = new Scene(rootLayout);
-            mainApplication.getMainScreen().setScene(scene2);
+            Scene scene = new Scene(rootLayout);
+            mainApplication.getMainScreen().setScene(scene);
 
-            msc.setMainApp(mainApplication);
+            controller.setMainApp(mainApplication);
 
 
         } catch (Exception e) {

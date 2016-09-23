@@ -29,7 +29,7 @@ public class MapScreenController {
         @FXML protected void handleLogoutButtonAction() {
             //logout stuff :)
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginScreen.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
 
                 rootLayout = fxmlLoader.load();
                 LoginScreenController controller = fxmlLoader.getController();

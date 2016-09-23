@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import src.controller.MainScreenController;
 import src.controller.LoginScreenController;
 import src.controller.MapScreenController;
+import src.controller.WelcomeScreenController;
 
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class WaterzMainFXApplication extends Application {
     public void start(Stage primaryStage) {
         mainScreen = primaryStage;
         initRootLayout(mainScreen);
-        showLogin();
+        showWelcome();
     }
 
     public Stage getMainScreen() {
@@ -54,15 +55,15 @@ public class WaterzMainFXApplication extends Application {
 
     }
 
-    public void showLogin() {
+    public void showWelcome() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(WaterzMainFXApplication.class.getResource("../view/LoginScreen.fxml"));
-            AnchorPane loginScreen = loader.load();
+            loader.setLocation(WaterzMainFXApplication.class.getResource("../view/WelcomeScreen.fxml"));
+            AnchorPane welcomeScreen = loader.load();
 
-            rootLayout.setCenter(loginScreen);
+            rootLayout.setCenter(welcomeScreen);
 
-            LoginScreenController controller = loader.getController();
+            WelcomeScreenController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {
