@@ -32,7 +32,7 @@ public class MapScreenController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
 
                 rootLayout = fxmlLoader.load();
-                LoginScreenController controller = fxmlLoader.getController();
+                WelcomeScreenController controller = fxmlLoader.getController();
 
                 Scene scene2 = new Scene(rootLayout);
                 mainApplication.getMainScreen().setScene(scene2);

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import src.fxapp.WaterzMainFXApplication;
 
@@ -23,7 +24,7 @@ public class WelcomeScreenController {
     @FXML private Button welcomeLoginButton;
     @FXML private Button welcomeRegisterButton;
 
-    private BorderPane rootLayout;
+    private AnchorPane rootLayout;
 
 
     @FXML protected void handleWelcomeLoginButtonAction() throws IOException{
