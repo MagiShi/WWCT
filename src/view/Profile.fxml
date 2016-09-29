@@ -38,21 +38,21 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="nameField" prefHeight="31.0" prefWidth="293.0" GridPane.columnIndex="2" />
-            <TextField fx:id="majorField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="newName" prefHeight="31.0" prefWidth="293.0" GridPane.columnIndex="2" />
+            <TextField fx:id="newEmail" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label text="Home Address:" GridPane.rowIndex="2">
                  <GridPane.margin>
                      <Insets left="10.0" />
                  </GridPane.margin>
              </Label>
-            <TextField fx:id="majorField1" prefHeight="31.0" prefWidth="421.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="newAddress" prefHeight="31.0" prefWidth="421.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <ButtonBar prefHeight="87.0" prefWidth="118.0" GridPane.rowIndex="2" />
-          <Button mnemonicParsing="false" onAction="#handleOKPressed" text="Save Changes" GridPane.columnIndex="3" />
-            <Button mnemonicParsing="false" onAction="#handleOKPressed" text="Save Changes" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#handleOKPressed" text="Save Changes" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+          <Button fx:id="saveName" mnemonicParsing="false" onAction="#handleSaveName" text="Save Changes" GridPane.columnIndex="3" />
+            <Button fx:id="saveEmail" mnemonicParsing="false" onAction="#handleSaveEmail" text="Save Changes" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="saveAddress" mnemonicParsing="false" onAction="#handleSaveAddress" text="Save Changes" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label fx:id="currentName" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="currentEmail" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="currentAddress" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <ImageView fitHeight="78.0" fitWidth="66.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
