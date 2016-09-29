@@ -28,11 +28,11 @@ public class ProfileScreenController {
     /* references to the widgets in the fxml file */
 
     @FXML
-    private Button logoutButton;
+    private Button backButton;
 
-    @FXML protected void handleLogoutButtonAction() {
+    @FXML protected void handleBackButtonAction() {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Profile.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
                 anchorLayout = fxmlLoader.load();
                 WelcomeScreenController controller = fxmlLoader.getController();

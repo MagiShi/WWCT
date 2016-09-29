@@ -23,27 +23,49 @@ public class MapScreenController {
 
     /* references to the widgets in the fxml file */
 
-        @FXML
-        private Button logoutButton;
+    @FXML
+    private Button logoutButton;
+    @FXML
+    private Button profileButton;
+    @FXML
+    private Button submitButton;
 
-        @FXML protected void handleLogoutButtonAction() {
-            //logout stuff :)
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
+    @FXML protected void handleLogoutButtonAction() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
 
-                anchorLayout = fxmlLoader.load();
-                WelcomeScreenController controller = fxmlLoader.getController();
+            anchorLayout = fxmlLoader.load();
+            WelcomeScreenController controller = fxmlLoader.getController();
 
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
 
-                controller.setMainApp(mainApplication);
+            controller.setMainApp(mainApplication);
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    @FXML protected void handleProfileButtonAction() {
+        //logout stuff :)
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Profile.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            ProfileScreenController controller = fxmlLoader.getController();
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
         /**
