@@ -7,8 +7,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import src.controller.MainScreenController;
-import src.controller.LoginScreenController;
-import src.controller.MapScreenController;
 import src.controller.WelcomeScreenController;
 
 import java.io.IOException;
