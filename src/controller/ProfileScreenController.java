@@ -29,6 +29,26 @@ public class ProfileScreenController {
 
     @FXML
     private Button backButton;
+    @FXML
+    private Button saveName;
+    @FXML
+    private Button saveEmail;
+    @FXML
+    private Button saveAddress;
+
+    @FXML
+    private Label currentName;
+    @FXML
+    private Label currentEmail;
+    @FXML
+    private Label currentAddress;
+
+    @FXML
+    private TextField newName;
+    @FXML
+    private TextField newEmail;
+    @FXML
+    private TextField newAddress;
 
     @FXML protected void handleBackButtonAction() {
             try {
@@ -47,6 +67,15 @@ public class ProfileScreenController {
                 e.printStackTrace();
             }
         }
+
+    @FXML protected void handleSaveName() {
+    }
+
+    @FXML protected void handleSaveEmail() {
+    }
+
+    @FXML protected void handleSaveAddress() {
+    }
 
 
         /**
