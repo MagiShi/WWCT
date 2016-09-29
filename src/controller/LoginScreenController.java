@@ -38,10 +38,10 @@ public class LoginScreenController {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
-                borderLayout = fxmlLoader.load();
+                anchorLayout = fxmlLoader.load();
                 MapScreenController msc = fxmlLoader.getController();
 
-                Scene scene2 = new Scene(borderLayout);
+                Scene scene2 = new Scene(anchorLayout);
                 mainApplication.getMainScreen().setScene(scene2);
 
                 msc.setMainApp(mainApplication);
