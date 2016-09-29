@@ -69,12 +69,20 @@ public class ProfileScreenController {
         }
 
     @FXML protected void handleSaveName() {
+        currentName.setText(newName.getText());
+        newName.clear();
+
     }
 
     @FXML protected void handleSaveEmail() {
+        currentEmail.setText(newEmail.getText());
+        newEmail.clear();
+
     }
 
     @FXML protected void handleSaveAddress() {
+        currentAddress.setText(newAddress.getText());
+        newAddress.clear();
     }
 
 
