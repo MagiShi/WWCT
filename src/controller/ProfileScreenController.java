@@ -55,7 +55,7 @@ public class ProfileScreenController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
                 anchorLayout = fxmlLoader.load();
-                WelcomeScreenController controller = fxmlLoader.getController();
+                MapScreenController controller = fxmlLoader.getController();
 
                 Scene scene2 = new Scene(anchorLayout);
                 mainApplication.getMainScreen().setScene(scene2);
