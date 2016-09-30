@@ -44,11 +44,7 @@
                                 </rowConstraints>
                               </GridPane>
                               <Button fx:id="welcomeLoginButton" mnemonicParsing="false" onAction="#handleWelcomeLoginButtonAction" text="Login" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-<<<<<<< HEAD
                               <Button fx:id="welcomeRegisterButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleWelcomeRegisterButtonAction" text="Register" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-=======
-                              <Button fx:id="welcomeRegisterButton" alignment="CENTER" mnemonicParsing="false" text="Register" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
->>>>>>> origin/master
                                     </children>
                                 </GridPane>
                             </children>
