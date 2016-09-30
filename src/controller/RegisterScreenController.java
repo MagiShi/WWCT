@@ -57,8 +57,22 @@ public class RegisterScreenController {
                 e.printStackTrace();
             }
         } else {
-            File newFile = new File("database.csv");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(newFile));
+            BufferedWriter writer = null;
+            try {
+                File newFile = new File("database.csv");
+                writer = new BufferedWriter(new FileWriter(newFile));
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    writer.flush();
+                    writer.close();
+                } catch (IOException ioe) {
+                    System.out.println("Error while flushing, creating new.");
+                    ioe.printStackTrace();
+                }
+            }
+
         }
         if (usernameOriginal) {
             try {
@@ -66,7 +80,7 @@ public class RegisterScreenController {
                     //Store userinfo into csv file//
                     FileWriter fileWriter = null;
                     try {
-                        fileWriter = new FileWriter("database.csv");
+                        fileWriter = new FileWriter("database.csv", true);
                         fileWriter.append(nameInput.getText());
                         fileWriter.append(",");
                         fileWriter.append(userInputUsername);
