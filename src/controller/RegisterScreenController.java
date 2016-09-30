@@ -3,6 +3,8 @@ package src.controller;
 /**
  * Created by Ji Won Lee on 9/30/2016.
  */
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +16,8 @@ import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import src.model.User;
+import src.model.UserType;
 
 import java.io.*;
 
@@ -34,12 +38,14 @@ public class RegisterScreenController {
     private BorderPane borderLayout;
     private AnchorPane anchorLayout;
 
+    private User newUser;
 
     @FXML
     protected void handleRegisterButtonAction() throws IOException{
         String userInputUsername = usernameInput.getText();
         String userInputPassword = passwordInput.getText();
         String userInputUserType = userTypeInput.getValue().toString();
+
         boolean usernameOriginal = true;
         //check if username exists
         boolean alreadyExists = new File("database.csv").exists();
@@ -89,6 +95,9 @@ public class RegisterScreenController {
                         fileWriter.append(",");
                         fileWriter.append(userInputUserType);
                         fileWriter.append("\n");
+
+                        //create a new user
+                        newUser = new User(userInputUsername,userInputPassword,userInputUserType);
                     } catch (Exception e){
                         e.printStackTrace();
                     } finally {
@@ -161,8 +170,8 @@ public class RegisterScreenController {
     @FXML
     private void initialize() {
         userTypeInput.getItems().removeAll(userTypeInput.getItems());
-        userTypeInput.getItems().addAll("Administrator", "Manager", "Worker");
-        userTypeInput.getSelectionModel().select("Worker");
+        userTypeInput.getItems().addAll("Administrator", "Manager", "Worker", "User");
+        userTypeInput.getSelectionModel().select("User");
     }
 
 
