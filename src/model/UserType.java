@@ -6,9 +6,9 @@ package src.model;
 public enum UserType {
     USER("USER"), WORKER("WORKER"), ADMIN("ADMINISTRATOR"), MANAGER("MANAGER");
 
-    private final String type;
+    public final String type;
 
-    UserType(String type) {
+    protected UserType(String type) {
         this.type = type;
     }
 

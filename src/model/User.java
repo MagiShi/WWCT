@@ -14,14 +14,15 @@ public class User {
     private String address;
     private String email;
 
-    private ObjectProperty<UserType> userType;
+    private ObjectProperty<UserType> type;
 
     private boolean banned;
 
-    User(String userID, String password) {
+    public User(String userID, String password, String userType) {
         this.userID = userID;
         this.password = password;
         banned = false;
+        type = new UserType(userType);
     }
 
     public String getUserID() {
@@ -30,6 +31,16 @@ public class User {
     public String getPassword() {
         return password;
     }
+    public String getName() {
+        return name;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getType() { return type.toString(); }
 
     public void changeName(String newName) {
         name = newName;
@@ -46,18 +57,4 @@ public class User {
     public void changeStatus() {
         banned = !banned;
     }
-
-    public String getName() {
-        return name;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-
-}
