@@ -5,6 +5,7 @@
 package src.model;
 
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 
 public class User {
     private String userID;
@@ -13,16 +14,18 @@ public class User {
     private String name;
     private String address;
     private String email;
-
-    private ObjectProperty<UserType> type;
-
     private boolean banned;
 
-    public User(String userID, String password, String userType) {
+    private ObjectProperty<UserType> type = new SimpleObjectProperty<UserType>();
+
+    public void setUserType (UserType userType) { type.set(userType);}
+
+
+
+    public User(String userID, String password) {
         this.userID = userID;
         this.password = password;
         banned = false;
-        type = new UserType(userType);
     }
 
     public String getUserID() {

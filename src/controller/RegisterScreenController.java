@@ -5,6 +5,8 @@ package src.controller;
  */
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,7 +35,9 @@ public class RegisterScreenController {
     @FXML private TextField usernameInput;
     @FXML private TextField passwordInput;
     @FXML private TextField passwordInput2;
-    @FXML private ComboBox userTypeInput;
+    @FXML private ComboBox<UserType> userTypeInput;
+
+    ObservableList<UserType> observableList = FXCollections.observableArrayList(UserType.values());
 
     private BorderPane borderLayout;
     private AnchorPane anchorLayout;
@@ -44,7 +48,7 @@ public class RegisterScreenController {
     protected void handleRegisterButtonAction() throws IOException{
         String userInputUsername = usernameInput.getText();
         String userInputPassword = passwordInput.getText();
-        String userInputUserType = userTypeInput.getValue().toString();
+        UserType userInputUserType = userTypeInput.getValue();
 
         boolean usernameOriginal = true;
         //check if username exists
@@ -93,11 +97,12 @@ public class RegisterScreenController {
                         fileWriter.append(",");
                         fileWriter.append(userInputPassword);
                         fileWriter.append(",");
-                        fileWriter.append(userInputUserType);
+                        fileWriter.append(userInputUserType.toString());
                         fileWriter.append("\n");
 
                         //create a new user
-                        newUser = new User(userInputUsername,userInputPassword,userInputUserType);
+                        newUser = new User(userInputUsername,userInputPassword);
+                        newUser.setUserType(userInputUserType);
                     } catch (Exception e){
                         e.printStackTrace();
                     } finally {
@@ -170,8 +175,8 @@ public class RegisterScreenController {
     @FXML
     private void initialize() {
         userTypeInput.getItems().removeAll(userTypeInput.getItems());
-        userTypeInput.getItems().addAll("Administrator", "Manager", "Worker", "User");
-        userTypeInput.getSelectionModel().select("User");
+        userTypeInput.getItems().addAll(UserType.ADMIN, UserType.MANAGER, UserType.WORKER, UserType.USER);
+        userTypeInput.getSelectionModel().select(UserType.USER);
     }
 
 
