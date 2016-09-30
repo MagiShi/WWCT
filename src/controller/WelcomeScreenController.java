@@ -45,6 +45,24 @@ public class WelcomeScreenController {
         }
     }
 
+    @FXML
+    protected void handleWelcomeRegisterButtonAction() throws IOException{
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/RegisterScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            RegisterScreenController controller = fxmlLoader.getController();
+
+            Scene scene = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene);
+
+            controller.setMainApp(mainApplication);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Initializes the controller class. This method is automatically called
