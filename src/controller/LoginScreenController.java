@@ -15,6 +15,8 @@ import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class LoginScreenController {
@@ -34,31 +36,53 @@ public class LoginScreenController {
 
 
     @FXML protected void handleLoginButtonAction() throws IOException{
-        if (usernameInput.getText().equals("user") && passwordInput.getText().equals("pass")) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
-
-                anchorLayout = fxmlLoader.load();
-                MapScreenController msc = fxmlLoader.getController();
-
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
-
-                msc.setMainApp(mainApplication);
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
+        try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
+            String line = "";
+            String[] info = null;
+            boolean usernameFound = false;
+            while (!usernameFound && ((line = br.readLine()) != null)) {
+                info = line.split(",");
+                if (info[1].equals(usernameInput.getText())) {
+                    usernameFound = true;
+                }
             }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Wrong Credentials");
-            alert.setHeaderText("Wrong Credentials");
-            alert.setContentText("Wrong username and/or password. Please try again.");
+            if (usernameFound == false) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Wrong Credentials");
+                alert.setHeaderText("Wrong Credentials");
+                alert.setContentText("Username does not exist. Please try again.");
+                alert.showAndWait();
+                usernameInput.clear();
+                passwordInput.clear();
+            } else {
+                if (info[2].equals(passwordInput.getText())) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
-            alert.showAndWait();
-            usernameInput.clear();
-            passwordInput.clear();
+                        anchorLayout = fxmlLoader.load();
+                        MapScreenController msc = fxmlLoader.getController();
+
+                        Scene scene2 = new Scene(anchorLayout);
+                        mainApplication.getMainScreen().setScene(scene2);
+
+                        msc.setMainApp(mainApplication);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Wrong Credentials");
+                    alert.setHeaderText("Wrong Credentials");
+                    alert.setContentText("Wrong password. Please try again.");
+                    alert.showAndWait();
+                    usernameInput.clear();
+                    passwordInput.clear();
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
