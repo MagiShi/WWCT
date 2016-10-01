@@ -13,6 +13,7 @@ import src.fxapp.WaterzMainFXApplication;
 import javafx.event.ActionEvent;
 import javafx.scene.text.Text;
 import javafx.scene.control.*;
+import src.model.User;
 
 
 /**
@@ -50,6 +51,16 @@ public class ProfileScreenController {
     @FXML
     private TextField newAddress;
 
+    @FXML
+    private Label username;
+    @FXML
+    private Label userType;
+    @FXML
+    private Label currentBanStatus;
+
+
+    private User user;
+
     @FXML protected void handleBackButtonAction() {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
@@ -83,6 +94,10 @@ public class ProfileScreenController {
     @FXML protected void handleSaveAddress() {
         currentAddress.setText(newAddress.getText());
         newAddress.clear();
+    }
+
+    protected void update(String usernameInput) {
+        username.setText(usernameInput);
     }
 
 

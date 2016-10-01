@@ -12,7 +12,7 @@ import src.fxapp.WaterzMainFXApplication;
 import javafx.event.ActionEvent;
 import javafx.scene.text.Text;
 import javafx.scene.control.*;
-
+import src.model.User;
 
 public class MapScreenController {
 
@@ -20,6 +20,10 @@ public class MapScreenController {
     private WaterzMainFXApplication mainApplication;
 
     private AnchorPane anchorLayout;
+
+    private User user;
+
+    private String username;
 
     /* references to the widgets in the fxml file */
 
@@ -42,7 +46,6 @@ public class MapScreenController {
 
             controller.setMainApp(mainApplication);
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,9 +61,8 @@ public class MapScreenController {
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
-
+            controller.update(username);
             controller.setMainApp(mainApplication);
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,6 +79,11 @@ public class MapScreenController {
         private void initialize() {
             //put maps and data here maybe?
         }
+
+
+    protected void passLogin(String usernameInput) {
+        username = usernameInput;
+    }
 
 
 

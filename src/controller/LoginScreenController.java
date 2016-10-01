@@ -34,6 +34,11 @@ public class LoginScreenController {
     private BorderPane borderLayout;
     private AnchorPane anchorLayout;
 
+    private String username;
+    private String password;
+
+    MapScreenController mapController = new MapScreenController();
+
 
     @FXML protected void handleLoginButtonAction() throws IOException{
         try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
@@ -44,6 +49,7 @@ public class LoginScreenController {
                 info = line.split(",");
                 if (info[1].equals(usernameInput.getText())) {
                     usernameFound = true;
+                    username = info[1];
                 }
             }
             if (usernameFound == false) {
@@ -56,6 +62,7 @@ public class LoginScreenController {
                 passwordInput.clear();
             } else {
                 if (info[2].equals(passwordInput.getText())) {
+                    password = info[2];
                     try {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
@@ -64,7 +71,7 @@ public class LoginScreenController {
 
                         Scene scene2 = new Scene(anchorLayout);
                         mainApplication.getMainScreen().setScene(scene2);
-
+                        msc.passLogin(username);
                         msc.setMainApp(mainApplication);
 
                     } catch (Exception e) {
