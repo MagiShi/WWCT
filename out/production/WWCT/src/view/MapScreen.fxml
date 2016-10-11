@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.MapScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.MapScreenController">
    <children>
       <SplitPane dividerPositions="0.67, 0.5" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -38,12 +38,12 @@
                               <Font size="48.0" />
                            </font>
                         </Text>
-                        <Button fx:id="submitButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="185.0" text="Submit Report" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button id="submitReportBttn" fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="44.0" prefWidth="185.0" text="Submit Report" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="profileButton" onAction="#handleProfileButtonAction" layoutX="26.0" layoutY="172.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="185.0" text="Profile" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="profileButton" layoutX="26.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleProfileButtonAction" prefHeight="44.0" prefWidth="185.0" text="Profile" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="18.0" />
                            </font>

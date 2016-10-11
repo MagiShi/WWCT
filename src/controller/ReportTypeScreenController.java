@@ -14,9 +14,10 @@ import javafx.scene.text.Text;
 import javafx.scene.control.*;
 import src.model.User;
 
-public class MapScreenController {
-
-    /** a link back to the main application class */
+/**
+ * Created by Ji Won Lee on 10/11/2016.
+ */
+public class ReportTypeScreenController {
     private WaterzMainFXApplication mainApplication;
 
     private AnchorPane anchorLayout;
@@ -24,22 +25,51 @@ public class MapScreenController {
     private User user;
 
     private String username;
-
-    /* references to the widgets in the fxml file */
-
     @FXML
-    private Button logoutButton;
+    private Button waterQualityBttn;
     @FXML
-    private Button profileButton;
+    private Button waterSourceBttn;
     @FXML
-    private Button submitButton;
+    private Button cancelBttn;
 
-    @FXML protected void handleSubmitButtonAction() {
+    @FXML protected void waterQualityBttnAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportTypeScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterQualityReportScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ReportTypeScreenController controller = fxmlLoader.getController();
+            waterQualityReportScreenController controller = fxmlLoader.getController();
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML protected void waterSourceBttnAction() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterSourceReportScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            waterSourceReportScreenController controller = fxmlLoader.getController();
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML protected void cancelBttnAction() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            MapScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -51,59 +81,14 @@ public class MapScreenController {
         }
     }
 
-    @FXML protected void handleLogoutButtonAction() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
-
-            anchorLayout = fxmlLoader.load();
-            WelcomeScreenController controller = fxmlLoader.getController();
-
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-
-            controller.setMainApp(mainApplication);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the constructor and
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
     }
-
-    @FXML protected void handleProfileButtonAction() {
-        //logout stuff :)
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Profile.fxml"));
-
-            anchorLayout = fxmlLoader.load();
-            ProfileScreenController controller = fxmlLoader.getController();
-
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-            controller.update(username);
-            controller.setMainApp(mainApplication);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-        /**
-         * Initializes the controller class. This method is automatically called
-         * after the constructor and
-         * after the fxml file has been loaded.
-         */
-        @FXML
-        private void initialize() {
-            //put maps and data here maybe?
-        }
-
-
-    protected void passLogin(String usernameInput) {
-        username = usernameInput;
-    }
-
-
-
     /**
      * Setup the main application link so we can call methods there
      *
@@ -111,5 +96,6 @@ public class MapScreenController {
      */
     public void setMainApp(WaterzMainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
+
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.ReportTypeScreenController">
+    <children>
+        <SplitPane dividerPositions="0.5" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="waterSourceReportBttn" layoutX="73.0" layoutY="205.0" mnemonicParsing="false" onAction="#waterSourceBttnAction" prefHeight="39.0" prefWidth="195.0" text="Water Source Report">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="214.0" prefWidth="330.0">
+               <children>
+                  <Button fx:id="waterQualityReportBttn" layoutX="75.0" layoutY="205.0" mnemonicParsing="false" onAction="#waterQualityBttnAction" text="Water Quality Report">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="cancelBttn" layoutX="267.0" layoutY="449.0" mnemonicParsing="false" onAction="#cancelBttnAction" text="Cancel" />
+               </children></AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+</AnchorPane>
