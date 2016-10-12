@@ -72,7 +72,7 @@ public class waterSourceReportScreenController {
             try {
                 fileWriter = new FileWriter("sourceReports.csv", true);
 
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm");
+                DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy HH:mm");
                 Date dateObject = new Date();
                 String dateString = dateFormat.format(dateObject);
 

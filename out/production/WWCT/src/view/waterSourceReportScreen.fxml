@@ -55,10 +55,10 @@
                </font></Label>
          </children>
       </GridPane>
-      <Button fx:id="cancelBttn" layoutX="634.0" layoutY="461.0" mnemonicParsing="false" onAction="#cancelBttnAction" text="Cancel" />
-      <Button fx:id="submitBttn" layoutX="411.0" layoutY="461.0" mnemonicParsing="false" onAction="#submitBttnAction" text="Submit" />
-      <Button fx:id="waterPurityReportBttn" layoutX="476.0" layoutY="461.0" mnemonicParsing="false" onAction="#waterPurityReportBttnAction" text="Change to Water Purity" />
-      <Label layoutX="240.0" layoutY="37.0" text="Water Source Report">
+       <Button fx:id="cancelBttn" layoutX="521.0" layoutY="375.0" mnemonicParsing="false" onAction="#cancelBttnAction" text="Cancel" />
+       <Button fx:id="submitBttn" layoutX="219.0" layoutY="375.0" mnemonicParsing="false" onAction="#submitBttnAction" text="Submit" />
+       <Button fx:id="waterPurityReportBttn" layoutX="313.0" layoutY="375.0" mnemonicParsing="false" onAction="#waterPurityReportBttnAction" text="Change to Water Purity" />
+       <Label layoutX="240.0" layoutY="37.0" text="Water Source Report">
          <font>
             <Font size="24.0" />
          </font>

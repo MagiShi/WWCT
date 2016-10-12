@@ -26,11 +26,11 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="15.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="107.33331298828125" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="119.66665649414062" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="111.66665649414062" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WATERZ" textAlignment="CENTER" GridPane.columnIndex="1">
@@ -43,12 +43,17 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="profileButton" layoutX="26.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleProfileButtonAction" prefHeight="44.0" prefWidth="185.0" text="Profile" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="viewReportsButton" mnemonicParsing="false" onAction="#handleViewReportsButtonAction" prefHeight="44.0" prefWidth="190.0" text="View Reports" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="190.0" text="Logout" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Button fx:id="profileButton" layoutX="26.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleProfileButtonAction" prefHeight="44.0" prefWidth="185.0" text="Profile" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="190.0" text="Logout" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font size="18.0" />
                            </font>
