@@ -41,7 +41,7 @@ public class WaterzMainFXApplication extends Application {
             MainScreenController controller = loader.getController();
             controller.setMainApp(this);
 
-            mainScreen.setTitle("To Change Later");
+            mainScreen.setTitle("WATERZ: The Crowdsourced Clean Water App");
 
             Scene scene = new Scene(borderLayout);
             mainScreen.setScene(scene);
