@@ -30,11 +30,30 @@ public class MapScreenController {
     @FXML
     private Button logoutButton;
     @FXML
+    private Button viewReportsButton;
+    @FXML
     private Button profileButton;
     @FXML
     private Button submitButton;
 
     @FXML protected void handleSubmitButtonAction() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportTypeScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            ReportTypeScreenController controller = fxmlLoader.getController();
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML protected void handleViewReportsButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportTypeScreen.fxml"));
 
