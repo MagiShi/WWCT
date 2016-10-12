@@ -21,6 +21,10 @@ import src.model.UserType;
 import src.model.WaterCondition;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Ji Won Lee on 10/11/2016.
  */
@@ -68,7 +72,13 @@ public class waterSourceReportScreenController {
             try {
                 fileWriter = new FileWriter("sourceReports.csv", true);
 
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm");
+                Date dateObject = new Date();
+                String dateString = dateFormat.format(dateObject);
+
                 fileWriter.append(userInputName);
+                fileWriter.append(",");
+                fileWriter.append(dateString);
                 fileWriter.append(",");
                 fileWriter.append(userInputLocation);
                 fileWriter.append(",");
