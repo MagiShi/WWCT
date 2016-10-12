@@ -4,8 +4,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Created by Dain on 10/12/2016.
@@ -18,6 +26,8 @@ public class ReportsListScreenController {
 
     @FXML
     private Button backButton;
+    @FXML
+    private ListView<String> reportsList;
 
     @FXML protected void backButtonAction() {
         try {
@@ -43,6 +53,18 @@ public class ReportsListScreenController {
      */
     @FXML
     private void initialize() {
+        boolean alreadyExists = new File("sourceReports.csv").exists();
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+                String line = "";
+                while (((line = br.readLine()) != null)) {
+                    reportsList.getItems().add(line);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
     /**
      * Setup the main application link so we can call methods there

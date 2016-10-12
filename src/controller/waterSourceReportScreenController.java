@@ -76,14 +76,16 @@ public class waterSourceReportScreenController {
                 Date dateObject = new Date();
                 String dateString = dateFormat.format(dateObject);
 
+                fileWriter.append("Report #" + 1000 + (int)(Math.random() * ((9999 - 1000) + 1)));
+                fileWriter.append(", ");
                 fileWriter.append(userInputName);
-                fileWriter.append(",");
+                fileWriter.append(", ");
                 fileWriter.append(dateString);
-                fileWriter.append(",");
+                fileWriter.append(", ");
                 fileWriter.append(userInputLocation);
-                fileWriter.append(",");
+                fileWriter.append(", ");
                 fileWriter.append(userInputWaterType.toString());
-                fileWriter.append(",");
+                fileWriter.append(", ");
                 fileWriter.append(userInputWaterCondition.toString());
                 fileWriter.append("\n");
 
