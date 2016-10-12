@@ -66,9 +66,9 @@
             <TextField fx:id="contaminantPPM" maxWidth="130.0" minWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Button fx:id="cancelBttn" layoutX="521.0" layoutY="375.0" mnemonicParsing="false" onAction="#cancelBttnAction" text="Cancel" />
-      <Button fx:id="submitBttn" layoutX="219.0" layoutY="375.0" mnemonicParsing="false" onAction="#submitBttnAction" text="Submit" />
-      <Button fx:id="waterSourceReportBttn" layoutX="313.0" layoutY="375.0" mnemonicParsing="false" onAction="#waterSourceReportBttnAction" text="Change to Water Source" />
+      <Button fx:id="cancelBttn" layoutX="634.0" layoutY="461.0" mnemonicParsing="false" onAction="#cancelBttnAction" text="Cancel" />
+      <Button fx:id="submitBttn" layoutX="411.0" layoutY="461.0" mnemonicParsing="false" onAction="#submitBttnAction" text="Submit" />
+      <Button fx:id="waterSourceReportBttn" layoutX="476.0" layoutY="461.0" mnemonicParsing="false" onAction="#waterSourceReportBttnAction" text="Change to Water Source" />
       <Label layoutX="245.0" layoutY="38.0" text="Water Purity Report">
          <font>
             <Font size="24.0" />

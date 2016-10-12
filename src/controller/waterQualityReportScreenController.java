@@ -15,7 +15,6 @@ import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import src.model.PurityCondition;
 import src.model.User;
 import src.model.UserType;
 
@@ -36,79 +35,12 @@ public class waterQualityReportScreenController {
     @FXML private TextField waterLocation;
     @FXML private TextField virusPPM;
     @FXML private TextField contaminantPPM;
-    @FXML private ComboBox<PurityCondition> waterOverallCondition;
+    @FXML private ComboBox waterOverallCondition;
 
     @FXML protected void submitBttnAction() {
-        String userInputName = workerName.getText();
-        String userInputLocation = waterLocation.getText();
-        String userInputVirusPPM = virusPPM.getText();
-        String userInputContaminantPPM = contaminantPPM.getText();
-        PurityCondition userInputOverallCondition = waterOverallCondition.getValue();
-
-        boolean alreadyExists = new File("purityReports.csv").exists();
-        if (!alreadyExists) {
-            BufferedWriter writer = null;
-            try {
-                File newFile = new File("purityReports.csv");
-                writer = new BufferedWriter(new FileWriter(newFile));
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    writer.flush();
-                    writer.close();
-                } catch (IOException ioe) {
-                    System.out.println("Error while flushing, creating new.");
-                    ioe.printStackTrace();
-                }
-            }
-        }
-
-        try {
-            FileWriter fileWriter = null;
-            try {
-                fileWriter = new FileWriter("purityReports.csv", true);
-
-                fileWriter.append(userInputName);
-                fileWriter.append(",");
-                fileWriter.append(userInputLocation);
-                fileWriter.append(",");
-                fileWriter.append(userInputVirusPPM);
-                fileWriter.append(",");
-                fileWriter.append(userInputContaminantPPM);
-                fileWriter.append(",");
-                fileWriter.append(userInputOverallCondition.toString());
-                fileWriter.append("\n");
-
-                //create a new report? should we have a report class?
-                //newReport = new Report(...);
-            } catch (Exception e){
-                e.printStackTrace();
-            } finally {
-                try {
-                    fileWriter.flush();
-                    fileWriter.close();
-                }  catch (IOException ioe) {
-                    System.out.println("Error while flushing");
-                    ioe.printStackTrace();
-                }
-            }
-
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
-
-            anchorLayout = fxmlLoader.load();
-            MapScreenController msc = fxmlLoader.getController();
-
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-
-            msc.setMainApp(mainApplication);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+        /**
+         * TODO
+         */
     }
     @FXML protected void waterSourceReportBttnAction() {
         try {
@@ -150,8 +82,7 @@ public class waterQualityReportScreenController {
     @FXML
     private void initialize() {
         waterOverallCondition.getItems().removeAll(waterOverallCondition.getItems());
-        waterOverallCondition.getItems().addAll(PurityCondition.SAFE,
-                PurityCondition.TREATABLE, PurityCondition.UNSAFE);
+        waterOverallCondition.getItems().addAll("Safe", "Treatable", "Unsafe");
     }
     /**
      * Setup the main application link so we can call methods there
