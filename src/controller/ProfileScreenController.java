@@ -59,7 +59,17 @@ public class ProfileScreenController {
     private Label currentBanStatus;
 
 
-    private User user;
+    private User currentUser;
+
+    public void setUser(User newUser) {
+        currentUser = newUser;
+        username.setText(currentUser.getUserID());
+        userType.setText(currentUser.getType());
+        currentBanStatus.setText(currentUser.getStatus());
+        currentName.setText(currentUser.getName());
+        currentAddress.setText(currentUser.getAddress());
+        currentEmail.setText(currentUser.getEmail());
+    }
 
     @FXML protected void handleBackButtonAction() {
             try {
@@ -95,12 +105,6 @@ public class ProfileScreenController {
         currentAddress.setText(newAddress.getText());
         newAddress.clear();
     }
-
-    protected void update(String usernameInput) {
-        username.setText(usernameInput);
-    }
-
-
         /**
          * Initializes the controller class. This method is automatically called
          * after the constructor and

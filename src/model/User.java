@@ -28,6 +28,19 @@ public class User {
         banned = false;
     }
 
+    public User(String userID, String password, String newName, String Type, String Email, String newAddress, String banStatus) {
+        this.userID = userID;
+        this.password = password;
+        this.name = newName;
+        this.address = newAddress;
+        this.email = Email;
+        if (banStatus.equals("Not Banned")) {
+            banned = false;
+        } else {
+            banned = true;
+        }
+    }
+
     public String getUserID() {
         return userID;
     }
@@ -60,4 +73,12 @@ public class User {
     public void changeStatus() {
         banned = !banned;
     }
+
+    public String getStatus() {
+        if (banned) {
+            return "Banned";
+        } else {
+            return "Not Banned";
+        }
     }
+}

@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import src.model.User;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -68,7 +69,8 @@ public class LoginScreenController {
 
                         anchorLayout = fxmlLoader.load();
                         MapScreenController msc = fxmlLoader.getController();
-
+                        User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
+                        msc.setUser(currentUser);
                         Scene scene2 = new Scene(anchorLayout);
                         mainApplication.getMainScreen().setScene(scene2);
                         msc.passLogin(username);

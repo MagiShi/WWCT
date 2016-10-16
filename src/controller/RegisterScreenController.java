@@ -42,7 +42,6 @@ public class RegisterScreenController {
     private BorderPane borderLayout;
     private AnchorPane anchorLayout;
 
-    private User newUser;
 
     @FXML
     protected void handleRegisterButtonAction() throws IOException{
@@ -106,9 +105,6 @@ public class RegisterScreenController {
                         fileWriter.append("Not Banned");
                         fileWriter.append("\n");
 
-                        //create a new user
-                        newUser = new User(userInputUsername,userInputPassword);
-                        newUser.setUserType(userInputUserType);
                     } catch (Exception e){
                         e.printStackTrace();
                     } finally {

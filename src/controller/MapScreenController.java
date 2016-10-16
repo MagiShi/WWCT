@@ -28,7 +28,7 @@ public class MapScreenController {
 
     private AnchorPane anchorLayout;
 
-    private User user;
+    private User currentUser;
 
     private String username;
     private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
@@ -102,10 +102,9 @@ public class MapScreenController {
 
             anchorLayout = fxmlLoader.load();
             ProfileScreenController controller = fxmlLoader.getController();
-
             Scene scene2 = new Scene(anchorLayout);
+            controller.setUser(currentUser);
             mainApplication.getMainScreen().setScene(scene2);
-            controller.update(username);
             controller.setMainApp(mainApplication);
 
         } catch (Exception e) {
@@ -134,6 +133,9 @@ public class MapScreenController {
                     e.printStackTrace();
                 }
             }
+        }
+        public void setUser(User newUser) {
+            currentUser = newUser;
         }
 
 
