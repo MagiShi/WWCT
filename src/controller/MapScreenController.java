@@ -13,6 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.scene.text.Text;
 import javafx.scene.control.*;
 import src.model.User;
+import src.model.WaterSource;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class MapScreenController {
 
@@ -24,6 +31,8 @@ public class MapScreenController {
     private User user;
 
     private String username;
+    private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
+
 
     /* references to the widgets in the fxml file */
 
@@ -59,10 +68,9 @@ public class MapScreenController {
 
             anchorLayout = fxmlLoader.load();
             SourceDetailScreenController controller = fxmlLoader.getController();
-
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
-
+            controller.setCurrentSource(water.get(3));
             controller.setMainApp(mainApplication);
 
         } catch (Exception e) {
@@ -113,7 +121,19 @@ public class MapScreenController {
          */
         @FXML
         private void initialize() {
-            //put maps and data here maybe?
+            boolean alreadyExists = new File("sourceReports.csv").exists();
+            if (alreadyExists) {
+                try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+                    String line = "";
+                    while (((line = br.readLine()) != null)) {
+                        String[] data = line.split(",");
+                        WaterSource source = new WaterSource(data[1], data[2], data[3], data[4], data[5]);
+                        water.add(source);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
 

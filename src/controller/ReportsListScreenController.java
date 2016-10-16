@@ -9,11 +9,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
+import src.model.WaterSource;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Dain on 10/12/2016.
@@ -60,7 +62,6 @@ public class ReportsListScreenController {
                 while (((line = br.readLine()) != null)) {
                     reportsList.getItems().add(line);
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -75,5 +76,4 @@ public class ReportsListScreenController {
         mainApplication = mainFXApplication;
 
     }
-
 }
