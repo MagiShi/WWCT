@@ -38,12 +38,12 @@
                               <Font size="48.0" />
                            </font>
                         </Text>
-                        <Button id="submitReportBttn" fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="44.0" prefWidth="185.0" text="Submit Report" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button id="submitReportBttn" fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="44.0" prefWidth="185.0" text="Submit a Source" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="viewReportDetailButton" mnemonicParsing="false" onAction="#handleViewReportDetailButtonAction" prefHeight="44.0" prefWidth="190.0" text="Report Details" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="viewReportDetailButton" mnemonicParsing="false" onAction="#handleViewReportDetailButtonAction" prefHeight="44.0" prefWidth="190.0" text="Source Details" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="18.0" />
                            </font>

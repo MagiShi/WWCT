@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * Created by Dain on 10/16/2016.
  */
-public class ReportDetailScreenController {
+public class SourceDetailScreenController {
 
     private WaterzMainFXApplication mainApplication;
 
@@ -50,6 +50,23 @@ public class ReportDetailScreenController {
 
             anchorLayout = fxmlLoader.load();
             ReportsListScreenController controller = fxmlLoader.getController();
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML protected void addReportButtonAction() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterQualityReportScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            waterQualityReportScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);

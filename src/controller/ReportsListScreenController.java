@@ -31,10 +31,10 @@ public class ReportsListScreenController {
 
     @FXML protected void backButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ReportDetailScreenController controller = fxmlLoader.getController();
+            SourceDetailScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);

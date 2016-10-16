@@ -38,10 +38,10 @@ public class MapScreenController {
 
     @FXML protected void handleSubmitButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportTypeScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterSourceReportScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ReportTypeScreenController controller = fxmlLoader.getController();
+            waterSourceReportScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -55,10 +55,10 @@ public class MapScreenController {
 
     @FXML protected void handleViewReportDetailButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ReportDetailScreenController controller = fxmlLoader.getController();
+            SourceDetailScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);

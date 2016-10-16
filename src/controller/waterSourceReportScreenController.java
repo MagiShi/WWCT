@@ -117,22 +117,7 @@ public class waterSourceReportScreenController {
             e.printStackTrace();
         }
     }
-    @FXML protected void waterPurityReportBttnAction() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterQualityReportScreen.fxml"));
 
-            anchorLayout = fxmlLoader.load();
-            waterQualityReportScreenController controller = fxmlLoader.getController();
-
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-
-            controller.setMainApp(mainApplication);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     @FXML protected void cancelBttnAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
