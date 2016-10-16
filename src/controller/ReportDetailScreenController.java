@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 
@@ -16,9 +14,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Created by Dain on 10/12/2016.
+ * Created by Dain on 10/16/2016.
  */
-public class ReportsListScreenController {
+public class ReportDetailScreenController {
 
     private WaterzMainFXApplication mainApplication;
 
@@ -31,10 +29,27 @@ public class ReportsListScreenController {
 
     @FXML protected void backButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ReportDetailScreenController controller = fxmlLoader.getController();
+            MapScreenController controller = fxmlLoader.getController();
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML protected void viewReportListButtonAction() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportsList.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            ReportsListScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -53,19 +68,11 @@ public class ReportsListScreenController {
      */
     @FXML
     private void initialize() {
-        boolean alreadyExists = new File("sourceReports.csv").exists();
-        if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-                String line = "";
-                while (((line = br.readLine()) != null)) {
-                    reportsList.getItems().add(line);
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        //TODO
     }
+
+
+
     /**
      * Setup the main application link so we can call methods there
      *

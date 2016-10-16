@@ -53,12 +53,12 @@ public class MapScreenController {
         }
     }
 
-    @FXML protected void handleViewReportsButtonAction() {
+    @FXML protected void handleViewReportDetailButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportsList.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ReportsListScreenController controller = fxmlLoader.getController();
+            ReportDetailScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);

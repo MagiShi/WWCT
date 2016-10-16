@@ -43,7 +43,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="viewReportsButton" mnemonicParsing="false" onAction="#handleViewReportsButtonAction" prefHeight="44.0" prefWidth="190.0" text="View Reports" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="viewReportDetailButton" mnemonicParsing="false" onAction="#handleViewReportDetailButtonAction" prefHeight="44.0" prefWidth="190.0" text="Report Details" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="18.0" />
                            </font>
