@@ -98,6 +98,12 @@ public class RegisterScreenController {
                         fileWriter.append(userInputPassword);
                         fileWriter.append(",");
                         fileWriter.append(userInputUserType.toString());
+                        fileWriter.append(",");
+                        fileWriter.append("[set email]");
+                        fileWriter.append(",");
+                        fileWriter.append("[set address]");
+                        fileWriter.append(",");
+                        fileWriter.append("Not Banned");
                         fileWriter.append("\n");
 
                         //create a new user
