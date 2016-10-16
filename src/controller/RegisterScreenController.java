@@ -126,6 +126,9 @@ public class RegisterScreenController {
                     Scene scene2 = new Scene(anchorLayout);
                     mainApplication.getMainScreen().setScene(scene2);
 
+                    User currentUser = new User(userInputUsername, userInputPassword,
+                            nameInput.getText(), userInputUserType.toString(), "[set email]", "[set address]", "Not Banned");
+                    msc.setUser(currentUser);
                     msc.setMainApp(mainApplication);
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

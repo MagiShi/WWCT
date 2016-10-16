@@ -73,7 +73,7 @@ public class LoginScreenController {
                         msc.setUser(currentUser);
                         Scene scene2 = new Scene(anchorLayout);
                         mainApplication.getMainScreen().setScene(scene2);
-                        msc.passLogin(username);
+
                         msc.setMainApp(mainApplication);
 
                     } catch (Exception e) {

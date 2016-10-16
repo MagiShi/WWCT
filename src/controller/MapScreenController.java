@@ -139,12 +139,6 @@ public class MapScreenController {
         }
 
 
-    protected void passLogin(String usernameInput) {
-        username = usernameInput;
-    }
-
-
-
     /**
      * Setup the main application link so we can call methods there
      *

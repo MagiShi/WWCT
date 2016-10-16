@@ -81,6 +81,7 @@ public class ProfileScreenController {
                 Scene scene2 = new Scene(anchorLayout);
                 mainApplication.getMainScreen().setScene(scene2);
 
+                controller.setUser(currentUser);
                 controller.setMainApp(mainApplication);
 
 

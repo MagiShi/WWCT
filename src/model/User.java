@@ -16,10 +16,9 @@ public class User {
     private String email;
     private boolean banned;
 
-    private ObjectProperty<UserType> type = new SimpleObjectProperty<UserType>();
+    private String userType;
 
-    public void setUserType (UserType userType) { type.set(userType);}
-
+    private String[] userInfo;
 
 
     public User(String userID, String password) {
@@ -28,12 +27,13 @@ public class User {
         banned = false;
     }
 
-    public User(String userID, String password, String newName, String Type, String Email, String newAddress, String banStatus) {
+    public User(String userID, String password, String newName, String userType, String Email, String newAddress, String banStatus) {
         this.userID = userID;
         this.password = password;
         this.name = newName;
         this.address = newAddress;
         this.email = Email;
+        this.userType = userType;
         if (banStatus.equals("Not Banned")) {
             banned = false;
         } else {
@@ -56,7 +56,8 @@ public class User {
     public String getEmail() {
         return email;
     }
-    public String getType() { return type.toString(); }
+    public String getType() { return userType; }
+    public void setUserType (String userType) { this.userType = userType;}
 
     public void changeName(String newName) {
         name = newName;
