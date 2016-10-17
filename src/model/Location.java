@@ -58,7 +58,7 @@ public class Location implements Serializable {
 
 
         if (tokens.length < 3) {
-            throw(new FileFormatException(str));
+            throw(new src.model.FileFormatException(str));
         }
 
         double longit;

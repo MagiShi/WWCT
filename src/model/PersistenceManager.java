@@ -16,9 +16,9 @@ import java.util.logging.Logger;
 public class PersistenceManager {
     private static Logger LOGGER = Logger.getLogger("PersistenceManager");
 
-    private List<model.Location> model;
+    private List<src.model.Location> model;
 
-    public PersistenceManager(List<model.Location> m) {
+    public PersistenceManager(List<src.model.Location> m) {
         model = m;
     }
 
@@ -90,7 +90,7 @@ public class PersistenceManager {
     public void loadFromJsonfile(File file) {
         String ct = null;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            Type collectionType = new TypeToken<List<model.Location>>(){}.getType();
+            Type collectionType = new TypeToken<List<src.model.Location>>(){}.getType();
             Gson gson = new Gson();
 
             ct = br.readLine();
