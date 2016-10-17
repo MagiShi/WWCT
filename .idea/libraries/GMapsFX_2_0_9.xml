@@ -2,6 +2,10 @@
   <library name="GMapsFX-2.0.9">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/GMapsFX-2.0.9.jar!/" />
+<<<<<<< HEAD
+=======
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.7.jar!/" />
+>>>>>>> origin/MapImplementation
     </CLASSES>
     <JAVADOC />
     <SOURCES />
