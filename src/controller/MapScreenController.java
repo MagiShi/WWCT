@@ -21,13 +21,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.lynden.gmapsfx.GoogleMapView;
+import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.event.UIEventType;
+import com.lynden.gmapsfx.javascript.object.*;
+
 public class MapScreenController {
 
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
-
     private AnchorPane anchorLayout;
-
     private User currentUser;
 
     private String username;
@@ -44,6 +47,15 @@ public class MapScreenController {
     private Button profileButton;
     @FXML
     private Button submitButton;
+
+
+
+
+
+
+
+
+
 
     @FXML protected void handleSubmitButtonAction() {
         try {
@@ -133,6 +145,8 @@ public class MapScreenController {
                     e.printStackTrace();
                 }
             }
+
+
         }
         public void setUser(User newUser) {
             currentUser = newUser;
