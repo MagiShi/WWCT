@@ -26,7 +26,23 @@ import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
 
-public class MapScreenController {
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
+
+import model.Facade;
+import model.Location;
+
+import netscape.javascript.JSObject;
+
+import java.io.File;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+
+public class MapScreenController implements Initializable, MapComponentInitializedListener {
 
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
@@ -35,6 +51,11 @@ public class MapScreenController {
 
     private String username;
     private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
+
+    /** a gui view provided by the GMapFX library */
+    private GoogleMapView mapView;
+    /** the actual javascript interface for the google map itself */
+    private GoogleMap map;
 
 
     /* references to the widgets in the fxml file */
@@ -47,14 +68,6 @@ public class MapScreenController {
     private Button profileButton;
     @FXML
     private Button submitButton;
-
-
-
-
-
-
-
-
 
 
     @FXML protected void handleSubmitButtonAction() {
@@ -124,6 +137,61 @@ public class MapScreenController {
         }
     }
 
+    @Override
+    public void mapInitialized() {
+        mapView.addMapInializedListener(this);
+
+        //Set the initial properties of the map
+
+        MapOptions options = new MapOptions();
+
+        //set up the center location for the map
+        LatLong center = new LatLong(34, -88);
+
+        options.center(center)
+                .zoom(9)
+                .overviewMapControl(false)
+                .panControl(false)
+                .rotateControl(false)
+                .scaleControl(false)
+                .streetViewControl(false)
+                .zoomControl(false)
+                .mapType(MapTypeIdEnum.TERRAIN);
+
+        map = mapView.createMap(options);
+
+
+        /** now we communciate with the model to get all the locations for markers */
+        Facade fc = Facade.getInstance();
+        List<Location> locations = fc.getLocations();
+
+        for (Location l: locations) {
+            MarkerOptions markerOptions = new MarkerOptions();
+            LatLong loc = new LatLong(l.getLatitude(), l.getLongitude());
+
+            markerOptions.position( loc )
+                    .visible(Boolean.TRUE)
+                    .title(l.getTitle());
+
+            Marker marker = new Marker( markerOptions );
+
+            map.addUIEventHandler(marker,
+                    UIEventType.click,
+                    (JSObject obj) -> {
+                        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                        infoWindowOptions.content(l.getDescription() );
+
+                        InfoWindow window = new InfoWindow(infoWindowOptions);
+                        window.open(map, marker);});
+
+            map.addMarker(marker);
+
+        }
+
+        //  borderLayout.setCenter(mapView);
+
+    }
+
 
         /**
          * Initializes the controller class. This method is automatically called
@@ -148,6 +216,12 @@ public class MapScreenController {
 
 
         }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+    }
         public void setUser(User newUser) {
             currentUser = newUser;
         }
