@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -38,7 +39,7 @@ public class LoginScreenController {
     private String username;
     private String password;
 
-    MapScreenController mapController = new MapScreenController();
+    private Stage mainStage;
 
 
     @FXML protected void handleLoginButtonAction() throws IOException{
@@ -65,10 +66,17 @@ public class LoginScreenController {
                 if (info[2].equals(passwordInput.getText())) {
                     password = info[2];
                     try {
+
+//                        MapScreenController mapController = new MapScreenController(mainApplication, mainApplication.getMainScreen());
+
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
                         anchorLayout = fxmlLoader.load();
                         MapScreenController msc = fxmlLoader.getController();
+                        msc.setApp(mainApplication);
+                        msc.setState(mainApplication.getMainScreen());
+                        msc.setUpMapView(mainApplication.getMainScreen());
+
                         User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
                         msc.setUser(currentUser);
                         Scene scene2 = new Scene(anchorLayout);
@@ -134,7 +142,9 @@ public class LoginScreenController {
      */
     public void setMainApp(WaterzMainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
-
+        if (mainApplication == null) {
+            System.out.println("NULL AT MSC");
+        }
     }
 }
 

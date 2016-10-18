@@ -37,6 +37,9 @@ public class WelcomeScreenController {
             Scene scene = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene);
 
+            if (mainApplication == null) {
+                System.out.println("NULL");
+            }
             controller.setMainApp(mainApplication);
 
 

@@ -87,7 +87,13 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     }
 
     public MapScreenController() {
+    }
 
+    protected void setApp(WaterzMainFXApplication app) {
+        theApp = app;
+    }
+    protected void setState (Stage stage) {
+        mainStage = stage;
     }
 
 
@@ -201,7 +207,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
      *
      * @param stage the stage to put the map scene into
      */
-    private void setUpMapView(Stage stage) {
+    protected void setUpMapView(Stage stage) {
         //construct the view
         mapView = new GoogleMapView();
         //we cannot do anything until the map is constructed, so we need a callback
@@ -209,18 +215,23 @@ public class MapScreenController implements Initializable, MapComponentInitializ
         //interface
         mapView.addMapInializedListener(this);
 
-        //Create the top level layout
-        BorderPane bp = new BorderPane();
-
         //put the menu into the top of the border layout
-        bp.setTop(makeMenuBar());
+//        mapViewer.setTop(makeMenuBar());
+
+//
+//        System.out.println("Comes here");
+//        if (mapView == null) {
+//            System.out.println("isnull");
+//        } else {
+//            System.out.println("not null");
+//        }
 
 
         //put the map into the center of the border layout
-        bp.setCenter(mapView);
+        mapViewer.setCenter(mapView);
 
         //put the map into the scene
-        Scene scene = new Scene(bp);
+        Scene scene = new Scene(mapViewer);
         stage.setScene(scene);
     }
 
