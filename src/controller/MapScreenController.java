@@ -76,6 +76,9 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     private Button profileButton;
     @FXML
     private Button submitButton;
+    @FXML
+    private BorderPane mapViewer;
+
 
     public MapScreenController(WaterzMainFXApplication app, Stage stage) {
         theApp = app;
@@ -409,9 +412,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
         }
 
         //  borderLayout.setCenter(mapView);
-
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
