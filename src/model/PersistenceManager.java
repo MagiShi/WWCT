@@ -16,16 +16,16 @@ import java.util.logging.Logger;
 public class PersistenceManager {
     private static Logger LOGGER = Logger.getLogger("PersistenceManager");
 
-    private List<src.model.Location> model;
+    private List<src.model.WaterSource> model;
 
-    public PersistenceManager(List<src.model.Location> m) {
+    public PersistenceManager(List<src.model.WaterSource> m) {
         model = m;
     }
 
     public void saveToText(File file) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(file))) {
             pw.println(model.size());
-            for (Location l : model) {
+            for (WaterSource l : model) {
                 l.saveToText(pw);
             }
             pw.close();
@@ -43,7 +43,7 @@ public class PersistenceManager {
             int count = Integer.parseInt(ct);
             for (int i = 0; i < count; ++i) {
                 ct = br.readLine();
-                Location loc = Location.makeFromFileString(ct);
+                WaterSource loc = WaterSource.makeFromFileString(ct);
                 model.add(loc);
             }
             br.close();
@@ -67,7 +67,7 @@ public class PersistenceManager {
 
     public void loadFromBinary(File file) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            model = (ArrayList<Location>) ois.readObject();
+            model = (ArrayList<WaterSource>) ois.readObject();
             ois.close();
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, "Failed to make an input stream for Binary", ex);

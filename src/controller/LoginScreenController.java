@@ -66,9 +66,6 @@ public class LoginScreenController {
                 if (info[2].equals(passwordInput.getText())) {
                     password = info[2];
                     try {
-
-//                        MapScreenController mapController = new MapScreenController(mainApplication, mainApplication.getMainScreen());
-
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
                         anchorLayout = fxmlLoader.load();

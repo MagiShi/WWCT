@@ -215,18 +215,6 @@ public class MapScreenController implements Initializable, MapComponentInitializ
         //interface
         mapView.addMapInializedListener(this);
 
-        //put the menu into the top of the border layout
-//        mapViewer.setTop(makeMenuBar());
-
-//
-//        System.out.println("Comes here");
-//        if (mapView == null) {
-//            System.out.println("isnull");
-//        } else {
-//            System.out.println("not null");
-//        }
-
-
         //put the map into the center of the border layout
         mapViewer.setCenter(mapView);
 
@@ -397,9 +385,10 @@ public class MapScreenController implements Initializable, MapComponentInitializ
 
         /** now we communciate with the model to get all the locations for markers */
         Facade fc = Facade.getInstance();
-        List<Location> locations = fc.getLocations();
+        List<WaterSource> locations = fc.getLocations();
 
-        for (Location l: locations) {
+        //create pins
+        for (WaterSource l: locations) {
             MarkerOptions markerOptions = new MarkerOptions();
             LatLong loc = new LatLong(l.getLatitude(), l.getLongitude());
 
@@ -421,8 +410,6 @@ public class MapScreenController implements Initializable, MapComponentInitializ
             map.addMarker(marker);
 
         }
-
-        //  borderLayout.setCenter(mapView);
     }
 
     @Override
