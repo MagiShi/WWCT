@@ -174,6 +174,10 @@ public class waterSourceReportScreenController {
             MapScreenController msc = fxmlLoader.getController();
             msc.setUser(currentUser);
 
+            msc.setApp(mainApplication);
+            msc.setState(mainApplication.getMainScreen());
+            msc.setUpMapView(mainApplication.getMainScreen());
+
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
 
