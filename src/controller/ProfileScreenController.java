@@ -72,23 +72,25 @@ public class ProfileScreenController {
     }
 
     @FXML protected void handleBackButtonAction() {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
-                anchorLayout = fxmlLoader.load();
-                MapScreenController controller = fxmlLoader.getController();
+            anchorLayout = fxmlLoader.load();
+            MapScreenController msc = fxmlLoader.getController();
 
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
+            msc.setApp(mainApplication);
+            msc.setState(mainApplication.getMainScreen());
+            msc.setUpMapView(mainApplication.getMainScreen());
 
-                controller.setUser(currentUser);
-                controller.setMainApp(mainApplication);
+            msc.setUser(currentUser);
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+            msc.setMainApp(mainApplication);
 
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
     @FXML protected void handleSaveName() {
         currentName.setText(newName.getText());

@@ -7,7 +7,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import src.controller.MainScreenController;
+import src.controller.MapScreenController;
 import src.controller.WelcomeScreenController;
+import src.model.Facade;
 
 import java.io.IOException;
 
@@ -72,6 +74,16 @@ public class WaterzMainFXApplication extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    /**
+     * dummy method to simulate a callback from the map view
+     */
+    public void closeMapView() {
+        Facade fc = Facade.getInstance();
+//        fc.addLocations();
+        MapScreenController controller = new MapScreenController(this, mainScreen);
+    }
+
 
 
 }

@@ -15,10 +15,7 @@ import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import src.model.SourceType;
-import src.model.User;
-import src.model.UserType;
-import src.model.WaterCondition;
+import src.model.*;
 
 import java.io.*;
 import java.text.DateFormat;
@@ -41,12 +38,77 @@ public class waterSourceReportScreenController {
     @FXML private TextField waterLocation;
     @FXML private ComboBox<SourceType> waterType;
     @FXML private ComboBox<WaterCondition> waterCondition;
+    @FXML private TextField latitudeInput;
+    @FXML private TextField longitudeInput;
+
+    private User currentUser;
+
+    private Facade fc;
+
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
+
+    public void setFacade(Facade fc) {this.fc = fc;}
 
     @FXML protected void submitBttnAction() {
         String userInputName = reporterName.getText();
         String userInputLocation = waterLocation.getText();
         SourceType userInputWaterType = waterType.getValue();
         WaterCondition userInputWaterCondition = waterCondition.getValue();
+        double lat = 0;
+        double longit = 0;
+        //making sure latitude input and longitude input are int/decimal values
+        try {
+            lat = Double.valueOf(latitudeInput.getText());
+            if (lat < -90 || lat > 90) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Invalid latitude");
+                alert.setHeaderText("Invalid input for latitude");
+                alert.setContentText("Please input valid latitude in integer/decimal value between -90 and 90.");
+                alert.showAndWait();
+                latitudeInput.clear();
+            }
+        } catch (NumberFormatException nfe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid latitude");
+            alert.setHeaderText("Invalid input for latitude");
+            alert.setContentText("Please input latitude in integer/decimal value.");
+            alert.showAndWait();
+            latitudeInput.clear();
+        } catch (NullPointerException npe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty latitude field");
+            alert.setHeaderText("No input for latitude");
+            alert.setContentText("Please input a latitude value.");
+            alert.showAndWait();
+            latitudeInput.clear();
+        }
+        try {
+            longit = Double.valueOf(longitudeInput.getText());
+            if (longit < -90 || longit > 90) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Invalid longitude");
+                alert.setHeaderText("Invalid input for longitude");
+                alert.setContentText("Please input valid longitude in integer/decimal value between -180 and 180.");
+                alert.showAndWait();
+                latitudeInput.clear();
+            }
+        } catch (NumberFormatException nfe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid longitude");
+            alert.setHeaderText("Invalid input for longitude");
+            alert.setContentText("Please input longitude in integer/decimal value.");
+            alert.showAndWait();
+            longitudeInput.clear();
+        } catch (NullPointerException npe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty longitude field");
+            alert.setHeaderText("No input for longitude");
+            alert.setContentText("Please input a longitude value.");
+            alert.showAndWait();
+            longitudeInput.clear();
+        }
 
         boolean alreadyExists = new File("sourceReports.csv").exists();
         if (!alreadyExists) {
@@ -76,7 +138,9 @@ public class waterSourceReportScreenController {
                 Date dateObject = new Date();
                 String dateString = dateFormat.format(dateObject);
 
-                fileWriter.append("Report #" + 1000 + (int)(Math.random() * ((9999 - 1000) + 1)));
+                int num = 1000 + (int)(Math.random() * ((9999 - 1000) + 1));
+
+                fileWriter.append("Report #" + num);
                 fileWriter.append(", ");
                 fileWriter.append(userInputName);
                 fileWriter.append(", ");
@@ -84,10 +148,25 @@ public class waterSourceReportScreenController {
                 fileWriter.append(", ");
                 fileWriter.append(userInputLocation);
                 fileWriter.append(", ");
+                fileWriter.append(latitudeInput.getText());
+                fileWriter.append(",");
+                fileWriter.append(longitudeInput.getText());
+                fileWriter.append(",");
                 fileWriter.append(userInputWaterType.toString());
                 fileWriter.append(", ");
                 fileWriter.append(userInputWaterCondition.toString());
                 fileWriter.append("\n");
+
+                Location loc = new Location(lat,
+                        longit,
+                        "Marker",
+                        "<h2> "  + num +
+                                "</h2> <br> Reporter: " + userInputName +
+                                "<br> Date: " + dateString +
+                                "<br> Water Type: " + userInputWaterType +
+                                "<br> Water Condition: " + userInputWaterCondition);
+
+                fc.addLocation(loc);
 
                 //create a new report? should we have a report class?
                 //newReport = new Report(...);
@@ -108,11 +187,17 @@ public class waterSourceReportScreenController {
 
             anchorLayout = fxmlLoader.load();
             MapScreenController msc = fxmlLoader.getController();
+            msc.setUser(currentUser);
+
+            msc.setApp(mainApplication);
+            msc.setState(mainApplication.getMainScreen());
+            msc.setUpMapView(mainApplication.getMainScreen());
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
 
             msc.setMainApp(mainApplication);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -123,12 +208,16 @@ public class waterSourceReportScreenController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            MapScreenController controller = fxmlLoader.getController();
+            MapScreenController msc = fxmlLoader.getController();
 
+            msc.setApp(mainApplication);
+            msc.setState(mainApplication.getMainScreen());
+            msc.setUpMapView(mainApplication.getMainScreen());
+
+            msc.setUser(currentUser);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
-
-            controller.setMainApp(mainApplication);
+            msc.setMainApp(mainApplication);
 
         } catch (Exception e) {
             e.printStackTrace();
