@@ -80,7 +80,7 @@ public class WaterzMainFXApplication extends Application {
      */
     public void closeMapView() {
         Facade fc = Facade.getInstance();
-        fc.addLocations();
+//        fc.addLocations();
         MapScreenController controller = new MapScreenController(this, mainScreen);
     }
 

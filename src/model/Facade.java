@@ -30,7 +30,7 @@ public class Facade {
                     Location l = new Location(Double.valueOf(linebroken[4]),
                             Double.valueOf(linebroken[5]),
                             "Marker " + i,
-                            "<h2>ReportNumber "  + linebroken[0] +
+                            "<h2> "  + linebroken[0] +
                                     "</h2> <br> Reporter: " + linebroken[1] +
                                     "<br> Date: " + linebroken[2] +
                                     "<br> Water Type: " + linebroken[6] +
@@ -76,7 +76,10 @@ public class Facade {
         pm.saveToJson(file);
     }
 
-    public void addLocations() {
-        locations.add(new Location(34.043, -88.043, "New Marker", "Some new data"));
+    public void addLocation(Location loc) {
+        locations.add(loc);
     }
+//    public void addLocations() {
+//        locations.add(new Location(34.043, -88.043, "New Marker", "Some new data"));
+//    }
 }

@@ -49,6 +49,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     private AnchorPane anchorLayout;
 
     private User currentUser;
+    private Facade fac;
 
     private String username;
     private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
@@ -100,6 +101,8 @@ public class MapScreenController implements Initializable, MapComponentInitializ
             anchorLayout = fxmlLoader.load();
             waterSourceReportScreenController controller = fxmlLoader.getController();
             controller.setUser(currentUser);
+            fac = Facade.getInstance();
+            controller.setFacade(fac);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
 
@@ -340,8 +343,8 @@ public class MapScreenController implements Initializable, MapComponentInitializ
 
         /** now we communciate with the model to get all the locations for markers */
 
-        Facade fc = Facade.getInstance();
-        List<Location> locations = fc.getLocations();
+        Facade fac = Facade.getInstance();
+        List<Location> locations = fac.getLocations();
 
         //create pins
         for (Location l: locations) {

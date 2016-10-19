@@ -15,10 +15,7 @@ import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import src.model.SourceType;
-import src.model.User;
-import src.model.UserType;
-import src.model.WaterCondition;
+import src.model.*;
 
 import java.io.*;
 import java.text.DateFormat;
@@ -45,20 +42,25 @@ public class waterSourceReportScreenController {
     @FXML private TextField longitudeInput;
 
     private User currentUser;
+
+    private Facade fc;
+
     public void setUser(User newUser) {
         currentUser = newUser;
     }
 
+    public void setFacade(Facade fc) {this.fc = fc;}
 
     @FXML protected void submitBttnAction() {
         String userInputName = reporterName.getText();
         String userInputLocation = waterLocation.getText();
         SourceType userInputWaterType = waterType.getValue();
         WaterCondition userInputWaterCondition = waterCondition.getValue();
-
+        double lat = 0;
+        double longit = 0;
         //making sure latitude input and longitude input are int/decimal values
         try {
-            double lat = Double.valueOf(latitudeInput.getText());
+            lat = Double.valueOf(latitudeInput.getText());
             if (lat < -90 || lat > 90) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Invalid latitude");
@@ -83,7 +85,7 @@ public class waterSourceReportScreenController {
             latitudeInput.clear();
         }
         try {
-            Double longit = Double.valueOf(longitudeInput.getText());
+            longit = Double.valueOf(longitudeInput.getText());
             if (longit < -90 || longit > 90) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Invalid longitude");
@@ -136,7 +138,9 @@ public class waterSourceReportScreenController {
                 Date dateObject = new Date();
                 String dateString = dateFormat.format(dateObject);
 
-                fileWriter.append("Report #" + 1000 + (int)(Math.random() * ((9999 - 1000) + 1)));
+                int num = 1000 + (int)(Math.random() * ((9999 - 1000) + 1));
+
+                fileWriter.append("Report #" + num);
                 fileWriter.append(", ");
                 fileWriter.append(userInputName);
                 fileWriter.append(", ");
@@ -152,6 +156,17 @@ public class waterSourceReportScreenController {
                 fileWriter.append(", ");
                 fileWriter.append(userInputWaterCondition.toString());
                 fileWriter.append("\n");
+
+                Location loc = new Location(lat,
+                        longit,
+                        "Marker",
+                        "<h2> "  + num +
+                                "</h2> <br> Reporter: " + userInputName +
+                                "<br> Date: " + dateString +
+                                "<br> Water Type: " + userInputWaterType +
+                                "<br> Water Condition: " + userInputWaterCondition);
+
+                fc.addLocation(loc);
 
                 //create a new report? should we have a report class?
                 //newReport = new Report(...);
@@ -177,6 +192,9 @@ public class waterSourceReportScreenController {
             msc.setApp(mainApplication);
             msc.setState(mainApplication.getMainScreen());
             msc.setUpMapView(mainApplication.getMainScreen());
+
+            msc.mapInitialized();
+
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
