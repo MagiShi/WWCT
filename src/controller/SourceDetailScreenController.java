@@ -48,12 +48,15 @@ public class SourceDetailScreenController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            MapScreenController controller = fxmlLoader.getController();
+            MapScreenController msc = fxmlLoader.getController();
+
+            msc.setApp(mainApplication);
+            msc.setState(mainApplication.getMainScreen());
+            msc.setUpMapView(mainApplication.getMainScreen());
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
-
-            controller.setMainApp(mainApplication);
+            msc.setMainApp(mainApplication);
 
         } catch (Exception e) {
             e.printStackTrace();
