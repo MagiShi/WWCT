@@ -60,8 +60,6 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     @FXML
     private Button logoutButton;
     @FXML
-    private Button viewReportsButton;
-    @FXML
     private Button profileButton;
     @FXML
     private Button submitButton;
@@ -113,22 +111,6 @@ public class MapScreenController implements Initializable, MapComponentInitializ
         }
     }
 
-    @FXML protected void handleViewReportDetailButtonAction() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
-
-            anchorLayout = fxmlLoader.load();
-            SourceDetailScreenController controller = fxmlLoader.getController();
-            controller.setUser(currentUser);
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-            controller.setCurrentSource(water.get(0));
-            controller.setMainApp(mainApplication);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML protected void handleLogoutButtonAction() {
         try {
@@ -357,10 +339,20 @@ public class MapScreenController implements Initializable, MapComponentInitializ
             map.addUIEventHandler(marker,
                     UIEventType.click,
                     (JSObject obj) -> {
-                        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-                        infoWindowOptions.content(l.getDescription() );
-                        InfoWindow window = new InfoWindow(infoWindowOptions);
-                        window.open(map, marker);});
+                        try {
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
+
+                            anchorLayout = fxmlLoader.load();
+                            SourceDetailScreenController controller = fxmlLoader.getController();
+                            controller.setUser(currentUser);
+                            Scene scene2 = new Scene(anchorLayout);
+                            mainApplication.getMainScreen().setScene(scene2);
+                            controller.setCurrentSource(l.getDescription());
+                            controller.setMainApp(mainApplication);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }});
             map.addMarker(marker);
         }
     }

@@ -27,14 +27,11 @@ public class SourceDetailScreenController {
 
     private AnchorPane anchorLayout;
 
-    private WaterSource currentSource;
 
     @FXML
     private Button backButton;
     @FXML
     private ListView<String> reportsList;
-    @FXML
-    private Label sourceLocation;
     @FXML
     private Label waterType;
     @FXML
@@ -114,13 +111,20 @@ public class SourceDetailScreenController {
     private void initialize() {
     }
 
-    public void setCurrentSource(WaterSource newSource) {
-        currentSource = newSource;
-        sourceLocation.setText(currentSource.getLocation());
-        waterType.setText(currentSource.getType());
-        waterCondition.setText((currentSource.getSourceCondition()));
-        sourceCreator.setText((currentSource.getUser()));
-        creationDate.setText(currentSource.getDate());
+    public void setCurrentSource(String description) {
+        String[] info = description.split("<");
+        String[] userSplit = info[3].split(" ");
+        String user = userSplit[3];
+        String[] timeSplit = info[4].split(" ");
+        String time = timeSplit[3];
+        String[] typeSplit = info[5].split(" ");
+        String type = typeSplit[3];
+        String[] conditSplit = info[6].split(" ");
+        String condition = conditSplit[4];
+        sourceCreator.setText(user);
+        creationDate.setText(time);
+        waterCondition.setText(condition);
+        waterType.setText(type);
     }
 
 

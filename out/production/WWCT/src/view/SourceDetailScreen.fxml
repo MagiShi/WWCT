@@ -28,7 +28,6 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
@@ -36,19 +35,16 @@
             <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="waterTypeLabel" text="Type of Water" GridPane.rowIndex="1" />
-            <Label fx:id="locationLabel" text="Location" />
-            <Label fx:id="waterConditionLabel" text="Condition of Water" GridPane.rowIndex="2" />
-            <Button fx:id="viewReportListButton" mnemonicParsing="false" onAction="#viewReportListButtonAction" text="View Reports for Source" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-             
-            <Label fx:id="sourceLocation" text="Label" GridPane.columnIndex="1" />
-            <Label fx:id="waterType" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="waterCondition" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="addReportButton" mnemonicParsing="false" onAction="#addReportButtonAction" text="Add Report to Source" GridPane.rowIndex="5" />
-            <Label fx:id="sourceCreatorLabel" text="Created By" GridPane.rowIndex="3" />
-            <Label fx:id="creationDateLabel" text="Created On" GridPane.rowIndex="4" />
-            <Label fx:id="sourceCreator" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="creationDate" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="waterTypeLabel" text="Type of Water" />
+            <Label fx:id="waterConditionLabel" text="Condition of Water" GridPane.rowIndex="1" />
+            <Button fx:id="viewReportListButton" mnemonicParsing="false" onAction="#viewReportListButtonAction" text="View Reports for Source" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="waterType" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="waterCondition" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="addReportButton" mnemonicParsing="false" onAction="#addReportButtonAction" text="Add Report to Source" GridPane.rowIndex="4" />
+            <Label fx:id="sourceCreatorLabel" text="Created By" GridPane.rowIndex="2" />
+            <Label fx:id="creationDateLabel" text="Created On" GridPane.rowIndex="3" />
+            <Label fx:id="sourceCreator" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="creationDate" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>
