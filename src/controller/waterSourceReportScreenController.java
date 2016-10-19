@@ -44,6 +44,12 @@ public class waterSourceReportScreenController {
     @FXML private TextField latitudeInput;
     @FXML private TextField longitudeInput;
 
+    private User currentUser;
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
+
+
     @FXML protected void submitBttnAction() {
         String userInputName = reporterName.getText();
         String userInputLocation = waterLocation.getText();
@@ -166,6 +172,7 @@ public class waterSourceReportScreenController {
 
             anchorLayout = fxmlLoader.load();
             MapScreenController msc = fxmlLoader.getController();
+            msc.setUser(currentUser);
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -187,6 +194,7 @@ public class waterSourceReportScreenController {
             msc.setState(mainApplication.getMainScreen());
             msc.setUpMapView(mainApplication.getMainScreen());
 
+            msc.setUser(currentUser);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
             msc.setMainApp(mainApplication);

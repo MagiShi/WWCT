@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
+import src.model.User;
 import src.model.WaterSource;
 
 import java.io.BufferedReader;
@@ -43,6 +44,12 @@ public class SourceDetailScreenController {
     @FXML
     private Label creationDate;
 
+    private User currentUser;
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
+
+
     @FXML protected void backButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
@@ -54,6 +61,7 @@ public class SourceDetailScreenController {
             msc.setState(mainApplication.getMainScreen());
             msc.setUpMapView(mainApplication.getMainScreen());
 
+            msc.setUser(currentUser);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
             msc.setMainApp(mainApplication);
