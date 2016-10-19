@@ -41,12 +41,66 @@ public class waterSourceReportScreenController {
     @FXML private TextField waterLocation;
     @FXML private ComboBox<SourceType> waterType;
     @FXML private ComboBox<WaterCondition> waterCondition;
+    @FXML private TextField latitudeInput;
+    @FXML private TextField longitudeInput;
 
     @FXML protected void submitBttnAction() {
         String userInputName = reporterName.getText();
         String userInputLocation = waterLocation.getText();
         SourceType userInputWaterType = waterType.getValue();
         WaterCondition userInputWaterCondition = waterCondition.getValue();
+
+        //making sure latitude input and longitude input are int/decimal values
+        try {
+            double lat = Double.valueOf(latitudeInput.getText());
+            if (lat < -90 || lat > 90) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Invalid latitude");
+                alert.setHeaderText("Invalid input for latitude");
+                alert.setContentText("Please input valid latitude in integer/decimal value between -90 and 90.");
+                alert.showAndWait();
+                latitudeInput.clear();
+            }
+        } catch (NumberFormatException nfe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid latitude");
+            alert.setHeaderText("Invalid input for latitude");
+            alert.setContentText("Please input latitude in integer/decimal value.");
+            alert.showAndWait();
+            latitudeInput.clear();
+        } catch (NullPointerException npe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty latitude field");
+            alert.setHeaderText("No input for latitude");
+            alert.setContentText("Please input a latitude value.");
+            alert.showAndWait();
+            latitudeInput.clear();
+        }
+        try {
+            Double longit = Double.valueOf(longitudeInput.getText());
+            if (longit < -90 || longit > 90) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Invalid longitude");
+                alert.setHeaderText("Invalid input for longitude");
+                alert.setContentText("Please input valid longitude in integer/decimal value between -180 and 180.");
+                alert.showAndWait();
+                latitudeInput.clear();
+            }
+        } catch (NumberFormatException nfe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid longitude");
+            alert.setHeaderText("Invalid input for longitude");
+            alert.setContentText("Please input longitude in integer/decimal value.");
+            alert.showAndWait();
+            longitudeInput.clear();
+        } catch (NullPointerException npe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty longitude field");
+            alert.setHeaderText("No input for longitude");
+            alert.setContentText("Please input a longitude value.");
+            alert.showAndWait();
+            longitudeInput.clear();
+        }
 
         boolean alreadyExists = new File("sourceReports.csv").exists();
         if (!alreadyExists) {
@@ -84,6 +138,10 @@ public class waterSourceReportScreenController {
                 fileWriter.append(", ");
                 fileWriter.append(userInputLocation);
                 fileWriter.append(", ");
+                fileWriter.append(latitudeInput.getText());
+                fileWriter.append(",");
+                fileWriter.append(longitudeInput.getText());
+                fileWriter.append(",");
                 fileWriter.append(userInputWaterType.toString());
                 fileWriter.append(", ");
                 fileWriter.append(userInputWaterCondition.toString());

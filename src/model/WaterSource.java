@@ -9,13 +9,17 @@ public class WaterSource {
     private String firstUser;
     private String creationDate;
     private String location;
+    private double lat;
+    private double longit;
     private String type;
     private String sourceCondition;
     private ArrayList<Report> reports = new ArrayList<Report>();
-    public WaterSource(String user, String date, String loc, String newType, String condit) {
+    public WaterSource(String user, String date, String loc, double latIn, double longitIn, String newType, String condit) {
         firstUser = user;
         creationDate = date;
         location = loc;
+        lat = latIn;
+        longit = longitIn;
         type = newType;
         sourceCondition = condit;
     }
@@ -33,6 +37,12 @@ public class WaterSource {
     }
     public String getLocation() {
         return location;
+    }
+    public Double getLatitude() {
+        return lat;
+    }
+    public Double getLongitude() {
+        return longit;
     }
     public String getType() {
         return type;

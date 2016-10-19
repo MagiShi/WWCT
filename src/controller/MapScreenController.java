@@ -70,7 +70,7 @@ public class MapScreenController {
             SourceDetailScreenController controller = fxmlLoader.getController();
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
-            controller.setCurrentSource(water.get(3));
+            controller.setCurrentSource(water.get(0));
             controller.setMainApp(mainApplication);
 
         } catch (Exception e) {
@@ -126,7 +126,7 @@ public class MapScreenController {
                     String line = "";
                     while (((line = br.readLine()) != null)) {
                         String[] data = line.split(",");
-                        WaterSource source = new WaterSource(data[1], data[2], data[3], data[4], data[5]);
+                        WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
                         water.add(source);
                     }
                 } catch (IOException e) {
