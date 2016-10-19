@@ -166,7 +166,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
          * after the constructor and
          * after the fxml file has been loaded.
          */
-        @FXML
+        /*@FXML
         private void initialize() {
             boolean alreadyExists = new File("sourceReports.csv").exists();
             System.out.print("initialize");
@@ -184,7 +184,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
                     e.printStackTrace();
                 }
             }
-        }
+        }*/
         public void setUser(User newUser) {
             currentUser = newUser;
         }
@@ -387,5 +387,21 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        boolean alreadyExists = new File("sourceReports.csv").exists();
+        System.out.print("initialize");
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+                String line = "";
+                while (((line = br.readLine()) != null)) {
+                    String[] data = line.split(",");
+                    WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
+                    water.add(source);
+
+                    System.out.print("stuff");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
