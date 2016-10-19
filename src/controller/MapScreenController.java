@@ -54,6 +54,8 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     private String username;
     private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
 
+    Location currLoc;
+
 
     /* references to the widgets in the fxml file */
 
@@ -67,6 +69,10 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     private Button submitButton;
     @FXML
     private BorderPane mapViewer;
+
+    private Button reportButton = new Button ("viewReports");
+
+    //private Button reportButton;
 
     /** a gui view provided by the GMapFX library */
     private GoogleMapView mapView;
@@ -114,19 +120,21 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     }
 
     @FXML protected void handleViewReportDetailButtonAction() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
+        if (currLoc != null) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
 
-            anchorLayout = fxmlLoader.load();
-            SourceDetailScreenController controller = fxmlLoader.getController();
-            controller.setUser(currentUser);
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-            controller.setCurrentSource(water.get(0));
-            controller.setMainApp(mainApplication);
+                anchorLayout = fxmlLoader.load();
+                SourceDetailScreenController controller = fxmlLoader.getController();
+                controller.setUser(currentUser);
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+                controller.setCurrentSource(currLoc);
+                controller.setMainApp(mainApplication);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -358,8 +366,9 @@ public class MapScreenController implements Initializable, MapComponentInitializ
                     UIEventType.click,
                     (JSObject obj) -> {
                         InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-                        infoWindowOptions.content(l.getDescription() );
+                        infoWindowOptions.content(l.getDescription());
                         InfoWindow window = new InfoWindow(infoWindowOptions);
+                        currLoc = l;
                         window.open(map, marker);});
             map.addMarker(marker);
         }

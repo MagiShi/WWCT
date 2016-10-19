@@ -23,6 +23,7 @@ public class WaterSource {
         type = newType;
         sourceCondition = condit;
     }
+
     public void addReport(Report newReport) {
         reports.add(newReport);
     }

@@ -9,6 +9,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
+import src.model.Location;
+import src.model.User;
 import src.model.WaterSource;
 
 import java.io.BufferedReader;
@@ -31,12 +33,31 @@ public class ReportsListScreenController {
     @FXML
     private ListView<String> reportsList;
 
+    private User currentUser;
+
+    private Location currLoc;
+
+    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
+
+    public void setLocation (Location loc) { currLoc = loc; }
+
+    public void setThisSource (ArrayList<WaterSource> list) {thisSource = list;}
+
+
+
     @FXML protected void backButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
             SourceDetailScreenController controller = fxmlLoader.getController();
+
+            controller.setUser(currentUser);
+            controller.setLocation(currLoc);
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -55,17 +76,29 @@ public class ReportsListScreenController {
      */
     @FXML
     private void initialize() {
-        boolean alreadyExists = new File("sourceReports.csv").exists();
-        if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-                String line = "";
-                while (((line = br.readLine()) != null)) {
-                    reportsList.getItems().add(line);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+//        System.out.println(thisSource);
+//        for (int i = 0; i < thisSource.size(); i++) {
+//            System.out.println(i);
+//            String line = thisSource.get(i).toString();
+//            reportsList.getItems().add(line);
+//        }
+//        for (WaterSource ws: thisSource) {
+//            System.out.println("in loop");
+//            String line = "";
+//            line = ws.toString();
+//            reportsList.getItems().add(line);
+//        }
+//        boolean alreadyExists = new File("sourceReports.csv").exists();
+//        if (alreadyExists) {
+//            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+//                String line = "";
+//                while (((line = br.readLine()) != null)) {
+//                    reportsList.getItems().add(line);
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
     /**
      * Setup the main application link so we can call methods there

@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
+import src.model.Location;
 import src.model.User;
 import src.model.WaterSource;
 
@@ -45,9 +46,18 @@ public class SourceDetailScreenController {
     private Label creationDate;
 
     private User currentUser;
+
+    private Location currLoc;
+
     public void setUser(User newUser) {
         currentUser = newUser;
     }
+
+    public void setLocation (Location loc) { currLoc = loc; }
+
+    private ArrayList<WaterSource> allReports = new ArrayList<WaterSource>();
+
+    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
 
     @FXML protected void backButtonAction() {
@@ -77,6 +87,9 @@ public class SourceDetailScreenController {
 
             anchorLayout = fxmlLoader.load();
             ReportsListScreenController controller = fxmlLoader.getController();
+            controller.setUser(currentUser);
+            controller.setLocation(currLoc);
+            controller.setThisSource(thisSource);
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -112,10 +125,41 @@ public class SourceDetailScreenController {
      */
     @FXML
     private void initialize() {
+        boolean alreadyExists = new File("sourceReports.csv").exists();
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+                String line = "";//make into water source
+                while (((line = br.readLine()) != null)) {
+                    String[] data = line.split(",");
+                    String reportNum = data[0];
+                    String name = data[1];
+                    String dateTime = data[2];
+                    String locationName = data[3];
+                    Double lat = Double.parseDouble(data[4]);
+                    Double longit = Double.parseDouble(data[5]);
+                    String type = data[6];
+                    String sourceCondition = data[7];
+
+                    WaterSource wc = new WaterSource(name, dateTime,locationName, lat, longit, type, sourceCondition);
+
+                    allReports.add(wc);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void setCurrentSource(WaterSource newSource) {
-        currentSource = newSource;
+    public void setCurrentSource(Location newSource) {
+        currLoc = newSource;
+
+        for (WaterSource source: allReports) {
+            if (source.getLatitude().equals(currLoc.getLatitude()) && source.getLongitude().equals(currLoc.getLongitude())) {
+                currentSource = source;
+                thisSource.add(currentSource);
+            }
+        }
+
         sourceLocation.setText(currentSource.getLocation());
         waterType.setText(currentSource.getType());
         waterCondition.setText((currentSource.getSourceCondition()));
