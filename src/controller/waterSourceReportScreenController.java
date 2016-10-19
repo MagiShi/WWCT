@@ -193,13 +193,11 @@ public class waterSourceReportScreenController {
             msc.setState(mainApplication.getMainScreen());
             msc.setUpMapView(mainApplication.getMainScreen());
 
-            msc.mapInitialized();
-
-
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
 
             msc.setMainApp(mainApplication);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
