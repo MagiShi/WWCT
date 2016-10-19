@@ -99,7 +99,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
 
             anchorLayout = fxmlLoader.load();
             waterSourceReportScreenController controller = fxmlLoader.getController();
-
+            controller.setUser(currentUser);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
 
@@ -116,6 +116,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
 
             anchorLayout = fxmlLoader.load();
             SourceDetailScreenController controller = fxmlLoader.getController();
+            controller.setUser(currentUser);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
             controller.setCurrentSource(water.get(0));
@@ -160,31 +161,6 @@ public class MapScreenController implements Initializable, MapComponentInitializ
         }
     }
 
-
-        /**
-         * Initializes the controller class. This method is automatically called
-         * after the constructor and
-         * after the fxml file has been loaded.
-         */
-        /*@FXML
-        private void initialize() {
-            boolean alreadyExists = new File("sourceReports.csv").exists();
-            System.out.print("initialize");
-            if (alreadyExists) {
-                try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-                    String line = "";
-                    while (((line = br.readLine()) != null)) {
-                        String[] data = line.split(",");
-                        WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
-                        water.add(source);
-
-                        System.out.print("stuff");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }*/
         public void setUser(User newUser) {
             currentUser = newUser;
         }
@@ -385,6 +361,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
             map.addMarker(marker);
         }
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         boolean alreadyExists = new File("sourceReports.csv").exists();
