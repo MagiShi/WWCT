@@ -19,6 +19,7 @@ import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import src.model.User;
+import src.model.UserManager;
 import src.model.UserType;
 
 import java.io.*;
@@ -47,108 +48,40 @@ public class RegisterScreenController {
     protected void handleRegisterButtonAction() throws IOException{
         String userInputUsername = usernameInput.getText();
         String userInputPassword = passwordInput.getText();
+        String userInputPassword2 = passwordInput2.getText();
+        String userNameInput = nameInput.getText();
         UserType userInputUserType = userTypeInput.getValue();
-
-        boolean usernameOriginal = true;
-        //check if username exists
-        boolean alreadyExists = new File("database.csv").exists();
-        if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
-                String line = "";
-                while (usernameOriginal && ((line = br.readLine()) != null)) {
-                    String[] info = line.split(",");
-                    if (info[1].equals(userInputUsername)) {
-                        usernameOriginal = false;
-                    }
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            BufferedWriter writer = null;
-            try {
-                File newFile = new File("database.csv");
-                writer = new BufferedWriter(new FileWriter(newFile));
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    writer.flush();
-                    writer.close();
-                } catch (IOException ioe) {
-                    System.out.println("Error while flushing, creating new.");
-                    ioe.printStackTrace();
-                }
-            }
-
-        }
-        if (usernameOriginal) {
-            try {
-                if (passwordInput2.getText().equals(userInputPassword)) {
-                    //Store userinfo into csv file//
-                    FileWriter fileWriter = null;
-                    try {
-                        fileWriter = new FileWriter("database.csv", true);
-                        fileWriter.append(nameInput.getText());
-                        fileWriter.append(",");
-                        fileWriter.append(userInputUsername);
-                        fileWriter.append(",");
-                        fileWriter.append(userInputPassword);
-                        fileWriter.append(",");
-                        fileWriter.append(userInputUserType.toString());
-                        fileWriter.append(",");
-                        fileWriter.append("[set email]");
-                        fileWriter.append(",");
-                        fileWriter.append("[set address]");
-                        fileWriter.append(",");
-                        fileWriter.append("Not Banned");
-                        fileWriter.append("\n");
-
-                    } catch (Exception e){
-                        e.printStackTrace();
-                    } finally {
-                        try {
-                            fileWriter.flush();
-                            fileWriter.close();
-                        }  catch (IOException ioe) {
-                            System.out.println("Error while flushing");
-                            ioe.printStackTrace();
-                        }
-                    }
-
-
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
-
-                    anchorLayout = fxmlLoader.load();
-                    MapScreenController msc = fxmlLoader.getController();
-
-                    Scene scene2 = new Scene(anchorLayout);
-                    mainApplication.getMainScreen().setScene(scene2);
-
-                    User currentUser = new User(userInputUsername, userInputPassword,
-                            nameInput.getText(), userInputUserType.toString(), "[set email]", "[set address]", "Not Banned");
-                    msc.setUser(currentUser);
-                    msc.setMainApp(mainApplication);
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Password does not match");
-                    alert.setHeaderText("Password does not match");
-                    alert.setContentText("Input for password and confirm password does not match.");
-                    alert.showAndWait();
-                    passwordInput.clear();
-                    passwordInput2.clear();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
+        UserManager uM = UserManager.getInstance();
+        if (uM.userExists(userInputUsername)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Username Taken");
             alert.setHeaderText("Username Taken");
             alert.setContentText("Account with this username already exists. Please enter a different username.");
             alert.showAndWait();
             usernameInput.clear();
+        } else {
+            if (uM.passwordsMatch(userInputPassword,userInputPassword2)) {
+                uM.addUser(userInputUsername, userInputPassword, userNameInput, userInputUserType);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+
+                anchorLayout = fxmlLoader.load();
+                MapScreenController msc = fxmlLoader.getController();
+
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+
+
+                msc.setUser(uM.getCurrentUser());
+                msc.setMainApp(mainApplication);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Password does not match");
+                alert.setHeaderText("Password does not match");
+                alert.setContentText("Input for password and confirm password does not match.");
+                alert.showAndWait();
+                passwordInput.clear();
+                passwordInput2.clear();
+            }
         }
     }
 

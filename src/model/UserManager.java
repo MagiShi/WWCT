@@ -1,9 +1,6 @@
 package src.model;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -45,6 +42,54 @@ public class UserManager {
     }
     public static UserManager getInstance() {
         return instance;
+    }
+    public boolean passwordsMatch(String password1, String password2) {
+        if (password1.equals(password2)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void addUser(String id, String password, String name, UserType type) {
+        User user = new User(id, password, name, type.toString(), "[set email]", "[set address]", "Not Banned");
+        allUsers.add(user);
+        currentUser = user;
+        if (type.toString().equals("WORKER")) {
+            workers.add(user);
+        } else if (type.toString().equals("MANAGER")) {
+            managers.add(user);
+        } else if (type.toString().equals("ADMINISTRATOR")) {
+            admins.add(user);
+        }
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter("database.csv", true);
+            fileWriter.append(name);
+            fileWriter.append(",");
+            fileWriter.append(id);
+            fileWriter.append(",");
+            fileWriter.append(password);
+            fileWriter.append(",");
+            fileWriter.append(type.toString());
+            fileWriter.append(",");
+            fileWriter.append("[set email]");
+            fileWriter.append(",");
+            fileWriter.append("[set address]");
+            fileWriter.append(",");
+            fileWriter.append("Not Banned");
+            fileWriter.append("\n");
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            }  catch (IOException ioe) {
+                System.out.println("Error while flushing");
+                ioe.printStackTrace();
+            }
+        }
     }
     public boolean userExists(String thisUser) {
         for (int i = 0; i < allUsers.size(); i++) {
