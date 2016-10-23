@@ -3,15 +3,10 @@ package src.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
-import javafx.event.ActionEvent;
-import javafx.scene.text.Text;
 import javafx.scene.control.*;
 import src.model.User;
 
@@ -73,10 +68,10 @@ public class ProfileScreenController {
 
     @FXML protected void handleBackButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            MapScreenController msc = fxmlLoader.getController();
+            WorkerMapScreenController msc = fxmlLoader.getController();
 
             msc.setApp(mainApplication);
             msc.setState(mainApplication.getMainScreen());

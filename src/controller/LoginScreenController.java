@@ -3,14 +3,10 @@ package src.controller;
 /**
  * Created by Dain on 9/20/2016.
  */
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -38,10 +34,15 @@ public class LoginScreenController {
     private String username;
     private String password;
 
-    MapScreenController mapController = new MapScreenController();
+    String type = "";
+    User currentUser;
+
+    WorkerMapScreenController mapController = new WorkerMapScreenController();
 
 
     @FXML protected void handleLoginButtonAction() throws IOException{
+
+
         try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
             String line = "";
             String[] info = null;
@@ -61,14 +62,14 @@ public class LoginScreenController {
                 alert.showAndWait();
                 usernameInput.clear();
                 passwordInput.clear();
-            } else {
-                if (info[2].equals(passwordInput.getText())) {
+            } else if (info[2].equals(passwordInput.getText())){
+                if (info[2].equals(passwordInput.getText()) && info[3].equals("WORKER")) {
                     password = info[2];
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 
                         anchorLayout = fxmlLoader.load();
-                        MapScreenController msc = fxmlLoader.getController();
+                        WorkerMapScreenController msc = fxmlLoader.getController();
 
                         msc.setApp(mainApplication);
                         msc.setState(mainApplication.getMainScreen());
@@ -83,6 +84,50 @@ public class LoginScreenController {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                } else if(info[2].equals(passwordInput.getText()) && info[3].equals("USER")) {
+                    password = info[2];
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
+
+                        anchorLayout = fxmlLoader.load();
+                        WorkerMapScreenController msc = fxmlLoader.getController();
+
+                        msc.setApp(mainApplication);
+                        msc.setState(mainApplication.getMainScreen());
+                        msc.setUpMapView(mainApplication.getMainScreen());
+
+                        User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
+                        msc.setUser(currentUser);
+                        Scene scene2 = new Scene(anchorLayout);
+                        mainApplication.getMainScreen().setScene(scene2);
+                        msc.setMainApp(mainApplication);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } else if (info[2].equals(passwordInput.getText()) && info[3].equals("MANAGER")){
+                    password = info[2];
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
+
+                        anchorLayout = fxmlLoader.load();
+                        WorkerMapScreenController msc = fxmlLoader.getController();
+
+                        msc.setApp(mainApplication);
+                        msc.setState(mainApplication.getMainScreen());
+                        msc.setUpMapView(mainApplication.getMainScreen());
+
+                        User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
+                        msc.setUser(currentUser);
+                        Scene scene2 = new Scene(anchorLayout);
+                        mainApplication.getMainScreen().setScene(scene2);
+                        msc.setMainApp(mainApplication);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Wrong Credentials");

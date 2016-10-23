@@ -5,22 +5,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
-import src.model.WaterSource;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Dain on 10/12/2016.
  */
-public class ReportsListScreenController {
+public class ManagerReportsListScreenController {
 
     private WaterzMainFXApplication mainApplication;
 
@@ -30,13 +26,15 @@ public class ReportsListScreenController {
     private Button backButton;
     @FXML
     private ListView<String> reportsList;
+    @FXML
+    private Button viewQualityReport;
 
     @FXML protected void backButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            SourceDetailScreenController controller = fxmlLoader.getController();
+            WorkerSourceDetailScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -55,9 +53,9 @@ public class ReportsListScreenController {
      */
     @FXML
     private void initialize() {
-        boolean alreadyExists = new File("sourceReports.csv").exists();
+        boolean alreadyExists = new File("purityReports.csv").exists();
         if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
                 String line = "";
                 while (((line = br.readLine()) != null)) {
                     reportsList.getItems().add(line);

@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import src.controller.MainScreenController;
-import src.controller.MapScreenController;
+import src.controller.WorkerMapScreenController;
 import src.controller.WelcomeScreenController;
 import src.model.Facade;
 
@@ -81,7 +81,7 @@ public class WaterzMainFXApplication extends Application {
     public void closeMapView() {
         Facade fc = Facade.getInstance();
 //        fc.addLocations();
-        MapScreenController controller = new MapScreenController(this, mainScreen);
+        WorkerMapScreenController controller = new WorkerMapScreenController(this, mainScreen);
     }
 
 

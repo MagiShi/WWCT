@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CustomMenuItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
@@ -12,16 +11,10 @@ import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 import src.model.WaterSource;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
 /**
  * Created by Dain on 10/16/2016.
  */
-public class SourceDetailScreenController {
+public class WorkerSourceDetailScreenController {
 
     private WaterzMainFXApplication mainApplication;
 
@@ -52,10 +45,10 @@ public class SourceDetailScreenController {
 
     @FXML protected void backButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            MapScreenController msc = fxmlLoader.getController();
+            WorkerMapScreenController msc = fxmlLoader.getController();
 
             msc.setApp(mainApplication);
             msc.setState(mainApplication.getMainScreen());
@@ -73,10 +66,10 @@ public class SourceDetailScreenController {
 
     @FXML protected void viewReportListButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ReportsList.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerReportsList.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ReportsListScreenController controller = fxmlLoader.getController();
+            WorkerReportsListScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);

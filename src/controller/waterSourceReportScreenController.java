@@ -1,17 +1,8 @@
 package src.controller;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -183,10 +174,10 @@ public class waterSourceReportScreenController {
             }
 
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            MapScreenController msc = fxmlLoader.getController();
+            WorkerMapScreenController msc = fxmlLoader.getController();
             msc.setUser(currentUser);
 
             msc.setApp(mainApplication);
@@ -205,10 +196,10 @@ public class waterSourceReportScreenController {
 
     @FXML protected void cancelBttnAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            MapScreenController msc = fxmlLoader.getController();
+            WorkerMapScreenController msc = fxmlLoader.getController();
 
             msc.setApp(mainApplication);
             msc.setState(mainApplication.getMainScreen());

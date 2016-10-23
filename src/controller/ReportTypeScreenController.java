@@ -2,16 +2,10 @@ package src.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
-import javafx.event.ActionEvent;
-import javafx.scene.text.Text;
-import javafx.scene.control.*;
 import src.model.User;
 
 /**
@@ -66,10 +60,10 @@ public class ReportTypeScreenController {
     }
     @FXML protected void cancelBttnAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            MapScreenController controller = fxmlLoader.getController();
+            WorkerMapScreenController controller = fxmlLoader.getController();
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);

@@ -3,7 +3,6 @@ package src.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -12,7 +11,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.event.ActionEvent;
-import javafx.scene.text.Text;
 import javafx.scene.control.*;
 import src.model.User;
 import src.model.WaterSource;
@@ -22,7 +20,6 @@ import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 
@@ -36,12 +33,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MapScreenController implements Initializable, MapComponentInitializedListener {
+public class WorkerMapScreenController implements Initializable, MapComponentInitializedListener {
 
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
@@ -77,13 +73,13 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     /**remember stage for dialogs */
     private Stage mainStage;
 
-    public MapScreenController(WaterzMainFXApplication app, Stage stage) {
+    public WorkerMapScreenController(WaterzMainFXApplication app, Stage stage) {
         theApp = app;
         mainStage = stage;
         setUpMapView(stage);
     }
 
-    public MapScreenController() {
+    public WorkerMapScreenController() {
     }
 
     protected void setApp(WaterzMainFXApplication app) {
@@ -115,10 +111,10 @@ public class MapScreenController implements Initializable, MapComponentInitializ
 
     @FXML protected void handleViewReportDetailButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SourceDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            SourceDetailScreenController controller = fxmlLoader.getController();
+            WorkerSourceDetailScreenController controller = fxmlLoader.getController();
             controller.setUser(currentUser);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -150,7 +146,7 @@ public class MapScreenController implements Initializable, MapComponentInitializ
     @FXML protected void handleProfileButtonAction() {
         //logout stuff :)
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/Profile.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserProfile.fxml"));
 
             anchorLayout = fxmlLoader.load();
             ProfileScreenController controller = fxmlLoader.getController();
