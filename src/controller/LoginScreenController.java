@@ -15,6 +15,7 @@ import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import src.model.User;
+import src.model.UserManager;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -42,60 +43,45 @@ public class LoginScreenController {
 
 
     @FXML protected void handleLoginButtonAction() throws IOException{
-        try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
-            String line = "";
-            String[] info = null;
-            boolean usernameFound = false;
-            while (!usernameFound && ((line = br.readLine()) != null)) {
-                info = line.split(",");
-                if (info[1].equals(usernameInput.getText())) {
-                    usernameFound = true;
-                    username = info[1];
+        UserManager uM = UserManager.getInstance();
+        if (uM.userExists(usernameInput.getText())) {
+            if (uM.passwordCorrect(usernameInput.getText(), passwordInput.getText())) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
+
+                    anchorLayout = fxmlLoader.load();
+                    MapScreenController msc = fxmlLoader.getController();
+
+                    msc.setApp(mainApplication);
+                    msc.setState(mainApplication.getMainScreen());
+                    msc.setUpMapView(mainApplication.getMainScreen());
+
+
+                    msc.setUser(uM.getCurrentUser());
+                    Scene scene2 = new Scene(anchorLayout);
+                    mainApplication.getMainScreen().setScene(scene2);
+                    msc.setMainApp(mainApplication);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            }
-            if (usernameFound == false) {
+            } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Wrong Credentials");
                 alert.setHeaderText("Wrong Credentials");
-                alert.setContentText("Username does not exist. Please try again.");
+                alert.setContentText("Wrong password. Please try again.");
                 alert.showAndWait();
                 usernameInput.clear();
                 passwordInput.clear();
-            } else {
-                if (info[2].equals(passwordInput.getText())) {
-                    password = info[2];
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
-
-                        anchorLayout = fxmlLoader.load();
-                        MapScreenController msc = fxmlLoader.getController();
-
-                        msc.setApp(mainApplication);
-                        msc.setState(mainApplication.getMainScreen());
-                        msc.setUpMapView(mainApplication.getMainScreen());
-
-                        User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
-                        msc.setUser(currentUser);
-                        Scene scene2 = new Scene(anchorLayout);
-                        mainApplication.getMainScreen().setScene(scene2);
-                        msc.setMainApp(mainApplication);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Wrong Credentials");
-                    alert.setHeaderText("Wrong Credentials");
-                    alert.setContentText("Wrong password. Please try again.");
-                    alert.showAndWait();
-                    usernameInput.clear();
-                    passwordInput.clear();
-                }
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Wrong Credentials");
+            alert.setHeaderText("Wrong Credentials");
+            alert.setContentText("Username does not exist. Please try again.");
+            alert.showAndWait();
+            usernameInput.clear();
+            passwordInput.clear();
         }
     }
 
