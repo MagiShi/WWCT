@@ -58,7 +58,7 @@ public class waterSourceReportScreenController {
         WaterCondition userInputWaterCondition = waterCondition.getValue();
         double lat = 0;
         double longit = 0;
-        //making sure latitude input and longitude input are int/decimal values
+        SourceManager sM = SourceManager.getInstance();
         try {
             lat = Double.valueOf(latitudeInput.getText());
             if (lat < -90 || lat > 90) {
@@ -128,61 +128,8 @@ public class waterSourceReportScreenController {
                 }
             }
         }
-
+        sM.addSource(userInputLocation, userInputWaterType, userInputWaterCondition, latitudeInput.getText(), longitudeInput.getText(), fc);
         try {
-            FileWriter fileWriter = null;
-            try {
-                fileWriter = new FileWriter("sourceReports.csv", true);
-
-                DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy HH:mm");
-                Date dateObject = new Date();
-                String dateString = dateFormat.format(dateObject);
-
-                int num = 1000 + (int)(Math.random() * ((9999 - 1000) + 1));
-
-                fileWriter.append("Report #" + num);
-                fileWriter.append(", ");
-                fileWriter.append(userInputName);
-                fileWriter.append(", ");
-                fileWriter.append(dateString);
-                fileWriter.append(", ");
-                fileWriter.append(userInputLocation);
-                fileWriter.append(", ");
-                fileWriter.append(latitudeInput.getText());
-                fileWriter.append(",");
-                fileWriter.append(longitudeInput.getText());
-                fileWriter.append(",");
-                fileWriter.append(userInputWaterType.toString());
-                fileWriter.append(", ");
-                fileWriter.append(userInputWaterCondition.toString());
-                fileWriter.append("\n");
-
-                Location loc = new Location(lat,
-                        longit,
-                        "Marker",
-                        "<h2> "  + num +
-                                "</h2> <br> Reporter: " + userInputName +
-                                "<br> Date: " + dateString +
-                                "<br> Water Type: " + userInputWaterType +
-                                "<br> Water Condition: " + userInputWaterCondition);
-
-                fc.addLocation(loc);
-
-                //create a new report? should we have a report class?
-                //newReport = new Report(...);
-            } catch (Exception e){
-                e.printStackTrace();
-            } finally {
-                try {
-                    fileWriter.flush();
-                    fileWriter.close();
-                }  catch (IOException ioe) {
-                    System.out.println("Error while flushing");
-                    ioe.printStackTrace();
-                }
-            }
-
-
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/MapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
