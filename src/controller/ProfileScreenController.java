@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.text.Text;
 import javafx.scene.control.*;
 import src.model.User;
+import src.model.UserManager;
 
 
 /**
@@ -62,13 +63,6 @@ public class ProfileScreenController {
     private User currentUser;
 
     public void setUser(User newUser) {
-        currentUser = newUser;
-        username.setText(currentUser.getUserID());
-        userType.setText(currentUser.getType());
-        currentBanStatus.setText(currentUser.getStatus());
-        currentName.setText(currentUser.getName());
-        currentAddress.setText(currentUser.getAddress());
-        currentEmail.setText(currentUser.getEmail());
     }
 
     @FXML protected void handleBackButtonAction() {
@@ -115,7 +109,14 @@ public class ProfileScreenController {
          */
         @FXML
         private void initialize() {
-            //put maps and data here maybe?
+            UserManager uM = UserManager.getInstance();
+            currentUser = uM.getCurrentUser();
+            username.setText(currentUser.getUserID());
+            userType.setText(currentUser.getType());
+            currentBanStatus.setText(currentUser.getStatus());
+            currentName.setText(currentUser.getName());
+            currentAddress.setText(currentUser.getAddress());
+            currentEmail.setText(currentUser.getEmail());
         }
 
 
