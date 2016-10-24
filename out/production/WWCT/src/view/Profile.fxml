@@ -12,14 +12,16 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.ProfileScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #c0e7f4;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.ProfileScreenController">
    <children>
-      <GridPane layoutX="46.0" layoutY="141.0" prefHeight="321.0" prefWidth="613.0">
+      <GridPane layoutY="126.0" prefHeight="374.0" prefWidth="700.0" style="-fx-background-color: #88a9c5;">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="142.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="169.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="162.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="39.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="149.66668701171875" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="178.33331298828125" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="191.3333740234375" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="147.0" />
         </columnConstraints>
         <rowConstraints>
@@ -28,43 +30,78 @@
           <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Name:">
+            <Label text="Name:" textFill="#ffe0cc" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
             </Label>
-            <Label text="Email:" GridPane.rowIndex="1">
+            <Label text="Email:" textFill="#ffe0cc" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
             </Label>
-            <TextField fx:id="newName" prefHeight="31.0" prefWidth="173.0" GridPane.columnIndex="2" />
-            <TextField fx:id="newEmail" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label text="Home Address:" GridPane.rowIndex="2">
+            <TextField fx:id="newName" prefHeight="31.0" prefWidth="173.0" GridPane.columnIndex="3">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="newEmail" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></TextField>
+            <Label text="Home Address:" textFill="#ffe0cc" GridPane.columnIndex="1" GridPane.rowIndex="2">
                  <GridPane.margin>
                      <Insets left="10.0" />
                  </GridPane.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
              </Label>
-            <TextField fx:id="newAddress" prefHeight="31.0" prefWidth="421.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ButtonBar prefHeight="87.0" prefWidth="118.0" GridPane.rowIndex="2" />
-          <Button fx:id="saveName" mnemonicParsing="false" onAction="#handleSaveName" text="Save Changes" GridPane.columnIndex="3">
+            <TextField fx:id="newAddress" prefHeight="31.0" prefWidth="421.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></TextField>
+          <Button fx:id="saveName" mnemonicParsing="false" onAction="#handleSaveName" style="-fx-background-color: #f2f1f0;" text="Save Changes" textFill="#a5a49d" GridPane.columnIndex="4">
               <GridPane.margin>
                   <Insets left="20.0" />
               </GridPane.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
           </Button>
-            <Button fx:id="saveEmail" mnemonicParsing="false" onAction="#handleSaveEmail" text="Save Changes" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Button fx:id="saveEmail" mnemonicParsing="false" onAction="#handleSaveEmail" style="-fx-background-color: #f2f1f0;" text="Save Changes" textFill="#a5a49d" GridPane.columnIndex="4" GridPane.rowIndex="1">
                 <GridPane.margin>
                     <Insets left="20.0" />
                 </GridPane.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
             </Button>
-            <Button fx:id="saveAddress" mnemonicParsing="false" onAction="#handleSaveAddress" text="Save Changes" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Button fx:id="saveAddress" mnemonicParsing="false" onAction="#handleSaveAddress" style="-fx-background-color: #f2f1f0;" text="Save Changes" textFill="#a5a49d" GridPane.columnIndex="4" GridPane.rowIndex="2">
                 <GridPane.margin>
                     <Insets left="20.0" />
                 </GridPane.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
             </Button>
-            <Label fx:id="currentName" prefHeight="21.0" prefWidth="107.0" text="[set name]" GridPane.columnIndex="1" />
-            <Label fx:id="currentEmail" text="[set email]" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="currentAddress" text="[set address]" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="currentName" prefHeight="21.0" prefWidth="107.0" text="[set name]" textFill="#ffe0cc" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="currentEmail" text="[set email]" textFill="#ffe0cc" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="currentAddress" text="[set address]" textFill="#ffe0cc" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></Label>
          </children>
       </GridPane>
       <ImageView fitHeight="78.0" fitWidth="66.0" layoutX="46.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
@@ -73,7 +110,10 @@
          </image>
       </ImageView>
       <Separator layoutX="0.0" layoutY="120.0" prefHeight="10.0" prefWidth="700.0" />
-      <Button fx:id="backButton" layoutX="545.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back Home" />
+      <Button fx:id="backButton" layoutX="545.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleBackButtonAction" style="-fx-background-color: #a5a49d;" text="Back Home" textFill="#f2f1f0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
       <GridPane layoutX="169.0" layoutY="20.0" prefHeight="90.0" prefWidth="366.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="132.0" />
@@ -85,13 +125,32 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="21.0" prefWidth="91.0" text="Username:" />
-            <Label text="User Type:" GridPane.rowIndex="1" />
-            <Label fx:id="username" text="[username]" GridPane.columnIndex="1" />
-            <Label fx:id="userType" text="[user type]" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Ban Status:" GridPane.rowIndex="2" />
-            <Label fx:id="currentBanStatus" text="Not banned" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label prefHeight="21.0" prefWidth="91.0" text="Username:" textFill="#a5a49d">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font></Label>
+            <Label text="User Type:" textFill="#a5a49d" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font></Label>
+            <Label fx:id="username" text="[username]" textFill="#a5a49d" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font></Label>
+            <Label fx:id="userType" text="[user type]" textFill="#a5a49d" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font></Label>
+            <Label text="Ban Status:" textFill="#a5a49d" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font></Label>
+            <Label fx:id="currentBanStatus" text="Not banned" textFill="#a5a49d" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font></Label>
          </children>
       </GridPane>
+      <ButtonBar layoutX="452.0" layoutY="-146.0" prefHeight="87.0" prefWidth="118.0" />
    </children>
 </AnchorPane>
