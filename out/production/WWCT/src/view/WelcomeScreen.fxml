@@ -3,18 +3,33 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.WelcomeScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #88a9c5;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.WelcomeScreenController">
     <children>
         <SplitPane dividerPositions="0.5" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                <AnchorPane prefHeight="214.0" prefWidth="330.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffe0cc;">
+               <children>
+                  <ImageView fitHeight="71.0" fitWidth="334.0" layoutX="4.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Waterz.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="382.0" fitWidth="231.0" layoutX="56.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Glass.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="214.0" prefWidth="330.0" style="-fx-background-color: #c0e7f4;">
                     <children>
                         <VBox layoutY="74.0" prefHeight="274.0" prefWidth="341.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
                             <children>
@@ -31,20 +46,15 @@
                                         <RowConstraints maxHeight="160.80001831054688" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                              <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.60003662109375" minWidth="10.0" prefWidth="62.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="57.0" minWidth="10.0" prefWidth="48.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.13330078125" minWidth="10.0" prefWidth="64.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                              </GridPane>
-                              <Button fx:id="welcomeLoginButton" mnemonicParsing="false" onAction="#handleWelcomeLoginButtonAction" text="Login" textAlignment="RIGHT" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                              <Button fx:id="welcomeRegisterButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleWelcomeRegisterButtonAction" text="Register" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <Button fx:id="welcomeLoginButton" mnemonicParsing="false" onAction="#handleWelcomeLoginButtonAction" style="-fx-background-color: #ffe0cc;" text="Login" textAlignment="RIGHT" textFill="#a5a49d" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font></Button>
+                              <Button fx:id="welcomeRegisterButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleWelcomeRegisterButtonAction" style="-fx-background-color: #ffe0cc;" text="Register" textAlignment="CENTER" textFill="#a5a49d" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font>
+                              </Button>
                                     </children>
                                 </GridPane>
                             </children>

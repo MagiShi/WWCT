@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,12 +15,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.RegisterScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #88a9c5;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.RegisterScreenController">
     <children>
-        <SplitPane dividerPositions="0.5" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.501453488372093" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                <AnchorPane prefHeight="214.0" prefWidth="330.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffe0cc;">
+               <children>
+                  <ImageView fitHeight="71.0" fitWidth="334.0" layoutX="4.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Waterz.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="382.0" fitWidth="231.0" layoutX="56.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Glass.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+                <AnchorPane prefHeight="214.0" prefWidth="330.0" style="-fx-background-color: #c0e7f4;">
                <children>
                   <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="488.0" prefWidth="341.0" AnchorPane.topAnchor="-1.0">
                      <children>
@@ -41,14 +56,29 @@
                            <children>
                               <Label alignment="CENTER" prefHeight="61.0" prefWidth="266.0" text="Registration" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label alignment="BOTTOM_RIGHT" text="Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <Label text="Username" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                        <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label text="Confirm Password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Label text="User Type" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label alignment="BOTTOM_RIGHT" text="Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font></Label>
+                                        <Label text="Username" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font></Label>
+                                        <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font></Label>
+                              <Label text="Confirm Password" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font></Label>
+                              <Label text="User Type" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font></Label>
                                         <TextField fx:id="nameInput" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                         <TextField fx:id="usernameInput" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                               <TextField fx:id="passwordInput" GridPane.columnIndex="2" GridPane.rowIndex="3" />
@@ -66,8 +96,14 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="54.0" prefWidth="125.0" text="Register" GridPane.rowIndex="1" />
-                                    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButtonAction" prefHeight="35.0" prefWidth="125.0" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="54.0" prefWidth="125.0" style="-fx-background-color: #ffe0cc;" text="Register" textFill="#a5a49d" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font></Button>
+                                    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButtonAction" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #ffe0cc;" text="Cancel" textFill="#a5a49d" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font></Button>
                                  </children>
                               </GridPane>
                            </children>
