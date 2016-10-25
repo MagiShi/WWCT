@@ -76,19 +76,18 @@ public class ManagerReportsListScreenController {
      */
     @FXML
     private void initialize() {
-        boolean alreadyExists = new File("sourceReports.csv").exists();
+        boolean alreadyExists = new File("purityReports.csv").exists();
         if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
                 String line = "";
                 while (((line = br.readLine()) != null)) {
                     reportsList.getItems().add(line);
+                    System.out.println("Added");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
-        System.out.println("Manager Report List");
     }
     /**
      * Setup the main application link so we can call methods there

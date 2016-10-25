@@ -85,6 +85,9 @@ public class waterQualityReportScreenController {
                 Date dateObject = new Date();
                 String dateString = dateFormat.format(dateObject);
 
+                String latitude = new String(String.valueOf(currLoc.getLatitude()));
+                String longitude = new String (String.valueOf(currLoc.getLongitude()));
+
                 fileWriter.append("Report #" + 1000 + (int)(Math.random() * ((9999 - 1000) + 1)));
                 fileWriter.append(", ");
                 fileWriter.append(userInputName);
@@ -98,6 +101,10 @@ public class waterQualityReportScreenController {
                 fileWriter.append(userInputContaminantPPM);
                 fileWriter.append(", ");
                 fileWriter.append(userInputOverallCondition.toString());
+                fileWriter.append(", ");
+                fileWriter.append(latitude);
+                fileWriter.append(", ");
+                fileWriter.append(longitude);
                 fileWriter.append("\n");
 
                 //create a new report? should we have a report class?
