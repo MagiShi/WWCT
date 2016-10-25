@@ -92,6 +92,8 @@ public class ManagerMapScreenController implements Initializable, MapComponentIn
         mainStage = stage;
     }
 
+    protected void setLocation(Location loc) {currLoc = loc; }
+
     @FXML protected void handleSubmitButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterSourceReportScreen.fxml"));

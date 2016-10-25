@@ -115,15 +115,18 @@ public class waterQualityReportScreenController {
             }
 
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            WorkerMapScreenController msc = fxmlLoader.getController();
+            ManagerMapScreenController controller = fxmlLoader.getController();
+
+            controller.setUser(currentUser);
+            controller.setLocation(currLoc);
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
 
-            msc.setMainApp(mainApplication);
+            controller.setMainApp(mainApplication);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -133,11 +136,14 @@ public class waterQualityReportScreenController {
 
     @FXML protected void cancelBttnAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            WorkerSourceDetailScreenController controller = fxmlLoader.getController();
+            ManagerSourceDetailScreenController controller = fxmlLoader.getController();
 
+            controller.setUser(currentUser);
+            controller.setCurrentSource(currLoc);
+            controller.setLocation(currLoc);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
 

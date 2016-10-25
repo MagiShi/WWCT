@@ -77,6 +77,9 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     /**remember stage for dialogs */
     private Stage mainStage;
 
+
+    Location currLoc;
+
     public WorkerMapScreenController(WaterzMainFXApplication app, Stage stage) {
         theApp = app;
         mainStage = stage;
@@ -93,6 +96,8 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     protected void setState (Stage stage) {
         mainStage = stage;
     }
+
+    public void setLocation (Location loc) { currLoc = loc; }
 
     @FXML protected void handleSubmitButtonAction() {
         try {
