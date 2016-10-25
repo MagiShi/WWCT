@@ -7,11 +7,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
+import src.model.Location;
+import src.model.User;
+import src.model.WaterSource;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Dain on 10/12/2016.
@@ -29,12 +33,31 @@ public class ManagerReportsListScreenController {
     @FXML
     private Button viewQualityReport;
 
+    private User currentUser;
+
+    private Location currLoc;
+
+    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
+
+    public void setLocation (Location loc) { currLoc = loc; }
+
+    public void setThisSource (ArrayList<WaterSource> list) {thisSource = list;}
+
+
     @FXML protected void backButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            WorkerSourceDetailScreenController controller = fxmlLoader.getController();
+            ManagerSourceDetailScreenController controller = fxmlLoader.getController();
+
+            controller.setUser(currentUser);
+            controller.setCurrentSource(currLoc);
+            controller.setLocation(currLoc);
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -53,9 +76,9 @@ public class ManagerReportsListScreenController {
      */
     @FXML
     private void initialize() {
-        boolean alreadyExists = new File("purityReports.csv").exists();
+        boolean alreadyExists = new File("sourceReports.csv").exists();
         if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
+            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
                 String line = "";
                 while (((line = br.readLine()) != null)) {
                     reportsList.getItems().add(line);
@@ -64,6 +87,8 @@ public class ManagerReportsListScreenController {
                 e.printStackTrace();
             }
         }
+
+        System.out.println("Manager Report List");
     }
     /**
      * Setup the main application link so we can call methods there

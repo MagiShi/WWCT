@@ -24,6 +24,9 @@ public class WorkerSourceDetailScreenController {
 
     @FXML
     private Button backButton;
+
+    @FXML
+    private Button viewQuality;
     @FXML
     private ListView<String> reportsList;
     @FXML

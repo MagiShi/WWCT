@@ -63,6 +63,10 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     private Button submitButton;
     @FXML
     private BorderPane mapViewer;
+    @FXML
+    private Button viewQuality;
+    @FXML
+    private ListView<String> reportsList;
 
     /** a gui view provided by the GMapFX library */
     private GoogleMapView mapView;
@@ -111,7 +115,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
 
     @FXML protected void handleViewReportDetailButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
             WorkerSourceDetailScreenController controller = fxmlLoader.getController();
@@ -157,6 +161,20 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    @FXML
+    private void initialize() {
+        boolean alreadyExists = new File("purityReports.csv").exists();
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
+                String line = "";
+                while (((line = br.readLine()) != null)) {
+                    reportsList.getItems().add(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

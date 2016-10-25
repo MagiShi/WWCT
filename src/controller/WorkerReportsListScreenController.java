@@ -26,6 +26,8 @@ public class WorkerReportsListScreenController {
     private Button backButton;
     @FXML
     private ListView<String> reportsList;
+    @FXML
+    private Button viewQualityReport;
 
     @FXML protected void backButtonAction() {
         try {
@@ -63,6 +65,20 @@ public class WorkerReportsListScreenController {
             }
         }
     }
+//    @FXML
+//    private void initialize2() {
+//        boolean alreadyExists = new File("purityReports.csv").exists();
+//        if (alreadyExists) {
+//            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
+//                String line = "";
+//                while (((line = br.readLine()) != null)) {
+//                    reportsList.getItems().add(line);
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
     /**
      * Setup the main application link so we can call methods there
      *

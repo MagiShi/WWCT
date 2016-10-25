@@ -2,51 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="968357ae-494a-4d07-b400-bf6c53b0422f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controller/ManagerReportsListScreenController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/WorkerReportsList.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/MapScreenController$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/MapScreenController$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/MapScreenController$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/MapScreenController$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/MapScreenController$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/MapScreenController$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/MapScreenController$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/MapScreenController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/ReportsListScreenController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/SourceDetailScreenController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/view/MapScreen.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/view/Profile.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/view/ReportsList.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WWCT/src/view/SourceDetailScreen.fxml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/controller/MapScreenController.java" afterPath="$PROJECT_DIR$/src/controller/WorkerMapScreenController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/controller/ReportsListScreenController.java" afterPath="$PROJECT_DIR$/src/controller/WorkerReportsListScreenController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/controller/SourceDetailScreenController.java" afterPath="$PROJECT_DIR$/src/controller/WorkerSourceDetailScreenController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/MapScreen.fxml" afterPath="$PROJECT_DIR$/src/view/WorkerMapScreen.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/Profile.fxml" afterPath="$PROJECT_DIR$/src/view/UserProfile.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/ReportsList.fxml" afterPath="$PROJECT_DIR$/src/view/ManagerReportsList.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/SourceDetailScreen.fxml" afterPath="$PROJECT_DIR$/src/view/ManagerSourceDetailScreen.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/LoginScreenController.class" afterPath="$PROJECT_DIR$/out/production/WWCT/src/controller/LoginScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/ProfileScreenController.class" afterPath="$PROJECT_DIR$/out/production/WWCT/src/controller/ProfileScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/RegisterScreenController.class" afterPath="$PROJECT_DIR$/out/production/WWCT/src/controller/RegisterScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/ReportTypeScreenController.class" afterPath="$PROJECT_DIR$/out/production/WWCT/src/controller/ReportTypeScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/waterQualityReportScreenController.class" afterPath="$PROJECT_DIR$/out/production/WWCT/src/controller/waterQualityReportScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/src/controller/waterSourceReportScreenController.class" afterPath="$PROJECT_DIR$/out/production/WWCT/src/controller/waterSourceReportScreenController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/src/fxapp/WaterzMainFXApplication.class" afterPath="$PROJECT_DIR$/out/production/WWCT/src/fxapp/WaterzMainFXApplication.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LogFile" afterPath="$PROJECT_DIR$/LogFile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database.csv" afterPath="$PROJECT_DIR$/database.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/WWCT/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/LogFile" afterPath="$PROJECT_DIR$/out/production/WWCT/LogFile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/database.csv" afterPath="$PROJECT_DIR$/out/production/WWCT/database.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WWCT/sourceReports.csv" afterPath="$PROJECT_DIR$/out/production/WWCT/sourceReports.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sourceReports.csv" afterPath="$PROJECT_DIR$/sourceReports.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/LoginScreenController.java" afterPath="$PROJECT_DIR$/src/controller/LoginScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProfileScreenController.java" afterPath="$PROJECT_DIR$/src/controller/ProfileScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/RegisterScreenController.java" afterPath="$PROJECT_DIR$/src/controller/RegisterScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ReportTypeScreenController.java" afterPath="$PROJECT_DIR$/src/controller/ReportTypeScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/waterQualityReportScreenController.java" afterPath="$PROJECT_DIR$/src/controller/waterQualityReportScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/waterSourceReportScreenController.java" afterPath="$PROJECT_DIR$/src/controller/waterSourceReportScreenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fxapp/WaterzMainFXApplication.java" afterPath="$PROJECT_DIR$/src/fxapp/WaterzMainFXApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/WorkerMapScreenController.java" afterPath="$PROJECT_DIR$/src/controller/WorkerMapScreenController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/WorkerReportsListScreenController.java" afterPath="$PROJECT_DIR$/src/controller/WorkerReportsListScreenController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/WorkerSourceDetailScreenController.java" afterPath="$PROJECT_DIR$/src/controller/WorkerSourceDetailScreenController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/WorkerMapScreen.fxml" afterPath="$PROJECT_DIR$/src/view/WorkerMapScreen.fxml" />
     </list>
     <ignored path="WWCT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,40 +31,7 @@
     <favorites_list name="WWCT" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ManagerSourceDetailScreenController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ManagerSourceDetailScreenController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WorkerSourceDetailScreenController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/WorkerSourceDetailScreenController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManagerMapScreenController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ManagerMapScreenController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -110,6 +42,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <push-targets>
+      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin" target-branch="WorkerFeatures" />
+    </push-targets>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -119,8 +54,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/User.java" />
-        <option value="$PROJECT_DIR$/src/view/MainScreen.fxml" />
         <option value="$PROJECT_DIR$/src/view/LoginScreen.fxml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/view/ProfileScreen.fxml" />
@@ -156,7 +89,6 @@
         <option value="$PROJECT_DIR$/src/fxapp/WaterzMainFXApplication.java" />
         <option value="$PROJECT_DIR$/database.csv" />
         <option value="$PROJECT_DIR$/src/controller/WorkerScreenController.java" />
-        <option value="$PROJECT_DIR$/src/view/ManagerMapScreen.fxml" />
         <option value="$PROJECT_DIR$/src/controller/QualityReportsListScreenController.java" />
         <option value="$PROJECT_DIR$/src/controller/MapScreenController.java" />
         <option value="$PROJECT_DIR$/src/controller/ReportsListScreenController.java" />
@@ -164,12 +96,15 @@
         <option value="$PROJECT_DIR$/src/controller/UserMapScreenController.java" />
         <option value="$PROJECT_DIR$/src/controller/waterSourceReportScreenController.java" />
         <option value="$PROJECT_DIR$/src/view/ManagerSourceDetailScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/controller/WorkerReportsListScreenController.java" />
         <option value="$PROJECT_DIR$/src/controller/ManagerReportsListScreenController.java" />
-        <option value="$PROJECT_DIR$/src/controller/LoginScreenController.java" />
-        <option value="$PROJECT_DIR$/src/controller/ManagerMapScreenController.java" />
         <option value="$PROJECT_DIR$/src/controller/ManagerSourceDetailScreenController.java" />
+        <option value="$PROJECT_DIR$/src/controller/WorkerReportsListScreenController.java" />
         <option value="$PROJECT_DIR$/src/controller/WorkerSourceDetailScreenController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ManagerMapScreenController.java" />
+        <option value="$PROJECT_DIR$/src/controller/WorkerMapScreenController.java" />
+        <option value="$PROJECT_DIR$/src/view/ManagerMapScreen.fxml" />
+        <option value="$PROJECT_DIR$/src/view/UserMapScreen.fxml" />
+        <option value="$PROJECT_DIR$/src/controller/LoginScreenController.java" />
       </list>
     </option>
   </component>
@@ -210,6 +145,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files" />
+      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -281,10 +220,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files" />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -758,10 +693,18 @@
       <option name="presentableId" value="Default" />
       <updated>1474413670402</updated>
     </task>
+    <task id="LOCAL-00001" summary="worker-features">
+      <created>1477233970861</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1477233970861</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="719" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="719" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -772,12 +715,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16586922" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.261563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21647818" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2584814" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="UML design tool window" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -835,6 +778,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="worker-features" />
+    <option name="LAST_COMMIT_MESSAGE" value="worker-features" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -864,17 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/LoginScreen.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/RegisterScreen.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -882,7 +818,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="63" column="105" selection-start-line="63" selection-start-column="105" selection-end-line="63" selection-end-column="105" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -918,17 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/WorkerMapScreen.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="40" column="187" selection-start-line="40" selection-start-column="187" selection-end-line="40" selection-end-column="187" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,13 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/purityReports.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/ReportTypeScreen.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1046,40 +963,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/waterSourceReportScreen.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/ManagerReportsList.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/waterQualityReportScreen.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="69" column="135" selection-start-line="69" selection-start-column="135" selection-end-line="69" selection-end-column="135" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/UserMapScreen.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -1097,25 +981,10 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/ManagerReportListScreenController.java" />
-    <entry file="file://$PROJECT_DIR$/src/controller/UserMapScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/waterQualityReportScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="116" column="89" selection-start-line="116" selection-start-column="89" selection-end-line="116" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/waterSourceReportScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2880">
@@ -1134,6 +1003,134 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ProfileScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="70" column="53" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/LoginScreen.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/waterSourceReportScreen.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ManagerReportsListScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="29" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/WorkerMapScreen.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="187" selection-start-line="40" selection-start-column="187" selection-end-line="40" selection-end-column="187" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/UserMapScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/purityReports.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/waterQualityReportScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="116" column="89" selection-start-line="116" selection-start-column="89" selection-end-line="116" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/ManagerSourceDetailScreen.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/UserMapScreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/LoginScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ManagerMapScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="379" column="45" selection-start-line="379" selection-start-column="45" selection-end-line="379" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/WorkerMapScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="395" column="9" selection-start-line="395" selection-start-column="9" selection-end-line="395" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/waterQualityReportScreen.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="69" column="135" selection-start-line="69" selection-start-column="135" selection-end-line="69" selection-end-column="135" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/WorkerReportsListScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/WorkerSourceDetailScreen.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1145,32 +1142,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/WorkerMapScreenController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/WorkerSourceDetailScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="113" column="89" selection-start-line="113" selection-start-column="89" selection-end-line="113" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/WorkerReportsListScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="21" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProfileScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="70" column="53" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ManagerReportsListScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        <state relative-caret-position="420">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1179,53 +1154,16 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/LoginScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="111" column="95" selection-start-line="111" selection-start-column="95" selection-end-line="111" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/ManagerSourceDetailScreen.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+        <state relative-caret-position="120">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/ManagerSourceDetailScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ManagerMapScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/WorkerSourceDetailScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
-          <folding />
+          <caret line="66" column="51" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="51" />
         </state>
       </provider>
     </entry>

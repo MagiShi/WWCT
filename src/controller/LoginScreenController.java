@@ -38,6 +38,9 @@ public class LoginScreenController {
     User currentUser;
 
     WorkerMapScreenController mapController = new WorkerMapScreenController();
+    ManagerMapScreenController mapControllerManager = new ManagerMapScreenController();
+
+
 
 
     @FXML protected void handleLoginButtonAction() throws IOException{
@@ -84,13 +87,13 @@ public class LoginScreenController {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                } else if(info[2].equals(passwordInput.getText()) && info[3].equals("USER")) {
+                } else if(info[3].equals("USER")) {
                     password = info[2];
                     try {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
 
                         anchorLayout = fxmlLoader.load();
-                        WorkerMapScreenController msc = fxmlLoader.getController();
+                        UserMapScreenController msc = fxmlLoader.getController();
 
                         msc.setApp(mainApplication);
                         msc.setState(mainApplication.getMainScreen());
@@ -106,13 +109,13 @@ public class LoginScreenController {
                         e.printStackTrace();
                     }
 
-                } else if (info[2].equals(passwordInput.getText()) && info[3].equals("MANAGER")){
+                } else if (info[3].equals("MANAGER")){
                     password = info[2];
                     try {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
                         anchorLayout = fxmlLoader.load();
-                        WorkerMapScreenController msc = fxmlLoader.getController();
+                        ManagerMapScreenController msc = fxmlLoader.getController();
 
                         msc.setApp(mainApplication);
                         msc.setState(mainApplication.getMainScreen());
