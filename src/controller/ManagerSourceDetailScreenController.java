@@ -110,6 +110,9 @@ public class ManagerSourceDetailScreenController {
             anchorLayout = fxmlLoader.load();
             waterQualityReportScreenController controller = fxmlLoader.getController();
 
+            controller.setUser(currentUser);
+            controller.setLocation(currLoc);
+
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
 

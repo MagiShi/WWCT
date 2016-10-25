@@ -6,11 +6,15 @@ import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import src.model.Location;
 import src.model.PurityCondition;
+import src.model.User;
+import src.model.WaterSource;
 
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -30,6 +34,21 @@ public class waterQualityReportScreenController {
     @FXML private TextField virusPPM;
     @FXML private TextField contaminantPPM;
     @FXML private ComboBox<PurityCondition> waterOverallCondition;
+
+    private User currentUser;
+
+    private Location currLoc;
+
+    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
+
+    public void setLocation (Location loc) { currLoc = loc; }
+
+    public void setThisSource (ArrayList<WaterSource> list) {thisSource = list;}
+
 
     @FXML protected void submitBttnAction() {
         String userInputName = workerName.getText();
