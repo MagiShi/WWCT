@@ -68,10 +68,10 @@ public class ProfileScreenController {
 
     @FXML protected void handleBackButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            WorkerMapScreenController msc = fxmlLoader.getController();
+            ManagerMapScreenController msc = fxmlLoader.getController();
 
             msc.setApp(mainApplication);
             msc.setState(mainApplication.getMainScreen());

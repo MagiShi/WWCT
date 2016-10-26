@@ -69,10 +69,10 @@ public class LoginScreenController {
                 if (info[2].equals(passwordInput.getText()) && info[3].equals("WORKER")) {
                     password = info[2];
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
                         anchorLayout = fxmlLoader.load();
-                        WorkerMapScreenController msc = fxmlLoader.getController();
+                        ManagerMapScreenController msc = fxmlLoader.getController();
 
                         msc.setApp(mainApplication);
                         msc.setState(mainApplication.getMainScreen());

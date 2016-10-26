@@ -39,7 +39,7 @@
             <Label fx:id="waterTypeLabel" text="Type of Water" GridPane.rowIndex="1" />
             <Label fx:id="locationLabel" text="Location" />
             <Label fx:id="waterConditionLabel" text="Condition of Water" GridPane.rowIndex="2" />
-            <Button fx:id="viewReportListButton" mnemonicParsing="false" onAction="#viewReportListButtonAction" text="View Reports for Source" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="viewReportListButton" mnemonicParsing="false" onAction="#viewReportListButtonAction" text="View Purity Reports" GridPane.columnIndex="1" GridPane.rowIndex="5" />
              
             <Label fx:id="sourceLocation" text="Label" GridPane.columnIndex="1" />
             <Label fx:id="waterType" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -51,6 +51,5 @@
             <Label fx:id="creationDate" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button fx:id="viewQualityReport" layoutX="95.0" layoutY="437.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="256.0" text="View Quality Report " />
    </children>
 </AnchorPane>
