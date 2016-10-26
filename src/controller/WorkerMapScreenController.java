@@ -120,7 +120,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
 
     @FXML protected void handleViewReportDetailButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
             WorkerSourceDetailScreenController controller = fxmlLoader.getController();

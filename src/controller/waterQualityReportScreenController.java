@@ -122,10 +122,10 @@ public class waterQualityReportScreenController {
             }
 
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerReportsList.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ManagerMapScreenController controller = fxmlLoader.getController();
+            ManagerReportsListScreenController controller = fxmlLoader.getController();
 
             controller.setUser(currentUser);
             controller.setLocation(currLoc);
