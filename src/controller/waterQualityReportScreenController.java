@@ -122,7 +122,7 @@ public class waterQualityReportScreenController {
             }
 
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
             ManagerMapScreenController controller = fxmlLoader.getController();
@@ -143,7 +143,7 @@ public class waterQualityReportScreenController {
 
     @FXML protected void cancelBttnAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
             ManagerSourceDetailScreenController controller = fxmlLoader.getController();
