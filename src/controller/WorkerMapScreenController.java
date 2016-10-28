@@ -119,20 +119,25 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     }
 
     @FXML protected void handleViewReportDetailButtonAction() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
+        if (currLoc != null) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
 
-            anchorLayout = fxmlLoader.load();
-            WorkerSourceDetailScreenController controller = fxmlLoader.getController();
-            controller.setUser(currentUser);
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-            controller.setCurrentSource(water.get(0));
-            controller.setMainApp(mainApplication);
+                anchorLayout = fxmlLoader.load();
+                WorkerSourceDetailScreenController controller = fxmlLoader.getController();
+                controller.setUser(currentUser);
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+                controller.setCurrentSource(currLoc);
+                //controller.setCurrentSource(water.get(0));
+                controller.setMainApp(mainApplication);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
+
     }
 
     @FXML protected void handleLogoutButtonAction() {
@@ -379,6 +384,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
                         InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
                         infoWindowOptions.content(l.getDescription() );
                         InfoWindow window = new InfoWindow(infoWindowOptions);
+                        currLoc = l;
                         window.open(map, marker);});
             map.addMarker(marker);
         }

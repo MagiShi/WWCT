@@ -53,6 +53,35 @@ public class UserWaterSourceReportScreenController {
         String userInputLocation = waterLocation.getText();
         SourceType userInputWaterType = waterType.getValue();
         WaterCondition userInputWaterCondition = waterCondition.getValue();
+        boolean valid = true;
+        if (userInputName == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input your name.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputLocation == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a location.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputWaterCondition == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a Water Condition.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputWaterType == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a Water Type.");
+            alert.showAndWait();
+            valid = false;
+        }
         double lat = 0;
         double longit = 0;
         //making sure latitude input and longitude input are int/decimal values

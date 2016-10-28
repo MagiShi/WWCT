@@ -47,6 +47,35 @@ public class waterSourceReportScreenController {
         String userInputLocation = waterLocation.getText();
         SourceType userInputWaterType = waterType.getValue();
         WaterCondition userInputWaterCondition = waterCondition.getValue();
+        boolean valid = true;
+        if (userInputName == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input your name.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputLocation == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a location.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputWaterCondition == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a Water Condition.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputWaterType == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a Water Type.");
+            alert.showAndWait();
+            valid = false;
+        }
         double lat = 0;
         double longit = 0;
         //making sure latitude input and longitude input are int/decimal values
@@ -173,21 +202,53 @@ public class waterSourceReportScreenController {
                 }
             }
 
+            if (currentUser.getType().equals("MANAGER")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
+                anchorLayout = fxmlLoader.load();
+                ManagerMapScreenController msc = fxmlLoader.getController();
+                msc.setUser(currentUser);
 
-            anchorLayout = fxmlLoader.load();
-            ManagerMapScreenController msc = fxmlLoader.getController();
-            msc.setUser(currentUser);
+                msc.setApp(mainApplication);
+                msc.setState(mainApplication.getMainScreen());
+                msc.setUpMapView(mainApplication.getMainScreen());
 
-            msc.setApp(mainApplication);
-            msc.setState(mainApplication.getMainScreen());
-            msc.setUpMapView(mainApplication.getMainScreen());
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
 
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
+                msc.setMainApp(mainApplication);
+            } else if (currentUser.getType().equals("WORKER")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 
-            msc.setMainApp(mainApplication);
+                anchorLayout = fxmlLoader.load();
+                WorkerMapScreenController msc = fxmlLoader.getController();
+                msc.setUser(currentUser);
+
+                msc.setApp(mainApplication);
+                msc.setState(mainApplication.getMainScreen());
+                msc.setUpMapView(mainApplication.getMainScreen());
+
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+
+                msc.setMainApp(mainApplication);
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
+
+                anchorLayout = fxmlLoader.load();
+                UserMapScreenController msc = fxmlLoader.getController();
+                msc.setUser(currentUser);
+
+                msc.setApp(mainApplication);
+                msc.setState(mainApplication.getMainScreen());
+                msc.setUpMapView(mainApplication.getMainScreen());
+
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+
+                msc.setMainApp(mainApplication);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -196,19 +257,52 @@ public class waterSourceReportScreenController {
 
     @FXML protected void cancelBttnAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
+            if (currentUser.getType().equals("MANAGER")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
-            anchorLayout = fxmlLoader.load();
-            ManagerMapScreenController msc = fxmlLoader.getController();
+                anchorLayout = fxmlLoader.load();
+                ManagerMapScreenController msc = fxmlLoader.getController();
+                msc.setUser(currentUser);
 
-            msc.setApp(mainApplication);
-            msc.setState(mainApplication.getMainScreen());
-            msc.setUpMapView(mainApplication.getMainScreen());
+                msc.setApp(mainApplication);
+                msc.setState(mainApplication.getMainScreen());
+                msc.setUpMapView(mainApplication.getMainScreen());
 
-            msc.setUser(currentUser);
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-            msc.setMainApp(mainApplication);
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+
+                msc.setMainApp(mainApplication);
+            } else if (currentUser.getType().equals("WORKER")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
+
+                anchorLayout = fxmlLoader.load();
+                WorkerMapScreenController msc = fxmlLoader.getController();
+                msc.setUser(currentUser);
+
+                msc.setApp(mainApplication);
+                msc.setState(mainApplication.getMainScreen());
+                msc.setUpMapView(mainApplication.getMainScreen());
+
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+
+                msc.setMainApp(mainApplication);
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
+
+                anchorLayout = fxmlLoader.load();
+                UserMapScreenController msc = fxmlLoader.getController();
+                msc.setUser(currentUser);
+
+                msc.setApp(mainApplication);
+                msc.setState(mainApplication.getMainScreen());
+                msc.setUpMapView(mainApplication.getMainScreen());
+
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+
+                msc.setMainApp(mainApplication);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

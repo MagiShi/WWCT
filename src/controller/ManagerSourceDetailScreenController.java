@@ -34,8 +34,6 @@ public class ManagerSourceDetailScreenController {
     @FXML
     private Button backButton;
     @FXML
-    private ListView<String> reportsList;
-    @FXML
     private Label sourceLocation;
     @FXML
     private Label waterType;
@@ -45,6 +43,8 @@ public class ManagerSourceDetailScreenController {
     private Label sourceCreator;
     @FXML
     private Label creationDate;
+    @FXML
+    private ListView<String> reportsList;
 
     private User currentUser;
     public void setUser(User newUser) {
@@ -76,26 +76,6 @@ public class ManagerSourceDetailScreenController {
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
             msc.setMainApp(mainApplication);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML protected void viewReportListButtonAction() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerReportsList.fxml"));
-
-            anchorLayout = fxmlLoader.load();
-            ManagerReportsListScreenController controller = fxmlLoader.getController();
-            controller.setUser(currentUser);
-            controller.setLocation(currLoc);
-            controller.setThisSource(thisSource);
-
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-
-            controller.setMainApp(mainApplication);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -148,6 +128,18 @@ public class ManagerSourceDetailScreenController {
                     WaterSource wc = new WaterSource(name, dateTime,locationName, lat, longit, type, sourceCondition);
 
                     allReports.add(wc);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        alreadyExists = new File("purityReports.csv").exists();
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
+                String line = "";
+                while (((line = br.readLine()) != null)) {
+                    reportsList.getItems().add(line);
+                    System.out.println("Added");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
