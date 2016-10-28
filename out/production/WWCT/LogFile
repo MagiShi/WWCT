@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564205</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819393</millis>
   <sequence>0</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -13,8 +13,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564207</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819395</millis>
   <sequence>1</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -24,8 +24,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564208</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819395</millis>
   <sequence>2</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -35,8 +35,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564208</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819395</millis>
   <sequence>3</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -46,8 +46,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564208</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819395</millis>
   <sequence>4</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -57,8 +57,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564208</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819395</millis>
   <sequence>5</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -68,8 +68,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564208</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819395</millis>
   <sequence>6</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -79,8 +79,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564209</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819395</millis>
   <sequence>7</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -90,8 +90,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564211</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819396</millis>
   <sequence>8</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -101,8 +101,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564211</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819396</millis>
   <sequence>9</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -112,8 +112,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564211</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819396</millis>
   <sequence>10</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -123,8 +123,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564212</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819396</millis>
   <sequence>11</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -134,8 +134,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564212</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819396</millis>
   <sequence>12</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -145,8 +145,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564212</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819396</millis>
   <sequence>13</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -156,8 +156,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564212</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819396</millis>
   <sequence>14</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -167,8 +167,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564212</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819396</millis>
   <sequence>15</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -178,8 +178,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564213</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>16</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -189,8 +189,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564214</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>17</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -200,8 +200,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564215</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>18</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -211,8 +211,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564216</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>19</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -222,8 +222,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564218</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>20</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -233,8 +233,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564218</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>21</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -244,8 +244,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564218</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>22</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -255,8 +255,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564218</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>23</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -266,8 +266,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564219</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>24</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -277,8 +277,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564219</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>25</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -288,8 +288,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564219</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819397</millis>
   <sequence>26</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -299,8 +299,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564219</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>27</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -310,8 +310,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564219</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>28</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -321,8 +321,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564220</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>29</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -332,8 +332,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564220</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>30</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -343,8 +343,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564220</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>31</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -354,8 +354,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564222</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>32</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -365,8 +365,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564223</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>33</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -376,8 +376,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564223</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>34</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -387,8 +387,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564223</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>35</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -398,8 +398,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564224</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>36</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -409,8 +409,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564224</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>37</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -420,8 +420,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564224</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>38</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -431,8 +431,8 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564224</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>39</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -442,8 +442,8 @@
   <message>RETURN</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564224</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819398</millis>
   <sequence>40</sequence>
   <logger>Location</logger>
   <level>FINER</level>
@@ -453,9 +453,207 @@
   <message>ENTRY</message>
 </record>
 <record>
-  <date>2016-10-27T21:02:44</date>
-  <millis>1477616564224</millis>
+  <date>2016-10-27T21:06:59</date>
+  <millis>1477616819399</millis>
   <sequence>41</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:33</date>
+  <millis>1477616853857</millis>
+  <sequence>42</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:33</date>
+  <millis>1477616853857</millis>
+  <sequence>43</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:36</date>
+  <millis>1477616856763</millis>
+  <sequence>44</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:36</date>
+  <millis>1477616856763</millis>
+  <sequence>45</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:37</date>
+  <millis>1477616857572</millis>
+  <sequence>46</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:37</date>
+  <millis>1477616857572</millis>
+  <sequence>47</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:38</date>
+  <millis>1477616858000</millis>
+  <sequence>48</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:38</date>
+  <millis>1477616858000</millis>
+  <sequence>49</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:38</date>
+  <millis>1477616858240</millis>
+  <sequence>50</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:38</date>
+  <millis>1477616858241</millis>
+  <sequence>51</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:38</date>
+  <millis>1477616858509</millis>
+  <sequence>52</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:38</date>
+  <millis>1477616858509</millis>
+  <sequence>53</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:38</date>
+  <millis>1477616858835</millis>
+  <sequence>54</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:38</date>
+  <millis>1477616858836</millis>
+  <sequence>55</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:39</date>
+  <millis>1477616859128</millis>
+  <sequence>56</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:39</date>
+  <millis>1477616859128</millis>
+  <sequence>57</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:39</date>
+  <millis>1477616859410</millis>
+  <sequence>58</sequence>
+  <logger>Location</logger>
+  <level>FINER</level>
+  <class>Location</class>
+  <method>Constructor</method>
+  <thread>15</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-27T21:07:39</date>
+  <millis>1477616859410</millis>
+  <sequence>59</sequence>
   <logger>Location</logger>
   <level>FINER</level>
   <class>Location</class>
