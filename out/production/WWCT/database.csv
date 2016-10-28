@@ -1,7 +1,3 @@
-Cassie,cmull,tootie,USER,[set email],[set address],Not Banned
-MyName,user,pass,USER,[set email],[set address],Not Banned
-Tootie,cheese,good,ADMINISTRATOR,[set email],[set address],Not Banned
-jiwon,jlee3229,1234,USER,[set email],[set address],Not Banned
-Surina,spuri9,lala,WORKER,[set email],[set address],Not Banned
-Buzz,buzz,bee,MANAGER,[set email],[set address],Not Banned
-
+user,user,pass,USER,[set email],[set address],Not Banned
+bbb,bbb,bbb,USER,[set email],[set address],Not Banned
+ccc,ccc,ccc,USER,[set email],[set address],Not Banned
