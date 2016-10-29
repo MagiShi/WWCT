@@ -48,14 +48,15 @@ public class waterSourceReportScreenController {
         SourceType userInputWaterType = waterType.getValue();
         WaterCondition userInputWaterCondition = waterCondition.getValue();
         boolean valid = true;
-        if (userInputName == null) {
+        System.out.println(userInputName);
+        if (userInputName.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty User Name field");
             alert.setContentText("Please input your name.");
             alert.showAndWait();
             valid = false;
         }
-        if (userInputLocation == null) {
+        if (userInputLocation.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty User Name field");
             alert.setContentText("Please input a location.");

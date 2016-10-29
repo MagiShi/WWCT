@@ -60,14 +60,14 @@ public class waterQualityReportScreenController {
         double cPPM = 0;
         boolean valid = true;
         //making sure latitude input and longitude input are int/decimal values
-        if (userInputName == null) {
+        if (userInputName.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty User Name field");
             alert.setContentText("Please input your name.");
             alert.showAndWait();
             valid = false;
         }
-        if (userInputLocation == null) {
+        if (userInputLocation.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty Location field");
             alert.setContentText("Please input a location value.");
