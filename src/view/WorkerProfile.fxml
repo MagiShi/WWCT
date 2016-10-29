@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: C7EAFB; -fx-border-color: F7C39F; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.UserProfileScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: C7EAFB; -fx-border-color: F7C39F; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.WorkerProfileScreenController">
    <children>
       <GridPane layoutX="46.0" layoutY="141.0" prefHeight="321.0" prefWidth="613.0">
         <columnConstraints>
@@ -106,7 +106,7 @@
       </GridPane>
       <ImageView fitHeight="79.0" fitWidth="91.0" layoutX="46.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/User.png" />
+            <Image url="@../img/Worker.png" />
          </image>
       </ImageView>
       <Separator layoutX="0.0" layoutY="120.0" prefHeight="10.0" prefWidth="700.0" style="-fx-background-color: F7C39F;" />

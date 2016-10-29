@@ -18,7 +18,7 @@
       <SplitPane dividerPositions="0.67" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <BorderPane fx:id="mapViewer" prefHeight="488.0" prefWidth="465.0" style="-fx-background-color: #66ccff;" />
-            <VBox prefHeight="488.0" prefWidth="341.0">
+            <VBox prefHeight="488.0" prefWidth="341.0" style="-fx-background-color: F5FCFF;">
                <children>
                   <GridPane prefHeight="487.0" prefWidth="341.0" style="-fx-background-color: F5FCFF;">
                      <columnConstraints>
@@ -39,7 +39,7 @@
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="190.0" style="-fx-background-color: AA7D5D;" text="Logout" textFill="#c7eafb" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="190.0" style="-fx-background-color: AA7D5D;" text="Logout" textFill="#66ccff" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="24.0" />
                            </font>
@@ -56,7 +56,7 @@
                         </Button>
                         <ImageView fitHeight="61.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../img/Waterz.png" />
+                              <Image url="@../img/Waterz5.png" />
                            </image>
                         </ImageView>
                      </children>

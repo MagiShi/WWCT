@@ -90,10 +90,10 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
 
     @FXML protected void handleSubmitButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserWaterSourceReportScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterSourceReportScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            UserWaterSourceReportScreenController controller = fxmlLoader.getController();
+            waterSourceReportScreenController controller = fxmlLoader.getController();
             controller.setUser(currentUser);
             fac = Facade.getInstance();
             controller.setFacade(fac);
@@ -128,7 +128,7 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     @FXML protected void handleProfileButtonAction() {
         //logout stuff :)
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/userUserProfile.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserProfile.fxml"));
 
             anchorLayout = fxmlLoader.load();
             UserProfileScreenController controller = fxmlLoader.getController();

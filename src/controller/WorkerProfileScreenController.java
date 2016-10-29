@@ -14,7 +14,7 @@ import src.model.User;
 /**
  * Created by Maggie on 9/28/2016.
  */
-public class ProfileScreenController {
+public class WorkerProfileScreenController {
 
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
@@ -68,20 +68,19 @@ public class ProfileScreenController {
 
     @FXML protected void handleBackButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 
-            anchorLayout = fxmlLoader.load();
-            ManagerMapScreenController msc = fxmlLoader.getController();
+                anchorLayout = fxmlLoader.load();
+                WorkerMapScreenController msc = fxmlLoader.getController();
 
-            msc.setApp(mainApplication);
-            msc.setState(mainApplication.getMainScreen());
-            msc.setUpMapView(mainApplication.getMainScreen());
+                msc.setApp(mainApplication);
+                msc.setState(mainApplication.getMainScreen());
+                msc.setUpMapView(mainApplication.getMainScreen());
 
-            msc.setUser(currentUser);
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-            msc.setMainApp(mainApplication);
-
+                msc.setUser(currentUser);
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+                msc.setMainApp(mainApplication);
         } catch (Exception e) {
             e.printStackTrace();
         }

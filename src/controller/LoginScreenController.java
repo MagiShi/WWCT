@@ -26,7 +26,7 @@ public class LoginScreenController {
     @FXML private Button loginButton;
     @FXML private Button cancelButton;
     @FXML private TextField usernameInput;
-    @FXML private TextField passwordInput;
+    @FXML private PasswordField passwordInput;
 
     private BorderPane borderLayout;
     private AnchorPane anchorLayout;
