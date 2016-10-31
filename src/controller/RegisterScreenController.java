@@ -177,8 +177,27 @@ public class RegisterScreenController {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else if (userInputUserType.toString().equals("ADMINISTRATOR")) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminMainScreen.fxml"));
+
+                        anchorLayout = fxmlLoader.load();
+                        AdminMainScreenController msc = fxmlLoader.getController();
+
+
+                        User currentUser = new User(userInputUsername, userInputPassword,
+                                nameInput.getText(), userInputUserType.toString(),
+                                "[set email]", "[set address]", "Not Banned");
+                        msc.setUser(currentUser);
+                        Scene scene2 = new Scene(anchorLayout);
+                        mainApplication.getMainScreen().setScene(scene2);
+                        msc.setMainApp(mainApplication);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } else {
+                }
+            } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Password does not match");
                     alert.setHeaderText("Password does not match");

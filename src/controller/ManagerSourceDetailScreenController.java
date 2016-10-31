@@ -14,10 +14,7 @@ import src.model.User;
 import src.model.Location;
 import src.model.WaterSource;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import javafx.scene.chart.XYChart;
@@ -60,6 +57,8 @@ public class ManagerSourceDetailScreenController {
     private CheckBox virusCheckBox;
     @FXML
     private CheckBox contaminantCheckBox;
+    @FXML
+    private TextField reportNumField;
 
     private User currentUser;
     private int displayedYear = 0;
@@ -76,6 +75,7 @@ public class ManagerSourceDetailScreenController {
 
     private ArrayList<Report> currentReports = new ArrayList<>();
 
+    private ArrayList<String> reportStrings = new ArrayList<>();
 
 
 
@@ -208,30 +208,7 @@ public class ManagerSourceDetailScreenController {
         waterCondition.setText((currentSource.getSourceCondition()));
         sourceCreator.setText((currentSource.getUser()));
         creationDate.setText(currentSource.getDate());
-        boolean alreadyExists = new File("purityReports.csv").exists();
-        if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
-                String line = "";
-                while (((line = br.readLine()) != null)) {
-                    String[] data = line.split(",");
-                    for (int i = 0; i < data.length; i++) {
-                        System.out.print(data[i] + ", ");
-                    }
-                    System.out.println();
-                    Double lat = new Double(data[7]);
-                    Double longit = new Double(data[8]);
-                    if (currentSource.getLatitude().equals(lat) && currentSource.getLongitude().equals(longit)) {
-                        reportsList.getItems().add(line);
-                        System.out.println("Added");
-                        Report r = new Report(data[1], data[2], Float.parseFloat(data[4]), Float.parseFloat(data[5]), data[6]);
-                        currentReports.add(r);
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        showAllGraph();
+        loadReports();
     }
 
     private void showAllGraph() {
@@ -302,6 +279,101 @@ public class ManagerSourceDetailScreenController {
         }
         series.setName("Contaminant PPM");
         historicalGraph.getData().add(series);
+    }
+    @FXML protected void handleRemoveReportButtonAction() {
+        System.out.println("DELETING REPORT!!!");
+        boolean found = false;
+        String reportNum = reportNumField.getText();
+        if (reportNum.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Number Entered");
+            alert.setHeaderText("Please Enter a Number");
+            alert.showAndWait();
+        } else {
+            for (int i = 0; i < currentReports.size(); i++) {
+                String report = reportStrings.get(i);
+                String[] reportData = report.split(",");
+                String[] numArray = reportData[0].split("#");
+                if (numArray[1].equals(reportNum)) {
+                    reportStrings.remove(i);
+                    i--;
+                    found = true;
+                }
+            }
+            if (found) {
+                BufferedWriter writer = null;
+                try {
+                    File newFile = new File("purityReports.csv");
+                    writer = new BufferedWriter(new FileWriter(newFile));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        writer.flush();
+                        writer.close();
+                    } catch (IOException ioe) {
+                        System.out.println("Error while flushing, creating new.");
+                        ioe.printStackTrace();
+                    }
+                }
+                FileWriter fileWriter = null;
+                try {
+                    fileWriter = new FileWriter("purityReports.csv", true);
+                    while (reportStrings.size() > 0) {
+                        fileWriter.append(reportStrings.remove(0));
+                        fileWriter.append("\n");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        fileWriter.flush();
+                        fileWriter.close();
+                    } catch (IOException ioe) {
+                        System.out.println("Error while flushing");
+                        ioe.printStackTrace();
+                    }
+                }
+                loadReports();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Report Number not found");
+                alert.setHeaderText("The Report Number was not found.");
+                alert.showAndWait();
+                reportNumField.clear();
+            }
+        }
+    }
+
+    private void loadReports() {
+        reportsList.getItems().clear();
+        reportStrings.clear();
+        currentReports.clear();
+        boolean alreadyExists = new File("purityReports.csv").exists();
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
+                String line = "";
+                while (((line = br.readLine()) != null)) {
+                    String[] data = line.split(",");
+                    for (int i = 0; i < data.length; i++) {
+                        System.out.print(data[i] + ", ");
+                    }
+                    System.out.println();
+                    Double lat = new Double(data[7]);
+                    Double longit = new Double(data[8]);
+                    if (currentSource.getLatitude().equals(lat) && currentSource.getLongitude().equals(longit)) {
+                        reportsList.getItems().add(line);
+                        System.out.println("Added");
+                        Report r = new Report(data[1], data[2], Float.parseFloat(data[4]), Float.parseFloat(data[5]), data[6]);
+                        currentReports.add(r);
+                    }
+                    reportStrings.add(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        showAllGraph();
     }
 
 

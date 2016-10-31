@@ -15,7 +15,6 @@ public class Report {
     private String condition;
     private int month;
     private int year;
-
     public Report(String user, String date, float thisPPM1, float thisPPM2, String thisCondit) {
         thisDate = date;
         thisUser = user;
@@ -27,7 +26,6 @@ public class Report {
         month = Integer.parseInt(dateData[0]);
         year = Integer.parseInt(dateData[2]) + 2000;
     }
-
     public String getUser() {
         return thisUser;
     }

@@ -130,6 +130,23 @@ public class LoginScreenController {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                } else if (info[3].equals("ADMINISTRATOR")){
+                    password = info[2];
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminMainScreen.fxml"));
+
+                        anchorLayout = fxmlLoader.load();
+                        AdminMainScreenController msc = fxmlLoader.getController();
+
+                        User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
+                        msc.setUser(currentUser);
+                        Scene scene2 = new Scene(anchorLayout);
+                        mainApplication.getMainScreen().setScene(scene2);
+                        msc.setMainApp(mainApplication);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
