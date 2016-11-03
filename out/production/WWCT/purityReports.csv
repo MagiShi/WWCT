@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Report #10006747, Casie, 10/24/16 20:48, Kon,89,98, TREATABLE,33,-88
 Report #10007987, Elle, 10/24/16 20:49, Ill,288,858, SAFE,33,-90
 Report #10004600, Kayla, 10/26/16 17:42, Green,84,324, TREATABLE,33,-90
@@ -23,3 +24,14 @@ Report #10008447, boo, 2/26/16 18:49, bee,50,23, TREATABLE,33,-88
 Report #10008448, boo, 11/26/16 18:49, bee,29,78, TREATABLE,33,-88
 Report #10008449, boo, 8/26/16 18:49, bee,13,5, TREATABLE,33,-88
 Report #10008440, boo, 6/26/16 18:49, bee,5,3, TREATABLE,33,-88
+=======
+Report #10006747, Casie, 10/24/16 20:48, Kon, 89, 98, TREATABLE, 33.0, -88.0
+Report #10007987, Elle, 10/24/16 20:49, Ill, 288, 858, SAFE, 33.0, -90.0
+Report #10001399, York, 10/26/16 17:37, New, 23, 325, UNSAFE, 33.0, -88.0
+Report #10004600, Kayla, 10/26/16 17:42, Green, 84, 324, TREATABLE, 33.0, -90.0
+Report #100078, Queens, 10/26/16 17:44, Query, 009, 0324, SAFE, 33.0, -90.0
+Report #10002588, Kir, 10/26/16 17:46, Ka, 67, 357, SAFE, 35.0, -90.0
+Report #10008444, boo, 10/26/16 18:49, bee, 13, 13, TREATABLE, 33.0, -88.0
+Report #1000253, s, 10/26/16 18:56, s, 1, 1, TREATABLE, 33.0, -88.0
+Report #1000983, hey, 10/27/16 18:15, hey, 123, 123, TREATABLE, 35.0, -89.0
+>>>>>>> refs/remotes/origin/master

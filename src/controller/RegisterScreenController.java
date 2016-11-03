@@ -159,6 +159,7 @@ public class RegisterScreenController {
                         try {
                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
+<<<<<<< HEAD
                             anchorLayout = fxmlLoader.load();
                             ManagerMapScreenController msc = fxmlLoader.getController();
 
@@ -198,6 +199,57 @@ public class RegisterScreenController {
                     }
                 }
             } else {
+=======
+                    if (userInputUserType.equals(UserType.USER)) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
+
+                        anchorLayout = fxmlLoader.load();
+                        UserMapScreenController msc = fxmlLoader.getController();
+                        msc.setApp(mainApplication);
+                        msc.setState(mainApplication.getMainScreen());
+                        msc.setUpMapView(mainApplication.getMainScreen());
+
+                        Scene scene2 = new Scene(anchorLayout);
+                        mainApplication.getMainScreen().setScene(scene2);
+                        User currentUser = new User(userInputUsername, userInputPassword,
+                                nameInput.getText(), userInputUserType.toString(), "[set email]", "[set address]", "Not Banned");
+                        msc.setUser(currentUser);
+                        msc.setMainApp(mainApplication);
+                    } else if (userInputUserType.equals(UserType.WORKER)) {
+
+
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
+
+                        anchorLayout = fxmlLoader.load();
+                        WorkerMapScreenController msc = fxmlLoader.getController();
+                        msc.setApp(mainApplication);
+                        msc.setState(mainApplication.getMainScreen());
+                        msc.setUpMapView(mainApplication.getMainScreen());
+
+                        Scene scene2 = new Scene(anchorLayout);
+                        mainApplication.getMainScreen().setScene(scene2);
+                        User currentUser = new User(userInputUsername, userInputPassword,
+                                nameInput.getText(), userInputUserType.toString(), "[set email]", "[set address]", "Not Banned");
+                        msc.setUser(currentUser);
+                        msc.setMainApp(mainApplication);
+                    } else if (userInputUserType.equals(UserType.MANAGER)) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
+
+                        anchorLayout = fxmlLoader.load();
+                        ManagerMapScreenController msc = fxmlLoader.getController();
+                        msc.setApp(mainApplication);
+                        msc.setState(mainApplication.getMainScreen());
+                        msc.setUpMapView(mainApplication.getMainScreen());
+
+                        Scene scene2 = new Scene(anchorLayout);
+                        mainApplication.getMainScreen().setScene(scene2);
+                        User currentUser = new User(userInputUsername, userInputPassword,
+                                nameInput.getText(), userInputUserType.toString(), "[set email]", "[set address]", "Not Banned");
+                        msc.setUser(currentUser);
+                        msc.setMainApp(mainApplication);
+                    }
+                } else {
+>>>>>>> refs/remotes/origin/master
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Password does not match");
                     alert.setHeaderText("Password does not match");
