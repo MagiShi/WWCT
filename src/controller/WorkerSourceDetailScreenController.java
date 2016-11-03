@@ -8,8 +8,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
+import src.model.Location;
 import src.model.User;
 import src.model.WaterSource;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Dain on 10/16/2016.
@@ -22,11 +29,11 @@ public class WorkerSourceDetailScreenController {
 
     private WaterSource currentSource;
 
+    private Location currLoc;
+
     @FXML
     private Button backButton;
 
-    @FXML
-    private Button viewQuality;
     @FXML
     private ListView<String> reportsList;
     @FXML
@@ -44,6 +51,12 @@ public class WorkerSourceDetailScreenController {
     public void setUser(User newUser) {
         currentUser = newUser;
     }
+    public void setLocation (Location loc) { currLoc = loc; }
+
+
+    private ArrayList<WaterSource> allReports = new ArrayList<WaterSource>();
+
+    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
 
     @FXML protected void backButtonAction() {
@@ -67,22 +80,6 @@ public class WorkerSourceDetailScreenController {
         }
     }
 
-    @FXML protected void viewReportListButtonAction() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerReportsList.fxml"));
-
-            anchorLayout = fxmlLoader.load();
-            WorkerReportsListScreenController controller = fxmlLoader.getController();
-
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-
-            controller.setMainApp(mainApplication);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML protected void addReportButtonAction() {
         try {
@@ -90,6 +87,9 @@ public class WorkerSourceDetailScreenController {
 
             anchorLayout = fxmlLoader.load();
             waterQualityReportScreenController controller = fxmlLoader.getController();
+
+            controller.setUser(currentUser);
+            controller.setLocation(currLoc);
 
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -108,10 +108,53 @@ public class WorkerSourceDetailScreenController {
      */
     @FXML
     private void initialize() {
+        boolean alreadyExists = new File("sourceReports.csv").exists();
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+                String line = "";//make into water source
+                while (((line = br.readLine()) != null)) {
+                    String[] data = line.split(",");
+                    String reportNum = data[0];
+                    String name = data[1];
+                    String dateTime = data[2];
+                    String locationName = data[3];
+                    Double lat = Double.parseDouble(data[4]);
+                    Double longit = Double.parseDouble(data[5]);
+                    String type = data[6];
+                    String sourceCondition = data[7];
+
+                    WaterSource wc = new WaterSource(name, dateTime,locationName, lat, longit, type, sourceCondition);
+
+                    allReports.add(wc);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        alreadyExists = new File("purityReports.csv").exists();
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
+                String line = "";
+                while (((line = br.readLine()) != null)) {
+                    reportsList.getItems().add(line);
+                    System.out.println("Added");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void setCurrentSource(WaterSource newSource) {
-        currentSource = newSource;
+    public void setCurrentSource(Location newSource) {
+        currLoc = newSource;
+
+        for (WaterSource source: allReports) {
+            if (source.getLatitude().equals(currLoc.getLatitude()) && source.getLongitude().equals(currLoc.getLongitude())) {
+                currentSource = source;
+                thisSource.add(currentSource);
+            }
+        }
+        System.out.println(currentSource);
         sourceLocation.setText(currentSource.getLocation());
         waterType.setText(currentSource.getType());
         waterCondition.setText((currentSource.getSourceCondition()));

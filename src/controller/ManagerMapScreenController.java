@@ -155,10 +155,10 @@ public class ManagerMapScreenController implements Initializable, MapComponentIn
     @FXML protected void handleProfileButtonAction() {
         //logout stuff :)
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserProfile.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerProfile.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ProfileScreenController controller = fxmlLoader.getController();
+            ManagerProfileScreenController controller = fxmlLoader.getController();
             Scene scene2 = new Scene(anchorLayout);
             controller.setUser(currentUser);
             mainApplication.getMainScreen().setScene(scene2);

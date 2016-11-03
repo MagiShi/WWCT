@@ -10,11 +10,14 @@ import src.fxapp.WaterzMainFXApplication;
 import javafx.scene.control.*;
 import src.model.User;
 
+import java.io.*;
+import java.util.ArrayList;
+
 
 /**
  * Created by Maggie on 9/28/2016.
  */
-public class ProfileScreenController {
+public class AdminProfileScreenController {
 
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
@@ -55,6 +58,7 @@ public class ProfileScreenController {
 
 
     private User currentUser;
+    private ArrayList<String> allUsers = new ArrayList<>();
 
     public void setUser(User newUser) {
         currentUser = newUser;
@@ -68,24 +72,20 @@ public class ProfileScreenController {
 
     @FXML protected void handleBackButtonAction() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminMainScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
-            ManagerMapScreenController msc = fxmlLoader.getController();
-
-            msc.setApp(mainApplication);
-            msc.setState(mainApplication.getMainScreen());
-            msc.setUpMapView(mainApplication.getMainScreen());
+            AdminMainScreenController msc = fxmlLoader.getController();
 
             msc.setUser(currentUser);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
             msc.setMainApp(mainApplication);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML protected void handleSaveName() {
         currentName.setText(newName.getText());
@@ -103,24 +103,25 @@ public class ProfileScreenController {
         currentAddress.setText(newAddress.getText());
         newAddress.clear();
     }
-        /**
-         * Initializes the controller class. This method is automatically called
-         * after the constructor and
-         * after the fxml file has been loaded.
-         */
-        @FXML
-        private void initialize() {
-            //put maps and data here maybe?
-        }
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the constructor and
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        //put maps and data here maybe?
+    }
 
 
 
-        /**
-         * Setup the main application link so we can call methods there
-         *
-         * @param mainFXApplication  a reference (link) to our main class
-         */
-        public void setMainApp(WaterzMainFXApplication mainFXApplication) {
-            mainApplication = mainFXApplication;
-        }
+    /**
+     * Setup the main application link so we can call methods there
+     *
+     * @param mainFXApplication  a reference (link) to our main class
+     */
+    public void setMainApp(WaterzMainFXApplication mainFXApplication) {
+        mainApplication = mainFXApplication;
+    }
 }
+

@@ -53,6 +53,35 @@ public class UserWaterSourceReportScreenController {
         String userInputLocation = waterLocation.getText();
         SourceType userInputWaterType = waterType.getValue();
         WaterCondition userInputWaterCondition = waterCondition.getValue();
+        boolean valid = true;
+        if (userInputName == "") {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input your name.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputLocation == "") {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a location.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputWaterCondition == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a Water Condition.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputWaterType == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a Water Type.");
+            alert.showAndWait();
+            valid = false;
+        }
         double lat = 0;
         double longit = 0;
         //making sure latitude input and longitude input are int/decimal values
@@ -106,97 +135,98 @@ public class UserWaterSourceReportScreenController {
             alert.showAndWait();
             longitudeInput.clear();
         }
+        if (valid) {
+            boolean alreadyExists = new File("sourceReports.csv").exists();
+            if (!alreadyExists) {
+                BufferedWriter writer = null;
+                try {
+                    File newFile = new File("sourceReports.csv");
+                    writer = new BufferedWriter(new FileWriter(newFile));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        writer.flush();
+                        writer.close();
+                    } catch (IOException ioe) {
+                        System.out.println("Error while flushing, creating new.");
+                        ioe.printStackTrace();
+                    }
+                }
+            }
 
-        boolean alreadyExists = new File("sourceReports.csv").exists();
-        if (!alreadyExists) {
-            BufferedWriter writer = null;
             try {
-                File newFile = new File("sourceReports.csv");
-                writer = new BufferedWriter(new FileWriter(newFile));
+                FileWriter fileWriter = null;
+                try {
+                    fileWriter = new FileWriter("sourceReports.csv", true);
+
+                    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy HH:mm");
+                    Date dateObject = new Date();
+                    String dateString = dateFormat.format(dateObject);
+
+                    int num = 1000 + (int) (Math.random() * ((9999 - 1000) + 1));
+
+                    fileWriter.append("Report #" + num);
+                    fileWriter.append(", ");
+                    fileWriter.append(userInputName);
+                    fileWriter.append(", ");
+                    fileWriter.append(dateString);
+                    fileWriter.append(", ");
+                    fileWriter.append(userInputLocation);
+                    fileWriter.append(", ");
+                    fileWriter.append(latitudeInput.getText());
+                    fileWriter.append(",");
+                    fileWriter.append(longitudeInput.getText());
+                    fileWriter.append(",");
+                    fileWriter.append(userInputWaterType.toString());
+                    fileWriter.append(", ");
+                    fileWriter.append(userInputWaterCondition.toString());
+                    fileWriter.append("\n");
+
+                    Location loc = new Location(lat,
+                            longit,
+                            "Marker",
+                            "<h2> " + num +
+                                    "</h2> <br> Reporter: " + userInputName +
+                                    "<br> Date: " + dateString +
+                                    "<br> Water Type: " + userInputWaterType +
+                                    "<br> Water Condition: " + userInputWaterCondition);
+
+                    fc.addLocation(loc);
+
+                    //create a new report? should we have a report class?
+                    //newReport = new Report(...);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        fileWriter.flush();
+                        fileWriter.close();
+                    } catch (IOException ioe) {
+                        System.out.println("Error while flushing");
+                        ioe.printStackTrace();
+                    }
+                }
+
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
+
+                anchorLayout = fxmlLoader.load();
+                UserMapScreenController msc = fxmlLoader.getController();
+                msc.setUser(currentUser);
+
+                msc.setApp(mainApplication);
+                msc.setState(mainApplication.getMainScreen());
+                msc.setUpMapView(mainApplication.getMainScreen());
+
+                Scene scene2 = new Scene(anchorLayout);
+                mainApplication.getMainScreen().setScene(scene2);
+
+                msc.setMainApp(mainApplication);
+
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    writer.flush();
-                    writer.close();
-                } catch (IOException ioe) {
-                    System.out.println("Error while flushing, creating new.");
-                    ioe.printStackTrace();
-                }
             }
-        }
-
-        try {
-            FileWriter fileWriter = null;
-            try {
-                fileWriter = new FileWriter("sourceReports.csv", true);
-
-                DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy HH:mm");
-                Date dateObject = new Date();
-                String dateString = dateFormat.format(dateObject);
-
-                int num = 1000 + (int)(Math.random() * ((9999 - 1000) + 1));
-
-                fileWriter.append("Report #" + num);
-                fileWriter.append(", ");
-                fileWriter.append(userInputName);
-                fileWriter.append(", ");
-                fileWriter.append(dateString);
-                fileWriter.append(", ");
-                fileWriter.append(userInputLocation);
-                fileWriter.append(", ");
-                fileWriter.append(latitudeInput.getText());
-                fileWriter.append(",");
-                fileWriter.append(longitudeInput.getText());
-                fileWriter.append(",");
-                fileWriter.append(userInputWaterType.toString());
-                fileWriter.append(", ");
-                fileWriter.append(userInputWaterCondition.toString());
-                fileWriter.append("\n");
-
-                Location loc = new Location(lat,
-                        longit,
-                        "Marker",
-                        "<h2> "  + num +
-                                "</h2> <br> Reporter: " + userInputName +
-                                "<br> Date: " + dateString +
-                                "<br> Water Type: " + userInputWaterType +
-                                "<br> Water Condition: " + userInputWaterCondition);
-
-                fc.addLocation(loc);
-
-                //create a new report? should we have a report class?
-                //newReport = new Report(...);
-            } catch (Exception e){
-                e.printStackTrace();
-            } finally {
-                try {
-                    fileWriter.flush();
-                    fileWriter.close();
-                }  catch (IOException ioe) {
-                    System.out.println("Error while flushing");
-                    ioe.printStackTrace();
-                }
-            }
-
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
-
-            anchorLayout = fxmlLoader.load();
-            UserMapScreenController msc = fxmlLoader.getController();
-            msc.setUser(currentUser);
-
-            msc.setApp(mainApplication);
-            msc.setState(mainApplication.getMainScreen());
-            msc.setUpMapView(mainApplication.getMainScreen());
-
-            Scene scene2 = new Scene(anchorLayout);
-            mainApplication.getMainScreen().setScene(scene2);
-
-            msc.setMainApp(mainApplication);
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
