@@ -1,5 +1,3 @@
-user,user,pass,USER,[set email],[set address],Not Banned
-bbb,bbb,bbb,USER,[set email],[set address],Not Banned
-ccc,ccc,ccc,USER,[set email],[set address],Not Banned
-ddd,ddd,ddd,USER,[set email],[set address],Not Banned
-www,www,www,WORKER,[set email],[set address],Not Banned
+New Name,user,pass,USER,[set email],[set address],Not Banned
+Admin,admin,pass,ADMINISTRATOR,[set email],[set address],Not Banned
+NewName,manager,pass,MANAGER,[set email],[set address],Not Banned

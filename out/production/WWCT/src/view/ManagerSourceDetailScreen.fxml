@@ -1,55 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.ManagerSourceDetailScreenController">
-    <padding>
-        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-    </padding>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-border-color: F7C39F; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.ManagerSourceDetailScreenController">
    <children>
-      <Button fx:id="backButton" layoutX="44.0" layoutY="39.0" mnemonicParsing="false" onAction="#backButtonAction" text="Back" />
-
-
-      <Label layoutX="241.0" layoutY="37.0" text="Water Source Details">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <GridPane layoutX="95.0" layoutY="109.0" prefHeight="322.0" prefWidth="512.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label fx:id="waterTypeLabel" text="Type of Water" GridPane.rowIndex="1" />
-            <Label fx:id="locationLabel" text="Location" />
-            <Label fx:id="waterConditionLabel" text="Condition of Water" GridPane.rowIndex="2" />
-            <Button fx:id="viewReportListButton" mnemonicParsing="false" onAction="#viewReportListButtonAction" text="View Purity Reports" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-             
-            <Label fx:id="sourceLocation" text="Label" GridPane.columnIndex="1" />
-            <Label fx:id="waterType" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="waterCondition" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="addReportButton" mnemonicParsing="false" onAction="#addReportButtonAction" text="Add Report to Source" GridPane.rowIndex="5" />
-            <Label fx:id="sourceCreatorLabel" text="Created By" GridPane.rowIndex="3" />
-            <Label fx:id="creationDateLabel" text="Created On" GridPane.rowIndex="4" />
-            <Label fx:id="sourceCreator" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="creationDate" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-         </children>
-      </GridPane>
+      <TabPane layoutX="5.0" layoutY="5.0" prefHeight="490.0" prefWidth="690.0" style="-fx-background-color: #e6e6e6" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab style="-fx-background-color: C7EAFB;" text="Source Details">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="414.0" prefWidth="691.0" style="-fx-background-color: C7EAFB;">
+                     <children>
+                        <GridPane layoutX="117.0" layoutY="81.0" prefHeight="333.0" prefWidth="468.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.6666259765625" minWidth="10.0" prefWidth="221.66668701171875" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="318.66668701171875" minWidth="10.0" prefWidth="246.33331298828125" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label fx:id="waterTypeLabel" text="Type of Water" textFill="#aa7d5d" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="20.0" />
+                                 </font></Label>
+                              <Label fx:id="locationLabel" text="Location" textFill="#aa7d5d" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="20.0" />
+                                 </font></Label>
+                              <Label fx:id="waterConditionLabel" text="Condition of Water" textFill="#aa7d5d" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="20.0" />
+                                 </font></Label>
+                              <Label fx:id="sourceLocation" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font></Label>
+                              <Label fx:id="waterType" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font></Label>
+                              <Label fx:id="waterCondition" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font></Label>
+                              <Label fx:id="sourceCreatorLabel" text="Created By" textFill="#aa7d5d" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="20.0" />
+                                 </font></Label>
+                              <Label fx:id="creationDateLabel" text="Created On" textFill="#aa7d5d" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="20.0" />
+                                 </font></Label>
+                              <Label fx:id="sourceCreator" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font></Label>
+                              <Label fx:id="creationDate" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font></Label>
+                           </children>
+                        </GridPane>
+                        <Label layoutX="191.0" layoutY="16.0" text="Water Source Details" textFill="#66ccff">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="backButton" layoutX="38.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButtonAction" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Back" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font></Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #66ccff;" text="Quality Reports">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #66ccff;">
+                     <children>
+                        <Button fx:id="backButton3" layoutX="38.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButtonAction" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Back" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <ListView fx:id="reportsList" layoutX="89.0" layoutY="66.0" prefHeight="254.0" prefWidth="550.0" />
+                        <Label layoutX="251.0" layoutY="17.0" text="Quality Reports" textFill="#c7eafb">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addReportButton" layoutX="120.0" layoutY="381.0" mnemonicParsing="false" onAction="#addReportButtonAction" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Add Report to Source" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font></Button>
+                        <TextField fx:id="reportNumField" layoutX="388.0" layoutY="360.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter Report Number" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font></TextField>
+                        <Button layoutX="388.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleRemoveReportButtonAction" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Remove Report from Source" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font></Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: F5FCFF;" text="Historical Data">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: F5FCFF;">
+                     <children>
+                        <Button fx:id="backButton1" layoutX="38.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButtonAction" style="-fx-background-color: C7EAFB; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Back" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="title" layoutX="124.0" layoutY="16.0" text="Historical Water Purity Levels" textFill="#66ccff">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <ScatterChart fx:id="historicalGraph" layoutY="48.0" prefHeight="422.0" prefWidth="531.0">
+                          <xAxis>
+                            <NumberAxis autoRanging="false" label="Year" lowerBound="2000.0" prefWidth="622.0" side="BOTTOM" tickLabelFill="#aa7d5d" tickLabelGap="1.0" upperBound="2020.0" fx:id="xAxis">
+                                 <tickLabelFont>
+                                    <Font name="Arial Rounded MT Bold" size="8.0" />
+                                 </tickLabelFont></NumberAxis>
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="PPM" prefHeight="315.0" prefWidth="40.0" side="LEFT" tickLabelFill="#aa7d5d">
+                                 <tickLabelFont>
+                                    <Font name="Arial Rounded MT Bold" size="8.0" />
+                                 </tickLabelFont></NumberAxis>
+                          </yAxis>
+                        </ScatterChart>
+                        <TextField fx:id="yearField" layoutX="533.0" layoutY="216.0" prefHeight="25.0" prefWidth="135.0" promptText="Please Enter a Year" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="12.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="533.0" layoutY="250.0" mnemonicParsing="false" onAction="#chooseYearAction" prefHeight="27.0" prefWidth="137.0" style="-fx-background-color: C7EAFB; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Choose Year" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="532.0" layoutY="361.0" mnemonicParsing="false" onAction="#showAllAction" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: C7EAFB; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Display Graph" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <CheckBox fx:id="virusCheckBox" layoutX="531.0" layoutY="110.0" mnemonicParsing="false" onAction="#reloadGraph" style="-fx-background-color: F5FCFF;" text="Virus PPM" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="contaminantCheckBox" layoutX="531.0" layoutY="140.0" mnemonicParsing="false" onAction="#reloadGraph" onMouseClicked="#reloadGraph" prefHeight="19.0" prefWidth="150.0" text="Contaminant PPM" textFill="#aa7d5d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <Label layoutX="531.0" layoutY="75.0" text="Display:" textFill="#66ccff">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="532.0" layoutY="302.0" prefHeight="54.0" prefWidth="122.0" text="Twenty Year Graph:" textFill="#66ccff" wrapText="true">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="531.0" layoutY="183.0" text="One Year Graph:" textFill="#66ccff">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
