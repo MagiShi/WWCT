@@ -65,6 +65,8 @@ public class ManagerMapScreenController implements Initializable, MapComponentIn
     private Button submitButton;
     @FXML
     private BorderPane mapViewer;
+    @FXML
+    private Label sourceSelectedLabel;
 
     /** a gui view provided by the GMapFX library */
     private GoogleMapView mapView;
@@ -366,6 +368,7 @@ public class ManagerMapScreenController implements Initializable, MapComponentIn
                         infoWindowOptions.content(l.getDescription() );
                         InfoWindow window = new InfoWindow(infoWindowOptions);
                         currLoc = l;
+                        sourceSelectedLabel.setText("Source Selected");
                         window.open(map, marker);});
             map.addMarker(marker);
         }

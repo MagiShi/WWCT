@@ -3,3 +3,4 @@ bbb,bbb,bbb,USER,[set email],[set address],Not Banned
 ccc,ccc,ccc,USER,[set email],[set address],Not Banned
 ddd,ddd,ddd,USER,[set email],[set address],Not Banned
 www,www,www,WORKER,[set email],[set address],Not Banned
+Worker,worker,pass,WORKER,[set email],[set address],Not Banned

@@ -67,6 +67,8 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     private Button viewQuality;
     @FXML
     private ListView<String> reportsList;
+    @FXML
+    private  Label sourceSelectedLabel;
 
     /** a gui view provided by the GMapFX library */
     private GoogleMapView mapView;
@@ -385,6 +387,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
                         infoWindowOptions.content(l.getDescription() );
                         InfoWindow window = new InfoWindow(infoWindowOptions);
                         currLoc = l;
+                        sourceSelectedLabel.setText("Source Selected");
                         window.open(map, marker);});
             map.addMarker(marker);
         }
