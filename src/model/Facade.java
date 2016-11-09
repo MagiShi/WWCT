@@ -16,7 +16,7 @@ public class Facade {
     public static Facade getInstance() { return instance; }
 
     //this is our simple model
-    private List<Location> locations = new ArrayList<>();
+    private final List<Location> locations = new ArrayList<>();
 
 
 

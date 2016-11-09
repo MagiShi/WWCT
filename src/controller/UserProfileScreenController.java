@@ -11,16 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 
-
-/**
- * Created by Maggie on 9/28/2016.
- */
 public class UserProfileScreenController {
 
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
-
-    private AnchorPane anchorLayout;
 
     /* references to the widgets in the fxml file */
 
@@ -71,7 +65,7 @@ public class UserProfileScreenController {
         try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
 
-                anchorLayout = fxmlLoader.load();
+            AnchorPane anchorLayout = fxmlLoader.load();
                 UserMapScreenController msc = fxmlLoader.getController();
 
                 msc.setApp(mainApplication);

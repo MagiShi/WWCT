@@ -10,18 +10,12 @@ import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
 
@@ -57,10 +51,9 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     private AnchorPane anchorLayout;
 
     private User currentUser;
-    private Facade fac;
 
     private String username;
-    private ArrayList<WaterSource> water = new ArrayList<>();
+    private final ArrayList<WaterSource> water = new ArrayList<>();
 
 
     /* references to the widgets in the fxml file */
@@ -87,7 +80,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     private Stage mainStage;
 
 
-    Location currLoc;
+    private Location currLoc;
 
     public WorkerMapScreenController(WaterzMainFXApplication app, Stage stage) {
         theApp = app;
@@ -98,11 +91,11 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     public WorkerMapScreenController() {
     }
 
-    protected void setApp(WaterzMainFXApplication app) {
+    void setApp(WaterzMainFXApplication app) {
         theApp = app;
     }
 
-    protected void setState (Stage stage) {
+    void setState(Stage stage) {
         mainStage = stage;
     }
 
@@ -115,7 +108,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
             anchorLayout = fxmlLoader.load();
             waterSourceReportScreenController controller = fxmlLoader.getController();
             controller.setUser(currentUser);
-            fac = Facade.getInstance();
+            Facade fac = Facade.getInstance();
             controller.setFacade(fac);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -215,7 +208,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
      *
      * @param stage the stage to put the map scene into
      */
-    protected final void setUpMapView(Stage stage) {
+    final void setUpMapView(Stage stage) {
         //construct the view
         mapView = new GoogleMapView();
         //we cannot do anything until the map is constructed, so we need a callback
@@ -280,18 +273,5 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        boolean alreadyExists = new File("sourceReports.csv").exists();
-//        if (alreadyExists) {
-//            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-//                String line;
-//                while (((line = br.readLine()) != null)) {
-//                    String[] data = line.split(",");
-//                    WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
-//                    water.add(source);
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
 }

@@ -194,7 +194,6 @@ public class waterSourceReportScreenController {
                     writer.close();
                 }
             } catch (IOException ioe) {
-                System.out.println("Error while flushing, creating new.");
                 ioe.printStackTrace();
             }
         }
@@ -237,7 +236,6 @@ public class waterSourceReportScreenController {
                     fileWriter.close();
                 }
             } catch (IOException ioe) {
-                System.out.println("Error while flushing");
                 ioe.printStackTrace();
             }
         }
@@ -275,7 +273,7 @@ public class waterSourceReportScreenController {
 
             msc.setMainApp(mainApplication);
         } catch (Exception e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
     }
 

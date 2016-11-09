@@ -11,8 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 
-import java.io.IOException;
-
 public class WelcomeScreenController {
 
     /** a link back to the main application class */
@@ -26,7 +24,7 @@ public class WelcomeScreenController {
     private AnchorPane anchorLayout;
 
 
-    @FXML protected void handleWelcomeLoginButtonAction() throws IOException{
+    @FXML protected void handleWelcomeLoginButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginScreen.fxml"));
 
@@ -45,7 +43,7 @@ public class WelcomeScreenController {
     }
 
     @FXML
-    protected void handleWelcomeRegisterButtonAction() throws IOException{
+    protected void handleWelcomeRegisterButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/RegisterScreen.fxml"));
 

@@ -41,7 +41,6 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     private AnchorPane anchorLayout;
 
     private User currentUser;
-    private Facade fac;
 
     private String username;
     //private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
@@ -76,11 +75,11 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     public UserMapScreenController() {
     }
 
-    protected void setApp(WaterzMainFXApplication app) {
+    void setApp(WaterzMainFXApplication app) {
         theApp = app;
     }
 
-    protected void setState (Stage stage) {
+    void setState(Stage stage) {
         mainStage = stage;
     }
 
@@ -91,7 +90,7 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
             anchorLayout = fxmlLoader.load();
             waterSourceReportScreenController controller = fxmlLoader.getController();
             controller.setUser(currentUser);
-            fac = Facade.getInstance();
+            Facade fac = Facade.getInstance();
             controller.setFacade(fac);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
@@ -156,7 +155,7 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
      *
      * @param stage the stage to put the map scene into
      */
-    protected final void setUpMapView(Stage stage) {
+    final void setUpMapView(Stage stage) {
         //construct the view
         mapView = new GoogleMapView();
         //we cannot do anything until the map is constructed, so we need a callback
@@ -219,18 +218,6 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        boolean alreadyExists = new File("sourceReports.csv").exists();
-//        if (alreadyExists) {
-//            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-//                String line;
-//                while (((line = br.readLine()) != null)) {
-//                    String[] data = line.split(",");
-//                    WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
-//                    //water.add(source);
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
+
     }
 }

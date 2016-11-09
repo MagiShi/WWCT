@@ -17,10 +17,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by Da-In on 10/16/2016.
- */
 public class WorkerSourceDetailScreenController {
 
     private WaterzMainFXApplication mainApplication;
@@ -55,7 +53,7 @@ public class WorkerSourceDetailScreenController {
     public void setLocation (Location loc) { currLoc = loc; }
 
 
-    private ArrayList<WaterSource> allReports = new ArrayList<>();
+    private final List<WaterSource> allReports = new ArrayList<>();
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
@@ -137,7 +135,6 @@ public class WorkerSourceDetailScreenController {
                 String line;
                 while (((line = br.readLine()) != null)) {
                     reportsList.getItems().add(line);
-                    System.out.println("Added");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -149,11 +146,11 @@ public class WorkerSourceDetailScreenController {
         currLoc = newSource;
 
         //thisSource.add(currentSource);
-        allReports.stream().filter(source -> source.getLatitude().equals(currLoc.getLatitude()) && source.getLongitude().equals(currLoc.getLongitude())).forEach(source -> {
+        allReports.stream().filter(source -> source.getLatitude().equals(currLoc.getLatitude())
+                && source.getLongitude().equals(currLoc.getLongitude())).forEach(source -> {
             currentSource = source;
             //thisSource.add(currentSource);
         });
-        System.out.println(currentSource);
         sourceLocation.setText(currentSource.getLocation());
         waterType.setText(currentSource.getType());
         waterCondition.setText((currentSource.getSourceCondition()));

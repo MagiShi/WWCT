@@ -1,12 +1,9 @@
 package src.model;
 
-/**
- * Created by Maggie on 9/30/2016.
- */
 public enum UserType {
     USER("USER"), WORKER("WORKER"), ADMIN("ADMINISTRATOR"), MANAGER("MANAGER");
 
-    public final String type;
+    private final String type;
 
     UserType(String type) {
         this.type = type;

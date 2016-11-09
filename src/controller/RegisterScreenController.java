@@ -49,7 +49,7 @@ public class RegisterScreenController {
     private AnchorPane anchorLayout;
 
     @FXML
-    protected void handleRegisterButtonAction() throws IOException {
+    protected void handleRegisterButtonAction() {
         String userInputUsername = usernameInput.getText();
         String userInputPassword = passwordInput.getText();
         UserType userInputUserType = userTypeInput.getValue();
@@ -111,7 +111,6 @@ public class RegisterScreenController {
                         writer.close();
                     }
                 } catch (IOException ioe) {
-                    System.out.println("Error while flushing, creating new.");
                     ioe.printStackTrace();
                 }
             }
@@ -148,7 +147,6 @@ public class RegisterScreenController {
                     fileWriter.close();
                 }
             }  catch (IOException ioe) {
-                System.out.println("Error while flushing");
                 ioe.printStackTrace();
             }
         }
@@ -255,7 +253,7 @@ public class RegisterScreenController {
         }
     }
     @FXML
-    protected void handleCancelButtonAction() throws IOException {
+    protected void handleCancelButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
 

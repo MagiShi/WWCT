@@ -46,7 +46,7 @@ public class LoginScreenController {
 
 
 
-    @FXML protected void handleLoginButtonAction() throws IOException{
+    @FXML protected void handleLoginButtonAction() {
         try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
             String line;
             String[] info = null;
@@ -177,7 +177,7 @@ public class LoginScreenController {
     }
 
     @FXML
-    protected void handleCancelButtonAction() throws IOException {
+    protected void handleCancelButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WelcomeScreen.fxml"));
 

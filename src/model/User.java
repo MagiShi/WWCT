@@ -1,12 +1,9 @@
-/**
- * Created by Maggie on 9/20/2016.
- */
 
 package src.model;
 
 public class User {
-    private String userID;
-    private String password;
+    private final String userID;
+    private final String password;
 
     private String name;
     private String address;
@@ -24,7 +21,8 @@ public class User {
         banned = false;
     }
 
-    public User(String userID, String password, String newName, String userType, String Email, String newAddress, String banStatus) {
+    public User(String userID, String password, String newName, String userType,
+                String Email, String newAddress, String banStatus) {
         this.userID = userID;
         this.password = password;
         this.name = newName;
