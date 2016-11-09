@@ -19,7 +19,9 @@ public class PersistenceManager {
     private List<Location> model;
 
     public PersistenceManager(List<Location> m) {
-        model = m;
+        for (Location l: m) {
+            model.add(l);
+        }
     }
 
     public void saveToText(File file) {
