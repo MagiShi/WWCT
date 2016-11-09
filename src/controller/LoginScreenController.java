@@ -1,7 +1,7 @@
 package src.controller;
 
 /**
- * Created by Dain on 9/20/2016.
+ * Created by Da-In on 9/20/2016.
  */
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -47,7 +47,7 @@ public class LoginScreenController {
 
 
         try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
-            String line = "";
+            String line;
             String[] info = null;
             boolean usernameFound = false;
             while (!usernameFound && ((line = br.readLine()) != null)) {

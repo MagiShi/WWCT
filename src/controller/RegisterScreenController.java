@@ -74,7 +74,7 @@ public class RegisterScreenController {
         boolean alreadyExists = new File("database.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
-                String line = "";
+                String line;
                 while (usernameOriginal && ((line = br.readLine()) != null)) {
                     String[] info = line.split(",");
                     if (info[1].equals(userInputUsername)) {

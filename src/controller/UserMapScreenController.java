@@ -174,9 +174,9 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
         stage.setScene(scene);
     }
     /**
-     * constructs the menubar and all the subitems
+     * constructs the menu bar and all the sub items
      *
-     * @return the menubar after it is constructed
+     * @return the menu bar after it is constructed
      */
     private Node makeMenuBar() {
         MenuBar mb = new MenuBar();
@@ -319,7 +319,7 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
 
         map = mapView.createMap(options);
 
-        /** now we communciate with the model to get all the locations for markers */
+        /** now we communicate with the model to get all the locations for markers */
 
         Facade fac = Facade.getInstance();
         List<Location> locations = fac.getLocations();
@@ -348,7 +348,7 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
         boolean alreadyExists = new File("sourceReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-                String line = "";
+                String line;
                 while (((line = br.readLine()) != null)) {
                     String[] data = line.split(",");
                     WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);

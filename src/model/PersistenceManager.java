@@ -88,7 +88,7 @@ public class PersistenceManager {
     }
 
     public void loadFromJsonfile(File file) {
-        String ct = null;
+        String ct;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             Type collectionType = new TypeToken<List<Location>>(){}.getType();
             Gson gson = new Gson();

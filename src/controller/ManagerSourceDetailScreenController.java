@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import javafx.scene.chart.XYChart;
 
 /**
- * Created by Dain on 10/16/2016.
+ * Created by Da-In on 10/16/2016.
  */
 public class ManagerSourceDetailScreenController {
 
@@ -171,10 +171,9 @@ public class ManagerSourceDetailScreenController {
         boolean alreadyExists = new File("sourceReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-                String line = "";//make into water source
+                String line;//make into water source
                 while (((line = br.readLine()) != null)) {
                     String[] data = line.split(",");
-                    String reportNum = data[0];
                     String name = data[1];
                     String dateTime = data[2];
                     String locationName = data[3];
@@ -352,7 +351,7 @@ public class ManagerSourceDetailScreenController {
         boolean alreadyExists = new File("purityReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
-                String line = "";
+                String line;
                 while (((line = br.readLine()) != null)) {
                     String[] data = line.split(",");
                     for (int i = 0; i < data.length; i++) {

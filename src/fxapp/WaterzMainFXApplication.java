@@ -79,9 +79,9 @@ public class WaterzMainFXApplication extends Application {
      * dummy method to simulate a callback from the map view
      */
     public void closeMapView() {
-        Facade fc = Facade.getInstance();
-//        fc.addLocations();
-        WorkerMapScreenController controller = new WorkerMapScreenController(this, mainScreen);
+//        Facade fc = Facade.getInstance();
+////        fc.addLocations();
+//        WorkerMapScreenController controller = new WorkerMapScreenController(this, mainScreen);
     }
 
 

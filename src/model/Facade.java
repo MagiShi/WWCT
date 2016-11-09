@@ -22,7 +22,7 @@ public class Facade {
         boolean alreadyExists = new File("sourceReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-                String line = "";
+                String line;
                 String[] linebroken;
                 int i = 0;
                 while (((line = br.readLine()) != null)) {

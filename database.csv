@@ -7,3 +7,4 @@ Worker,worker,pass,WORKER,[set email],[set address],Not Banned
 123,123,123,USER,[set email],[set address],Not Banned
 buzz,buzz,bee,MANAGER,[set email],[set address],Not Banned
 qwerty,qwerty,q,USER,[set email],[set address],Not Banned
+asd,asd,asd,MANAGER,[set email],[set address],Not Banned

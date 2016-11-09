@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import javafx.scene.chart.XYChart;
 
 /**
- * Created by Dain on 10/16/2016.
+ * Created by Da-In on 10/16/2016.
  */
 public class AdminUsersScreenController {
 
@@ -297,7 +297,7 @@ public class AdminUsersScreenController {
         boolean alreadyExists = new File("database.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
-                String line = "";
+                String line;
                 while (((line = br.readLine()) != null)) {
                     usersList.getItems().add(line);
                     allUsers.add(line);

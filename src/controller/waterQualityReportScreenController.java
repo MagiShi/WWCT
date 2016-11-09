@@ -56,8 +56,8 @@ public class waterQualityReportScreenController {
         String userInputVirusPPM = virusPPM.getText();
         String userInputContaminantPPM = contaminantPPM.getText();
         PurityCondition userInputOverallCondition = waterOverallCondition.getValue();
-        double vPPM = 0;
-        double cPPM = 0;
+        double vPPM;
+        double cPPM;
         boolean valid = true;
         //making sure latitude input and longitude input are int/decimal values
         if (userInputName.equals("")) {

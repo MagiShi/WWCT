@@ -1,7 +1,7 @@
 package src.model;
 
 /**
- * Created by Dain on 10/12/2016.
+ * Created by Da-In on 10/12/2016.
  */
 public enum PurityCondition {
     SAFE("SAFE"), TREATABLE("TREATABLE"), UNSAFE("UNSAFE");

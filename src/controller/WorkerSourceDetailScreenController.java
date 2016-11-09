@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by Dain on 10/16/2016.
+ * Created by Da-In on 10/16/2016.
  */
 public class WorkerSourceDetailScreenController {
 
@@ -56,7 +56,7 @@ public class WorkerSourceDetailScreenController {
 
     private ArrayList<WaterSource> allReports = new ArrayList<WaterSource>();
 
-    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+    //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
 
     @FXML protected void backButtonAction() {
@@ -111,10 +111,9 @@ public class WorkerSourceDetailScreenController {
         boolean alreadyExists = new File("sourceReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-                String line = "";//make into water source
+                String line;//make into water source
                 while (((line = br.readLine()) != null)) {
                     String[] data = line.split(",");
-                    String reportNum = data[0];
                     String name = data[1];
                     String dateTime = data[2];
                     String locationName = data[3];
@@ -134,7 +133,7 @@ public class WorkerSourceDetailScreenController {
         alreadyExists = new File("purityReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
-                String line = "";
+                String line;
                 while (((line = br.readLine()) != null)) {
                     reportsList.getItems().add(line);
                     System.out.println("Added");
@@ -151,7 +150,7 @@ public class WorkerSourceDetailScreenController {
         for (WaterSource source: allReports) {
             if (source.getLatitude().equals(currLoc.getLatitude()) && source.getLongitude().equals(currLoc.getLongitude())) {
                 currentSource = source;
-                thisSource.add(currentSource);
+                //thisSource.add(currentSource);
             }
         }
         System.out.println(currentSource);
