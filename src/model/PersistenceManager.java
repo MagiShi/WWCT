@@ -102,7 +102,9 @@ class PersistenceManager {
     public void loadFromJsonfile(File file) {
         String ct;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
             Type collectionType = new TypeToken<List<Location>>(){}.getType();
+
             Gson gson = new Gson();
 
             ct = br.readLine();

@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 
+
 public class AdminMainScreenController {
 
     private WaterzMainFXApplication mainApplication;
@@ -58,7 +59,6 @@ public class AdminMainScreenController {
     }
 
     @FXML protected void handleProfileButtonAction() {
-        //logout stuff :)
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminProfile.fxml"));
 
@@ -77,6 +77,15 @@ public class AdminMainScreenController {
 //
 //    }
 
+
+    /**
+     * Lets the app know which user is currently logged on.
+     * This is important for displaying user info in the profile screen,
+     * but the method is needed for all screens
+     * because the current user needs to be continuously "held onto."
+     *
+     * @param newUser the User instance holding the current User's data
+     */
     public void setUser(User newUser) {
         currentUser = newUser;
     }

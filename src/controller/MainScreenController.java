@@ -1,9 +1,5 @@
 package src.controller;
 
-/**
- * Created by Maggie on 9/20/2016.
- */
-
 import src.fxapp.WaterzMainFXApplication;
 
 import javafx.fxml.FXML;
