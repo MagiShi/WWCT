@@ -47,6 +47,10 @@ public class UserWaterSourceReportScreenController {
     private double longit;
     private double lat;
 
+    private final int MAXNUM = 90;
+    private final int MINNUM = -90;
+    private final int RANDMAXNUM = 9999;
+
     public void setUser(User newUser) {
         currentUser = newUser;
     }
@@ -130,7 +134,7 @@ public class UserWaterSourceReportScreenController {
         try {
             if (latitudeInput != null) {
                 lat = Double.valueOf(latitudeInput.getText());
-                if ((lat < -90) || (lat > 90)) {
+                if ((lat < MINNUM) || (lat > MAXNUM)) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Invalid latitude");
                     alert.setHeaderText("Invalid input for latitude");
@@ -162,7 +166,7 @@ public class UserWaterSourceReportScreenController {
         try {
             if (longitudeInput != null) {
                 longit = Double.valueOf(longitudeInput.getText());
-                if ((longit < -90) || (longit > 90)) {
+                if ((longit < MINNUM) || (longit > MAXNUM)) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Invalid longitude");
                     alert.setHeaderText("Invalid input for longitude");
@@ -198,7 +202,7 @@ public class UserWaterSourceReportScreenController {
             Date dateObject = new Date();
             String dateString = dateFormat.format(dateObject);
 
-            int num = 1000 + (int) (Math.random() * ((9999 - 1000) + 1));
+            int num = 1000 + (int) (Math.random() * ((RANDMAXNUM - 1000) + 1));
 
             fileWriter.append("Report #").append(Integer.toString(num)).append(", ");
             fileWriter.append(userInputName).append(", ");
