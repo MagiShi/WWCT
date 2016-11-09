@@ -87,11 +87,13 @@ public class RegisterScreenController {
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
                 String line;
-                while (usernameOriginal && ((line = br.readLine()) != null)) {
+                line = br.readLine();
+                while (usernameOriginal && (line != null)) {
                     String[] info = line.split(",");
                     if (info[1].equals(userInputUsername)) {
                         usernameOriginal = false;
                     }
+                    line = br.readLine();
                 }
 
             } catch (IOException e) {
@@ -119,7 +121,7 @@ public class RegisterScreenController {
         return usernameOriginal;
     }
     //Store into database.csv
-    private void addToFile(String userInputUsername, String userInputPassword, UserType userInputUserType) {
+    private void addToFile(CharSequence userInputUsername, CharSequence userInputPassword, UserType userInputUserType) {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter("database.csv", true);

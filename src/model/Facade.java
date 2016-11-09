@@ -28,7 +28,8 @@ public class Facade {
                 String line;
                 String[] linebroken;
                 int i = 0;
-                while (((line = br.readLine()) != null)) {
+                line = br.readLine();
+                while (line != null) {
                     linebroken = line.split(",");
                     Location l = new Location(Double.valueOf(linebroken[4]),
                             Double.valueOf(linebroken[5]),
@@ -40,6 +41,7 @@ public class Facade {
                                     "<br> Water Condition: " + linebroken[7]);
                     locations.add(l);
                     i++;
+                    line = br.readLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();

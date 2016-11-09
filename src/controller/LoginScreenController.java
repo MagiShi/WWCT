@@ -51,12 +51,14 @@ public class LoginScreenController {
             String line;
             String[] info = null;
             boolean usernameFound = false;
-            while (!usernameFound && ((line = br.readLine()) != null)) {
+            line = br.readLine();
+            while (!usernameFound && (line != null)) {
                 info = line.split(",");
                 if (info[1].equals(usernameInput.getText())) {
                     usernameFound = true;
                     username = info[1];
                 }
+                line = br.readLine();
             }
             if (!usernameFound) {
                 soundAlert();

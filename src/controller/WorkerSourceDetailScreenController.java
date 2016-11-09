@@ -112,7 +112,8 @@ public class WorkerSourceDetailScreenController {
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
                 String line;//make into water source
-                while (((line = br.readLine()) != null)) {
+                line = br.readLine();
+                while (line != null) {
                     String[] data = line.split(",");
                     String name = data[1];
                     String dateTime = data[2];
@@ -125,6 +126,7 @@ public class WorkerSourceDetailScreenController {
                     WaterSource wc = new WaterSource(name, dateTime,locationName, lat, longit, type, sourceCondition);
 
                     allReports.add(wc);
+                    line = br.readLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -134,8 +136,10 @@ public class WorkerSourceDetailScreenController {
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
                 String line;
-                while (((line = br.readLine()) != null)) {
+                line = br.readLine();
+                while (line != null) {
                     reportsList.getItems().add(line);
+                    line = br.readLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();

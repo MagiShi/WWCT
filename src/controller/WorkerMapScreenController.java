@@ -181,8 +181,10 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
                 String line;
-                while (((line = br.readLine()) != null)) {
+                line = br.readLine();
+                while (line != null) {
                     reportsList.getItems().add(line);
+                    line = br.readLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
