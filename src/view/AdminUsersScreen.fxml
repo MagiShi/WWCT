@@ -35,24 +35,24 @@
           <Font name="Arial Rounded MT Bold" size="14.0"/>
         </font>
     </TextField>
-    <Button layoutX="188.0" layoutY="405.0" mnemonicParsing="false" onAction="#handleDeleteUserButtonAction"
-            prefHeight="33.0" prefWidth="116.0"
+    <Button fx:id="deleteUserButton" layoutX="188.0" layoutY="405.0" mnemonicParsing="false"
+            onAction="#handleDeleteUserButtonAction" prefHeight="33.0" prefWidth="116.0"
             style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
             text="Delete" textFill="#aa7d5d">
         <font>
           <Font name="Arial Rounded MT Bold" size="14.0"/>
         </font>
     </Button>
-    <Button fx:id="handleUnbanUserButtonAction" layoutX="425.0" layoutY="405.0" mnemonicParsing="false"
-            prefHeight="33.0" prefWidth="90.0"
+    <Button fx:id="unbanUserButton" layoutX="425.0" layoutY="405.0" mnemonicParsing="false"
+            onAction="#handleUnbanUserButtonAction" prefHeight="33.0" prefWidth="90.0"
             style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
             text="Unban" textFill="#aa7d5d">
         <font>
           <Font name="Arial Rounded MT Bold" size="14.0"/>
         </font>
     </Button>
-    <Button fx:id="handleBanUserButtonAction11" layoutX="322.0" layoutY="405.0" mnemonicParsing="false"
-            prefHeight="33.0" prefWidth="90.0"
+    <Button fx:id="banUserButton" layoutX="322.0" layoutY="405.0" mnemonicParsing="false"
+            onAction="#handleBanUserButtonAction" prefHeight="33.0" prefWidth="90.0"
             style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
             text="Ban" textFill="#aa7d5d">
         <font>

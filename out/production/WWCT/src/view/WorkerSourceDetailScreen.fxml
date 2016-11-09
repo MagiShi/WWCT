@@ -11,106 +11,140 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-border-color: F7C39F; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.WorkerSourceDetailScreenController">
-   <children>
-      <TabPane layoutX="5.0" layoutY="5.0" prefHeight="490.0" prefWidth="690.0" style="-fx-background-color: #e6e6e6" tabClosingPolicy="UNAVAILABLE">
-         <tabs>
-            <Tab style="-fx-background-color: C7EAFB;" text="Source Details">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="414.0" prefWidth="691.0" style="-fx-background-color: C7EAFB;">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
+            prefWidth="700.0" style="-fx-border-color: F7C39F; -fx-border-width: 5;"
+            xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="src.controller.WorkerSourceDetailScreenController">
+   <TabPane layoutX="5.0" layoutY="5.0" prefHeight="490.0" prefWidth="690.0" style="-fx-background-color: #e6e6e6"
+            tabClosingPolicy="UNAVAILABLE">
+      <Tab style="-fx-background-color: C7EAFB;" text="Source Details">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="414.0" prefWidth="691.0"
+                        style="-fx-background-color: C7EAFB;">
+               <children>
+                  <GridPane layoutX="117.0" layoutY="81.0" prefHeight="333.0" prefWidth="468.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.6666259765625" minWidth="10.0"
+                                           prefWidth="221.66668701171875"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="318.66668701171875" minWidth="10.0"
+                                           prefWidth="246.33331298828125"/>
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                     </rowConstraints>
                      <children>
-                        <GridPane layoutX="117.0" layoutY="81.0" prefHeight="333.0" prefWidth="468.0">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.6666259765625" minWidth="10.0" prefWidth="221.66668701171875" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="318.66668701171875" minWidth="10.0" prefWidth="246.33331298828125" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <Label fx:id="waterTypeLabel" text="Type of Water" textFill="#aa7d5d" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="20.0" />
-                                 </font></Label>
-                              <Label fx:id="locationLabel" text="Location" textFill="#aa7d5d" GridPane.halignment="CENTER">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="20.0" />
-                                 </font></Label>
-                              <Label fx:id="waterConditionLabel" text="Condition of Water" textFill="#aa7d5d" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="20.0" />
-                                 </font></Label>
-                              <Label fx:id="sourceLocation" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
-                                 </font></Label>
-                              <Label fx:id="waterType" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
-                                 </font></Label>
-                              <Label fx:id="waterCondition" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
-                                 </font></Label>
-                              <Label fx:id="sourceCreatorLabel" text="Created By" textFill="#aa7d5d" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="20.0" />
-                                 </font></Label>
-                              <Label fx:id="creationDateLabel" text="Created On" textFill="#aa7d5d" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="20.0" />
-                                 </font></Label>
-                              <Label fx:id="sourceCreator" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
-                                 </font></Label>
-                              <Label fx:id="creationDate" text="Label" textFill="#f7c39f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
-                                 </font></Label>
-                           </children>
-                        </GridPane>
-                        <Label layoutX="191.0" layoutY="16.0" text="Water Source Details" textFill="#66ccff">
+                        <Label fx:id="waterTypeLabel" text="Type of Water" textFill="#aa7d5d"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Arial Rounded MT Bold" size="30.0" />
+                              <Font name="Arial Rounded MT Bold" size="20.0"/>
                            </font>
                         </Label>
-                        <Button fx:id="backButton" layoutX="38.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButtonAction" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Back" textFill="#aa7d5d">
+                        <Label fx:id="locationLabel" text="Location" textFill="#aa7d5d" GridPane.halignment="CENTER">
                            <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font></Button>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab style="-fx-background-color: #66ccff;" text="Quality Reports">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #66ccff;">
-                     <children>
-                        <Button fx:id="backButton3" layoutX="38.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButtonAction" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Back" textFill="#aa7d5d">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <ListView fx:id="reportsList" layoutX="89.0" layoutY="66.0" prefHeight="254.0" prefWidth="550.0" />
-                        <Label layoutX="251.0" layoutY="17.0" text="Quality Reports" textFill="#c7eafb">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="30.0" />
+                              <Font name="Arial Rounded MT Bold" size="20.0"/>
                            </font>
                         </Label>
-                        <Button fx:id="addReportButton" layoutX="235.0" layoutY="382.0" mnemonicParsing="false" onAction="#addReportButtonAction" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;" text="Add Report to Source" textFill="#aa7d5d">
+                        <Label fx:id="waterConditionLabel" text="Condition of Water" textFill="#aa7d5d"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="2">
                            <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font></Button>
+                              <Font name="Arial Rounded MT Bold" size="20.0"/>
+                           </font>
+                        </Label>
+                        <Label fx:id="sourceLocation" text="Label" textFill="#f7c39f" GridPane.columnIndex="1"
+                               GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0"/>
+                           </font>
+                        </Label>
+                        <Label fx:id="waterType" text="Label" textFill="#f7c39f" GridPane.columnIndex="1"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0"/>
+                           </font>
+                        </Label>
+                        <Label fx:id="waterCondition" text="Label" textFill="#f7c39f" GridPane.columnIndex="1"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0"/>
+                           </font>
+                        </Label>
+                        <Label fx:id="sourceCreatorLabel" text="Created By" textFill="#aa7d5d"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="20.0"/>
+                           </font>
+                        </Label>
+                        <Label fx:id="creationDateLabel" text="Created On" textFill="#aa7d5d"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="20.0"/>
+                           </font>
+                        </Label>
+                        <Label fx:id="sourceCreator" text="Label" textFill="#f7c39f" GridPane.columnIndex="1"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0"/>
+                           </font>
+                        </Label>
+                        <Label fx:id="creationDate" text="Label" textFill="#f7c39f" GridPane.columnIndex="1"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0"/>
+                           </font>
+                        </Label>
                      </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-   </children>
+                  </GridPane>
+                  <Label layoutX="191.0" layoutY="16.0" text="Water Source Details" textFill="#66ccff">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="30.0"/>
+                     </font>
+                  </Label>
+                  <Button fx:id="backButton" layoutX="38.0" layoutY="22.0" mnemonicParsing="false"
+                          onAction="#backButtonAction"
+                          style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                          text="Back" textFill="#aa7d5d">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab style="-fx-background-color: #66ccff;" text="Quality Reports">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+                        style="-fx-background-color: #66ccff;">
+               <children>
+                  <Button fx:id="backButton3" layoutX="38.0" layoutY="22.0" mnemonicParsing="false"
+                          onAction="#backButtonAction"
+                          style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                          text="Back" textFill="#aa7d5d">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                     </font>
+                  </Button>
+                  <ListView fx:id="reportsList" layoutX="89.0" layoutY="66.0" prefHeight="254.0" prefWidth="550.0"/>
+                  <Label layoutX="251.0" layoutY="17.0" text="Quality Reports" textFill="#c7eafb">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="30.0"/>
+                     </font>
+                  </Label>
+                  <Button fx:id="addReportButton" layoutX="235.0" layoutY="382.0" mnemonicParsing="false"
+                          onAction="#addReportButtonAction" prefHeight="30.0" prefWidth="220.0"
+                          style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                          text="Add Report to Source" textFill="#aa7d5d">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+   </TabPane>
 </AnchorPane>

@@ -4,7 +4,7 @@ ccc,ccc,ccc,USER,[set email],[set address],Not Banned
 ddd,ddd,ddd,USER,[set email],[set address],Not Banned
 www,www,www,WORKER,[set email],[set address],Not Banned
 Worker,worker,pass,WORKER,[set email],[set address],Not Banned
-123,123,123,USER,[set email],[set address],Not Banned
+123,123,123,USER,[set email],[set address],BANNED
 buzz,buzz,bee,MANAGER,[set email],[set address],Not Banned
 qwerty,qwerty,q,USER,[set email],[set address],Not Banned
 asd,asd,asd,MANAGER,[set email],[set address],Not Banned

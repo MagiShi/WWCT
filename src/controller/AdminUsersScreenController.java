@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -30,6 +31,13 @@ public class AdminUsersScreenController {
     private ListView<String> usersList;
     @FXML
     private TextField userIDField;
+    @FXML
+    private Button deleteUserButton;
+    @FXML
+    private Button unbanUserButton;
+    @FXML
+    private Button banUserButton;
+
 
     private final List<String> allUsers = new ArrayList<>();
 
