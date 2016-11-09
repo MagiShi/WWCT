@@ -56,10 +56,6 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
 
     private final ArrayList<WaterSource> water = new ArrayList<>();
 
-    private final int STARTLAT = 34;
-
-    private final int STARTLONGIT = 88;
-
     /* references to the widgets in the fxml file */
 
     @FXML private Button logoutButton;
@@ -236,6 +232,8 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
         MapOptions options = new MapOptions();
 
         //set up the center location for the map
+        int STARTLAT = 34;
+        int STARTLONGIT = 88;
         LatLong center = new LatLong(STARTLAT, STARTLONGIT);
 
         options.center(center)

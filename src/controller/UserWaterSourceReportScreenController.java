@@ -49,7 +49,6 @@ public class UserWaterSourceReportScreenController {
 
     private final int MAXNUM = 90;
     private final int MINNUM = -90;
-    private final int RANDMAXNUM = 9999;
 
     public void setUser(User newUser) {
         currentUser = newUser;
@@ -202,6 +201,7 @@ public class UserWaterSourceReportScreenController {
             Date dateObject = new Date();
             String dateString = dateFormat.format(dateObject);
 
+            int RANDMAXNUM = 9999;
             int num = 1000 + (int) (Math.random() * ((RANDMAXNUM - 1000) + 1));
 
             fileWriter.append("Report #").append(Integer.toString(num)).append(", ");

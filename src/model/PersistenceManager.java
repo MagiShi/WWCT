@@ -79,7 +79,6 @@ class PersistenceManager {
             Object obj = ois.readObject();
             if (obj instanceof ArrayList<?>) {
                 model = (ArrayList<Location>) ois.readObject();
-                System.out.print("added");
             }
             ois.close();
         } catch (IOException ex) {

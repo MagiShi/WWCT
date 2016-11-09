@@ -18,7 +18,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-
+/*
+ *
+ * controller that is linked to the WorkerSourceDetailScreen fxml.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class WorkerSourceDetailScreenController {
 
     private WaterzMainFXApplication mainApplication;
@@ -47,16 +52,23 @@ public class WorkerSourceDetailScreenController {
     @FXML private Button addReportButton;
 
     private User currentUser;
-    public void setUser(User newUser) {
-        currentUser = newUser;
-    }
-    public void setLocation (Location loc) { currLoc = loc; }
-
 
     private final Collection<WaterSource> allReports = new ArrayList<>();
 
-    //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+    /*
+     * The method sets who is the user of the account currently used in the app.
+     * @param newUser   the User (the current Worker) that is logged in.
+     */
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
 
+    /*
+     * The method sets what is the water source.
+     * @param newUser   the User (the current Worker) that is logged in.
+     */
+
+    public void setLocation (Location loc) { currLoc = loc; }
 
     @FXML protected void backButtonAction() {
         try {
@@ -161,8 +173,6 @@ public class WorkerSourceDetailScreenController {
         sourceCreator.setText((currentSource.getUser()));
         creationDate.setText(currentSource.getDate());
     }
-
-
 
     /**
      * Setup the main application link so we can call methods there
