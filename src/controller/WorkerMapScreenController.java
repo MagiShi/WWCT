@@ -203,7 +203,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
      *
      * @param stage the stage to put the map scene into
      */
-    protected void setUpMapView(Stage stage) {
+    protected final void setUpMapView(Stage stage) {
         //construct the view
         mapView = new GoogleMapView();
         //we cannot do anything until the map is constructed, so we need a callback

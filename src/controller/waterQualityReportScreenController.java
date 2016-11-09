@@ -51,7 +51,7 @@ public class waterQualityReportScreenController {
     private double vPPM;
     private double cPPM;
 
-    private ArrayList<WaterSource> thisSource = new ArrayList<>();
+    //private ArrayList<WaterSource> thisSource = new ArrayList<>();
 
     public void setUser(User newUser) {
         currentUser = newUser;
@@ -59,7 +59,11 @@ public class waterQualityReportScreenController {
 
     public void setLocation (Location loc) { currLoc = loc; }
 
-    public void setThisSource (ArrayList<WaterSource> list) {thisSource = list;}
+//    public void setThisSource (ArrayList<WaterSource> list) {
+//        for (WaterSource w: list) {
+//            thisSource.add(w);
+//        }
+//    }
 
     @FXML protected void submitBttnAction() {
         userInputName = workerName.getText();
