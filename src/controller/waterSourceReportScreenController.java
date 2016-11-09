@@ -33,8 +33,13 @@ public class waterSourceReportScreenController {
     @FXML private TextField longitudeInput;
 
     private User currentUser;
-
     private Facade fc;
+    private String userInputName;
+    private String userInputLocation;
+    private SourceType userInputWaterType;
+    private WaterCondition userInputWaterCondition;
+    private double longit;
+    private double lat;
 
     public void setUser(User newUser) {
         currentUser = newUser;
@@ -43,94 +48,15 @@ public class waterSourceReportScreenController {
     public void setFacade(Facade fc) {this.fc = fc;}
 
     @FXML protected void submitBttnAction() {
-        String userInputName = reporterName.getText();
-        String userInputLocation = waterLocation.getText();
-        SourceType userInputWaterType = waterType.getValue();
-        WaterCondition userInputWaterCondition = waterCondition.getValue();
-        boolean valid = true;
-        System.out.println(userInputName);
-        if (userInputName.equals("")) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty User Name field");
-            alert.setContentText("Please input your name.");
-            alert.showAndWait();
-            valid = false;
-        }
-        if (userInputLocation.equals("")) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty User Name field");
-            alert.setContentText("Please input a location.");
-            alert.showAndWait();
-            valid = false;
-        }
-        if (userInputWaterCondition == null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty User Name field");
-            alert.setContentText("Please input a Water Condition.");
-            alert.showAndWait();
-            valid = false;
-        }
-        if (userInputWaterType == null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty User Name field");
-            alert.setContentText("Please input a Water Type.");
-            alert.showAndWait();
-            valid = false;
-        }
-        double lat = 0;
-        double longit = 0;
-        //making sure latitude input and longitude input are int/decimal values
-        try {
-            lat = Double.valueOf(latitudeInput.getText());
-            if (lat < -90 || lat > 90) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Invalid latitude");
-                alert.setHeaderText("Invalid input for latitude");
-                alert.setContentText("Please input valid latitude in integer/decimal value between -90 and 90.");
-                alert.showAndWait();
-                latitudeInput.clear();
-            }
-        } catch (NumberFormatException nfe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Invalid latitude");
-            alert.setHeaderText("Invalid input for latitude");
-            alert.setContentText("Please input latitude in integer/decimal value.");
-            alert.showAndWait();
-            latitudeInput.clear();
-        } catch (NullPointerException npe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty latitude field");
-            alert.setHeaderText("No input for latitude");
-            alert.setContentText("Please input a latitude value.");
-            alert.showAndWait();
-            latitudeInput.clear();
-        }
-        try {
-            longit = Double.valueOf(longitudeInput.getText());
-            if (longit < -90 || longit > 90) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Invalid longitude");
-                alert.setHeaderText("Invalid input for longitude");
-                alert.setContentText("Please input valid longitude in integer/decimal value between -180 and 180.");
-                alert.showAndWait();
-                latitudeInput.clear();
-            }
-        } catch (NumberFormatException nfe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Invalid longitude");
-            alert.setHeaderText("Invalid input for longitude");
-            alert.setContentText("Please input longitude in integer/decimal value.");
-            alert.showAndWait();
-            longitudeInput.clear();
-        } catch (NullPointerException npe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty longitude field");
-            alert.setHeaderText("No input for longitude");
-            alert.setContentText("Please input a longitude value.");
-            alert.showAndWait();
-            longitudeInput.clear();
-        }
-        if (valid) {
+        userInputName = reporterName.getText();
+        userInputLocation = waterLocation.getText();
+        userInputWaterType = waterType.getValue();
+        userInputWaterCondition = waterCondition.getValue();
+
+        lat = getLat();
+        longit = getLongit();
+
+        if (checkValidity()) {
             boolean alreadyExists = new File("sourceReports.csv").exists();
             if (!alreadyExists) {
                 BufferedWriter writer = null;
@@ -141,71 +67,20 @@ public class waterSourceReportScreenController {
                     e.printStackTrace();
                 } finally {
                     try {
-                        writer.flush();
-                        writer.close();
+                        if (writer != null) {
+                            writer.flush();
+                            writer.close();
+                        }
                     } catch (IOException ioe) {
                         System.out.println("Error while flushing, creating new.");
                         ioe.printStackTrace();
-                    } catch (NullPointerException e) {
-                        e.printStackTrace();
                     }
                 }
             }
 
+            writeToFile();
+
             try {
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter("sourceReports.csv", true);
-
-                    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy HH:mm");
-                    Date dateObject = new Date();
-                    String dateString = dateFormat.format(dateObject);
-
-                    int num = 1000 + (int) (Math.random() * ((9999 - 1000) + 1));
-
-                    fileWriter.append("Report #" + num);
-                    fileWriter.append(", ");
-                    fileWriter.append(userInputName);
-                    fileWriter.append(", ");
-                    fileWriter.append(dateString);
-                    fileWriter.append(", ");
-                    fileWriter.append(userInputLocation);
-                    fileWriter.append(", ");
-                    fileWriter.append(latitudeInput.getText());
-                    fileWriter.append(",");
-                    fileWriter.append(longitudeInput.getText());
-                    fileWriter.append(",");
-                    fileWriter.append(userInputWaterType.toString());
-                    fileWriter.append(", ");
-                    fileWriter.append(userInputWaterCondition.toString());
-                    fileWriter.append("\n");
-
-                    Location loc = new Location(lat,
-                            longit,
-                            "Marker",
-                            "<h2> " + num +
-                                    "</h2> <br> Reporter: " + userInputName +
-                                    "<br> Date: " + dateString +
-                                    "<br> Water Type: " + userInputWaterType +
-                                    "<br> Water Condition: " + userInputWaterCondition);
-
-                    fc.addLocation(loc);
-
-                    //create a new report? should we have a report class?
-                    //newReport = new Report(...);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        fileWriter.flush();
-                        fileWriter.close();
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing");
-                        ioe.printStackTrace();
-                    } catch (NullPointerException e) {
-                        e.printStackTrace();
-                    }
-                }
 
                 if (currentUser.getType().equals("MANAGER")) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
@@ -260,6 +135,157 @@ public class waterSourceReportScreenController {
             }
         }
     }
+
+    private boolean checkValidity() {
+        boolean valid = true;
+        if (userInputName.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input your name.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputLocation.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a location.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputWaterCondition == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a Water Condition.");
+            alert.showAndWait();
+            valid = false;
+        }
+        if (userInputWaterType == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty User Name field");
+            alert.setContentText("Please input a Water Type.");
+            alert.showAndWait();
+            valid = false;
+        }
+        return valid;
+    }
+
+    private double getLat() {
+
+        double lat = 0;
+        try {
+            lat = Double.valueOf(latitudeInput.getText());
+            if (lat < -90 || lat > 90) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Invalid latitude");
+                alert.setHeaderText("Invalid input for latitude");
+                alert.setContentText("Please input valid latitude in integer/decimal value between -90 and 90.");
+                alert.showAndWait();
+                latitudeInput.clear();
+            }
+        } catch (NumberFormatException nfe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid latitude");
+            alert.setHeaderText("Invalid input for latitude");
+            alert.setContentText("Please input latitude in integer/decimal value.");
+            alert.showAndWait();
+            latitudeInput.clear();
+        } catch (NullPointerException npe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty latitude field");
+            alert.setHeaderText("No input for latitude");
+            alert.setContentText("Please input a latitude value.");
+            alert.showAndWait();
+            latitudeInput.clear();
+        }
+        return lat;
+    }
+
+    private double getLongit() {
+        double longit = 0;
+        try {
+            longit = Double.valueOf(longitudeInput.getText());
+            if (longit < -90 || longit > 90) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Invalid longitude");
+                alert.setHeaderText("Invalid input for longitude");
+                alert.setContentText("Please input valid longitude in integer/decimal value between -180 and 180.");
+                alert.showAndWait();
+                latitudeInput.clear();
+            }
+        } catch (NumberFormatException nfe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid longitude");
+            alert.setHeaderText("Invalid input for longitude");
+            alert.setContentText("Please input longitude in integer/decimal value.");
+            alert.showAndWait();
+            longitudeInput.clear();
+        } catch (NullPointerException npe) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty longitude field");
+            alert.setHeaderText("No input for longitude");
+            alert.setContentText("Please input a longitude value.");
+            alert.showAndWait();
+            longitudeInput.clear();
+        }
+        return longit;
+    }
+
+    private void writeToFile() {
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter("sourceReports.csv", true);
+
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy HH:mm");
+            Date dateObject = new Date();
+            String dateString = dateFormat.format(dateObject);
+
+            int num = 1000 + (int) (Math.random() * ((9999 - 1000) + 1));
+
+            fileWriter.append("Report #").append(Integer.toString(num));
+            fileWriter.append(", ");
+            fileWriter.append(userInputName);
+            fileWriter.append(", ");
+            fileWriter.append(dateString);
+            fileWriter.append(", ");
+            fileWriter.append(userInputLocation);
+            fileWriter.append(", ");
+            fileWriter.append(latitudeInput.getText());
+            fileWriter.append(",");
+            fileWriter.append(longitudeInput.getText());
+            fileWriter.append(",");
+            fileWriter.append(userInputWaterType.toString());
+            fileWriter.append(", ");
+            fileWriter.append(userInputWaterCondition.toString());
+            fileWriter.append("\n");
+
+            Location loc = new Location(lat,
+                    longit,
+                    "Marker",
+                    "<h2> " + num +
+                            "</h2> <br> Reporter: " + userInputName +
+                            "<br> Date: " + dateString +
+                            "<br> Water Type: " + userInputWaterType +
+                            "<br> Water Condition: " + userInputWaterCondition);
+
+            fc.addLocation(loc);
+
+            //create a new report? should we have a report class?
+            //newReport = new Report(...);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fileWriter != null) {
+                    fileWriter.flush();
+                    fileWriter.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error while flushing");
+                ioe.printStackTrace();
+            }
+        }
+    }
+
 
     @FXML protected void cancelBttnAction() {
         try {

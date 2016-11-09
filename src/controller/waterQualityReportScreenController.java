@@ -162,10 +162,10 @@ public class waterQualityReportScreenController {
                     Date dateObject = new Date();
                     String dateString = dateFormat.format(dateObject);
 
-                    String latitude = new String(String.valueOf(currLoc.getLatitude()));
-                    String longitude = new String(String.valueOf(currLoc.getLongitude()));
+                    String latitude = String.valueOf(currLoc.getLatitude());
+                    String longitude = String.valueOf(currLoc.getLongitude());
 
-                    fileWriter.append("Report #" + 1000 + (int) (Math.random() * ((9999 - 1000) + 1)));
+                    fileWriter.append("Report #" + 1000).append(Integer.toString((int) (Math.random() * ((9999 - 1000) + 1))));
                     fileWriter.append(", ");
                     fileWriter.append(userInputName);
                     fileWriter.append(", ");
