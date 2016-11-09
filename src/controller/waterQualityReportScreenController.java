@@ -142,8 +142,10 @@ public class waterQualityReportScreenController {
                     e.printStackTrace();
                 } finally {
                     try {
-                        writer.flush();
-                        writer.close();
+                        if (writer != null) {
+                            writer.flush();
+                            writer.close();
+                        }
                     } catch (IOException ioe) {
                         System.out.println("Error while flushing, creating new.");
                         ioe.printStackTrace();
@@ -188,8 +190,10 @@ public class waterQualityReportScreenController {
                     e.printStackTrace();
                 } finally {
                     try {
-                        fileWriter.flush();
-                        fileWriter.close();
+                        if (fileWriter != null) {
+                            fileWriter.flush();
+                            fileWriter.close();
+                        }
                     } catch (IOException ioe) {
                         System.out.println("Error while flushing");
                         ioe.printStackTrace();

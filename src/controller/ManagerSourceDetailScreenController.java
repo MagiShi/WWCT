@@ -71,7 +71,7 @@ public class ManagerSourceDetailScreenController {
 
     private ArrayList<WaterSource> allReports = new ArrayList<WaterSource>();
 
-    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+    //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
     private ArrayList<Report> currentReports = new ArrayList<>();
 
@@ -198,7 +198,7 @@ public class ManagerSourceDetailScreenController {
         for (WaterSource source: allReports) {
             if (source.getLatitude().equals(currLoc.getLatitude()) && source.getLongitude().equals(currLoc.getLongitude())) {
                 currentSource = source;
-                thisSource.add(currentSource);
+                //thisSource.add(currentSource);
             }
         }
 
@@ -308,8 +308,10 @@ public class ManagerSourceDetailScreenController {
                     e.printStackTrace();
                 } finally {
                     try {
-                        writer.flush();
-                        writer.close();
+                        if (writer != null) {
+                            writer.flush();
+                            writer.close();
+                        }
                     } catch (IOException ioe) {
                         System.out.println("Error while flushing, creating new.");
                         ioe.printStackTrace();
@@ -326,8 +328,10 @@ public class ManagerSourceDetailScreenController {
                     e.printStackTrace();
                 } finally {
                     try {
-                        fileWriter.flush();
-                        fileWriter.close();
+                        if (fileWriter != null) {
+                            fileWriter.flush();
+                            fileWriter.close();
+                        }
                     } catch (IOException ioe) {
                         System.out.println("Error while flushing");
                         ioe.printStackTrace();

@@ -48,7 +48,7 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     private Facade fac;
 
     private String username;
-    private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
+    //private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
 
 
     /* references to the widgets in the fxml file */
@@ -345,18 +345,18 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        boolean alreadyExists = new File("sourceReports.csv").exists();
-        if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
-                String line;
-                while (((line = br.readLine()) != null)) {
-                    String[] data = line.split(",");
-                    WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
-                    water.add(source);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+//        boolean alreadyExists = new File("sourceReports.csv").exists();
+//        if (alreadyExists) {
+//            try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
+//                String line;
+//                while (((line = br.readLine()) != null)) {
+//                    String[] data = line.split(",");
+//                    WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
+//                    //water.add(source);
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 }

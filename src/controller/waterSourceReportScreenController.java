@@ -146,6 +146,8 @@ public class waterSourceReportScreenController {
                     } catch (IOException ioe) {
                         System.out.println("Error while flushing, creating new.");
                         ioe.printStackTrace();
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
                     }
                 }
             }
@@ -200,6 +202,8 @@ public class waterSourceReportScreenController {
                     } catch (IOException ioe) {
                         System.out.println("Error while flushing");
                         ioe.printStackTrace();
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
                     }
                 }
 
