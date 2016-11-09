@@ -4,9 +4,6 @@
 
 package src.model;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-
 public class User {
     private String userID;
     private String password;

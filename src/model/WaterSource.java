@@ -13,7 +13,7 @@ public class WaterSource {
     private double longit;
     private String type;
     private String sourceCondition;
-    private ArrayList<Report> reports = new ArrayList<Report>();
+    private ArrayList<Report> reports = new ArrayList<>();
     public WaterSource(String user, String date, String loc, double latIn, double longitIn, String newType, String condit) {
         firstUser = user;
         creationDate = date;

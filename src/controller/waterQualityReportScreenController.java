@@ -2,16 +2,22 @@ package src.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import src.model.Location;
 import src.model.PurityCondition;
 import src.model.User;
 import src.model.WaterSource;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,10 +42,16 @@ public class waterQualityReportScreenController {
     @FXML private ComboBox<PurityCondition> waterOverallCondition;
 
     private User currentUser;
-
     private Location currLoc;
+    private String userInputName;
+    private String userInputLocation;
+    private String userInputVirusPPM;
+    private String userInputContaminantPPM;
+    PurityCondition userInputOverallCondition;
+    private double vPPM;
+    private double cPPM;
 
-    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+    private ArrayList<WaterSource> thisSource = new ArrayList<>();
 
     public void setUser(User newUser) {
         currentUser = newUser;
@@ -49,17 +61,50 @@ public class waterQualityReportScreenController {
 
     public void setThisSource (ArrayList<WaterSource> list) {thisSource = list;}
 
-
     @FXML protected void submitBttnAction() {
-        String userInputName = workerName.getText();
-        String userInputLocation = waterLocation.getText();
-        String userInputVirusPPM = virusPPM.getText();
-        String userInputContaminantPPM = contaminantPPM.getText();
-        PurityCondition userInputOverallCondition = waterOverallCondition.getValue();
-        double vPPM;
-        double cPPM;
+        userInputName = workerName.getText();
+        userInputLocation = waterLocation.getText();
+        userInputVirusPPM = virusPPM.getText();
+        userInputContaminantPPM = contaminantPPM.getText();
+        userInputOverallCondition = waterOverallCondition.getValue();
+
+        if (checkValidity() && verifyvPPM() && verifycPPM()) {
+            boolean alreadyExists = new File("purityReports.csv").exists();
+            if (!alreadyExists) {
+                BufferedWriter writer = null;
+                try {
+                    File newFile = new File("purityReports.csv");
+                    writer = new BufferedWriter(new FileWriter(newFile));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (writer != null) {
+                            writer.flush();
+                            writer.close();
+                        }
+                    } catch (IOException ioe) {
+                        System.out.println("Error while flushing, creating new.");
+                        ioe.printStackTrace();
+                    }
+                }
+            }
+
+            try {
+                writeToFile();
+                if (currentUser.getType().equals("WORKER")) {
+                    changeToWorkerSource();
+                } else {
+                    changeToManagerSource();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private boolean checkValidity()  {
         boolean valid = true;
-        //making sure latitude input and longitude input are int/decimal values
         if (userInputName.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty User Name field");
@@ -81,6 +126,11 @@ public class waterQualityReportScreenController {
             alert.showAndWait();
             valid = false;
         }
+        return valid;
+    }
+
+    private boolean verifyvPPM() {
+        boolean valid = true;
         try {
             vPPM = Double.valueOf(userInputVirusPPM);
             if (vPPM < 0) {
@@ -106,6 +156,11 @@ public class waterQualityReportScreenController {
             virusPPM.clear();
             valid = false;
         }
+        return valid;
+    }
+
+    private boolean verifycPPM() {
+        boolean valid = true;
         try {
             cPPM = Double.valueOf(userInputContaminantPPM);
             if (cPPM < 0) {
@@ -131,105 +186,45 @@ public class waterQualityReportScreenController {
             contaminantPPM.clear();
             valid = false;
         }
-        if (valid) {
-            boolean alreadyExists = new File("purityReports.csv").exists();
-            if (!alreadyExists) {
-                BufferedWriter writer = null;
-                try {
-                    File newFile = new File("purityReports.csv");
-                    writer = new BufferedWriter(new FileWriter(newFile));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (writer != null) {
-                            writer.flush();
-                            writer.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing, creating new.");
-                        ioe.printStackTrace();
-                    }
-                }
-            }
 
+        return valid;
+    }
+
+    private void writeToFile() {
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter("purityReports.csv", true);
+
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy HH:mm");
+            Date dateObject = new Date();
+            String dateString = dateFormat.format(dateObject);
+
+            String latitude = String.valueOf(currLoc.getLatitude());
+            String longitude = String.valueOf(currLoc.getLongitude());
+
+            fileWriter.append("Report #" + 1000).append(Integer.toString((int) (Math.random() * ((9999 - 1000) + 1)))).append(", ");
+            fileWriter.append(userInputName).append(", ");
+            fileWriter.append(dateString).append(", ");
+            fileWriter.append(userInputLocation).append(", ");
+            fileWriter.append(userInputVirusPPM).append(", ");
+            fileWriter.append(userInputContaminantPPM).append(", ");
+            fileWriter.append(userInputOverallCondition.toString()).append(", ");
+            fileWriter.append(latitude).append(", ");
+            fileWriter.append(longitude).append("\n");
+
+            //create a new report? should we have a report class?
+            //newReport = new Report(...);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             try {
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter("purityReports.csv", true);
-
-                    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy HH:mm");
-                    Date dateObject = new Date();
-                    String dateString = dateFormat.format(dateObject);
-
-                    String latitude = String.valueOf(currLoc.getLatitude());
-                    String longitude = String.valueOf(currLoc.getLongitude());
-
-                    fileWriter.append("Report #" + 1000).append(Integer.toString((int) (Math.random() * ((9999 - 1000) + 1))));
-                    fileWriter.append(", ");
-                    fileWriter.append(userInputName);
-                    fileWriter.append(", ");
-                    fileWriter.append(dateString);
-                    fileWriter.append(", ");
-                    fileWriter.append(userInputLocation);
-                    fileWriter.append(", ");
-                    fileWriter.append(userInputVirusPPM);
-                    fileWriter.append(", ");
-                    fileWriter.append(userInputContaminantPPM);
-                    fileWriter.append(", ");
-                    fileWriter.append(userInputOverallCondition.toString());
-                    fileWriter.append(", ");
-                    fileWriter.append(latitude);
-                    fileWriter.append(", ");
-                    fileWriter.append(longitude);
-                    fileWriter.append("\n");
-
-                    //create a new report? should we have a report class?
-                    //newReport = new Report(...);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (fileWriter != null) {
-                            fileWriter.flush();
-                            fileWriter.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing");
-                        ioe.printStackTrace();
-                    }
+                if (fileWriter != null) {
+                    fileWriter.flush();
+                    fileWriter.close();
                 }
-                if (currentUser.getType().equals("WORKER")) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
-
-                    anchorLayout = fxmlLoader.load();
-                    WorkerSourceDetailScreenController controller = fxmlLoader.getController();
-
-                    controller.setUser(currentUser);
-                    controller.setCurrentSource(currLoc);
-                    controller.setLocation(currLoc);
-
-                    Scene scene2 = new Scene(anchorLayout);
-                    mainApplication.getMainScreen().setScene(scene2);
-
-                    controller.setMainApp(mainApplication);
-                } else {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
-
-                    anchorLayout = fxmlLoader.load();
-                    ManagerSourceDetailScreenController controller = fxmlLoader.getController();
-
-                    controller.setUser(currentUser);
-                    controller.setCurrentSource(currLoc);
-                    controller.setLocation(currLoc);
-
-                    Scene scene2 = new Scene(anchorLayout);
-                    mainApplication.getMainScreen().setScene(scene2);
-
-                    controller.setMainApp(mainApplication);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (IOException ioe) {
+                System.out.println("Error while flushing");
+                ioe.printStackTrace();
             }
         }
     }
@@ -237,38 +232,56 @@ public class waterQualityReportScreenController {
     @FXML protected void cancelBttnAction() {
         try {
             if (currentUser.getType().equals("MANAGER")) {
-
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
-
-                anchorLayout = fxmlLoader.load();
-                ManagerSourceDetailScreenController controller = fxmlLoader.getController();
-
-                controller.setUser(currentUser);
-                controller.setCurrentSource(currLoc);
-                controller.setLocation(currLoc);
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
-
-                controller.setMainApp(mainApplication);
+                changeToManagerSource();
             } else {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
-
-                anchorLayout = fxmlLoader.load();
-                WorkerSourceDetailScreenController controller = fxmlLoader.getController();
-
-                controller.setUser(currentUser);
-                controller.setCurrentSource(currLoc);
-                controller.setLocation(currLoc);
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
-
-                controller.setMainApp(mainApplication);
+                changeToWorkerSource();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void changeToWorkerSource() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerSourceDetailScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            WorkerSourceDetailScreenController controller = fxmlLoader.getController();
+
+            controller.setUser(currentUser);
+            controller.setCurrentSource(currLoc);
+            controller.setLocation(currLoc);
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void changeToManagerSource()  {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            ManagerSourceDetailScreenController controller = fxmlLoader.getController();
+
+            controller.setUser(currentUser);
+            controller.setCurrentSource(currLoc);
+            controller.setLocation(currLoc);
+
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+
+            controller.setMainApp(mainApplication);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Initializes the controller class. This method is automatically called
      * after the constructor and

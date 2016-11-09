@@ -16,6 +16,7 @@ import src.model.WaterSource;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.scene.chart.XYChart;
 
@@ -217,8 +218,7 @@ public class ManagerSourceDetailScreenController {
         XYChart.Series series = new XYChart.Series();
         series.setName("Virus PPM");
         if (virusCheckBox.isSelected()) {
-            for (int i = 0; i < currentReports.size(); i++) {
-                Report r = currentReports.get(i);
+            for (Report r : currentReports) {
                 float ppm = r.getVirusPPM();
                 int year = r.getYear();
                 series.getData().add(new XYChart.Data(year, ppm));
@@ -239,12 +239,7 @@ public class ManagerSourceDetailScreenController {
     private void showYearGraph(Integer year) {
         displayedYear = year;
         allDisplayed = false;
-        List<Report> yearReports = new ArrayList<>();
-        for (Report r : currentReports) {
-            if (r.getYear() == year) {
-                yearReports.add(r);
-            }
-        }
+        List<Report> yearReports = currentReports.stream().filter(r -> r.getYear() == year).collect(Collectors.toList());
         xAxis.setUpperBound(12);
         xAxis.setLowerBound(1);
         xAxis.setLabel("Month");
