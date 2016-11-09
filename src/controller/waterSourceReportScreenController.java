@@ -23,9 +23,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Ji Won Lee on 10/11/2016.
- */
 public class waterSourceReportScreenController {
     private WaterzMainFXApplication mainApplication;
     private AnchorPane anchorLayout;
@@ -123,12 +120,21 @@ public class waterSourceReportScreenController {
 
         double lat = 0;
         try {
-            lat = Double.valueOf(latitudeInput.getText());
-            if (lat < -90 || lat > 90) {
+            if (latitudeInput != null) {
+                lat = Double.valueOf(latitudeInput.getText());
+                if ((lat < -90) || (lat > 90)) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Invalid latitude");
+                    alert.setHeaderText("Invalid input for latitude");
+                    alert.setContentText("Please input valid latitude in integer/decimal value between -90 and 90.");
+                    alert.showAndWait();
+                    latitudeInput.clear();
+                }
+            } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Invalid latitude");
-                alert.setHeaderText("Invalid input for latitude");
-                alert.setContentText("Please input valid latitude in integer/decimal value between -90 and 90.");
+                alert.setTitle("Empty latitude field");
+                alert.setHeaderText("No input for latitude");
+                alert.setContentText("Please input a latitude value.");
                 alert.showAndWait();
                 latitudeInput.clear();
             }
@@ -139,13 +145,6 @@ public class waterSourceReportScreenController {
             alert.setContentText("Please input latitude in integer/decimal value.");
             alert.showAndWait();
             latitudeInput.clear();
-        } catch (NullPointerException npe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty latitude field");
-            alert.setHeaderText("No input for latitude");
-            alert.setContentText("Please input a latitude value.");
-            alert.showAndWait();
-            latitudeInput.clear();
         }
         return lat;
     }
@@ -153,27 +152,29 @@ public class waterSourceReportScreenController {
     private double getLongit() {
         double longit = 0;
         try {
-            longit = Double.valueOf(longitudeInput.getText());
-            if (longit < -90 || longit > 90) {
+            if (longitudeInput != null) {
+                longit = Double.valueOf(longitudeInput.getText());
+                if ((longit < -90) || (longit > 90)) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Invalid longitude");
+                    alert.setHeaderText("Invalid input for longitude");
+                    alert.setContentText("Please input valid longitude in integer/decimal value between -180 and 180.");
+                    alert.showAndWait();
+                    latitudeInput.clear();
+                }
+            } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Invalid longitude");
-                alert.setHeaderText("Invalid input for longitude");
-                alert.setContentText("Please input valid longitude in integer/decimal value between -180 and 180.");
+                alert.setTitle("Empty longitude field");
+                alert.setHeaderText("No input for longitude");
+                alert.setContentText("Please input a longitude value.");
                 alert.showAndWait();
-                latitudeInput.clear();
+                longitudeInput.clear();
             }
         } catch (NumberFormatException nfe) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Invalid longitude");
             alert.setHeaderText("Invalid input for longitude");
             alert.setContentText("Please input longitude in integer/decimal value.");
-            alert.showAndWait();
-            longitudeInput.clear();
-        } catch (NullPointerException npe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty longitude field");
-            alert.setHeaderText("No input for longitude");
-            alert.setContentText("Please input a longitude value.");
             alert.showAndWait();
             longitudeInput.clear();
         }
@@ -219,9 +220,9 @@ public class waterSourceReportScreenController {
             fileWriter.append(userInputWaterType.toString()).append(", ");
             fileWriter.append(userInputWaterCondition.toString()).append("\n");
 
-            Location loc = new Location(lat, longit,"Marker","<h2> " + num +
-                            "</h2> <br> Reporter: " + userInputName + "<br> Date: " + dateString +
-                            "<br> Water Type: " + userInputWaterType + "<br> Water Condition: " + userInputWaterCondition);
+            Location loc = new Location(lat, longit,"Marker","<h2> " + num + "</h2> <br> Reporter: "
+                    + userInputName + "<br> Date: " + dateString + "<br> Water Type: "
+                    + userInputWaterType + "<br> Water Condition: " + userInputWaterCondition);
 
             fc.addLocation(loc);
 

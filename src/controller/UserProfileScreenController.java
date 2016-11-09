@@ -98,17 +98,6 @@ public class UserProfileScreenController {
         currentAddress.setText(newAddress.getText());
         newAddress.clear();
     }
-        /**
-         * Initializes the controller class. This method is automatically called
-         * after the constructor and
-         * after the fxml file has been loaded.
-         */
-        @FXML
-        private void initialize() {
-            //put maps and data here maybe?
-        }
-
-
 
         /**
          * Setup the main application link so we can call methods there

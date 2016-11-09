@@ -21,9 +21,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Ji Won Lee on 10/11/2016.
- */
 public class waterQualityReportScreenController {
     private WaterzMainFXApplication mainApplication;
     private AnchorPane anchorLayout;
@@ -45,9 +42,7 @@ public class waterQualityReportScreenController {
     private String userInputLocation;
     private String userInputVirusPPM;
     private String userInputContaminantPPM;
-    PurityCondition userInputOverallCondition;
-    private double vPPM;
-    private double cPPM;
+    private PurityCondition userInputOverallCondition;
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<>();
 
@@ -86,7 +81,6 @@ public class waterQualityReportScreenController {
                             writer.close();
                         }
                     } catch (IOException ioe) {
-                        System.out.println("Error while flushing, creating new.");
                         ioe.printStackTrace();
                     }
                 }
@@ -134,11 +128,20 @@ public class waterQualityReportScreenController {
     private boolean verifyvPPM() {
         boolean valid = true;
         try {
-            vPPM = Double.valueOf(userInputVirusPPM);
-            if (vPPM < 0) {
+            if (userInputVirusPPM != null) {
+                double vPPM = Double.valueOf(userInputVirusPPM);
+                if (vPPM < 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Invalid Virus PPM");
+                    alert.setContentText("Invalid Input for Virus PPM");
+                    alert.showAndWait();
+                    virusPPM.clear();
+                    valid = false;
+                }
+            } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Invalid Virus PPM");
-                alert.setContentText("Invalid Input for Virus PPM");
+                alert.setTitle("Empty Virus PPM field");
+                alert.setContentText("Please input a Virus PPM value.");
                 alert.showAndWait();
                 virusPPM.clear();
                 valid = false;
@@ -150,13 +153,6 @@ public class waterQualityReportScreenController {
             alert.showAndWait();
             virusPPM.clear();
             valid = false;
-        } catch (NullPointerException npe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty Virus PPM field");
-            alert.setContentText("Please input a Virus PPM value.");
-            alert.showAndWait();
-            virusPPM.clear();
-            valid = false;
         }
         return valid;
     }
@@ -164,11 +160,21 @@ public class waterQualityReportScreenController {
     private boolean verifycPPM() {
         boolean valid = true;
         try {
-            cPPM = Double.valueOf(userInputContaminantPPM);
-            if (cPPM < 0) {
+            if (userInputContaminantPPM != null) {
+
+                double cPPM = Double.valueOf(userInputContaminantPPM);
+                if (cPPM < 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Invalid Contaminant PPM");
+                    alert.setContentText("Invalid Input for Contaminant PPM");
+                    alert.showAndWait();
+                    contaminantPPM.clear();
+                    valid = false;
+                }
+            } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Invalid Contaminant PPM");
-                alert.setContentText("Invalid Input for Contaminant PPM");
+                alert.setTitle("Empty Contaminant PPM field");
+                alert.setContentText("Please input a Contaminant PPM value.");
                 alert.showAndWait();
                 contaminantPPM.clear();
                 valid = false;
@@ -180,15 +186,7 @@ public class waterQualityReportScreenController {
             alert.showAndWait();
             contaminantPPM.clear();
             valid = false;
-        } catch (NullPointerException npe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty Contaminant PPM field");
-            alert.setContentText("Please input a Contaminant PPM value.");
-            alert.showAndWait();
-            contaminantPPM.clear();
-            valid = false;
         }
-
         return valid;
     }
 
@@ -204,7 +202,8 @@ public class waterQualityReportScreenController {
             String latitude = String.valueOf(currLoc.getLatitude());
             String longitude = String.valueOf(currLoc.getLongitude());
 
-            fileWriter.append("Report #" + 1000).append(Integer.toString((int) (Math.random() * ((9999 - 1000) + 1)))).append(", ");
+            fileWriter.append("Report #" + 1000)
+                    .append(Integer.toString((int)(Math.random() * ((9999 - 1000) + 1)))).append(", ");
             fileWriter.append(userInputName).append(", ");
             fileWriter.append(dateString).append(", ");
             fileWriter.append(userInputLocation).append(", ");
@@ -225,7 +224,6 @@ public class waterQualityReportScreenController {
                     fileWriter.close();
                 }
             } catch (IOException ioe) {
-                System.out.println("Error while flushing");
                 ioe.printStackTrace();
             }
         }

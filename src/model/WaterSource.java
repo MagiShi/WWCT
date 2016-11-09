@@ -2,19 +2,17 @@ package src.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Cassie on 10/12/2016.
- */
 public class WaterSource {
-    private String firstUser;
-    private String creationDate;
-    private String location;
-    private double lat;
-    private double longit;
-    private String type;
-    private String sourceCondition;
-    private ArrayList<Report> reports = new ArrayList<>();
-    public WaterSource(String user, String date, String loc, double latIn, double longitIn, String newType, String condit) {
+    private final String firstUser;
+    private final String creationDate;
+    private final String location;
+    private final double lat;
+    private final double longit;
+    private final String type;
+    private final String sourceCondition;
+    private final ArrayList<Report> reports = new ArrayList<>();
+    public WaterSource(String user, String date, String loc, double latIn,
+                       double longitIn, String newType, String condit) {
         firstUser = user;
         creationDate = date;
         location = loc;

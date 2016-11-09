@@ -1,12 +1,9 @@
 package src.model;
 
-/**
- * Created by Da-In on 10/12/2016.
- */
 public enum WaterCondition {
     WASTE("WASTE"), CLEAR("CLEAR"), MUDDY("MUDDY"), POTABLE("POTABLE");
 
-    public final String condition;
+    private final String condition;
 
     WaterCondition(String condition) {
         this.condition = condition;
