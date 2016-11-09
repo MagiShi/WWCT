@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class WorkerSourceDetailScreenController {
@@ -53,7 +54,7 @@ public class WorkerSourceDetailScreenController {
     public void setLocation (Location loc) { currLoc = loc; }
 
 
-    private final List<WaterSource> allReports = new ArrayList<>();
+    private final Collection<WaterSource> allReports = new ArrayList<>();
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
