@@ -277,15 +277,12 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
         });
 
         MenuItem saveBinary = new MenuItem("Save Binary");
-        saveBinary.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser fc = new FileChooser();
-                fc.setTitle("Save Binary File");
-                File file  = fc.showSaveDialog(mainStage);
-                if (file != null)
-                    Facade.getInstance().saveModelToBinary(file);
-            }
+        saveBinary.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Save Binary File");
+            File file  = fc.showSaveDialog(mainStage);
+            if (file != null)
+                Facade.getInstance().saveModelToBinary(file);
         });
 
         MenuItem saveJson = new MenuItem("Save JSON");

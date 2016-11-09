@@ -54,7 +54,7 @@ public class WorkerSourceDetailScreenController {
     public void setLocation (Location loc) { currLoc = loc; }
 
 
-    private ArrayList<WaterSource> allReports = new ArrayList<WaterSource>();
+    private ArrayList<WaterSource> allReports = new ArrayList<>();
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
@@ -147,12 +147,11 @@ public class WorkerSourceDetailScreenController {
     public void setCurrentSource(Location newSource) {
         currLoc = newSource;
 
-        for (WaterSource source: allReports) {
-            if (source.getLatitude().equals(currLoc.getLatitude()) && source.getLongitude().equals(currLoc.getLongitude())) {
-                currentSource = source;
-                //thisSource.add(currentSource);
-            }
-        }
+        //thisSource.add(currentSource);
+        allReports.stream().filter(source -> source.getLatitude().equals(currLoc.getLatitude()) && source.getLongitude().equals(currLoc.getLongitude())).forEach(source -> {
+            currentSource = source;
+            //thisSource.add(currentSource);
+        });
         System.out.println(currentSource);
         sourceLocation.setText(currentSource.getLocation());
         waterType.setText(currentSource.getType());

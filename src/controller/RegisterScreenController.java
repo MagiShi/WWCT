@@ -148,14 +148,19 @@ public class RegisterScreenController {
                 nameInput.getText() , userInputUserType.toString(),
                 "[set email]", "[set address]", "Not Banned");
 
-        if (userInputUserType.toString().equals("WORKER")) {
-            changeToWorkerScreen(currentUser);
-        } else if(userInputUserType.toString().equals("USER")) {
-            changeToUserScreen(currentUser);
-        } else if (userInputUserType.toString().equals("MANAGER")) {
-            changeToManagerScreen(currentUser);
-        } else if (userInputUserType.toString().equals("ADMINISTRATOR")) {
-            changeToAdminScreen(currentUser);
+        switch (userInputUserType.toString()) {
+            case "WORKER":
+                changeToWorkerScreen(currentUser);
+                break;
+            case "USER":
+                changeToUserScreen(currentUser);
+                break;
+            case "MANAGER":
+                changeToManagerScreen(currentUser);
+                break;
+            case "ADMINISTRATOR":
+                changeToAdminScreen(currentUser);
+                break;
         }
     }
 

@@ -78,12 +78,16 @@ public class waterSourceReportScreenController {
                 }
             }
             writeToFile();
-            if (currentUser.getType().equals("MANAGER")) {
-                changeToManagerMap();
-            } else if (currentUser.getType().equals("WORKER")) {
-                changeToWorkerMap();
-            } else {
-                changeToUserMap();
+            switch (currentUser.getType()) {
+                case "MANAGER":
+                    changeToManagerMap();
+                    break;
+                case "WORKER":
+                    changeToWorkerMap();
+                    break;
+                default:
+                    changeToUserMap();
+                    break;
             }
         }
     }
@@ -227,12 +231,16 @@ public class waterSourceReportScreenController {
 
 
     @FXML protected void cancelBttnAction() {
-        if (currentUser.getType().equals("MANAGER")) {
-            changeToManagerMap();
-        } else if (currentUser.getType().equals("WORKER")) {
-            changeToWorkerMap();
-        } else {
-            changeToUserMap();
+        switch (currentUser.getType()) {
+            case "MANAGER":
+                changeToManagerMap();
+                break;
+            case "WORKER":
+                changeToWorkerMap();
+                break;
+            default:
+                changeToUserMap();
+                break;
         }
     }
 

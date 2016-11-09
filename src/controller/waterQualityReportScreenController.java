@@ -45,7 +45,7 @@ public class waterQualityReportScreenController {
     private double vPPM;
     private double cPPM;
 
-    private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+    private ArrayList<WaterSource> thisSource = new ArrayList<>();
 
     public void setUser(User newUser) {
         currentUser = newUser;
