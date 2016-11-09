@@ -88,25 +88,7 @@ public class UserWaterSourceReportScreenController {
 
             writeToFile();
 
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
-
-                anchorLayout = fxmlLoader.load();
-                UserMapScreenController msc = fxmlLoader.getController();
-                msc.setUser(currentUser);
-
-                msc.setApp(mainApplication);
-                msc.setState(mainApplication.getMainScreen());
-                msc.setUpMapView(mainApplication.getMainScreen());
-
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
-
-                msc.setMainApp(mainApplication);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            changeToUserScreen();
         }
     }
 
@@ -216,31 +198,18 @@ public class UserWaterSourceReportScreenController {
 
             int num = 1000 + (int) (Math.random() * ((9999 - 1000) + 1));
 
-            fileWriter.append("Report #").append(Integer.toString(num));
-            fileWriter.append(", ");
-            fileWriter.append(userInputName);
-            fileWriter.append(", ");
-            fileWriter.append(dateString);
-            fileWriter.append(", ");
-            fileWriter.append(userInputLocation);
-            fileWriter.append(", ");
-            fileWriter.append(latitudeInput.getText());
-            fileWriter.append(",");
-            fileWriter.append(longitudeInput.getText());
-            fileWriter.append(",");
-            fileWriter.append(userInputWaterType.toString());
-            fileWriter.append(", ");
-            fileWriter.append(userInputWaterCondition.toString());
-            fileWriter.append("\n");
+            fileWriter.append("Report #").append(Integer.toString(num)).append(", ");
+            fileWriter.append(userInputName).append(", ");
+            fileWriter.append(dateString).append(", ");
+            fileWriter.append(userInputLocation).append(", ");
+            fileWriter.append(latitudeInput.getText()).append(",");
+            fileWriter.append(longitudeInput.getText()).append(",");
+            fileWriter.append(userInputWaterType.toString()).append(", ");
+            fileWriter.append(userInputWaterCondition.toString()).append("\n");
 
-            Location loc = new Location(lat,
-                    longit,
-                    "Marker",
-                    "<h2> " + num +
-                            "</h2> <br> Reporter: " + userInputName +
-                            "<br> Date: " + dateString +
-                            "<br> Water Type: " + userInputWaterType +
-                            "<br> Water Condition: " + userInputWaterCondition);
+            Location loc = new Location(lat, longit, "Marker", "<h2> " + num +
+                            "</h2> <br> Reporter: " + userInputName + "<br> Date: " + dateString +
+                            "<br> Water Type: " + userInputWaterType + "<br> Water Condition: " + userInputWaterCondition);
 
             fc.addLocation(loc);
 
@@ -263,19 +232,24 @@ public class UserWaterSourceReportScreenController {
     }
 
     @FXML protected void cancelBttnAction() {
+        changeToUserScreen();
+    }
+
+    private void changeToUserScreen() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
 
             anchorLayout = fxmlLoader.load();
             UserMapScreenController msc = fxmlLoader.getController();
+            msc.setUser(currentUser);
 
             msc.setApp(mainApplication);
             msc.setState(mainApplication.getMainScreen());
             msc.setUpMapView(mainApplication.getMainScreen());
 
-            msc.setUser(currentUser);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
+
             msc.setMainApp(mainApplication);
 
         } catch (Exception e) {

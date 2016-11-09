@@ -149,80 +149,94 @@ public class RegisterScreenController {
                 "[set email]", "[set address]", "Not Banned");
 
         if (userInputUserType.toString().equals("WORKER")) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
-
-                anchorLayout = fxmlLoader.load();
-                WorkerMapScreenController controller = fxmlLoader.getController();
-
-                controller.setApp(mainApplication);
-                controller.setState(mainApplication.getMainScreen());
-                controller.setUpMapView(mainApplication.getMainScreen());
-
-                controller.setUser(currentUser);
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
-                controller.setMainApp(mainApplication);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            changeToWorkerScreen(currentUser);
         } else if(userInputUserType.toString().equals("USER")) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
-
-                anchorLayout = fxmlLoader.load();
-                UserMapScreenController controller = fxmlLoader.getController();
-
-                controller.setApp(mainApplication);
-                controller.setState(mainApplication.getMainScreen());
-                controller.setUpMapView(mainApplication.getMainScreen());
-
-                controller.setUser(currentUser);
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
-                controller.setMainApp(mainApplication);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
+            changeToUserScreen(currentUser);
         } else if (userInputUserType.toString().equals("MANAGER")) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
-
-                anchorLayout = fxmlLoader.load();
-                ManagerMapScreenController controller = fxmlLoader.getController();
-
-                controller.setApp(mainApplication);
-                controller.setState(mainApplication.getMainScreen());
-                controller.setUpMapView(mainApplication.getMainScreen());
-
-                controller.setUser(currentUser);
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
-                controller.setMainApp(mainApplication);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            changeToManagerScreen(currentUser);
         } else if (userInputUserType.toString().equals("ADMINISTRATOR")) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminMainScreen.fxml"));
-
-                anchorLayout = fxmlLoader.load();
-                AdminMainScreenController controller = fxmlLoader.getController();
-
-                controller.setUser(currentUser);
-                Scene scene2 = new Scene(anchorLayout);
-                mainApplication.getMainScreen().setScene(scene2);
-                controller.setMainApp(mainApplication);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            changeToAdminScreen(currentUser);
         }
     }
 
+    private void changeToUserScreen(User currentUser) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserMapScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            UserMapScreenController controller = fxmlLoader.getController();
+
+            controller.setApp(mainApplication);
+            controller.setState(mainApplication.getMainScreen());
+            controller.setUpMapView(mainApplication.getMainScreen());
+
+            controller.setUser(currentUser);
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+            controller.setMainApp(mainApplication);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void changeToWorkerScreen(User currentUser) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            WorkerMapScreenController controller = fxmlLoader.getController();
+
+            controller.setApp(mainApplication);
+            controller.setState(mainApplication.getMainScreen());
+            controller.setUpMapView(mainApplication.getMainScreen());
+
+            controller.setUser(currentUser);
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+            controller.setMainApp(mainApplication);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void changeToManagerScreen(User currentUser) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            ManagerMapScreenController controller = fxmlLoader.getController();
+
+            controller.setApp(mainApplication);
+            controller.setState(mainApplication.getMainScreen());
+            controller.setUpMapView(mainApplication.getMainScreen());
+
+            controller.setUser(currentUser);
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+            controller.setMainApp(mainApplication);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void changeToAdminScreen(User currentUser) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminMainScreen.fxml"));
+
+            anchorLayout = fxmlLoader.load();
+            AdminMainScreenController controller = fxmlLoader.getController();
+
+            controller.setUser(currentUser);
+            Scene scene2 = new Scene(anchorLayout);
+            mainApplication.getMainScreen().setScene(scene2);
+            controller.setMainApp(mainApplication);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     protected void handleCancelButtonAction() throws IOException {
         try {
