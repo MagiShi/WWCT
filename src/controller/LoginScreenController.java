@@ -34,9 +34,6 @@ public class LoginScreenController {
     private BorderPane borderLayout;
     private AnchorPane anchorLayout;
 
-    private String username;
-    private String password;
-
     String type = "";
     User currentUser;
 
@@ -56,14 +53,14 @@ public class LoginScreenController {
                 info = line.split(",");
                 if (info[1].equals(usernameInput.getText())) {
                     usernameFound = true;
-                    username = info[1];
+                    String username = info[1];
                 }
                 line = br.readLine();
             }
             if (!usernameFound) {
                 soundAlert();
             } else if (info[2].equals(passwordInput.getText())){
-                password = info[2];
+                String password = info[2];
                 login(info);
             } else {
                 soundAlert();

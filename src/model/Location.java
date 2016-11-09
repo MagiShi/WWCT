@@ -11,12 +11,12 @@ import java.util.logging.Logger;
  * Created by Ji Won Lee on 10/18/2016.
  */
 public class Location implements Serializable{
-    private static Logger LOGGER = Logger.getLogger("Location");
-    private static FileHandler logFileHandler;
+    private static final Logger LOGGER = Logger.getLogger("Location");
+
     static {
         LOGGER.setLevel(Level.FINER);
         try {
-            logFileHandler = new FileHandler("LogFile");
+            FileHandler logFileHandler = new FileHandler("LogFile");
             logFileHandler.setLevel(Level.ALL);
             LOGGER.addHandler(logFileHandler);
         } catch (IOException ex) {

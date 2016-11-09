@@ -16,15 +16,13 @@ import javafx.scene.control.Alert;
  */
 public class MainScreenController {
 
-    /** reference back to mainApplication if needed */
-    private WaterzMainFXApplication mainApplication;
-
     /**
      * allow for calling back to the main application code if necessary
      * @param main   the reference to the FX Application instance
      * */
     public void setMainApp(WaterzMainFXApplication main) {
-        mainApplication = main;
+        /* reference back to mainApplication if needed */
+        WaterzMainFXApplication mainApplication = main;
     }
 
     /**

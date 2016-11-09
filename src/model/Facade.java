@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by robertwaters on 10/7/16.
  */
-public class Facade {
+public final class Facade {
 
     private static final Facade instance = new Facade();
     public static Facade getInstance() { return instance; }
