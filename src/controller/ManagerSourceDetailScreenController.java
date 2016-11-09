@@ -16,6 +16,7 @@ import src.model.WaterSource;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.chart.XYChart;
 
@@ -69,13 +70,13 @@ public class ManagerSourceDetailScreenController {
 
     public void setLocation (Location loc) { currLoc = loc; }
 
-    private ArrayList<WaterSource> allReports = new ArrayList<WaterSource>();
+    private List<WaterSource> allReports = new ArrayList<WaterSource>();
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
-    private ArrayList<Report> currentReports = new ArrayList<>();
+    private List<Report> currentReports = new ArrayList<>();
 
-    private ArrayList<String> reportStrings = new ArrayList<>();
+    private List<String> reportStrings = new ArrayList<>();
 
 
 
@@ -222,7 +223,6 @@ public class ManagerSourceDetailScreenController {
                 Report r = currentReports.get(i);
                 float ppm = r.getVirusPPM();
                 int year = r.getYear();
-                System.out.println("PPM: " + ppm + " Year: " + year);
                 series.getData().add(new XYChart.Data(year, ppm));
             }
         }
@@ -233,7 +233,6 @@ public class ManagerSourceDetailScreenController {
                 Report r = currentReports.get(i);
                 float ppm = r.getContaminantPPM();
                 int year = r.getYear();
-                System.out.println("PPM: " + ppm + " Year: " + year);
                 series.getData().add(new XYChart.Data(year, ppm));
             }
         }
@@ -243,7 +242,7 @@ public class ManagerSourceDetailScreenController {
     private void showYearGraph(Integer year) {
         displayedYear = year.intValue();
         allDisplayed = false;
-        ArrayList<Report> yearReports = new ArrayList<>();
+        List<Report> yearReports = new ArrayList<>();
         for (int i = 0; i < currentReports.size(); i++) {
             Report r = currentReports.get(i);
             if (r.getYear() == year.intValue()) {
@@ -261,7 +260,6 @@ public class ManagerSourceDetailScreenController {
                 Report r = yearReports.get(i);
                 float ppm = r.getVirusPPM();
                 int month = r.getMonth();
-                System.out.println("PPM: " + ppm + " Month: " + year);
                 series.getData().add(new XYChart.Data(month, ppm));
             }
         }
@@ -272,7 +270,6 @@ public class ManagerSourceDetailScreenController {
                 Report r = yearReports.get(i);
                 float ppm = r.getContaminantPPM();
                 int month = r.getMonth();
-                System.out.println("PPM: " + ppm + " Month: " + month);
                 series.getData().add(new XYChart.Data(month, ppm));
             }
         }
@@ -280,7 +277,6 @@ public class ManagerSourceDetailScreenController {
         historicalGraph.getData().add(series);
     }
     @FXML protected void handleRemoveReportButtonAction() {
-        System.out.println("DELETING REPORT!!!");
         boolean found = false;
         String reportNum = reportNumField.getText();
         if (reportNum.equals("")) {
@@ -358,10 +354,7 @@ public class ManagerSourceDetailScreenController {
                 String line;
                 while (((line = br.readLine()) != null)) {
                     String[] data = line.split(",");
-                    for (int i = 0; i < data.length; i++) {
-                        System.out.print(data[i] + ", ");
-                    }
-                    System.out.println();
+
                     Double lat = new Double(data[7]);
                     Double longit = new Double(data[8]);
                     if (currentSource.getLatitude().equals(lat) && currentSource.getLongitude().equals(longit)) {

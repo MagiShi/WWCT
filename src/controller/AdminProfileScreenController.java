@@ -22,8 +22,6 @@ public class AdminProfileScreenController {
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
 
-    private AnchorPane anchorLayout;
-
     /* references to the widgets in the fxml file */
 
     @FXML
@@ -74,7 +72,7 @@ public class AdminProfileScreenController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminMainScreen.fxml"));
 
-            anchorLayout = fxmlLoader.load();
+            AnchorPane anchorLayout = fxmlLoader.load();
             AdminMainScreenController msc = fxmlLoader.getController();
 
             msc.setUser(currentUser);

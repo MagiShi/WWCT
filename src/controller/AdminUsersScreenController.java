@@ -16,6 +16,7 @@ import src.model.WaterSource;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.chart.XYChart;
 
@@ -32,7 +33,7 @@ public class AdminUsersScreenController {
     @FXML
     private TextField userIDField;
 
-    private ArrayList<String> allUsers = new ArrayList<>();
+    private List<String> allUsers = new ArrayList<>();
 
     private User currentUser;
     public void setUser(User newUser) {
@@ -69,7 +70,6 @@ public class AdminUsersScreenController {
         loadDatabase();
     }
     @FXML protected void handleBanUserButtonAction() {
-        System.out.println("BANNING USER!!!");
         boolean found = false;
         String username = userIDField.getText();
         if (username.equals("")) {
@@ -90,16 +90,13 @@ public class AdminUsersScreenController {
                 if (userData[1].equals(username)) {
                     allUsers.remove(i);
                     userData[6] = "BANNED";
-                    user = new String(userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
-                    + "," + userData[4] + "," + userData[5] + "," + userData[6]);
+                    user = userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
+                            + "," + userData[4] + "," + userData[5] + "," + userData[6];
                     allUsers.add(i, user);
                     found = true;
                 }
             }
             if (found) {
-                for (int i = 0; i < allUsers.size(); i++) {
-                    System.out.println(allUsers.get(i));
-                }
                 BufferedWriter writer = null;
                 try {
                     File newFile = new File("database.csv");
@@ -148,7 +145,6 @@ public class AdminUsersScreenController {
         }
     }
     @FXML protected void handleUnbanUserButtonAction() {
-        System.out.println("BANNING USER!!!");
         boolean found = false;
         String username = userIDField.getText();
         if (username.equals("")) {
@@ -169,16 +165,13 @@ public class AdminUsersScreenController {
                 if (userData[1].equals(username)) {
                     allUsers.remove(i);
                     userData[6] = "Not Banned";
-                    user = new String(userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
-                            + "," + userData[4] + "," + userData[5] + "," + userData[6]);
+                    user = userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
+                            + "," + userData[4] + "," + userData[5] + "," + userData[6];
                     allUsers.add(i, user);
                     found = true;
                 }
             }
             if (found) {
-                for (int i = 0; i < allUsers.size(); i++) {
-                    System.out.println(allUsers.get(i));
-                }
                 BufferedWriter writer = null;
                 try {
                     File newFile = new File("database.csv");
@@ -228,7 +221,6 @@ public class AdminUsersScreenController {
     }
 
     @FXML protected void handleDeleteUserButtonAction(){
-        System.out.println("DELETING USER!!!");
         boolean found = false;
         String username = userIDField.getText();
         if (username.equals("")) {
@@ -253,9 +245,6 @@ public class AdminUsersScreenController {
                 }
             }
             if (found) {
-                for (int i = 0; i < allUsers.size(); i++) {
-                    System.out.println(allUsers.get(i));
-                }
                 BufferedWriter writer = null;
                 try {
                     File newFile = new File("database.csv");
@@ -309,18 +298,15 @@ public class AdminUsersScreenController {
         boolean alreadyExists = new File("database.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
-                String line;
-                while (((line = br.readLine()) != null)) {
+                String line = br.readLine();
+                while (line != null) {
                     usersList.getItems().add(line);
                     allUsers.add(line);
-                    System.out.println("Added");
+                    line = br.readLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        for (int i = 0; i < allUsers.size(); i++) {
-            System.out.println(allUsers.get(i));
         }
     }
 

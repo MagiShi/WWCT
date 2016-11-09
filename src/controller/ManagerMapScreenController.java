@@ -45,7 +45,6 @@ public class ManagerMapScreenController implements Initializable, MapComponentIn
     private AnchorPane anchorLayout;
 
     private User currentUser;
-    private Facade fac;
 
     private String username;
     //private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
@@ -103,7 +102,7 @@ public class ManagerMapScreenController implements Initializable, MapComponentIn
             anchorLayout = fxmlLoader.load();
             waterSourceReportScreenController controller = fxmlLoader.getController();
             controller.setUser(currentUser);
-            fac = Facade.getInstance();
+            Facade fac = Facade.getInstance();
             controller.setFacade(fac);
             Scene scene2 = new Scene(anchorLayout);
             mainApplication.getMainScreen().setScene(scene2);
