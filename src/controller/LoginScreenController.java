@@ -31,8 +31,8 @@ public class LoginScreenController {
     private BorderPane borderLayout;
     private AnchorPane anchorLayout;
 
-    String type = "";
-    User currentUser;
+    protected String type = "";
+    protected User currentUser;
 
     WorkerMapScreenController mapController = new WorkerMapScreenController();
     ManagerMapScreenController mapControllerManager = new ManagerMapScreenController();
