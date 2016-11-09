@@ -53,7 +53,7 @@ public class WaterzMainFXApplication extends Application {
 
     }
 
-    public void showWelcome() {
+    private void showWelcome() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(WaterzMainFXApplication.class.getResource("../view/WelcomeScreen.fxml"));
@@ -72,16 +72,5 @@ public class WaterzMainFXApplication extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    /**
-     * dummy method to simulate a callback from the map view
-     */
-    public void closeMapView() {
-//        Facade fc = Facade.getInstance();
-////        fc.addLocations();
-//        WorkerMapScreenController controller = new WorkerMapScreenController(this, mainScreen);
-    }
-
-
 
 }

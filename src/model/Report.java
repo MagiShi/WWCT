@@ -1,16 +1,13 @@
 package src.model;
 
-/**
- * Created by Cassie on 10/12/2016.
- */
 public class Report {
-    private String thisDate;
-    private String thisUser;
-    private float virusPPM;
-    private float contaminantPPM;
-    private String condition;
-    private int month;
-    private int year;
+    private final String thisDate;
+    private final String thisUser;
+    private final float virusPPM;
+    private final float contaminantPPM;
+    private final String condition;
+    private final int month;
+    private final int year;
     public Report(String user, String date, float thisPPM1, float thisPPM2, String thisCondit) {
         thisDate = date;
         thisUser = user;

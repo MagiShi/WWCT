@@ -3,7 +3,7 @@ package src.model;
 public enum PurityCondition {
     SAFE("SAFE"), TREATABLE("TREATABLE"), UNSAFE("UNSAFE");
 
-    public final String condition;
+    private final String condition;
 
     PurityCondition(String condition) {
         this.condition = condition;

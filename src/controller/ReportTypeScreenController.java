@@ -8,9 +8,6 @@ import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 
-/**
- * Created by Ji Won Lee on 10/11/2016.
- */
 public class ReportTypeScreenController {
     private WaterzMainFXApplication mainApplication;
 
@@ -72,14 +69,6 @@ public class ReportTypeScreenController {
         }
     }
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the constructor and
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-    }
     /**
      * Setup the main application link so we can call methods there
      *

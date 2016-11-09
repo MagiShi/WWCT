@@ -1,8 +1,5 @@
 package src.controller;
 
-/**
- * Created by Ji Won Lee on 9/30/2016.
- */
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

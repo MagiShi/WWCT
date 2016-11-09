@@ -1,9 +1,5 @@
 package src.controller;
 
-/**
- * Created by Cassie on 9/22/2016.
- */
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -60,18 +56,6 @@ public class WelcomeScreenController {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the constructor and
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-        //load animation here?
-    }
-
-
 
     /**
      * Setup the main application link so we can call methods there

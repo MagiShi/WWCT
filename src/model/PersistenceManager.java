@@ -76,7 +76,11 @@ class PersistenceManager {
 
     public void loadFromBinary(File file) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            model = (ArrayList<Location>) ois.readObject();
+            Object obj = ois.readObject();
+            if (obj instanceof ArrayList<?>) {
+                model = (ArrayList<Location>) ois.readObject();
+                System.out.print("added");
+            }
             ois.close();
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, "Failed to make an input stream for Binary", ex);
