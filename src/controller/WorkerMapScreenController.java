@@ -56,10 +56,6 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
 
     private final ArrayList<WaterSource> water = new ArrayList<>();
 
-    private final int STARTLAT = 34;
-
-    private final int STARTLONGIT = 88;
-
     /* references to the widgets in the fxml file */
 
     @FXML private Button logoutButton;
@@ -163,7 +159,6 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     }
 
     @FXML protected void handleProfileButtonAction() {
-        //logout stuff :)
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerProfile.fxml"));
 
@@ -195,9 +190,17 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
         }
     }
 
-        public void setUser(User newUser) {
-            currentUser = newUser;
-        }
+    /**
+     * Lets the app know which user is currently logged on.
+     * This is important for displaying user info in the profile screen,
+     * but the method is needed for all screens
+     * because the current user needs to be continuously "held onto."
+     *
+     * @param newUser the User instance holding the current User's data
+     */
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
 
 
     /**
@@ -236,6 +239,8 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
         MapOptions options = new MapOptions();
 
         //set up the center location for the map
+        int STARTLONGIT = 88;
+        int STARTLAT = 34;
         LatLong center = new LatLong(STARTLAT, STARTLONGIT);
 
         options.center(center)

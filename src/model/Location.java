@@ -7,9 +7,6 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Created by Ji Won Lee on 10/18/2016.
- */
 public class Location implements Serializable{
     private static final Logger LOGGER = Logger.getLogger("Location");
 

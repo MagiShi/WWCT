@@ -49,8 +49,16 @@ public class waterSourceReportScreenController {
     private double lat;
     private final int MINNUM = -90;
     private final int MAXNUM = 90;
-    private final int RANDMAXNUM = 9999;
 
+
+    /**
+     * Lets the app know which user is currently logged on.
+     * This is important for displaying user info in the profile screen,
+     * but the method is needed for all screens
+     * because the current user needs to be continuously "held onto."
+     *
+     * @param newUser the User instance holding the current User's data
+     */
     public void setUser(User newUser) {
         currentUser = newUser;
     }
@@ -212,6 +220,7 @@ public class waterSourceReportScreenController {
             Date dateObject = new Date();
             String dateString = dateFormat.format(dateObject);
 
+            int RANDMAXNUM = 9999;
             int num = 1000 + (int) (Math.random() * ((RANDMAXNUM - 1000) + 1));
 
             fileWriter.append("Report #").append(Integer.toString(num)).append(", ");

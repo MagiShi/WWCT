@@ -1,8 +1,5 @@
 package src.controller;
 
-/**
- * Created by Da-In on 9/20/2016.
- */
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;

@@ -147,7 +147,6 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
     }
 
     @FXML protected void handleProfileButtonAction() {
-        //logout stuff :)
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerProfile.fxml"));
 
@@ -163,6 +162,14 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
         }
     }
 
+    /**
+     * Lets the app know which user is currently logged on.
+     * This is important for displaying user info in the profile screen,
+     * but the method is needed for all screens
+     * because the current user needs to be continuously "held onto."
+     *
+     * @param newUser the User instance holding the current User's data
+     */
     public void setUser(User newUser) {
         currentUser = newUser;
     }

@@ -7,9 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by robertwaters on 10/7/16.
- */
 public final class Facade {
 
     private static final Facade instance = new Facade();

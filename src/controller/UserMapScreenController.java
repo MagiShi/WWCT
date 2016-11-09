@@ -66,9 +66,6 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     /**remember stage for dialogs */
     private Stage mainStage;
 
-    private final int STARTLAT = 34;
-    private final int STARTLONGIT = -88;
-
     public UserMapScreenController(WaterzMainFXApplication app, Stage stage) {
         theApp = app;
         mainStage = stage;
@@ -124,7 +121,6 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     }
 
     @FXML protected void handleProfileButtonAction() {
-        //logout stuff :)
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/UserProfile.fxml"));
 
@@ -140,6 +136,14 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
         }
     }
 
+    /**
+     * Lets the app know which user is currently logged on.
+     * This is important for displaying user info in the profile screen,
+     * but the method is needed for all screens
+     * because the current user needs to be continuously "held onto."
+     *
+     * @param newUser the User instance holding the current User's data
+     */
     public void setUser(User newUser) {
         currentUser = newUser;
     }
@@ -181,6 +185,8 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
         MapOptions options = new MapOptions();
 
         //set up the center location for the map
+        int STARTLONGIT = -88;
+        int STARTLAT = 34;
         LatLong center = new LatLong(STARTLAT, STARTLONGIT);
 
         options.center(center)

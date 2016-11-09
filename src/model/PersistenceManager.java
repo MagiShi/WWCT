@@ -79,7 +79,6 @@ class PersistenceManager {
             Object obj = ois.readObject();
             if (obj instanceof ArrayList<?>) {
                 model = (ArrayList<Location>) ois.readObject();
-                System.out.print("added");
             }
             ois.close();
         } catch (IOException ex) {
@@ -103,7 +102,9 @@ class PersistenceManager {
     public void loadFromJsonfile(File file) {
         String ct;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
             Type collectionType = new TypeToken<List<Location>>(){}.getType();
+
             Gson gson = new Gson();
 
             ct = br.readLine();
