@@ -20,9 +20,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Da-In on 10/16/2016.
- */
 public class AdminUsersScreenController {
 
     private WaterzMainFXApplication mainApplication;

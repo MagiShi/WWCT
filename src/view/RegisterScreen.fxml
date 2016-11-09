@@ -103,14 +103,14 @@
                                 </font>
                             </Label>
                             <TextField fx:id="nameInput"
-                                       style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                       GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                   style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
                             <TextField fx:id="usernameInput"
-                                       style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                       GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                   style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
                             <ComboBox fx:id="userTypeInput" prefHeight="25.0" prefWidth="169.0"
-                                      style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                      GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                                  style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                  GridPane.columnIndex="2" GridPane.rowIndex="5"/>
                             <GridPane GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0"
@@ -126,35 +126,35 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                                 </rowConstraints>
                                     <Button fx:id="registerButton" mnemonicParsing="false"
-                                            onAction="#handleRegisterButtonAction" prefHeight="54.0"
-                                            prefWidth="125.0"
-                                            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                            text="Register" textFill="#aa7d5d" GridPane.rowIndex="1">
-                                        <font>
-                                            <Font name="Arial Rounded MT Bold" size="14.0"/>
-                                        </font>
+                                        onAction="#handleRegisterButtonAction" prefHeight="54.0"
+                                        prefWidth="125.0"
+                                    style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                        text="Register" textFill="#aa7d5d" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                                    </font>
                                     </Button>
                                     <Button fx:id="cancelButton" mnemonicParsing="false"
-                                            onAction="#handleCancelButtonAction" prefHeight="35.0"
-                                            prefWidth="125.0"
-                                            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                            text="Cancel" textFill="#aa7d5d" GridPane.columnIndex="2"
-                                            GridPane.rowIndex="1">
-                                        <font>
-                                            <Font name="Arial Rounded MT Bold" size="14.0"/>
-                                        </font>
+                                    onAction="#handleCancelButtonAction" prefHeight="35.0"
+                                    prefWidth="125.0"
+                                    style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                    text="Cancel" textFill="#aa7d5d" GridPane.columnIndex="2"
+                                    GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="14.0"/>
+                                    </font>
                                     </Button>
                             </GridPane>
                             <PasswordField fx:id="passwordInput2"
-                                           style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                           GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                   style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                   GridPane.columnIndex="2" GridPane.rowIndex="4">
                                 <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0"/>
                                 </font>
                             </PasswordField>
                             <PasswordField fx:id="passwordInput"
-                                           style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                           GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                   style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                   GridPane.columnIndex="2" GridPane.rowIndex="3">
                                 <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0"/>
                                 </font>

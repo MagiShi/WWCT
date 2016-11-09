@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.ObjectOutput;
 import java.io.PrintWriter;
 import java.io.File;
 import java.io.IOException;
@@ -15,20 +16,18 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-/**
- * Created by Ji Won Lee on 10/18/2016.
- */
-public class PersistenceManager {
-    private static Logger LOGGER = Logger.getLogger("PersistenceManager");
+class PersistenceManager {
+    private static final Logger LOGGER = Logger.getLogger("PersistenceManager");
 
     private List<Location> model;
 
-    public PersistenceManager(List<Location> m) {
+    public PersistenceManager(Collection<Location> m) {
         model.addAll(m.stream().collect(Collectors.toList()));
     }
 
@@ -67,7 +66,7 @@ public class PersistenceManager {
     }
 
     public void saveToBinary(File file) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))){
+        try (ObjectOutput oos = new ObjectOutputStream(new FileOutputStream(file))){
             oos.writeObject(model);
             oos.close();
         } catch (IOException e) {

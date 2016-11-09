@@ -46,7 +46,7 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
     private String username;
     //private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
 
-    Location currLoc;
+    private Location currLoc;
 
 
     /* references to the widgets in the fxml file */
@@ -77,11 +77,11 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
     public ManagerMapScreenController() {
     }
 
-    protected void setApp(WaterzMainFXApplication app) {
+    void setApp(WaterzMainFXApplication app) {
         theApp = app;
     }
 
-    protected void setState (Stage stage) {
+    void setState(Stage stage) {
         mainStage = stage;
     }
 
@@ -109,7 +109,8 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
     @FXML protected void handleViewReportDetailButtonAction() {
         if (currLoc != null) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
+                FXMLLoader fxmlLoader
+                        = new FXMLLoader(getClass().getResource("../view/ManagerSourceDetailScreen.fxml"));
 
                 anchorLayout = fxmlLoader.load();
                 ManagerSourceDetailScreenController controller = fxmlLoader.getController();
@@ -180,7 +181,7 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
      *
      * @param stage the stage to put the map scene into
      */
-    protected void setUpMapView(Stage stage) {
+    void setUpMapView(Stage stage) {
         //construct the view
         mapView = new GoogleMapView();
         //we cannot do anything until the map is constructed, so we need a callback
@@ -251,7 +252,8 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
 //                String line;
 //                while (((line = br.readLine()) != null)) {
 //                    String[] data = line.split(",");
-//                    WaterSource source = new WaterSource(data[1], data[2], data[3], Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
+//                    WaterSource source = new WaterSource(data[1], data[2], data[3],
+//                                          Double.valueOf(data[4]), Double.valueOf(data[5]), data[6], data[7]);
 //                    //water.add(source);
 //                }
 //            } catch (IOException e) {

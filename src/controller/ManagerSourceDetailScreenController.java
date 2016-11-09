@@ -27,14 +27,12 @@ import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javafx.scene.chart.XYChart;
 
-/**
- * Created by Da-In on 10/16/2016.
- */
 public class ManagerSourceDetailScreenController {
 
     private WaterzMainFXApplication mainApplication;
@@ -81,11 +79,11 @@ public class ManagerSourceDetailScreenController {
 
     public void setLocation (Location loc) { currLoc = loc; }
 
-    private final List<WaterSource> allReports = new ArrayList<>();
+    private final Collection<WaterSource> allReports = new ArrayList<>();
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
-    private final List<Report> currentReports = new ArrayList<>();
+    private final Collection<Report> currentReports = new ArrayList<>();
 
     private final List<String> reportStrings = new ArrayList<>();
 
@@ -251,7 +249,8 @@ public class ManagerSourceDetailScreenController {
     private void showYearGraph(Integer year) {
         displayedYear = year;
         allDisplayed = false;
-        List<Report> yearReports = currentReports.stream().filter(r -> r.getYear() == year).collect(Collectors.toList());
+        List<Report> yearReports
+                = currentReports.stream().filter(r -> r.getYear() == year).collect(Collectors.toList());
         xAxis.setUpperBound(12);
         xAxis.setLowerBound(1);
         xAxis.setLabel("Month");

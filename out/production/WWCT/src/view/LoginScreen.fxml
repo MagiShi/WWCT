@@ -60,8 +60,8 @@
                                             vgrow="SOMETIMES"/>
                         </rowConstraints>
                             <TextField fx:id="usernameInput"
-                                       style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                       GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                   style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                   GridPane.columnIndex="2" GridPane.rowIndex="1">
                                 <font>
                                     <Font name="Arial Rounded MT Bold" size="12.0"/>
                                 </font>
@@ -99,27 +99,27 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                                 </rowConstraints>
                                     <Button fx:id="loginButton" mnemonicParsing="false"
-                                            onAction="#handleLoginButtonAction"
-                                            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                            text="Login" textFill="#aa7d5d" GridPane.columnIndex="1"
-                                            GridPane.rowIndex="1">
+                                    onAction="#handleLoginButtonAction"
+                                    style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                    text="Login" textFill="#aa7d5d" GridPane.columnIndex="1"
+                                    GridPane.rowIndex="1">
                                         <font>
                                             <Font name="Arial Rounded MT Bold" size="18.0"/>
                                         </font>
                                     </Button>
                                     <Button fx:id="cancelButton" mnemonicParsing="false"
-                                            onAction="#handleCancelButtonAction"
-                                            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                            text="Cancel" textFill="#aa7d5d" GridPane.columnIndex="3"
-                                            GridPane.rowIndex="1">
+                                    onAction="#handleCancelButtonAction"
+                                    style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                    text="Cancel" textFill="#aa7d5d" GridPane.columnIndex="3"
+                                    GridPane.rowIndex="1">
                                         <font>
                                             <Font name="Arial Rounded MT Bold" size="18.0"/>
                                         </font>
                                     </Button>
                             </GridPane>
                             <PasswordField fx:id="passwordInput"
-                                           style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                           GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                   style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                   GridPane.columnIndex="2" GridPane.rowIndex="2">
                                 <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0"/>
                                 </font>

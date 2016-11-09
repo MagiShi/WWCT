@@ -11,10 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 
-
-/**
- * Created by Maggie on 9/28/2016.
- */
 public class ManagerProfileScreenController {
 
     /** a link back to the main application class */

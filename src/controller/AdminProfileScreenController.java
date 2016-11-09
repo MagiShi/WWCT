@@ -13,10 +13,6 @@ import src.model.User;
 
 import java.util.ArrayList;
 
-
-/**
- * Created by Maggie on 9/28/2016.
- */
 public class AdminProfileScreenController {
 
     /** a link back to the main application class */
@@ -101,17 +97,6 @@ public class AdminProfileScreenController {
         currentAddress.setText(newAddress.getText());
         newAddress.clear();
     }
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the constructor and
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-        //put maps and data here maybe?
-    }
-
-
 
     /**
      * Setup the main application link so we can call methods there

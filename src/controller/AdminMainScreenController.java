@@ -73,9 +73,9 @@ public class AdminMainScreenController {
             e.printStackTrace();
         }
     }
-    @FXML protected void handleLogButtonAction() {
-
-    }
+//    @FXML protected void handleLogButtonAction() {
+//
+//    }
 
     public void setUser(User newUser) {
         currentUser = newUser;
