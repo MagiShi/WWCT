@@ -1,12 +1,8 @@
 package src.Tests;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.TIMEOUT;
-import src.controller.ManagerSourceDetailScreenController;
 import src.model.*;
 
 import java.io.BufferedReader;
@@ -14,7 +10,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotEquals;
