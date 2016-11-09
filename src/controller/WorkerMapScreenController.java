@@ -1,26 +1,38 @@
 package src.controller;
 
+import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.InfoWindow;
+import com.lynden.gmapsfx.javascript.object.InfoWindowOptions;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MapOptions;
+import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
+import com.lynden.gmapsfx.javascript.object.Marker;
+import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
-import javafx.event.ActionEvent;
-import javafx.scene.control.*;
+
 import src.model.User;
 import src.model.WaterSource;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
-import com.lynden.gmapsfx.javascript.object.*;
 
-import javafx.event.EventHandler;
+
 import javafx.fxml.Initializable;
 
 import src.model.Facade;
@@ -60,7 +72,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     @FXML private BorderPane mapViewer;
     @FXML private Button viewQuality;
     @FXML private ListView<String> reportsList;
-    @FXML private  Label sourceSelectedLabel;
+    @FXML private Label sourceSelectedLabel;
 
     @FXML private Button viewReportDetailButton;
 
@@ -256,83 +268,61 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
      */
     private void addFileOptions(Menu menuFile) {
         MenuItem openText = new MenuItem("Open Text");
-        openText.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser fc = new FileChooser();
-                fc.setTitle("Open Text File");
-                File file  = fc.showOpenDialog(mainStage);
-                if (file != null)
-                    Facade.getInstance().loadModelFromText(file);
-            }
+        openText.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Open Text File");
+            File file  = fc.showOpenDialog(mainStage);
+            if (file != null)
+                Facade.getInstance().loadModelFromText(file);
         });
 
         MenuItem openBinary = new MenuItem("Open Binary");
-        openBinary.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser fc = new FileChooser();
-                fc.setTitle("Open Binary File");
-                File file  = fc.showOpenDialog(mainStage);
-                if (file != null)
-                    Facade.getInstance().loadModelFromBinary(file);
-            }
+        openBinary.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Open Binary File");
+            File file  = fc.showOpenDialog(mainStage);
+            if (file != null)
+                Facade.getInstance().loadModelFromBinary(file);
         });
 
         MenuItem openJson = new MenuItem("Open JSON");
-        openJson.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser fc = new FileChooser();
-                fc.setTitle("Open JSON File");
-                File file  = fc.showOpenDialog(mainStage);
-                if (file != null)
-                    Facade.getInstance().loadModelFromJson(file);
-            }
+        openJson.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Open JSON File");
+            File file  = fc.showOpenDialog(mainStage);
+            if (file != null)
+                Facade.getInstance().loadModelFromJson(file);
         });
 
         MenuItem saveText = new MenuItem("Save Text");
-        saveText.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser fc = new FileChooser();
-                fc.setTitle("Save Text File");
-                File file  = fc.showSaveDialog(mainStage);
-                if (file != null)
-                    Facade.getInstance().saveModelToText(file);
-            }
+        saveText.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Save Text File");
+            File file  = fc.showSaveDialog(mainStage);
+            if (file != null)
+                Facade.getInstance().saveModelToText(file);
         });
 
         MenuItem saveBinary = new MenuItem("Save Binary");
-        saveBinary.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser fc = new FileChooser();
-                fc.setTitle("Save Binary File");
-                File file  = fc.showSaveDialog(mainStage);
-                if (file != null)
-                    Facade.getInstance().saveModelToBinary(file);
-            }
+        saveBinary.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Save Binary File");
+            File file  = fc.showSaveDialog(mainStage);
+            if (file != null)
+                Facade.getInstance().saveModelToBinary(file);
         });
 
         MenuItem saveJson = new MenuItem("Save JSON");
-        saveJson.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser fc = new FileChooser();
-                fc.setTitle("Save JSON File");
-                File file  = fc.showSaveDialog(mainStage);
-                if (file != null)
-                    Facade.getInstance().saveModelToJson(file);
-            }
+        saveJson.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Save JSON File");
+            File file  = fc.showSaveDialog(mainStage);
+            if (file != null)
+                Facade.getInstance().saveModelToJson(file);
         });
 
         MenuItem close = new MenuItem("Close");
-        close.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent t) {
-                theApp.closeMapView();
-            }
-        });
+        close.setOnAction(t -> theApp.closeMapView());
 
         menuFile.getItems().addAll(openText, openBinary, openJson, new SeparatorMenuItem(),
                 saveText, saveBinary, saveJson, new SeparatorMenuItem(),

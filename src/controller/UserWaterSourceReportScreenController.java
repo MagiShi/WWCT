@@ -9,7 +9,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
-import src.model.*;
+import src.model.SourceType;
+import src.model.User;
+import src.model.Facade;
+import src.model.WaterCondition;
+import src.model.Location;
 
 import java.io.BufferedWriter;
 import java.io.File;

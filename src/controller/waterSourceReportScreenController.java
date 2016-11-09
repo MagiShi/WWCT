@@ -9,7 +9,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
-import src.model.*;
+import src.model.Facade;
+import src.model.Location;
+import src.model.SourceType;
+import src.model.User;
+import src.model.WaterCondition;
 
 import java.io.BufferedWriter;
 import java.io.File;
