@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: F7C39F;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.WorkerMapScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: F7C39F;" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.WorkerMapScreenController">
    <children>
       <SplitPane dividerPositions="0.67" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -29,10 +29,10 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="118.33334350585938" minHeight="10.0" prefHeight="101.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="61.333343505859375" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="106.66665649414062" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="103.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="92.99996948242188" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>

@@ -165,12 +165,12 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                         </Button>
-                        <CheckBox fx:id="virusCheckBox" layoutX="531.0" layoutY="110.0" mnemonicParsing="false" onAction="#reloadGraph" style="-fx-background-color: F5FCFF;" text="Virus PPM" textFill="#aa7d5d">
+                        <CheckBox fx:id="virusCheckBox" layoutX="531.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleVirusCheckbox" style="-fx-background-color: F5FCFF;" text="Virus PPM" textFill="#aa7d5d">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="contaminantCheckBox" layoutX="531.0" layoutY="140.0" mnemonicParsing="false" onAction="#reloadGraph" onMouseClicked="#reloadGraph" prefHeight="19.0" prefWidth="150.0" text="Contaminant PPM" textFill="#aa7d5d">
+                        <CheckBox fx:id="contaminantCheckBox" layoutX="531.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleContaminantCheckbox" prefHeight="19.0" prefWidth="150.0" text="Contaminant PPM" textFill="#aa7d5d">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>

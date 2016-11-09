@@ -9,10 +9,7 @@ import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
-import src.model.Report;
-import src.model.User;
-import src.model.Location;
-import src.model.WaterSource;
+import src.model.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -32,6 +29,8 @@ public class ManagerSourceDetailScreenController {
 
     private Location currLoc;
     private boolean allDisplayed = true;
+    private boolean virusSelected = false;
+    private boolean contaminantSelected = false;
 
     @FXML
     private Button backButton;
@@ -59,6 +58,9 @@ public class ManagerSourceDetailScreenController {
     private CheckBox contaminantCheckBox;
     @FXML
     private TextField reportNumField;
+
+    private Graph graph;
+
 
     private User currentUser;
     private int displayedYear = 0;
@@ -100,7 +102,6 @@ public class ManagerSourceDetailScreenController {
         }
     }
 
-
     @FXML protected void addReportButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterQualityReportScreen.fxml"));
@@ -120,29 +121,88 @@ public class ManagerSourceDetailScreenController {
             e.printStackTrace();
         }
     }
-    @FXML protected void reloadGraph() {
-        if (allDisplayed) {
-            showAllGraph();
+     @FXML protected void handleVirusCheckbox() {
+         if (virusCheckBox.isSelected()) {
+             graph.setVirusDisplayed(true);
+         } else {
+             graph.setVirusDisplayed(false);
+         }
+         showGraph();
+     }
+    @FXML protected void handleContaminantCheckbox() {
+        if (contaminantCheckBox.isSelected()) {
+            graph.setContaminantDisplayed(true);
         } else {
-            showYearGraph(new Integer(displayedYear));
+            graph.setContaminantDisplayed(false);
         }
+        showGraph();
     }
+
+    //Handles show 20 Year Graph
     @FXML protected void showAllAction() {
-        showAllGraph();
+        graph.setShowAll();
+        showGraph();
     }
+
+    /**
+     * Displays Graph
+     */
+    public void showGraph() {
+        xAxis.setUpperBound(graph.getUpperXNum());
+        xAxis.setLowerBound(graph.getLowerXNum());
+        xAxis.setLabel(graph.getxAxisLabel());
+        historicalGraph.getData().clear();
+        XYChart.Series series = new XYChart.Series();
+        ArrayList<Float> virusList = graph.getCurrentVirusNumList();
+        ArrayList<Float> contamList = graph.getCurrentContamNumList();
+        ArrayList<Integer> dateList;
+        if (graph.getAllYears()) {
+            dateList = graph.getCurrentYearList();
+        } else {
+            dateList = graph.getCurrentMonthList();
+        }
+        series.setName("Virus PPM");
+        if (graph.getVirusDisplayed()) {
+            for (int i = 0; i < virusList.size() && i < dateList.size(); i++) {
+                float ppm = virusList.get(i);
+                int date = dateList.get(i);
+                series.getData().add(new XYChart.Data(date, ppm));
+            }
+        }
+        historicalGraph.getData().add(series);
+        series = new XYChart.Series();
+        if (graph.getContaminantDisplayed()) {
+            for (int i = 0; i < contamList.size() && i < dateList.size(); i++) {
+                System.out.println("Adding Contam " + i);
+                float ppm = contamList.get(i);
+                int date = dateList.get(i);
+                series.getData().add(new XYChart.Data(date, ppm));
+            }
+        }
+        series.setName("Contaminant PPM");
+        historicalGraph.getData().add(series);
+    }
+
+
+    //Handle specific year graph
     @FXML protected void chooseYearAction() {
         String thisYear = yearField.getText();
+        parseYear(thisYear);
+    }
+
+    private void parseYear(String thisYear) {
         try {
             Integer newYear = new Integer(thisYear);
-            if (newYear < 2000 || newYear > 2020) {
+            try {
+                graph.setCurrentYear(newYear);
+                showGraph();
+            } catch(IllegalArgumentException e) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Invalid Year");
                 alert.setHeaderText("Invalid input for Year");
                 alert.setContentText("Please input valid year integer between 2000 and 2020.");
                 alert.showAndWait();
                 yearField.clear();
-            } else {
-                showYearGraph(newYear);
             }
         } catch (NumberFormatException nfe) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -168,6 +228,8 @@ public class ManagerSourceDetailScreenController {
      */
     @FXML
     private void initialize() {
+        User newUser = new User("manager", "pass", "name", "MANAGER", "a email", "a address", "Not Banned");
+        currentUser = newUser;
         boolean alreadyExists = new File("sourceReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
@@ -191,6 +253,17 @@ public class ManagerSourceDetailScreenController {
                 e.printStackTrace();
             }
         }
+        String line = "Report #7739,Alice,10/18/16 22:39,Lewis,33,-88,WELL,POTABLE,";
+        String[] linebroken = line.split(",");
+        Location l = new Location(Double.valueOf(linebroken[4]),
+                Double.valueOf(linebroken[5]),
+                "Marker " + 0,
+                "<h2> "  + linebroken[0] +
+                        "</h2> <br> Reporter: " + linebroken[1] +
+                        "<br> Date: " + linebroken[2] +
+                        "<br> Water Type: " + linebroken[6] +
+                        "<br> Water Condition: " + linebroken[7]);
+        setCurrentSource(l);
     }
 
     public void setCurrentSource(Location newSource) {
@@ -211,75 +284,6 @@ public class ManagerSourceDetailScreenController {
         loadReports();
     }
 
-    private void showAllGraph() {
-        xAxis.setUpperBound(2020);
-        xAxis.setLowerBound(2000);
-        xAxis.setLabel("Year");
-        historicalGraph.getData().clear();
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Virus PPM");
-        if (virusCheckBox.isSelected()) {
-            for (int i = 0; i < currentReports.size(); i++) {
-                Report r = currentReports.get(i);
-                float ppm = r.getVirusPPM();
-                int year = r.getYear();
-                System.out.println("PPM: " + ppm + " Year: " + year);
-                series.getData().add(new XYChart.Data(year, ppm));
-            }
-        }
-        historicalGraph.getData().add(series);
-        series = new XYChart.Series();
-        if (contaminantCheckBox.isSelected()) {
-            for (int i = 0; i < currentReports.size(); i++) {
-                Report r = currentReports.get(i);
-                float ppm = r.getContaminantPPM();
-                int year = r.getYear();
-                System.out.println("PPM: " + ppm + " Year: " + year);
-                series.getData().add(new XYChart.Data(year, ppm));
-            }
-        }
-        series.setName("Contaminant PPM");
-        historicalGraph.getData().add(series);
-    }
-    private void showYearGraph(Integer year) {
-        displayedYear = year.intValue();
-        allDisplayed = false;
-        ArrayList<Report> yearReports = new ArrayList<>();
-        for (int i = 0; i < currentReports.size(); i++) {
-            Report r = currentReports.get(i);
-            if (r.getYear() == year.intValue()) {
-                yearReports.add(r);
-            }
-        }
-        xAxis.setUpperBound(12);
-        xAxis.setLowerBound(1);
-        xAxis.setLabel("Month");
-        historicalGraph.getData().clear();
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Virus PPM");
-        if (virusCheckBox.isSelected()) {
-            for (int i = 0; i < yearReports.size(); i++) {
-                Report r = yearReports.get(i);
-                float ppm = r.getVirusPPM();
-                int month = r.getMonth();
-                System.out.println("PPM: " + ppm + " Month: " + year);
-                series.getData().add(new XYChart.Data(month, ppm));
-            }
-        }
-        historicalGraph.getData().add(series);
-        series = new XYChart.Series();
-        if (contaminantCheckBox.isSelected()) {
-            for (int i = 0; i < yearReports.size(); i++) {
-                Report r = yearReports.get(i);
-                float ppm = r.getContaminantPPM();
-                int month = r.getMonth();
-                System.out.println("PPM: " + ppm + " Month: " + month);
-                series.getData().add(new XYChart.Data(month, ppm));
-            }
-        }
-        series.setName("Contaminant PPM");
-        historicalGraph.getData().add(series);
-    }
     @FXML protected void handleRemoveReportButtonAction() {
         System.out.println("DELETING REPORT!!!");
         boolean found = false;
@@ -373,7 +377,8 @@ public class ManagerSourceDetailScreenController {
                 e.printStackTrace();
             }
         }
-        showAllGraph();
+        graph = new Graph(currentReports);
+        showGraph();
     }
 
 
