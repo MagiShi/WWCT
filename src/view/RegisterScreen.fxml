@@ -25,158 +25,142 @@
     <SplitPane dividerPositions="0.5" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0"
                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                AnchorPane.topAnchor="0.0">
-        <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0"
-                        style="-fx-background-color: F5FCFF;">
-                <children>
-                    <ImageView fitHeight="370.0" fitWidth="264.0" layoutX="45.0" layoutY="97.0" pickOnBounds="true"
-                               preserveRatio="true">
-                        <image>
-                            <Image url="@../img/Glass3.png"/>
-                        </image>
-                    </ImageView>
-                    <ImageView fitHeight="102.0" fitWidth="325.0" layoutX="11.0" layoutY="8.0" pickOnBounds="true"
-                               preserveRatio="true">
-                        <image>
-                            <Image url="@../img/Waterz5.png"/>
-                        </image>
-                    </ImageView>
-                </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="214.0" prefWidth="330.0" style="-fx-background-color: C7EAFB;">
-                <children>
-                    <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="488.0" prefWidth="341.0"
-                          AnchorPane.topAnchor="-1.0">
-                        <children>
-                            <GridPane prefHeight="487.0" prefWidth="341.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0"
+                    style="-fx-background-color: F5FCFF;">
+            <ImageView fitHeight="370.0" fitWidth="264.0" layoutX="45.0" layoutY="97.0" pickOnBounds="true"
+                       preserveRatio="true">
+                    <Image url="@../img/Glass3.png"/>
+            </ImageView>
+            <ImageView fitHeight="102.0" fitWidth="325.0" layoutX="11.0" layoutY="8.0" pickOnBounds="true"
+                       preserveRatio="true">
+                    <Image url="@../img/Waterz5.png"/>
+            </ImageView>
+        </AnchorPane>
+        <AnchorPane prefHeight="214.0" prefWidth="330.0" style="-fx-background-color: C7EAFB;">
+            <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="488.0" prefWidth="341.0"
+                  AnchorPane.topAnchor="-1.0">
+                    <GridPane prefHeight="487.0" prefWidth="341.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.33331298828125" minWidth="10.0"
+                                               prefWidth="34.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0"
+                                               prefWidth="112.66668701171875"/>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0"
+                                               prefWidth="158.33331298828125"/>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0"
+                                               prefWidth="34.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="92.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="44.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="101.33334350585938" minHeight="10.0" prefHeight="44.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="107.33331298828125" minHeight="10.0" prefHeight="44.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="61.33331298828125" minHeight="10.0" prefHeight="44.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="111.66665649414062" minHeight="10.0" prefHeight="89.0"
+                                            vgrow="SOMETIMES"/>
+                        </rowConstraints>
+                            <Label alignment="CENTER" prefHeight="61.0" prefWidth="266.0" text="Registration"
+                                   textAlignment="CENTER" textFill="#aa7d5d" GridPane.columnIndex="1"
+                                   GridPane.columnSpan="2">
+                                <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0"/>
+                                </font>
+                            </Label>
+                            <Label alignment="BOTTOM_RIGHT" text="Name" textFill="#aa7d5d"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0"/>
+                                </font>
+                            </Label>
+                            <Label text="Username" textFill="#aa7d5d" GridPane.columnIndex="1"
+                                   GridPane.rowIndex="2">
+                                <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0"/>
+                                </font>
+                            </Label>
+                            <Label text="Password" textFill="#aa7d5d" GridPane.columnIndex="1"
+                                   GridPane.rowIndex="3">
+                                <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0"/>
+                                </font>
+                            </Label>
+                            <Label text="Confirm Password" textFill="#aa7d5d" GridPane.columnIndex="1"
+                                   GridPane.rowIndex="4">
+                                <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0"/>
+                                </font>
+                            </Label>
+                            <Label text="User Type" textFill="#aa7d5d" GridPane.columnIndex="1"
+                                   GridPane.rowIndex="5">
+                                <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0"/>
+                                </font>
+                            </Label>
+                            <TextField fx:id="nameInput"
+                                       style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                       GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                            <TextField fx:id="usernameInput"
+                                       style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                       GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                            <ComboBox fx:id="userTypeInput" prefHeight="25.0" prefWidth="169.0"
+                                      style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                      GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                            <GridPane GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.33331298828125" minWidth="10.0"
-                                                       prefWidth="34.0"/>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0"
-                                                       prefWidth="112.66668701171875"/>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0"
-                                                       prefWidth="158.33331298828125"/>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0"
-                                                       prefWidth="34.0"/>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0"
+                                                       prefWidth="124.0"/>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.66668701171875"
+                                                       minWidth="10.0" prefWidth="38.0"/>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0"
+                                                       prefWidth="113.0"/>
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="92.0"
-                                                    vgrow="SOMETIMES"/>
-                                    <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="44.0"
-                                                    vgrow="SOMETIMES"/>
-                                    <RowConstraints maxHeight="101.33334350585938" minHeight="10.0" prefHeight="44.0"
-                                                    vgrow="SOMETIMES"/>
-                                    <RowConstraints maxHeight="107.33331298828125" minHeight="10.0" prefHeight="44.0"
-                                                    vgrow="SOMETIMES"/>
-                                    <RowConstraints minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES"/>
-                                    <RowConstraints maxHeight="61.33331298828125" minHeight="10.0" prefHeight="44.0"
-                                                    vgrow="SOMETIMES"/>
-                                    <RowConstraints maxHeight="111.66665649414062" minHeight="10.0" prefHeight="89.0"
-                                                    vgrow="SOMETIMES"/>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                                 </rowConstraints>
-                                <children>
-                                    <Label alignment="CENTER" prefHeight="61.0" prefWidth="266.0" text="Registration"
-                                           textAlignment="CENTER" textFill="#aa7d5d" GridPane.columnIndex="1"
-                                           GridPane.columnSpan="2">
-                                        <font>
-                                            <Font name="Arial Rounded MT Bold" size="24.0"/>
-                                        </font>
-                                    </Label>
-                                    <Label alignment="BOTTOM_RIGHT" text="Name" textFill="#aa7d5d"
-                                           GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                        <font>
-                                            <Font name="Arial Rounded MT Bold" size="12.0"/>
-                                        </font>
-                                    </Label>
-                                    <Label text="Username" textFill="#aa7d5d" GridPane.columnIndex="1"
-                                           GridPane.rowIndex="2">
-                                        <font>
-                                            <Font name="Arial Rounded MT Bold" size="12.0"/>
-                                        </font>
-                                    </Label>
-                                    <Label text="Password" textFill="#aa7d5d" GridPane.columnIndex="1"
-                                           GridPane.rowIndex="3">
-                                        <font>
-                                            <Font name="Arial Rounded MT Bold" size="12.0"/>
-                                        </font>
-                                    </Label>
-                                    <Label text="Confirm Password" textFill="#aa7d5d" GridPane.columnIndex="1"
-                                           GridPane.rowIndex="4">
-                                        <font>
-                                            <Font name="Arial Rounded MT Bold" size="12.0"/>
-                                        </font>
-                                    </Label>
-                                    <Label text="User Type" textFill="#aa7d5d" GridPane.columnIndex="1"
-                                           GridPane.rowIndex="5">
-                                        <font>
-                                            <Font name="Arial Rounded MT Bold" size="12.0"/>
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="nameInput"
-                                               style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                               GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                                    <TextField fx:id="usernameInput"
-                                               style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                               GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                                    <ComboBox fx:id="userTypeInput" prefHeight="25.0" prefWidth="169.0"
-                                              style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                              GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-                                    <GridPane GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
-                                        <columnConstraints>
-                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0"
-                                                               prefWidth="124.0"/>
-                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.66668701171875"
-                                                               minWidth="10.0" prefWidth="38.0"/>
-                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0"
-                                                               prefWidth="113.0"/>
-                                        </columnConstraints>
-                                        <rowConstraints>
-                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                        </rowConstraints>
-                                        <children>
-                                            <Button fx:id="registerButton" mnemonicParsing="false"
-                                                    onAction="#handleRegisterButtonAction" prefHeight="54.0"
-                                                    prefWidth="125.0"
-                                                    style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                                    text="Register" textFill="#aa7d5d" GridPane.rowIndex="1">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="14.0"/>
-                                                </font>
-                                            </Button>
-                                            <Button fx:id="cancelButton" mnemonicParsing="false"
-                                                    onAction="#handleCancelButtonAction" prefHeight="35.0"
-                                                    prefWidth="125.0"
-                                                    style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                                    text="Cancel" textFill="#aa7d5d" GridPane.columnIndex="2"
-                                                    GridPane.rowIndex="1">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="14.0"/>
-                                                </font>
-                                            </Button>
-                                        </children>
-                                    </GridPane>
-                                    <PasswordField fx:id="passwordInput2"
-                                                   style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                                   GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                    <Button fx:id="registerButton" mnemonicParsing="false"
+                                            onAction="#handleRegisterButtonAction" prefHeight="54.0"
+                                            prefWidth="125.0"
+                                            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                            text="Register" textFill="#aa7d5d" GridPane.rowIndex="1">
                                         <font>
                                             <Font name="Arial Rounded MT Bold" size="14.0"/>
                                         </font>
-                                    </PasswordField>
-                                    <PasswordField fx:id="passwordInput"
-                                                   style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
-                                                   GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                    </Button>
+                                    <Button fx:id="cancelButton" mnemonicParsing="false"
+                                            onAction="#handleCancelButtonAction" prefHeight="35.0"
+                                            prefWidth="125.0"
+                                            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                            text="Cancel" textFill="#aa7d5d" GridPane.columnIndex="2"
+                                            GridPane.rowIndex="1">
                                         <font>
                                             <Font name="Arial Rounded MT Bold" size="14.0"/>
                                         </font>
-                                    </PasswordField>
-                                </children>
+                                    </Button>
                             </GridPane>
-                        </children>
-                    </VBox>
-                </children>
-            </AnchorPane>
-        </items>
+                            <PasswordField fx:id="passwordInput2"
+                                           style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                           GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                <font>
+                                    <Font name="Arial Rounded MT Bold" size="14.0"/>
+                                </font>
+                            </PasswordField>
+                            <PasswordField fx:id="passwordInput"
+                                           style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
+                                           GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                <font>
+                                    <Font name="Arial Rounded MT Bold" size="14.0"/>
+                                </font>
+                            </PasswordField>
+                    </GridPane>
+            </VBox>
+        </AnchorPane>
     </SplitPane>
 </AnchorPane>

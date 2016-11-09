@@ -31,21 +31,22 @@ public class WorkerSourceDetailScreenController {
 
     private Location currLoc;
 
-    @FXML
-    private Button backButton;
+    @FXML private Button backButton;
 
-    @FXML
-    private ListView<String> reportsList;
-    @FXML
-    private Label sourceLocation;
-    @FXML
-    private Label waterType;
-    @FXML
-    private Label waterCondition;
-    @FXML
-    private Label sourceCreator;
-    @FXML
-    private Label creationDate;
+    @FXML private ListView<String> reportsList;
+    @FXML private Label sourceLocation;
+    @FXML private Label waterType;
+    @FXML private Label waterCondition;
+    @FXML private Label sourceCreator;
+    @FXML private Label creationDate;
+
+    @FXML private Label waterTypeLabel;
+    @FXML private Label locationLabel;
+    @FXML private Label waterConditionLabel;
+    @FXML private Label sourceCreatorLabel;
+    @FXML private Label creationDateLabel;
+    @FXML private Button backButton3;
+    @FXML private Button addReportButton;
 
     private User currentUser;
     public void setUser(User newUser) {

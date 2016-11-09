@@ -18,10 +18,8 @@
    <TabPane layoutX="5.0" layoutY="5.0" prefHeight="490.0" prefWidth="690.0" style="-fx-background-color: #e6e6e6"
             tabClosingPolicy="UNAVAILABLE">
       <Tab style="-fx-background-color: C7EAFB;" text="Source Details">
-         <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="414.0" prefWidth="691.0"
                         style="-fx-background-color: C7EAFB;">
-               <children>
                   <GridPane layoutX="117.0" layoutY="81.0" prefHeight="333.0" prefWidth="468.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.6666259765625" minWidth="10.0"
@@ -36,7 +34,6 @@
                         <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
                         <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
                      </rowConstraints>
-                     <children>
                         <Label fx:id="waterTypeLabel" text="Type of Water" textFill="#aa7d5d"
                                GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
@@ -96,7 +93,6 @@
                               <Font name="Arial Rounded MT Bold" size="18.0"/>
                            </font>
                         </Label>
-                     </children>
                   </GridPane>
                   <Label layoutX="191.0" layoutY="16.0" text="Water Source Details" textFill="#66ccff">
                      <font>
@@ -111,15 +107,11 @@
                         <Font name="Arial Rounded MT Bold" size="14.0"/>
                      </font>
                   </Button>
-               </children>
             </AnchorPane>
-         </content>
       </Tab>
       <Tab style="-fx-background-color: #66ccff;" text="Quality Reports">
-         <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
                         style="-fx-background-color: #66ccff;">
-               <children>
                   <Button fx:id="backButton3" layoutX="38.0" layoutY="22.0" mnemonicParsing="false"
                           onAction="#backButtonAction"
                           style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 3;"
@@ -142,9 +134,7 @@
                         <Font name="Arial Rounded MT Bold" size="14.0"/>
                      </font>
                   </Button>
-               </children>
             </AnchorPane>
-         </content>
       </Tab>
    </TabPane>
 </AnchorPane>

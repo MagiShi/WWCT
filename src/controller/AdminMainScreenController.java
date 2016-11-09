@@ -3,18 +3,23 @@ package src.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 
 public class AdminMainScreenController {
 
-    /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
 
     private AnchorPane anchorLayout;
 
     private User currentUser;
+
+    @FXML private Button logoutButton;
+    @FXML private Button profileButton;
+    @FXML private Button logButton;
+    @FXML private Button usersButton;
 
 
     @FXML protected void handleLogoutButtonAction() {

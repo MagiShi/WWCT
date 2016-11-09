@@ -33,32 +33,31 @@ public class ManagerSourceDetailScreenController {
     private Location currLoc;
     private boolean allDisplayed = true;
 
-    @FXML
-    private Button backButton;
-    @FXML
-    private Label sourceLocation;
-    @FXML
-    private Label waterType;
-    @FXML
-    private Label waterCondition;
-    @FXML
-    private Label sourceCreator;
-    @FXML
-    private Label creationDate;
-    @FXML
-    private ListView<String> reportsList;
-    @FXML
-    private ScatterChart<Double, Double> historicalGraph;
-    @FXML
-    private NumberAxis xAxis;
-    @FXML
-    private TextField yearField;
-    @FXML
-    private CheckBox virusCheckBox;
-    @FXML
-    private CheckBox contaminantCheckBox;
-    @FXML
-    private TextField reportNumField;
+    @FXML private Button backButton;
+    @FXML private Label sourceLocation;
+    @FXML private Label waterType;
+    @FXML private Label waterCondition;
+    @FXML private Label sourceCreator;
+    @FXML private Label creationDate;
+    @FXML private ListView<String> reportsList;
+    @FXML private ScatterChart<Double, Double> historicalGraph;
+    @FXML private NumberAxis xAxis;
+    @FXML private TextField yearField;
+    @FXML private CheckBox virusCheckBox;
+    @FXML private CheckBox contaminantCheckBox;
+    @FXML private TextField reportNumField;
+
+    @FXML private Label waterTypeLabel;
+    @FXML private Label locationLabel;
+    @FXML private Label waterConditionLabel;
+    @FXML private Label sourceCreatorLabel;
+    @FXML private Label creationDateLabel;
+    @FXML private Button backButton3;
+    @FXML private Button addReportButton;
+    @FXML private Button backButton1;
+    @FXML private Label title;
+
+
 
     private User currentUser;
     private int displayedYear = 0;

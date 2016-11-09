@@ -54,18 +54,13 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
 
     /* references to the widgets in the fxml file */
 
-    @FXML
-    private Button logoutButton;
-    @FXML
-    private Button viewReportsButton;
-    @FXML
-    private Button profileButton;
-    @FXML
-    private Button submitButton;
-    @FXML
-    private BorderPane mapViewer;
-    @FXML
-    private Label sourceSelectedLabel;
+    @FXML private Button logoutButton;
+    @FXML private Button viewReportsButton;
+    @FXML private Button profileButton;
+    @FXML private Button submitButton;
+    @FXML private BorderPane mapViewer;
+    @FXML private Label sourceSelectedLabel;
+    @FXML private Button viewReportDetailButton;
 
     /** a gui view provided by the GMapFX library */
     private GoogleMapView mapView;

@@ -19,14 +19,11 @@ public class ReportTypeScreenController {
     private User user;
 
     private String username;
-    @FXML
-    private Button waterQualityBttn;
-    @FXML
-    private Button waterSourceBttn;
-    @FXML
-    private Button cancelBttn;
+    @FXML private Button waterQualityReportButton;
+    @FXML private Button waterSourceButton;
+    @FXML private Button cancelButton;
 
-    @FXML protected void waterQualityBttnAction() {
+    @FXML protected void handleWaterQualityButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterQualityReportScreen.fxml"));
 
@@ -42,7 +39,7 @@ public class ReportTypeScreenController {
             e.printStackTrace();
         }
     }
-    @FXML protected void waterSourceBttnAction() {
+    @FXML protected void handleWaterSourceButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterSourceReportScreen.fxml"));
 
@@ -58,7 +55,7 @@ public class ReportTypeScreenController {
             e.printStackTrace();
         }
     }
-    @FXML protected void cancelBttnAction() {
+    @FXML protected void handleCancelButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/WorkerMapScreen.fxml"));
 

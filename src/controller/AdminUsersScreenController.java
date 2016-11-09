@@ -27,16 +27,14 @@ public class AdminUsersScreenController {
 
     private WaterzMainFXApplication mainApplication;
 
-    @FXML
-    private ListView<String> usersList;
-    @FXML
-    private TextField userIDField;
-    @FXML
-    private Button deleteUserButton;
-    @FXML
-    private Button unbanUserButton;
-    @FXML
-    private Button banUserButton;
+    @FXML private ListView<String> usersList;
+    @FXML private TextField userIDField;
+    @FXML private Button deleteUserButton;
+    @FXML private Button unbanUserButton;
+    @FXML private Button banUserButton;
+    @FXML private Button backButton;
+    @FXML private Button logoutButton;
+
 
 
     private final List<String> allUsers = new ArrayList<>();
