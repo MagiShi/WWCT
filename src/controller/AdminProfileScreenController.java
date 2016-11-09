@@ -5,12 +5,12 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
-import javafx.scene.control.*;
 import src.model.User;
 
-import java.io.*;
 import java.util.ArrayList;
 
 
@@ -56,7 +56,7 @@ public class AdminProfileScreenController {
 
 
     private User currentUser;
-    private ArrayList<String> allUsers = new ArrayList<>();
+    private final ArrayList<String> allUsers = new ArrayList<>();
 
     public void setUser(User newUser) {
         currentUser = newUser;

@@ -3,7 +3,6 @@ package src.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.*;
@@ -70,13 +69,13 @@ public class ManagerSourceDetailScreenController {
 
     public void setLocation (Location loc) { currLoc = loc; }
 
-    private List<WaterSource> allReports = new ArrayList<WaterSource>();
+    private final List<WaterSource> allReports = new ArrayList<>();
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
 
-    private List<Report> currentReports = new ArrayList<>();
+    private final List<Report> currentReports = new ArrayList<>();
 
-    private List<String> reportStrings = new ArrayList<>();
+    private final List<String> reportStrings = new ArrayList<>();
 
 
 
@@ -125,7 +124,7 @@ public class ManagerSourceDetailScreenController {
         if (allDisplayed) {
             showAllGraph();
         } else {
-            showYearGraph(new Integer(displayedYear));
+            showYearGraph(displayedYear);
         }
     }
     @FXML protected void showAllAction() {
@@ -135,7 +134,7 @@ public class ManagerSourceDetailScreenController {
         String thisYear = yearField.getText();
         try {
             Integer newYear = new Integer(thisYear);
-            if (newYear < 2000 || newYear > 2020) {
+            if ((newYear < 2000) || (newYear > 2020)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Invalid Year");
                 alert.setHeaderText("Invalid input for Year");
@@ -196,12 +195,12 @@ public class ManagerSourceDetailScreenController {
     public void setCurrentSource(Location newSource) {
         currLoc = newSource;
 
-        for (WaterSource source: allReports) {
-            if (source.getLatitude().equals(currLoc.getLatitude()) && source.getLongitude().equals(currLoc.getLongitude())) {
-                currentSource = source;
-                //thisSource.add(currentSource);
-            }
-        }
+        //thisSource.add(currentSource);
+        allReports.stream().filter(source -> source.getLatitude().equals(currLoc.getLatitude())
+                && source.getLongitude().equals(currLoc.getLongitude())).forEach(source -> {
+            currentSource = source;
+            //thisSource.add(currentSource);
+        });
 
         sourceLocation.setText(currentSource.getLocation());
         waterType.setText(currentSource.getType());
@@ -229,8 +228,7 @@ public class ManagerSourceDetailScreenController {
         historicalGraph.getData().add(series);
         series = new XYChart.Series();
         if (contaminantCheckBox.isSelected()) {
-            for (int i = 0; i < currentReports.size(); i++) {
-                Report r = currentReports.get(i);
+            for (Report r : currentReports) {
                 float ppm = r.getContaminantPPM();
                 int year = r.getYear();
                 series.getData().add(new XYChart.Data(year, ppm));
@@ -240,12 +238,11 @@ public class ManagerSourceDetailScreenController {
         historicalGraph.getData().add(series);
     }
     private void showYearGraph(Integer year) {
-        displayedYear = year.intValue();
+        displayedYear = year;
         allDisplayed = false;
         List<Report> yearReports = new ArrayList<>();
-        for (int i = 0; i < currentReports.size(); i++) {
-            Report r = currentReports.get(i);
-            if (r.getYear() == year.intValue()) {
+        for (Report r : currentReports) {
+            if (r.getYear() == year) {
                 yearReports.add(r);
             }
         }
@@ -256,8 +253,7 @@ public class ManagerSourceDetailScreenController {
         XYChart.Series series = new XYChart.Series();
         series.setName("Virus PPM");
         if (virusCheckBox.isSelected()) {
-            for (int i = 0; i < yearReports.size(); i++) {
-                Report r = yearReports.get(i);
+            for (Report r : yearReports) {
                 float ppm = r.getVirusPPM();
                 int month = r.getMonth();
                 series.getData().add(new XYChart.Data(month, ppm));
@@ -266,8 +262,7 @@ public class ManagerSourceDetailScreenController {
         historicalGraph.getData().add(series);
         series = new XYChart.Series();
         if (contaminantCheckBox.isSelected()) {
-            for (int i = 0; i < yearReports.size(); i++) {
-                Report r = yearReports.get(i);
+            for (Report r : yearReports) {
                 float ppm = r.getContaminantPPM();
                 int month = r.getMonth();
                 series.getData().add(new XYChart.Data(month, ppm));
@@ -279,7 +274,7 @@ public class ManagerSourceDetailScreenController {
     @FXML protected void handleRemoveReportButtonAction() {
         boolean found = false;
         String reportNum = reportNumField.getText();
-        if (reportNum.equals("")) {
+        if ("".equals(reportNum)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("No Number Entered");
             alert.setHeaderText("Please Enter a Number");
@@ -316,7 +311,7 @@ public class ManagerSourceDetailScreenController {
                 FileWriter fileWriter = null;
                 try {
                     fileWriter = new FileWriter("purityReports.csv", true);
-                    while (reportStrings.size() > 0) {
+                    while (!reportStrings.isEmpty()) {
                         fileWriter.append(reportStrings.remove(0));
                         fileWriter.append("\n");
                     }
@@ -359,8 +354,8 @@ public class ManagerSourceDetailScreenController {
                     Double longit = new Double(data[8]);
                     if (currentSource.getLatitude().equals(lat) && currentSource.getLongitude().equals(longit)) {
                         reportsList.getItems().add(line);
-                        System.out.println("Added");
-                        Report r = new Report(data[1], data[2], Float.parseFloat(data[4]), Float.parseFloat(data[5]), data[6]);
+                        Report r = new Report(data[1], data[2], Float.parseFloat(data[4]),
+                                            Float.parseFloat(data[5]), data[6]);
                         currentReports.add(r);
                     }
                     reportStrings.add(line);

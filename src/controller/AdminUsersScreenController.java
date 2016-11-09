@@ -3,22 +3,21 @@ package src.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.ScatterChart;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
-import src.model.Report;
 import src.model.User;
-import src.model.Location;
-import src.model.WaterSource;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.scene.chart.XYChart;
 
 /**
  * Created by Da-In on 10/16/2016.
@@ -27,13 +26,12 @@ public class AdminUsersScreenController {
 
     private WaterzMainFXApplication mainApplication;
 
-    private AnchorPane anchorLayout;
     @FXML
     private ListView<String> usersList;
     @FXML
     private TextField userIDField;
 
-    private List<String> allUsers = new ArrayList<>();
+    private final List<String> allUsers = new ArrayList<>();
 
     private User currentUser;
     public void setUser(User newUser) {
@@ -47,7 +45,7 @@ public class AdminUsersScreenController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AdminMainScreen.fxml"));
 
-            anchorLayout = fxmlLoader.load();
+            AnchorPane anchorLayout = fxmlLoader.load();
             AdminMainScreenController msc = fxmlLoader.getController();
 
             msc.setUser(currentUser);
@@ -72,7 +70,7 @@ public class AdminUsersScreenController {
     @FXML protected void handleBanUserButtonAction() {
         boolean found = false;
         String username = userIDField.getText();
-        if (username.equals("")) {
+        if ("".equals(username)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("No ID Entered");
             alert.setHeaderText("Please Enter an ID");
@@ -117,7 +115,7 @@ public class AdminUsersScreenController {
                 FileWriter fileWriter = null;
                 try {
                     fileWriter = new FileWriter("database.csv", true);
-                    while (allUsers.size() > 0) {
+                    while (!allUsers.isEmpty()) {
                         fileWriter.append(allUsers.remove(0));
                         fileWriter.append("\n");
                     }
@@ -147,7 +145,7 @@ public class AdminUsersScreenController {
     @FXML protected void handleUnbanUserButtonAction() {
         boolean found = false;
         String username = userIDField.getText();
-        if (username.equals("")) {
+        if ("".equals(username)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("No ID Entered");
             alert.setHeaderText("Please Enter an ID");
@@ -192,7 +190,7 @@ public class AdminUsersScreenController {
                 FileWriter fileWriter = null;
                 try {
                     fileWriter = new FileWriter("database.csv", true);
-                    while (allUsers.size() > 0) {
+                    while (!allUsers.isEmpty()) {
                         fileWriter.append(allUsers.remove(0));
                         fileWriter.append("\n");
                     }
@@ -223,7 +221,7 @@ public class AdminUsersScreenController {
     @FXML protected void handleDeleteUserButtonAction(){
         boolean found = false;
         String username = userIDField.getText();
-        if (username.equals("")) {
+        if ("".equals(username)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("No ID Entered");
             alert.setHeaderText("Please Enter an ID");
@@ -265,7 +263,7 @@ public class AdminUsersScreenController {
                 FileWriter fileWriter = null;
                 try {
                     fileWriter = new FileWriter("database.csv", true);
-                    while (allUsers.size() > 0) {
+                    while (!allUsers.isEmpty()) {
                         fileWriter.append(allUsers.remove(0));
                         fileWriter.append("\n");
                     }

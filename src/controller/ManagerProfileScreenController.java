@@ -19,8 +19,6 @@ public class ManagerProfileScreenController {
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;
 
-    private AnchorPane anchorLayout;
-
     /* references to the widgets in the fxml file */
 
     @FXML
@@ -70,7 +68,7 @@ public class ManagerProfileScreenController {
         try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ManagerMapScreen.fxml"));
 
-                anchorLayout = fxmlLoader.load();
+            AnchorPane anchorLayout = fxmlLoader.load();
                 ManagerMapScreenController msc = fxmlLoader.getController();
 
                 msc.setApp(mainApplication);
