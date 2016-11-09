@@ -5,9 +5,10 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
-import javafx.scene.control.*;
 import src.model.User;
 
 
@@ -53,6 +54,9 @@ public class ManagerProfileScreenController {
 
 
     private User currentUser;
+
+    public ManagerProfileScreenController() {
+    }
 
     public void setUser(User newUser) {
         currentUser = newUser;

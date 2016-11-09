@@ -1,26 +1,23 @@
 package src.controller;
 
+import com.lynden.gmapsfx.javascript.object.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
-import javafx.event.ActionEvent;
-import javafx.scene.control.*;
 import src.model.User;
 import src.model.WaterSource;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
-import com.lynden.gmapsfx.javascript.object.*;
 
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 
 import src.model.Facade;
@@ -68,7 +65,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     @FXML
     private ListView<String> reportsList;
     @FXML
-    private  Label sourceSelectedLabel;
+    private Label sourceSelectedLabel;
 
     /** a gui view provided by the GMapFX library */
     private GoogleMapView mapView;

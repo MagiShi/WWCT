@@ -1,41 +1,29 @@
 package src.controller;
 
+import com.lynden.gmapsfx.javascript.object.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import src.fxapp.WaterzMainFXApplication;
-import javafx.event.ActionEvent;
-import javafx.scene.control.*;
 import src.model.User;
-import src.model.WaterSource;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
-import com.lynden.gmapsfx.javascript.object.*;
 
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 
 import src.model.Facade;
 import src.model.Location;
 import netscape.javascript.JSObject;
 
-import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class UserMapScreenController implements Initializable, MapComponentInitializedListener {
 

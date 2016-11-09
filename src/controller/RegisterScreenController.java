@@ -7,11 +7,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import src.model.User;
 import src.model.UserType;
 
@@ -37,7 +37,7 @@ public class RegisterScreenController {
     private AnchorPane anchorLayout;
 
     @FXML
-    protected void handleRegisterButtonAction() throws IOException{
+    protected void handleRegisterButtonAction() throws IOException {
         String userInputUsername = usernameInput.getText();
         String userInputPassword = passwordInput.getText();
         UserType userInputUserType = userTypeInput.getValue();
