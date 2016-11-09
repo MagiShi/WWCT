@@ -59,23 +59,7 @@ public class waterSourceReportScreenController {
         if (checkValidity()) {
             boolean alreadyExists = new File("sourceReports.csv").exists();
             if (!alreadyExists) {
-                BufferedWriter writer = null;
-                try {
-                    File newFile = new File("sourceReports.csv");
-                    writer = new BufferedWriter(new FileWriter(newFile));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (writer != null) {
-                            writer.flush();
-                            writer.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing, creating new.");
-                        ioe.printStackTrace();
-                    }
-                }
+                handleExists();
             }
             writeToFile();
             switch (currentUser.getType()) {
@@ -184,6 +168,26 @@ public class waterSourceReportScreenController {
             longitudeInput.clear();
         }
         return longit;
+    }
+
+    private void handleExists() {
+        BufferedWriter writer = null;
+        try {
+            File newFile = new File("sourceReports.csv");
+            writer = new BufferedWriter(new FileWriter(newFile));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.flush();
+                    writer.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error while flushing, creating new.");
+                ioe.printStackTrace();
+            }
+        }
     }
 
     private void writeToFile() {
