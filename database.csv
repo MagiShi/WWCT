@@ -1,12 +1,9 @@
 user,user,pass,USER,[set email],[set address],Not Banned
 bbb,bbb,bbb,USER,[set email],[set address],Not Banned
 ccc,ccc,ccc,USER,[set email],[set address],Not Banned
-ddd,ddd,ddd,USER,[set email],[set address],Not Banned
-www,www,www,WORKER,[set email],[set address],Not Banned
 Worker,worker,pass,WORKER,[set email],[set address],Not Banned
-123,123,123,USER,[set email],[set address],BANNED
+123,123,123,USER,[set email],[set address],Not Banned
 buzz,buzz,bee,MANAGER,[set email],[set address],Not Banned
 qwerty,qwerty,q,USER,[set email],[set address],Not Banned
 asd,asd,asd,MANAGER,[set email],[set address],Not Banned
 Guy,admin,admin,ADMINISTRATOR,[set email],[set address],Not Banned
-uuu,uuu,uuu,USER,[set email],[set address],Not Banned

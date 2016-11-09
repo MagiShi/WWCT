@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * Created by Ji Won Lee on 10/18/2016.
@@ -19,9 +20,7 @@ public class PersistenceManager {
     private List<Location> model;
 
     public PersistenceManager(List<Location> m) {
-        for (Location l: m) {
-            model.add(l);
-        }
+        model.addAll(m.stream().collect(Collectors.toList()));
     }
 
     public void saveToText(File file) {

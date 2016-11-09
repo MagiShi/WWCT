@@ -62,23 +62,27 @@ public class LoginScreenController {
                 soundAlert();
             } else if (info[2].equals(passwordInput.getText())){
                 password = info[2];
-                User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
-                if (info[2].equals(passwordInput.getText()) && info[3].equals("WORKER")) {
-                    changeToWorkerScreen(currentUser);
-                } else if(info[3].equals("USER")) {
-                    changeToUserScreen(currentUser);
-                } else if (info[3].equals("MANAGER")){
-                    changeToManagerScreen(currentUser);
-                } else if (info[3].equals("ADMINISTRATOR")){
-                    changeToAdminScreen(currentUser);
-                } else {
-                    soundAlert();
-                }
+                login(info);
             } else {
                 soundAlert();
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void login(String[] info) {
+        User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
+        if (info[2].equals(passwordInput.getText()) && info[3].equals("WORKER")) {
+            changeToWorkerScreen(currentUser);
+        } else if(info[3].equals("USER")) {
+            changeToUserScreen(currentUser);
+        } else if (info[3].equals("MANAGER")){
+            changeToManagerScreen(currentUser);
+        } else if (info[3].equals("ADMINISTRATOR")){
+            changeToAdminScreen(currentUser);
+        } else {
+            soundAlert();
         }
     }
 
@@ -190,18 +194,6 @@ public class LoginScreenController {
             e.printStackTrace();
         }
     }
-
-
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the constructor and
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-        //load animation here?
-    }
-
 
 
     /**

@@ -48,7 +48,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     private Facade fac;
 
     private String username;
-    private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
+    private ArrayList<WaterSource> water = new ArrayList<>();
 
 
     /* references to the widgets in the fxml file */

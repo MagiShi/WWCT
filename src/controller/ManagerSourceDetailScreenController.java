@@ -265,8 +265,8 @@ public class ManagerSourceDetailScreenController {
         series.setName("Contaminant PPM");
         historicalGraph.getData().add(series);
     }
+
     @FXML protected void handleRemoveReportButtonAction() {
-        boolean found = false;
         String reportNum = reportNumField.getText();
         if ("".equals(reportNum)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -274,63 +274,72 @@ public class ManagerSourceDetailScreenController {
             alert.setHeaderText("Please Enter a Number");
             alert.showAndWait();
         } else {
-            for (int i = 0; i < currentReports.size(); i++) {
-                String report = reportStrings.get(i);
-                String[] reportData = report.split(",");
-                String[] numArray = reportData[0].split("#");
-                if (numArray[1].equals(reportNum)) {
-                    reportStrings.remove(i);
-                    i--;
-                    found = true;
-                }
-            }
-            if (found) {
-                BufferedWriter writer = null;
-                try {
-                    File newFile = new File("purityReports.csv");
-                    writer = new BufferedWriter(new FileWriter(newFile));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (writer != null) {
-                            writer.flush();
-                            writer.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing, creating new.");
-                        ioe.printStackTrace();
-                    }
-                }
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter("purityReports.csv", true);
-                    while (!reportStrings.isEmpty()) {
-                        fileWriter.append(reportStrings.remove(0));
-                        fileWriter.append("\n");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (fileWriter != null) {
-                            fileWriter.flush();
-                            fileWriter.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing");
-                        ioe.printStackTrace();
-                    }
-                }
-                loadReports();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Report Number not found");
-                alert.setHeaderText("The Report Number was not found.");
-                alert.showAndWait();
-                reportNumField.clear();
+            removeReport(reportNum);
+        }
+    }
+
+    private void removeReport(String reportNum) {
+        boolean found = false;
+        for (int i = 0; i < currentReports.size(); i++) {
+            String report = reportStrings.get(i);
+            String[] reportData = report.split(",");
+            String[] numArray = reportData[0].split("#");
+            if (numArray[1].equals(reportNum)) {
+                reportStrings.remove(i);
+                i--;
+                found = true;
             }
         }
+        if (found) {
+            rewriteReportsFile();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Report Number not found");
+            alert.setHeaderText("The Report Number was not found.");
+            alert.showAndWait();
+            reportNumField.clear();
+        }
+    }
+
+    private void rewriteReportsFile() {
+        BufferedWriter writer = null;
+        try {
+            File newFile = new File("purityReports.csv");
+            writer = new BufferedWriter(new FileWriter(newFile));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.flush();
+                    writer.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error while flushing, creating new.");
+                ioe.printStackTrace();
+            }
+        }
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter("purityReports.csv", true);
+            while (!reportStrings.isEmpty()) {
+                fileWriter.append(reportStrings.remove(0));
+                fileWriter.append("\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fileWriter != null) {
+                    fileWriter.flush();
+                    fileWriter.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error while flushing");
+                ioe.printStackTrace();
+            }
+        }
+        loadReports();
     }
 
     private void loadReports() {
@@ -361,7 +370,6 @@ public class ManagerSourceDetailScreenController {
         showAllGraph();
     }
 
-
     /**
      * Setup the main application link so we can call methods there
      *
@@ -369,7 +377,5 @@ public class ManagerSourceDetailScreenController {
      */
     public void setMainApp(WaterzMainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
-
     }
-
 }

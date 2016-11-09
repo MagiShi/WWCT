@@ -73,8 +73,9 @@ public class AdminUsersScreenController {
     private void initialize() {
         loadDatabase();
     }
+
+
     @FXML protected void handleBanUserButtonAction() {
-        boolean found = false;
         String username = userIDField.getText();
         if ("".equals(username)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -88,68 +89,36 @@ public class AdminUsersScreenController {
             alert.setContentText("You cannot ban yourself.");
             alert.showAndWait();
         } else {
-            for (int i = 0; i < allUsers.size(); i++) {
-                String user = allUsers.get(i);
-                String[] userData = user.split(",");
-                if (userData[1].equals(username)) {
-                    allUsers.remove(i);
-                    userData[6] = "BANNED";
-                    user = userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
-                            + "," + userData[4] + "," + userData[5] + "," + userData[6];
-                    allUsers.add(i, user);
-                    found = true;
-                }
-            }
-            if (found) {
-                BufferedWriter writer = null;
-                try {
-                    File newFile = new File("database.csv");
-                    writer = new BufferedWriter(new FileWriter(newFile));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (writer != null) {
-                            writer.flush();
-                            writer.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing, creating new.");
-                        ioe.printStackTrace();
-                    }
-                }
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter("database.csv", true);
-                    while (!allUsers.isEmpty()) {
-                        fileWriter.append(allUsers.remove(0));
-                        fileWriter.append("\n");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (fileWriter != null) {
-                            fileWriter.flush();
-                            fileWriter.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing");
-                        ioe.printStackTrace();
-                    }
-                }
-                loadDatabase();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("User ID not found");
-                alert.setHeaderText("The User ID was not found.");
-                alert.showAndWait();
-                userIDField.clear();
-            }
+            banUser(username);
         }
     }
-    @FXML protected void handleUnbanUserButtonAction() {
+
+    private void banUser(String username) {
         boolean found = false;
+        for (int i = 0; i < allUsers.size(); i++) {
+            String user = allUsers.get(i);
+            String[] userData = user.split(",");
+            if (userData[1].equals(username)) {
+                allUsers.remove(i);
+                userData[6] = "BANNED";
+                user = userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
+                        + "," + userData[4] + "," + userData[5] + "," + userData[6];
+                allUsers.add(i, user);
+                found = true;
+            }
+        }
+        if (found) {
+            rewriteDatabase();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("User ID not found");
+            alert.setHeaderText("The User ID was not found.");
+            alert.showAndWait();
+            userIDField.clear();
+        }
+    }
+
+    @FXML protected void handleUnbanUserButtonAction() {
         String username = userIDField.getText();
         if ("".equals(username)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -163,69 +132,36 @@ public class AdminUsersScreenController {
             alert.setContentText("You cannot unban yourself.");
             alert.showAndWait();
         } else {
-            for (int i = 0; i < allUsers.size(); i++) {
-                String user = allUsers.get(i);
-                String[] userData = user.split(",");
-                if (userData[1].equals(username)) {
-                    allUsers.remove(i);
-                    userData[6] = "Not Banned";
-                    user = userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
-                            + "," + userData[4] + "," + userData[5] + "," + userData[6];
-                    allUsers.add(i, user);
-                    found = true;
-                }
+            unbanUser(username);
+        }
+    }
+
+    private void unbanUser(String username) {
+        boolean found = false;
+        for (int i = 0; i < allUsers.size(); i++) {
+            String user = allUsers.get(i);
+            String[] userData = user.split(",");
+            if (userData[1].equals(username)) {
+                allUsers.remove(i);
+                userData[6] = "Not Banned";
+                user = userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
+                        + "," + userData[4] + "," + userData[5] + "," + userData[6];
+                allUsers.add(i, user);
+                found = true;
             }
-            if (found) {
-                BufferedWriter writer = null;
-                try {
-                    File newFile = new File("database.csv");
-                    writer = new BufferedWriter(new FileWriter(newFile));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (writer != null) {
-                            writer.flush();
-                            writer.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing, creating new.");
-                        ioe.printStackTrace();
-                    }
-                }
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter("database.csv", true);
-                    while (!allUsers.isEmpty()) {
-                        fileWriter.append(allUsers.remove(0));
-                        fileWriter.append("\n");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (fileWriter != null) {
-                            fileWriter.flush();
-                            fileWriter.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing");
-                        ioe.printStackTrace();
-                    }
-                }
-                loadDatabase();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("User ID not found");
-                alert.setHeaderText("The User ID was not found.");
-                alert.showAndWait();
-                userIDField.clear();
-            }
+        }
+        if (found) {
+            rewriteDatabase();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("User ID not found");
+            alert.setHeaderText("The User ID was not found.");
+            alert.showAndWait();
+            userIDField.clear();
         }
     }
 
     @FXML protected void handleDeleteUserButtonAction(){
-        boolean found = false;
         String username = userIDField.getText();
         if ("".equals(username)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -239,63 +175,32 @@ public class AdminUsersScreenController {
             alert.setContentText("You cannot delete yourself.");
             alert.showAndWait();
         } else {
-            for (int i = 0; i < allUsers.size(); i++) {
-                String user = allUsers.get(i);
-                String[] userData = user.split(",");
-                if (userData[1].equals(username)) {
-                    allUsers.remove(i);
-                    i--;
-                    found = true;
-                }
-            }
-            if (found) {
-                BufferedWriter writer = null;
-                try {
-                    File newFile = new File("database.csv");
-                    writer = new BufferedWriter(new FileWriter(newFile));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (writer != null) {
-                            writer.flush();
-                            writer.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing, creating new.");
-                        ioe.printStackTrace();
-                    }
-                }
-                FileWriter fileWriter = null;
-                try {
-                    fileWriter = new FileWriter("database.csv", true);
-                    while (!allUsers.isEmpty()) {
-                        fileWriter.append(allUsers.remove(0));
-                        fileWriter.append("\n");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (fileWriter != null) {
-                            fileWriter.flush();
-                            fileWriter.close();
-                        }
-                    } catch (IOException ioe) {
-                        System.out.println("Error while flushing");
-                        ioe.printStackTrace();
-                    }
-                }
-                loadDatabase();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("User ID not found");
-                alert.setHeaderText("The User ID was not found.");
-                alert.showAndWait();
-                userIDField.clear();
-            }
+            deleteUser(username);
         }
     }
+
+    private void deleteUser(String username) {
+        boolean found = false;
+        for (int i = 0; i < allUsers.size(); i++) {
+            String user = allUsers.get(i);
+            String[] userData = user.split(",");
+            if (userData[1].equals(username)) {
+                allUsers.remove(i);
+                i--;
+                found = true;
+            }
+        }
+        if (found) {
+            rewriteDatabase();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("User ID not found");
+            alert.setHeaderText("The User ID was not found.");
+            alert.showAndWait();
+            userIDField.clear();
+        }
+    }
+
     private void loadDatabase() {
         allUsers.clear();
         usersList.getItems().clear();
@@ -314,6 +219,46 @@ public class AdminUsersScreenController {
         }
     }
 
+    private void rewriteDatabase() {
+        BufferedWriter writer = null;
+        try {
+            File newFile = new File("database.csv");
+            writer = new BufferedWriter(new FileWriter(newFile));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.flush();
+                    writer.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error while flushing, creating new.");
+                ioe.printStackTrace();
+            }
+        }
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter("database.csv", true);
+            while (!allUsers.isEmpty()) {
+                fileWriter.append(allUsers.remove(0));
+                fileWriter.append("\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fileWriter != null) {
+                    fileWriter.flush();
+                    fileWriter.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error while flushing");
+                ioe.printStackTrace();
+            }
+        }
+        loadDatabase();
+    }
 
     /**
      * Setup the main application link so we can call methods there
