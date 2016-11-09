@@ -44,6 +44,8 @@ public class waterQualityReportScreenController {
     private String userInputContaminantPPM;
     private PurityCondition userInputOverallCondition;
 
+    private final int RANDMAXNUM = 9999;
+
     //private ArrayList<WaterSource> thisSource = new ArrayList<>();
 
     public void setUser(User newUser) {
@@ -203,7 +205,7 @@ public class waterQualityReportScreenController {
             String longitude = String.valueOf(currLoc.getLongitude());
 
             fileWriter.append("Report #" + 1000)
-                    .append(Integer.toString((int)(Math.random() * ((9999 - 1000) + 1)))).append(", ");
+                    .append(Integer.toString((int)(Math.random() * ((RANDMAXNUM - 1000) + 1)))).append(", ");
             fileWriter.append(userInputName).append(", ");
             fileWriter.append(dateString).append(", ");
             fileWriter.append(userInputLocation).append(", ");
