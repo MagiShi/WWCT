@@ -31,11 +31,7 @@ public class User {
         this.address = newAddress;
         this.email = Email;
         this.userType = userType;
-        if (banStatus.equals("Not Banned")) {
-            banned = false;
-        } else {
-            banned = true;
-        }
+        banned = !banStatus.equals("Not Banned");
     }
 
     public String getUserID() {

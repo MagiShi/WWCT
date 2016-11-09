@@ -58,7 +58,7 @@ public class LoginScreenController {
                     username = info[1];
                 }
             }
-            if (usernameFound == false) {
+            if (!usernameFound) {
                 soundAlert();
             } else if (info[2].equals(passwordInput.getText())){
                 password = info[2];
@@ -73,13 +73,13 @@ public class LoginScreenController {
 
     private void login(String[] info) {
         User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
-        if (info[2].equals(passwordInput.getText()) && info[3].equals("WORKER")) {
+        if (info[2].equals(passwordInput.getText()) && "WORKER".equals(info[3])) {
             changeToWorkerScreen(currentUser);
-        } else if(info[3].equals("USER")) {
+        } else if("USER".equals(info[3])) {
             changeToUserScreen(currentUser);
-        } else if (info[3].equals("MANAGER")){
+        } else if ("MANAGER".equals(info[3])){
             changeToManagerScreen(currentUser);
-        } else if (info[3].equals("ADMINISTRATOR")){
+        } else if ("ADMINISTRATOR".equals(info[3])){
             changeToAdminScreen(currentUser);
         } else {
             soundAlert();

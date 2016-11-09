@@ -98,14 +98,14 @@ public class UserWaterSourceReportScreenController {
     private boolean checkValidity() {
 
         boolean valid = true;
-        if (userInputName.equals("")) {
+        if ("".equals(userInputName)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty User Name field");
             alert.setContentText("Please input your name.");
             alert.showAndWait();
             valid = false;
         }
-        if (userInputLocation.equals("")) {
+        if ("".equals(userInputLocation)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty User Name field");
             alert.setContentText("Please input a location.");

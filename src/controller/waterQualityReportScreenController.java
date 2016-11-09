@@ -94,7 +94,7 @@ public class waterQualityReportScreenController {
 
             try {
                 writeToFile();
-                if (currentUser.getType().equals("WORKER")) {
+                if ("WORKER".equals(currentUser.getType())) {
                     changeToWorkerSource();
                 } else {
                     changeToManagerSource();
@@ -107,14 +107,14 @@ public class waterQualityReportScreenController {
 
     private boolean checkValidity()  {
         boolean valid = true;
-        if (userInputName.equals("")) {
+        if ("".equals(userInputName)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty User Name field");
             alert.setContentText("Please input your name.");
             alert.showAndWait();
             valid = false;
         }
-        if (userInputLocation.equals("")) {
+        if ("".equals(userInputLocation)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Empty Location field");
             alert.setContentText("Please input a location value.");
@@ -233,7 +233,7 @@ public class waterQualityReportScreenController {
 
     @FXML protected void cancelBttnAction() {
         try {
-            if (currentUser.getType().equals("MANAGER")) {
+            if ("MANAGER".equals(currentUser.getType())) {
                 changeToManagerSource();
             } else {
                 changeToWorkerSource();
