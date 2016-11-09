@@ -1,10 +1,7 @@
 package src.model;
 
-/**
- * Created by Ji Won Lee on 10/18/2016.
- */
-public class FileFormatException extends Exception{
-    private String line;
+class FileFormatException extends Exception{
+    private final String line;
 
     public FileFormatException(String str) {
         line = str;

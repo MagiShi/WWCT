@@ -230,8 +230,10 @@ public class AdminUsersScreenController {
                     writer.close();
                 }
             } catch (IOException ioe) {
-                System.out.println("Error while flushing, creating new.");
-                ioe.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("File Rewrite Error");
+                alert.setHeaderText("Error while flushing: " + ioe.toString());
+                alert.showAndWait();
             }
         }
         FileWriter fileWriter = null;
@@ -250,8 +252,10 @@ public class AdminUsersScreenController {
                     fileWriter.close();
                 }
             } catch (IOException ioe) {
-                System.out.println("Error while flushing");
-                ioe.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("File Rewrite Error");
+                alert.setHeaderText("Error while flushing: " + ioe.toString());
+                alert.showAndWait();
             }
         }
         loadDatabase();

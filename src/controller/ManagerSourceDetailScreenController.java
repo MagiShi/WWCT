@@ -161,14 +161,15 @@ public class ManagerSourceDetailScreenController {
             alert.setContentText("Please input year as an integer value.");
             alert.showAndWait();
             yearField.clear();
-        } catch (NullPointerException npe) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Empty year field");
-            alert.setHeaderText("No input for year.");
-            alert.setContentText("Please input a year value.");
-            alert.showAndWait();
-            yearField.clear();
         }
+//        } catch (NullPointerException npe) {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Empty year field");
+//            alert.setHeaderText("No input for year.");
+//            alert.setContentText("Please input a year value.");
+//            alert.showAndWait();
+//            yearField.clear();
+//        }
     }
 
     /**
@@ -326,8 +327,10 @@ public class ManagerSourceDetailScreenController {
                     writer.close();
                 }
             } catch (IOException ioe) {
-                System.out.println("Error while flushing, creating new.");
-                ioe.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("File Rewrite Error");
+                alert.setHeaderText("Error while flushing: " + ioe.toString());
+                alert.showAndWait();
             }
         }
         FileWriter fileWriter = null;
@@ -346,8 +349,10 @@ public class ManagerSourceDetailScreenController {
                     fileWriter.close();
                 }
             } catch (IOException ioe) {
-                System.out.println("Error while flushing");
-                ioe.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("File Rewrite Error");
+                alert.setHeaderText("Error while flushing: " + ioe.toString());
+                alert.showAndWait();
             }
         }
         loadReports();
