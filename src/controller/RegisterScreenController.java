@@ -15,8 +15,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
+import src.model.Registration;
 import src.model.User;
 import src.model.UserType;
+import src.model.Registration;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -49,114 +51,20 @@ public class RegisterScreenController {
     protected void handleRegisterButtonAction() {
         String userInputUsername = usernameInput.getText();
         String userInputPassword = passwordInput.getText();
+        String matchPassword = passwordInput2.getText();
         UserType userInputUserType = userTypeInput.getValue();
+        String userNameInput = nameInput.getText();
 
-        if (checkOriginal(userInputUsername)) {
-            try {
-                if (passwordInput2.getText().equals(userInputPassword)) {
-                    register(userInputUsername, userInputPassword, userInputUserType);
-                } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Password does not match");
-                alert.setHeaderText("Password does not match");
-                alert.setContentText("Input for password and confirm password does not match.");
-                alert.showAndWait();
-                passwordInput.clear();
-                passwordInput2.clear();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Username Taken");
-            alert.setHeaderText("Username Taken");
-            alert.setContentText("Account with this username already exists. Please enter a different username.");
-            alert.showAndWait();
-            usernameInput.clear();
+
+        Registration reg = new Registration(userInputUsername, userInputPassword,
+                matchPassword, userInputUserType, userNameInput);
+        User currentUser = reg.register(passwordInput, passwordInput2, usernameInput);
+        if (currentUser != null) {
+            changeScreen(currentUser, userInputUserType);
         }
     }
 
-    private boolean checkOriginal(String userInputUsername) {
-        boolean usernameOriginal = true;
-        //check if username exists
-        boolean alreadyExists = new File("database.csv").exists();
-        if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
-                String line;
-                line = br.readLine();
-                while (usernameOriginal && (line != null)) {
-                    String[] info = line.split(",");
-                    if (info[1].equals(userInputUsername)) {
-                        usernameOriginal = false;
-                    }
-                    line = br.readLine();
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            BufferedWriter writer = null;
-            try {
-                File newFile = new File("database.csv");
-                writer = new BufferedWriter(new FileWriter(newFile));
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (writer != null) {
-                        writer.flush();
-                        writer.close();
-                    }
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
-            }
-
-        }
-        return usernameOriginal;
-    }
-    //Store into database.csv
-    private void addToFile(CharSequence userInputUsername, CharSequence userInputPassword, UserType userInputUserType) {
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter("database.csv", true);
-            fileWriter.append(nameInput.getText());
-            fileWriter.append(",");
-            fileWriter.append(userInputUsername);
-            fileWriter.append(",");
-            fileWriter.append(userInputPassword);
-            fileWriter.append(",");
-            fileWriter.append(userInputUserType.toString());
-            fileWriter.append(",");
-            fileWriter.append("[set email]");
-            fileWriter.append(",");
-            fileWriter.append("[set address]");
-            fileWriter.append(",");
-            fileWriter.append("Not Banned");
-            fileWriter.append("\n");
-
-        } catch (Exception e){
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fileWriter != null) {
-                    fileWriter.flush();
-                    fileWriter.close();
-                }
-            }  catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-    }
-
-    private void register(String userInputUsername, String userInputPassword, UserType userInputUserType) {
-        addToFile(userInputUsername, userInputPassword, userInputUserType);
-        User currentUser = new User(userInputUsername,userInputPassword,
-                nameInput.getText() , userInputUserType.toString(),
-                "[set email]", "[set address]", "Not Banned");
-
+    private void changeScreen(User currentUser, UserType userInputUserType) {
         switch (userInputUserType.toString()) {
             case "WORKER":
                 changeToWorkerScreen(currentUser);
