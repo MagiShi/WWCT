@@ -3,7 +3,6 @@ package src.model;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import src.controller.RegisterScreenController;
 
 import java.io.*;
 

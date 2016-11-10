@@ -1,18 +1,11 @@
 package src.Tests;
 
 import junit.framework.TestCase;
-import org.junit.Before;
 import org.testng.annotations.Test;
 import src.model.Registration;
 import src.model.UserType;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import static junit.framework.Assert.assertTrue;
 
 /**
  * Created by Maggie on 11/9/2016.
