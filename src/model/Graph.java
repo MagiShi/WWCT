@@ -7,29 +7,28 @@ public class Graph {
     private int lowerXNum;
     private boolean allYears;
     private Integer currentYear;
-    String xAxisLabel;
+    private String xAxisLabel;
     private boolean virusDisplayed;
     private boolean contaminantDisplayed;
-    private ArrayList<Float> allVirusNumList;
-    private ArrayList<Float> currentVirusNumList;
+    private final ArrayList<Float> allVirusNumList;
+    private final ArrayList<Float> currentVirusNumList;
 
-    private ArrayList<Float> allContamNumList;
-    private ArrayList<Float> currentContamNumList;
+    private final ArrayList<Float> allContamNumList;
+    private final ArrayList<Float> currentContamNumList;
 
-    private ArrayList<Integer> allMonthList;
-    private ArrayList<Integer> currentMonthList;
+    private final ArrayList<Integer> allMonthList;
+    private final ArrayList<Integer> currentMonthList;
 
-    private ArrayList<Integer> allYearList;
-    private ArrayList<Integer> currentYearList;
+    private final ArrayList<Integer> allYearList;
+    private final ArrayList<Integer> currentYearList;
 
 
-    public Graph(ArrayList<Report> reports) {
+    public Graph(Iterable<Report> reports) {
         allYearList = new ArrayList<>();
         allMonthList = new ArrayList<>();
         allContamNumList = new ArrayList<>();
         allVirusNumList = new ArrayList<>();
-        for (int i = 0; i < reports.size(); i++) {
-            Report r = reports.get(i);
+        for (Report r : reports) {
             allVirusNumList.add(r.getVirusPPM());
             allContamNumList.add(r.getContaminantPPM());
             allYearList.add(r.getYear());
@@ -49,7 +48,7 @@ public class Graph {
     }
 
     public void setCurrentYear(int newYear) {
-        if (newYear < 2000 || newYear > 2020) {
+        if ((newYear < 2000) || (newYear > 2020)) {
             throw new IllegalArgumentException("The year is not valid");
         }
         allYears = false;
