@@ -50,14 +50,12 @@ public class LoginScreenController {
                 info = line.split(",");
                 if (info[1].equals(usernameInput.getText())) {
                     usernameFound = true;
-                    String username = info[1];
                 }
                 line = br.readLine();
             }
             if (!usernameFound) {
                 soundAlert();
             } else if (info[2].equals(passwordInput.getText())){
-                String password = info[2];
                 login(info);
             } else {
                 soundAlert();

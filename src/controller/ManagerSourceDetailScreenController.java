@@ -6,32 +6,32 @@ import javafx.scene.Scene;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Alert;
-
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
-import src.model.Report;
-import src.model.User;
-import src.model.Location;
-import src.model.WaterSource;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javafx.scene.chart.XYChart;
+import src.model.Graph;
+import src.model.Location;
+import src.model.Report;
+import src.model.User;
+import src.model.WaterSource;
 
 public class ManagerSourceDetailScreenController {
 
@@ -42,45 +42,42 @@ public class ManagerSourceDetailScreenController {
     private WaterSource currentSource;
 
     private Location currLoc;
-    private boolean allDisplayed = true;
+    private final boolean allDisplayed = true;
+    private final boolean virusSelected = false;
+    private final boolean contaminantSelected = false;
 
-    @FXML private Button backButton;
-    @FXML private Label sourceLocation;
-    @FXML private Label waterType;
-    @FXML private Label waterCondition;
-    @FXML private Label sourceCreator;
-    @FXML private Label creationDate;
-    @FXML private ListView<String> reportsList;
-    @FXML private ScatterChart<Double, Double> historicalGraph;
-    @FXML private NumberAxis xAxis;
-    @FXML private TextField yearField;
-    @FXML private CheckBox virusCheckBox;
-    @FXML private CheckBox contaminantCheckBox;
-    @FXML private TextField reportNumField;
+    @FXML
+    private Button backButton;
+    @FXML
+    private Label sourceLocation;
+    @FXML
+    private Label waterType;
+    @FXML
+    private Label waterCondition;
+    @FXML
+    private Label sourceCreator;
+    @FXML
+    private Label creationDate;
+    @FXML
+    private ListView<String> reportsList;
+    @FXML
+    private ScatterChart<Double, Double> historicalGraph;
+    @FXML
+    private NumberAxis xAxis;
+    @FXML
+    private TextField yearField;
+    @FXML
+    private CheckBox virusCheckBox;
+    @FXML
+    private CheckBox contaminantCheckBox;
+    @FXML
+    private TextField reportNumField;
 
-    @FXML private Label waterTypeLabel;
-    @FXML private Label locationLabel;
-    @FXML private Label waterConditionLabel;
-    @FXML private Label sourceCreatorLabel;
-    @FXML private Label creationDateLabel;
-    @FXML private Button backButton3;
-    @FXML private Button addReportButton;
-    @FXML private Button backButton1;
-    @FXML private Label title;
-
+    private Graph graph;
 
 
     private User currentUser;
-    private int displayedYear = 0;
-
-    /**
-     * Lets the app know which user is currently logged on.
-     * This is important for displaying user info in the profile screen,
-     * but the method is needed for all screens
-     * because the current user needs to be continuously "held onto."
-     *
-     * @param newUser the User instance holding the current User's data
-     */
+    private final int displayedYear = 0;
     public void setUser(User newUser) {
         currentUser = newUser;
     }
@@ -90,9 +87,9 @@ public class ManagerSourceDetailScreenController {
 
     private final Collection<WaterSource> allReports = new ArrayList<>();
 
-    //private ArrayList<WaterSource> thisSource = new ArrayList<WaterSource>();
+    private final Collection<WaterSource> thisSource = new ArrayList<>();
 
-    private final Collection<Report> currentReports = new ArrayList<>();
+    private final ArrayList<Report> currentReports = new ArrayList<>();
 
     private final List<String> reportStrings = new ArrayList<>();
 
@@ -119,7 +116,6 @@ public class ManagerSourceDetailScreenController {
         }
     }
 
-
     @FXML protected void addReportButtonAction() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/waterQualityReportScreen.fxml"));
@@ -139,29 +135,87 @@ public class ManagerSourceDetailScreenController {
             e.printStackTrace();
         }
     }
-    @FXML protected void reloadGraph() {
-        if (allDisplayed) {
-            showAllGraph();
+    @FXML protected void handleVirusCheckbox() {
+        if (virusCheckBox.isSelected()) {
+            graph.setVirusDisplayed(true);
         } else {
-            showYearGraph(displayedYear);
+            graph.setVirusDisplayed(false);
         }
+        showGraph();
     }
+    @FXML protected void handleContaminantCheckbox() {
+        if (contaminantCheckBox.isSelected()) {
+            graph.setContaminantDisplayed(true);
+        } else {
+            graph.setContaminantDisplayed(false);
+        }
+        showGraph();
+    }
+
+    //Handles show 20 Year Graph
     @FXML protected void showAllAction() {
-        showAllGraph();
+        graph.setShowAll();
+        showGraph();
     }
+
+    /**
+     * Displays Graph
+     */
+    private void showGraph() {
+        xAxis.setUpperBound(graph.getUpperXNum());
+        xAxis.setLowerBound(graph.getLowerXNum());
+        xAxis.setLabel(graph.getxAxisLabel());
+        historicalGraph.getData().clear();
+        XYChart.Series series = new XYChart.Series();
+        ArrayList<Float> virusList = graph.getCurrentVirusNumList();
+        ArrayList<Float> contamList = graph.getCurrentContamNumList();
+        ArrayList<Integer> dateList;
+        if (graph.getAllYears()) {
+            dateList = graph.getCurrentYearList();
+        } else {
+            dateList = graph.getCurrentMonthList();
+        }
+        series.setName("Virus PPM");
+        if (graph.getVirusDisplayed()) {
+            for (int i = 0; (i < virusList.size()) && (i < dateList.size()); i++) {
+                float ppm = virusList.get(i);
+                int date = dateList.get(i);
+                series.getData().add(new XYChart.Data(date, ppm));
+            }
+        }
+        historicalGraph.getData().add(series);
+        series = new XYChart.Series();
+        if (graph.getContaminantDisplayed()) {
+            for (int i = 0; (i < contamList.size()) && (i < dateList.size()); i++) {
+                float ppm = contamList.get(i);
+                int date = dateList.get(i);
+                series.getData().add(new XYChart.Data(date, ppm));
+            }
+        }
+        series.setName("Contaminant PPM");
+        historicalGraph.getData().add(series);
+    }
+
+
+    //Handle specific year graph
     @FXML protected void chooseYearAction() {
         String thisYear = yearField.getText();
+        parseYear(thisYear);
+    }
+
+    private void parseYear(String thisYear) {
         try {
             Integer newYear = new Integer(thisYear);
-            if ((newYear < 2000) || (newYear > 2020)) {
+            try {
+                graph.setCurrentYear(newYear);
+                showGraph();
+            } catch(IllegalArgumentException e) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Invalid Year");
                 alert.setHeaderText("Invalid input for Year");
                 alert.setContentText("Please input valid year integer between 2000 and 2020.");
                 alert.showAndWait();
                 yearField.clear();
-            } else {
-                showYearGraph(newYear);
             }
         } catch (NumberFormatException nfe) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -188,6 +242,7 @@ public class ManagerSourceDetailScreenController {
      */
     @FXML
     private void initialize() {
+        currentUser = new User("manager", "pass", "name", "MANAGER", "a email", "a address", "Not Banned");
         boolean alreadyExists = new File("sourceReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
@@ -212,16 +267,26 @@ public class ManagerSourceDetailScreenController {
                 e.printStackTrace();
             }
         }
+        String line = "Report #7739,Alice,10/18/16 22:39,Lewis,33,-88,WELL,POTABLE,";
+        String[] linebroken = line.split(",");
+        Location l = new Location(Double.valueOf(linebroken[4]),
+                Double.valueOf(linebroken[5]),
+                "Marker " + 0,
+                "<h2> "  + linebroken[0] +
+                        "</h2> <br> Reporter: " + linebroken[1] +
+                        "<br> Date: " + linebroken[2] +
+                        "<br> Water Type: " + linebroken[6] +
+                        "<br> Water Condition: " + linebroken[7]);
+        setCurrentSource(l);
     }
 
     public void setCurrentSource(Location newSource) {
         currLoc = newSource;
 
-        //thisSource.add(currentSource);
         allReports.stream().filter(source -> source.getLatitude().equals(currLoc.getLatitude())
                 && source.getLongitude().equals(currLoc.getLongitude())).forEach(source -> {
             currentSource = source;
-            //thisSource.add(currentSource);
+            thisSource.add(currentSource);
         });
 
         sourceLocation.setText(currentSource.getLocation());
@@ -230,63 +295,6 @@ public class ManagerSourceDetailScreenController {
         sourceCreator.setText((currentSource.getUser()));
         creationDate.setText(currentSource.getDate());
         loadReports();
-    }
-
-    private void showAllGraph() {
-        xAxis.setUpperBound(2020);
-        xAxis.setLowerBound(2000);
-        xAxis.setLabel("Year");
-        historicalGraph.getData().clear();
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Virus PPM");
-        if (virusCheckBox.isSelected()) {
-            for (Report r : currentReports) {
-                float ppm = r.getVirusPPM();
-                int year = r.getYear();
-                series.getData().add(new XYChart.Data(year, ppm));
-            }
-        }
-        historicalGraph.getData().add(series);
-        series = new XYChart.Series();
-        if (contaminantCheckBox.isSelected()) {
-            for (Report r : currentReports) {
-                float ppm = r.getContaminantPPM();
-                int year = r.getYear();
-                series.getData().add(new XYChart.Data(year, ppm));
-            }
-        }
-        series.setName("Contaminant PPM");
-        historicalGraph.getData().add(series);
-    }
-    private void showYearGraph(Integer year) {
-        displayedYear = year;
-        allDisplayed = false;
-        List<Report> yearReports
-                = currentReports.stream().filter(r -> r.getYear() == year).collect(Collectors.toList());
-        xAxis.setUpperBound(12);
-        xAxis.setLowerBound(1);
-        xAxis.setLabel("Month");
-        historicalGraph.getData().clear();
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Virus PPM");
-        if (virusCheckBox.isSelected()) {
-            for (Report r : yearReports) {
-                float ppm = r.getVirusPPM();
-                int month = r.getMonth();
-                series.getData().add(new XYChart.Data(month, ppm));
-            }
-        }
-        historicalGraph.getData().add(series);
-        series = new XYChart.Series();
-        if (contaminantCheckBox.isSelected()) {
-            for (Report r : yearReports) {
-                float ppm = r.getContaminantPPM();
-                int month = r.getMonth();
-                series.getData().add(new XYChart.Data(month, ppm));
-            }
-        }
-        series.setName("Contaminant PPM");
-        historicalGraph.getData().add(series);
     }
 
     @FXML protected void handleRemoveReportButtonAction() {
@@ -314,7 +322,7 @@ public class ManagerSourceDetailScreenController {
             }
         }
         if (found) {
-            rewriteReportsFile();
+            rewriteFile();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Report Number not found");
@@ -324,7 +332,37 @@ public class ManagerSourceDetailScreenController {
         }
     }
 
-    private void rewriteReportsFile() {
+    private void loadReports() {
+        reportsList.getItems().clear();
+        reportStrings.clear();
+        currentReports.clear();
+        boolean alreadyExists = new File("purityReports.csv").exists();
+        if (alreadyExists) {
+            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
+                String line;
+                line = br.readLine();
+                while (line != null) {
+                    String[] data = line.split(",");
+                    Double lat = new Double(data[7]);
+                    Double longit = new Double(data[8]);
+                    if (currentSource.getLatitude().equals(lat) && currentSource.getLongitude().equals(longit)) {
+                        reportsList.getItems().add(line);
+                        Report r = new Report(data[1], data[2],
+                                Float.parseFloat(data[4]), Float.parseFloat(data[5]), data[6]);
+                        currentReports.add(r);
+                    }
+                    reportStrings.add(line);
+                    line = br.readLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        graph = new Graph(currentReports);
+        showGraph();
+    }
+
+    private void rewriteFile() {
         BufferedWriter writer = null;
         try {
             File newFile = new File("purityReports.csv");
@@ -333,10 +371,9 @@ public class ManagerSourceDetailScreenController {
             e.printStackTrace();
         } finally {
             try {
-                if (writer != null) {
-                    writer.flush();
-                    writer.close();
-                }
+                assert writer != null;
+                writer.flush();
+                writer.close();
             } catch (IOException ioe) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("File Rewrite Error");
@@ -355,13 +392,12 @@ public class ManagerSourceDetailScreenController {
             e.printStackTrace();
         } finally {
             try {
-                if (fileWriter != null) {
-                    fileWriter.flush();
-                    fileWriter.close();
-                }
+                assert fileWriter != null;
+                fileWriter.flush();
+                fileWriter.close();
             } catch (IOException ioe) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("File Rewrite Error");
+                alert.setTitle("Purity Report File Rewrite Error");
                 alert.setHeaderText("Error while flushing: " + ioe.toString());
                 alert.showAndWait();
             }
@@ -369,35 +405,6 @@ public class ManagerSourceDetailScreenController {
         loadReports();
     }
 
-    private void loadReports() {
-        reportsList.getItems().clear();
-        reportStrings.clear();
-        currentReports.clear();
-        boolean alreadyExists = new File("purityReports.csv").exists();
-        if (alreadyExists) {
-            try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
-                String line;
-                line = br.readLine();
-                while (line != null) {
-                    String[] data = line.split(",");
-
-                    Double lat = new Double(data[7]);
-                    Double longit = new Double(data[8]);
-                    if (currentSource.getLatitude().equals(lat) && currentSource.getLongitude().equals(longit)) {
-                        reportsList.getItems().add(line);
-                        Report r = new Report(data[1], data[2], Float.parseFloat(data[4]),
-                                            Float.parseFloat(data[5]), data[6]);
-                        currentReports.add(r);
-                    }
-                    reportStrings.add(line);
-                    line = br.readLine();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        showAllGraph();
-    }
 
     /**
      * Setup the main application link so we can call methods there
@@ -406,5 +413,7 @@ public class ManagerSourceDetailScreenController {
      */
     public void setMainApp(WaterzMainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
+
     }
+
 }
