@@ -1,35 +1,35 @@
 package src.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Graph {
     private int upperXNum;
     private int lowerXNum;
     private boolean allYears;
     private Integer currentYear;
-    private String xAxisLabel;
+    String xAxisLabel;
     private boolean virusDisplayed;
     private boolean contaminantDisplayed;
-    private final List<Float> allVirusNumList;
-    private final ArrayList<Float> currentVirusNumList;
+    private ArrayList<Float> allVirusNumList;
+    private ArrayList<Float> currentVirusNumList;
 
-    private final List<Float> allContamNumList;
-    private final ArrayList<Float> currentContamNumList;
+    private ArrayList<Float> allContamNumList;
+    private ArrayList<Float> currentContamNumList;
 
-    private final List<Integer> allMonthList;
-    private final ArrayList<Integer> currentMonthList;
+    private ArrayList<Integer> allMonthList;
+    private ArrayList<Integer> currentMonthList;
 
-    private final ArrayList<Integer> allYearList;
-    private final ArrayList<Integer> currentYearList;
+    private ArrayList<Integer> allYearList;
+    private ArrayList<Integer> currentYearList;
 
 
-    public Graph(List<Report> reports) {
+    public Graph(ArrayList<Report> reports) {
         allYearList = new ArrayList<>();
         allMonthList = new ArrayList<>();
         allContamNumList = new ArrayList<>();
         allVirusNumList = new ArrayList<>();
-        for (Report r : reports) {
+        for (int i = 0; i < reports.size(); i++) {
+            Report r = reports.get(i);
             allVirusNumList.add(r.getVirusPPM());
             allContamNumList.add(r.getContaminantPPM());
             allYearList.add(r.getYear());
@@ -49,7 +49,7 @@ public class Graph {
     }
 
     public void setCurrentYear(int newYear) {
-        if ((newYear < 2000) || (newYear > 2020)) {
+        if (newYear < 2000 || newYear > 2020) {
             throw new IllegalArgumentException("The year is not valid");
         }
         allYears = false;
@@ -147,16 +147,16 @@ public class Graph {
     public boolean getContaminantDisplayed() {
         return contaminantDisplayed;
     }
-    public List<Float> getAllVirusNumList() {
+    public ArrayList<Float> getAllVirusNumList() {
         return allVirusNumList;
     }
-    public List<Float> getAllContamNumList() {
+    public ArrayList<Float> getAllContamNumList() {
         return allContamNumList;
     }
-    public List<Integer> getAllMonthList() {
+    public ArrayList<Integer> getAllMonthList() {
         return allMonthList;
     }
-    public List<Integer> getAllYearList() {
+    public ArrayList<Integer> getAllYearList() {
         return allYearList;
     }
 

@@ -3,38 +3,35 @@ package src.Tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import src.model.Graph;
-import src.model.Report;
-
+import src.model.*;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 
-
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertEquals;
 
+/**
+ * Created by Cassie on 11/9/2016.
+ */
 public class GraphTests {;
-    private static final int TIMEOUT = 200;
+    public static final int TIMEOUT = 200;
     private Graph graph;
-    private final Collection<Float> expectedVirus = new ArrayList<>();
-    private final Collection<Float> expectedContam = new ArrayList<>();
-    private final Collection<Integer> expectedYear = new ArrayList<>();
-    private final Collection<Integer> expectedMonth = new ArrayList<>();
+    private ArrayList<Float> expectedVirus = new ArrayList<>();
+    private ArrayList<Float> expectedContam = new ArrayList<>();
+    private ArrayList<Integer> expectedYear = new ArrayList<>();
+    private ArrayList<Integer> expectedMonth = new ArrayList<>();
 
-    private void assertException(Class<? extends Exception> exceptionClass, Runnable code) {
-        assertException(
-                new Class[]{exceptionClass}, code);
+    private void assertException(String message, Class<? extends Exception> exceptionClass, Runnable code) {
+        assertException(message, new Class[]{exceptionClass}, code);
     }
-    private void assertException(Class<? extends Exception>[] exceptionClasses, Runnable code) {
+    private void assertException(String message, Class<? extends Exception>[] exceptionClasses, Runnable code) {
         try {
             code.run();
-            Assert.fail("The graph should throw an exception when an invalid year is used.");
+            Assert.fail(message);
         } catch (Exception e) {
             boolean foundException = false;
             for (Class<? extends Exception> exceptionClass: exceptionClasses) {
@@ -45,7 +42,7 @@ public class GraphTests {;
 
             if (!foundException) {
                 e.printStackTrace();
-                Assert.fail("The graph should throw an exception when an invalid year is used.");
+                Assert.fail(message);
             } else {
                 assertNotNull(
                         "Exception messages must not be empty",
@@ -64,19 +61,19 @@ public class GraphTests {;
         boolean alreadyExists = new File("purityReports.csv").exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
-                String line;
-                line = br.readLine();
-                while (line != null) {
+                String line = "";
+                while (((line = br.readLine()) != null)) {
                     String[] data = line.split(",");
-
+                    for (int i = 0; i < data.length; i++) {
+                        System.out.print(data[i] + ", ");
+                    }
+                    System.out.println();
                     Double lat = new Double(data[7]);
                     Double longit = new Double(data[8]);
-                    if ((33 == lat) && (-88 == longit)) {
-                        Report r = new Report(data[1], data[2], Float.parseFloat(data[4]),
-                                Float.parseFloat(data[5]), data[6]);
+                    if (33 == lat && -88 == longit) {
+                        Report r = new Report(data[1], data[2], Float.parseFloat(data[4]), Float.parseFloat(data[5]), data[6]);
                         currentReports.add(r);
                     }
-                    line = br.readLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -87,26 +84,26 @@ public class GraphTests {;
 
     @Test(timeout = TIMEOUT)
     public void initialGraphValues() {
-        Collection<Float> expectedAllVirus = new ArrayList<>();
-        expectedAllVirus.add(89f);
-        expectedAllVirus.add(23f);
-        expectedAllVirus.add(13f);
-        expectedAllVirus.add(1f);
-        Collection<Float> expectedAllContam = new ArrayList<>();
-        expectedAllContam.add(98f);
-        expectedAllContam.add(325f);
-        expectedAllContam.add(13f);
-        expectedAllContam.add(1f);
-        Collection<Integer> expectedAllMonth = new ArrayList<>();
-        expectedAllMonth.add(10);
-        expectedAllMonth.add(10);
-        expectedAllMonth.add(10);
-        expectedAllMonth.add(10);
-        Collection<Integer> expectedAllYear = new ArrayList<>();
-        expectedAllYear.add(2016);
-        expectedAllYear.add(2016);
-        expectedAllYear.add(2016);
-        expectedAllYear.add(2016);
+        ArrayList<Float> expectedAllVirus = new ArrayList<>();
+        expectedAllVirus.add(new Float(89));
+        expectedAllVirus.add(new Float(23));
+        expectedAllVirus.add(new Float(13));
+        expectedAllVirus.add(new Float(1));
+        ArrayList<Float> expectedAllContam = new ArrayList<>();
+        expectedAllContam.add(new Float(98));
+        expectedAllContam.add(new Float(325));
+        expectedAllContam.add(new Float(13));
+        expectedAllContam.add(new Float(1));
+        ArrayList<Integer> expectedAllMonth = new ArrayList<>();
+        expectedAllMonth.add(new Integer(10));
+        expectedAllMonth.add(new Integer(10));
+        expectedAllMonth.add(new Integer(10));
+        expectedAllMonth.add(new Integer(10));
+        ArrayList<Integer> expectedAllYear = new ArrayList<>();
+        expectedAllYear.add(new Integer(2016));
+        expectedAllYear.add(new Integer(2016));
+        expectedAllYear.add(new Integer(2016));
+        expectedAllYear.add(new Integer(2016));
         assertEquals(graph.getAllVirusNumList(), expectedAllVirus);
         assertEquals(graph.getAllContamNumList(), expectedAllContam);
         assertEquals(graph.getAllMonthList(), expectedAllMonth);
@@ -130,10 +127,10 @@ public class GraphTests {;
         expectedYear.add(2016);
         expectedYear.add(2016);
         expectedYear.add(2016);
-        expectedVirus.add(89f);
-        expectedVirus.add(23f);
-        expectedVirus.add(13f);
-        expectedVirus.add(1f);
+        expectedVirus.add(new Float(89));
+        expectedVirus.add(new Float(23));
+        expectedVirus.add(new Float(13));
+        expectedVirus.add(new Float(1));
         assertEquals(expectedVirus, graph.getCurrentVirusNumList());
         assertEquals(expectedContam, graph.getCurrentContamNumList());
         assertEquals(expectedMonth, graph.getCurrentMonthList());
@@ -141,10 +138,10 @@ public class GraphTests {;
         graph.setVirusDisplayed(false);
         graph.setContaminantDisplayed(true);
         expectedVirus.clear();
-        expectedContam.add(98f);
-        expectedContam.add(325f);
-        expectedContam.add(13f);
-        expectedContam.add(1f);
+        expectedContam.add(new Float(98));
+        expectedContam.add(new Float(325));
+        expectedContam.add(new Float(13));
+        expectedContam.add(new Float(1));
         assertEquals(expectedVirus, graph.getCurrentVirusNumList());
         assertEquals(expectedContam, graph.getCurrentContamNumList());
         assertEquals(expectedMonth, graph.getCurrentMonthList());
@@ -154,10 +151,10 @@ public class GraphTests {;
         expectedYear.add(2016);
         expectedYear.add(2016);
         expectedYear.add(2016);
-        expectedVirus.add(89f);
-        expectedVirus.add(23f);
-        expectedVirus.add(13f);
-        expectedVirus.add(1f);
+        expectedVirus.add(new Float(89));
+        expectedVirus.add(new Float(23));
+        expectedVirus.add(new Float(13));
+        expectedVirus.add(new Float(1));
         assertEquals(expectedVirus, graph.getCurrentVirusNumList());
         assertEquals(expectedContam, graph.getCurrentContamNumList());
         assertEquals(expectedMonth, graph.getCurrentMonthList());
@@ -167,12 +164,15 @@ public class GraphTests {;
     @Test(timeout = TIMEOUT)
     public void testInvalidYears() {
         assertException(
+                "The graph should throw an exception when an invalid year is used.",
                 IllegalArgumentException.class,
                 () -> graph.setCurrentYear(1995));
         assertException(
+                "The graph should throw an exception when an invalid year is used.",
                 IllegalArgumentException.class,
                 () -> graph.setCurrentYear(1999));
         assertException(
+                "The graph should throw an exception when an invalid year is used.",
                 IllegalArgumentException.class,
                 () -> graph.setCurrentYear(2021));
 
@@ -191,10 +191,10 @@ public class GraphTests {;
         expectedMonth.add(10);
         expectedMonth.add(10);
         expectedMonth.add(10);
-        expectedVirus.add(89f);
-        expectedVirus.add(23f);
-        expectedVirus.add(13f);
-        expectedVirus.add(1f);
+        expectedVirus.add(new Float(89));
+        expectedVirus.add(new Float(23));
+        expectedVirus.add(new Float(13));
+        expectedVirus.add(new Float(1));
         assertEquals(expectedVirus, graph.getCurrentVirusNumList());
         assertEquals(expectedContam, graph.getCurrentContamNumList());
         assertEquals(expectedMonth, graph.getCurrentMonthList());
@@ -202,10 +202,10 @@ public class GraphTests {;
         graph.setVirusDisplayed(false);
         graph.setContaminantDisplayed(true);
         expectedVirus.clear();
-        expectedContam.add(98f);
-        expectedContam.add(325f);
-        expectedContam.add(13f);
-        expectedContam.add(1f);
+        expectedContam.add(new Float(98));
+        expectedContam.add(new Float(325));
+        expectedContam.add(new Float(13));
+        expectedContam.add(new Float(1));
         assertEquals(expectedVirus, graph.getCurrentVirusNumList());
         assertEquals(expectedContam, graph.getCurrentContamNumList());
         assertEquals(expectedMonth, graph.getCurrentMonthList());
@@ -215,10 +215,10 @@ public class GraphTests {;
         expectedMonth.add(10);
         expectedMonth.add(10);
         expectedMonth.add(10);
-        expectedVirus.add(89f);
-        expectedVirus.add(23f);
-        expectedVirus.add(13f);
-        expectedVirus.add(1f);
+        expectedVirus.add(new Float(89));
+        expectedVirus.add(new Float(23));
+        expectedVirus.add(new Float(13));
+        expectedVirus.add(new Float(1));
         assertEquals(expectedVirus, graph.getCurrentVirusNumList());
         assertEquals(expectedContam, graph.getCurrentContamNumList());
         assertEquals(expectedMonth, graph.getCurrentMonthList());
