@@ -1,8 +1,10 @@
-package src.model;
+package src.Tests;
 
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.testng.annotations.Test;
+import src.model.Registration;
+import src.model.UserType;
 
 import java.io.BufferedReader;
 import java.io.File;
