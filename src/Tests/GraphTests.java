@@ -6,26 +6,25 @@ import org.junit.Test;
 import src.model.Graph;
 import src.model.Report;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-
+import java.util.List;
 
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class GraphTests {;
     private static final int TIMEOUT = 200;
     private Graph graph;
-    private final Collection<Float> expectedVirus = new ArrayList<>();
-    private final Collection<Float> expectedContam = new ArrayList<>();
-    private final Collection<Integer> expectedYear = new ArrayList<>();
-    private final Collection<Integer> expectedMonth = new ArrayList<>();
+    private final ArrayList<Float> expectedVirus = new ArrayList<>();
+    private final ArrayList<Float> expectedContam = new ArrayList<>();
+    private final ArrayList<Integer> expectedYear = new ArrayList<>();
+    private final ArrayList<Integer> expectedMonth = new ArrayList<>();
 
     private void assertException(Class<? extends Exception> exceptionClass, Runnable code) {
         assertException(
@@ -68,7 +67,6 @@ public class GraphTests {;
                 line = br.readLine();
                 while (line != null) {
                     String[] data = line.split(",");
-
                     Double lat = new Double(data[7]);
                     Double longit = new Double(data[8]);
                     if ((33 == lat) && (-88 == longit)) {
@@ -92,17 +90,17 @@ public class GraphTests {;
         expectedAllVirus.add(23f);
         expectedAllVirus.add(13f);
         expectedAllVirus.add(1f);
-        Collection<Float> expectedAllContam = new ArrayList<>();
+        List<Float> expectedAllContam = new ArrayList<>();
         expectedAllContam.add(98f);
         expectedAllContam.add(325f);
         expectedAllContam.add(13f);
         expectedAllContam.add(1f);
-        Collection<Integer> expectedAllMonth = new ArrayList<>();
+        List<Integer> expectedAllMonth = new ArrayList<>();
         expectedAllMonth.add(10);
         expectedAllMonth.add(10);
         expectedAllMonth.add(10);
         expectedAllMonth.add(10);
-        Collection<Integer> expectedAllYear = new ArrayList<>();
+        ArrayList<Integer> expectedAllYear = new ArrayList<>();
         expectedAllYear.add(2016);
         expectedAllYear.add(2016);
         expectedAllYear.add(2016);
