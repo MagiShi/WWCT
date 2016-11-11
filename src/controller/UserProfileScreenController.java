@@ -11,6 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 
+/**
+ * controller that is linked to the UserProfileScreen fxml.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class UserProfileScreenController {
 
     /** a link back to the main application class */

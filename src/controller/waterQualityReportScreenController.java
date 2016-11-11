@@ -21,6 +21,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * controller that is linked to the waterQualityReportScreen fxml.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class waterQualityReportScreenController {
     private WaterzMainFXApplication mainApplication;
     private AnchorPane anchorLayout;
@@ -43,6 +48,7 @@ public class waterQualityReportScreenController {
     private String userInputVirusPPM;
     private String userInputContaminantPPM;
     private PurityCondition userInputOverallCondition;
+    private final int RANDMAXNUM = 9999;
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<>();
 
@@ -58,13 +64,11 @@ public class waterQualityReportScreenController {
         currentUser = newUser;
     }
 
+    /**
+     * Set the location that the controller's linked screen is displaying
+     * @param loc   The location being set
+     */
     public void setLocation (Location loc) { currLoc = loc; }
-
-//    public void setThisSource (ArrayList<WaterSource> list) {
-//        for (WaterSource w: list) {
-//            thisSource.add(w);
-//        }
-//    }
 
     @FXML protected void submitBttnAction() {
         userInputName = workerName.getText();
@@ -210,7 +214,6 @@ public class waterQualityReportScreenController {
             String latitude = String.valueOf(currLoc.getLatitude());
             String longitude = String.valueOf(currLoc.getLongitude());
 
-            int RANDMAXNUM = 9999;
             fileWriter.append("Report #" + 1000)
                     .append(Integer.toString((int)(Math.random() * ((RANDMAXNUM - 1000) + 1)))).append(", ");
             fileWriter.append(userInputName).append(", ");

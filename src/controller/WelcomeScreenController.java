@@ -7,6 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 
+/**
+ * controller that is linked to the WelcomeScreen fxml.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class WelcomeScreenController {
 
     /** a link back to the main application class */

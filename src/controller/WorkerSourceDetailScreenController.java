@@ -18,7 +18,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-/*
+/**
  *
  * controller that is linked to the WorkerSourceDetailScreen fxml.
  * It handles what happens when actions are taken for the view
@@ -55,7 +55,7 @@ public class WorkerSourceDetailScreenController {
 
     private final Collection<WaterSource> allReports = new ArrayList<>();
 
-    /*
+    /**
      * The method sets who is the user of the account currently used in the app.
      * @param newUser   the User (the current Worker) that is logged in.
      */
@@ -63,11 +63,10 @@ public class WorkerSourceDetailScreenController {
         currentUser = newUser;
     }
 
-    /*
+    /**
      * The method sets what is the water source.
-     * @param newUser   the User (the current Worker) that is logged in.
+     * @param loc   the User (the current Worker) that is logged in.
      */
-
     public void setLocation (Location loc) { currLoc = loc; }
 
     @FXML protected void backButtonAction() {
@@ -158,6 +157,10 @@ public class WorkerSourceDetailScreenController {
         }
     }
 
+    /**
+     * The method sets what is the water source.
+     * @param newSource   the User (the current Worker) that is logged in.
+     */
     public void setCurrentSource(Location newSource) {
         currLoc = newSource;
 

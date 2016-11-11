@@ -23,6 +23,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * controller that is linked to the UserWaterSourceReportScreen fxml.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class UserWaterSourceReportScreenController {
     private WaterzMainFXApplication mainApplication;
 
@@ -49,6 +54,7 @@ public class UserWaterSourceReportScreenController {
 
     private final int MAXNUM = 90;
     private final int MINNUM = -90;
+    private final int RANDMAXNUM = 9999;
 
     /**
      * Lets the app know which user is currently logged on.
@@ -62,6 +68,10 @@ public class UserWaterSourceReportScreenController {
         currentUser = newUser;
     }
 
+    /**
+     * sets the facade object in the controller
+     * @param fc    the facade being set
+     */
     public void setFacade(Facade fc) {this.fc = fc;}
 
     @FXML protected void submitBttnAction() {
@@ -209,7 +219,6 @@ public class UserWaterSourceReportScreenController {
             Date dateObject = new Date();
             String dateString = dateFormat.format(dateObject);
 
-            int RANDMAXNUM = 9999;
             int num = 1000 + (int) (Math.random() * ((RANDMAXNUM - 1000) + 1));
 
             fileWriter.append("Report #").append(Integer.toString(num)).append(", ");

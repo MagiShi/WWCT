@@ -33,6 +33,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * controller that is linked to the UserMapScreen fxml.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class UserMapScreenController implements Initializable, MapComponentInitializedListener {
 
     /** a link back to the main application class */
@@ -43,8 +48,6 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     private User currentUser;
 
     private String username;
-    //private ArrayList<WaterSource> water = new ArrayList<WaterSource>();
-
 
     /* references to the widgets in the fxml file */
 
@@ -66,12 +69,23 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     /**remember stage for dialogs */
     private Stage mainStage;
 
+    private final int STARTLAT = 34;
+    private final int STARTLONGIT = -88;
+
+    /**
+     * Constructor for a UserMapScreenController object
+     * @param app   a WaterzMainFXApplication that the controller was a part of
+     * @param stage The stage for the controller to work with
+     */
     public UserMapScreenController(WaterzMainFXApplication app, Stage stage) {
         theApp = app;
         mainStage = stage;
         setUpMapView(stage);
     }
 
+    /**
+     * a no params constructor for a UserMapScreenController object
+     */
     public UserMapScreenController() {
     }
 
@@ -137,6 +151,10 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
         }
     }
 
+    /**
+     * sets the user that is currently logged in.
+     * @param newUser   the User using the app.
+     */
     public void setUser(User newUser) {
         currentUser = newUser;
     }
@@ -178,8 +196,6 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
         MapOptions options = new MapOptions();
 
         //set up the center location for the map
-        int STARTLAT = 34;
-        int STARTLONGIT = -88;
         LatLong center = new LatLong(STARTLAT, STARTLONGIT);
 
         options.center(center)

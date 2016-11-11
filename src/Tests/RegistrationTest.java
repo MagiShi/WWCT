@@ -8,7 +8,8 @@ import src.model.UserType;
 import java.util.ArrayList;
 
 /**
- * Created by Maggie on 11/9/2016.
+ * JUnits for the Registration Object's public methods
+ * Testing for full branch coverage by checking the if statements of the register method
  */
 public class RegistrationTest extends TestCase {
 
@@ -23,6 +24,7 @@ public class RegistrationTest extends TestCase {
     private ArrayList<String> passwords;
     private Registration[] reg;
 
+    @Override
     public void setUp() throws Exception {
         super.setUp();
 
@@ -40,6 +42,10 @@ public class RegistrationTest extends TestCase {
 
     }
 
+    /**
+     * checks that these userNames are original and not in the database
+     * @throws Exception    Any exceptions that occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testNotInDatabase() throws Exception {
         boolean check = reg[0].checkOriginal();
@@ -56,6 +62,10 @@ public class RegistrationTest extends TestCase {
         assertTrue(check);
     }
 
+    /**
+     * checks that these userNames are not original and are in the database
+     * @throws Exception    Any exceptions that occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testInDatabase() throws Exception {
         boolean check = reg[6].checkOriginal();
@@ -68,6 +78,10 @@ public class RegistrationTest extends TestCase {
         assertTrue(!check);
     }
 
+    /**
+     * checks that these passwords match
+     * @throws Exception    Any exceptions that occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testPasswordsMatch() throws Exception {
         boolean check = reg[1].checkPassword();
@@ -78,6 +92,10 @@ public class RegistrationTest extends TestCase {
         assertTrue(check);
     }
 
+    /**
+     * checks that these passwords do not match
+     * @throws Exception    Any exceptions that occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testPasswordsNoMatch() throws Exception {
         boolean check = reg[3].checkPassword();
@@ -90,6 +108,10 @@ public class RegistrationTest extends TestCase {
         assertTrue(!check);
     }
 
+    /**
+     * checks that the password fields are empty
+     * @throws Exception    Any exceptions that occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testPasswordBlank() throws Exception {
         boolean check = reg[0].checkPassword();

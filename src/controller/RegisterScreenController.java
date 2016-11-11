@@ -18,7 +18,12 @@ import src.model.User;
 import src.model.UserType;
 import src.model.Registration;
 
-
+/**
+ *
+ * controller that is linked to the Register fxml.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class RegisterScreenController {
     /** a link back to the main application class */
     private WaterzMainFXApplication mainApplication;

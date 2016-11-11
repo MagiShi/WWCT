@@ -11,13 +11,16 @@ import src.controller.WelcomeScreenController;
 
 import java.io.IOException;
 
+/**
+ * The main application for the FX project.
+ * Run in order to run the app as it contains the main method
+ */
 public class WaterzMainFXApplication extends Application {
 
     private Stage mainScreen;
     private Stage welcomeScene;
     private Scene loginScene;
     private Scene mapScene;
-
     private BorderPane borderLayout;
 
     @Override
@@ -27,11 +30,14 @@ public class WaterzMainFXApplication extends Application {
         showWelcome();
     }
 
+    /**
+     * method to get the stage of the application
+     * that the screens are displayed on
+     *@return mainScreen    the main stage of the project
+     */
     public Stage getMainScreen() {
         return mainScreen;
     }
-
-
 
     private void initRootLayout(Stage mainScreen) {
         try {
@@ -69,6 +75,11 @@ public class WaterzMainFXApplication extends Application {
         }
     }
 
+    /**
+     * Main  method of the project
+     * launches the application
+     * @param args  A String array of arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

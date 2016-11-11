@@ -4,10 +4,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
- * Created by Maggie on 11/9/2016.
+ * The Report class represents an object for Refistration
  */
 public class Registration {
 
@@ -17,6 +22,16 @@ public class Registration {
     UserType userInputUserType;
     String userNameInput;
 
+    User currentUser;
+
+    /**
+     * A constructor to create a registration object
+     * @param userInputUsername     The potential userID of the user
+     * @param userInputPassword     The potential password of the user
+     * @param matchPassword         The password confirmation
+     * @param userInputUserType     The potential user type of the user
+     * @param userNameInput         The potential name of the user
+     */
     public Registration(String userInputUsername, String userInputPassword,
                  String matchPassword, UserType userInputUserType, String userNameInput) {
         this.userInputUsername = userInputUsername;
@@ -26,6 +41,14 @@ public class Registration {
         this.userNameInput = userNameInput;
     }
 
+    /**
+     * A method to register a new user. Returns a user object and writes
+     * the information onto the database.csv file
+     * @param passwordInput     The passwordInput field of the fxml sheet
+     * @param passwordInput2    The confirm password field of the fxml sheet
+     * @param usernameInput     The username input field of the fxml sheet
+     * @return currentUser      The new user that was created by the method
+     */
     public User register(PasswordField passwordInput, PasswordField passwordInput2, TextField usernameInput) {
         User currentUser = null;
         if (checkOriginal()) {
@@ -56,10 +79,12 @@ public class Registration {
         return currentUser;
     }
 
-
+    /**
+     * checks if userInputUsername is not already in the database
+     * @return boolean of whether or not the potential username is original
+     */
     public boolean checkOriginal() {
-
-        if (userInputUsername.equals(null)) {
+        if (userInputUsername == null) {
             return false;
         }
 
@@ -102,11 +127,12 @@ public class Registration {
         return usernameOriginal;
     }
 
+    /**
+     * checks userInputPassword and matchPassword match
+     * @return boolean of whether or not the two passwords match
+     */
     public boolean checkPassword() {
-        if (matchPassword.equals("") || userInputPassword.equals("")) {
-            return false;
-        }
-        return matchPassword.equals(userInputPassword);
+        return !(matchPassword.equals("") || userInputPassword.equals("")) && matchPassword.equals(userInputPassword);
     }
 
     private void addToFile() {
@@ -143,7 +169,7 @@ public class Registration {
     }
 
     private User createUser() {
-        User currentUser = new User(userInputUsername,userInputPassword,
+        currentUser = new User(userInputUsername,userInputPassword,
                 userNameInput , userInputUserType.toString(),
                 "[set email]", "[set address]", "Not Banned");
 

@@ -43,6 +43,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * controller that is linked to the WorkerMapScreen fxml.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class WorkerMapScreenController implements Initializable, MapComponentInitializedListener {
 
     /** a link back to the main application class */
@@ -78,15 +83,25 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     /**remember stage for dialogs */
     private Stage mainStage;
 
-
     private Location currLoc;
 
+    final int STARTLAT = 34;
+    final int STARTLONGIT = 88;
+
+    /**
+     * Constructor for a WorkerMapScreenController object
+     * @param app   a WaterzMainFXApplication that the controller was a part of
+     * @param stage The stage for the controller to work with
+     */
     public WorkerMapScreenController(WaterzMainFXApplication app, Stage stage) {
         theApp = app;
         mainStage = stage;
         setUpMapView(stage);
     }
 
+    /**
+     * a no params constructor for a WorkerMapScreenController object
+     */
     public WorkerMapScreenController() {
     }
 
@@ -98,6 +113,10 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
         mainStage = stage;
     }
 
+    /**
+     * Sets the location that the user clicks on
+     * @param loc   the current location
+     */
     public void setLocation (Location loc) { currLoc = loc; }
 
     @FXML protected void handleSubmitButtonAction() {
@@ -191,9 +210,13 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
         }
     }
 
-        public void setUser(User newUser) {
-            currentUser = newUser;
-        }
+    /**
+     * sets the user that is currently logged in.
+     * @param newUser   the User using the app.
+     */
+    public void setUser(User newUser) {
+        currentUser = newUser;
+    }
 
 
     /**
@@ -232,8 +255,7 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
         MapOptions options = new MapOptions();
 
         //set up the center location for the map
-        int STARTLAT = 34;
-        int STARTLONGIT = 88;
+
         LatLong center = new LatLong(STARTLAT, STARTLONGIT);
 
         options.center(center)
