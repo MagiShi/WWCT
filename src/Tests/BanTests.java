@@ -9,15 +9,8 @@ import src.model.StatusChange;
  * Testing for full branch coverage by checking the if statements of the register method
  */
 public class BanTests extends TestCase {
-
     private static final int TIMEOUT = 200;
-
-    //need to check : checkOriginal -> in, not in. (Is String so no other testing). //database empty
-    //passwords match/don't match/both blank/one blank
-    //
-
     private StatusChange[] sc;
-
 
     @Override
     public void setUp() throws Exception {
@@ -29,6 +22,10 @@ public class BanTests extends TestCase {
         sc[8] = new StatusChange("DNE");
     }
 
+    /**
+     * Tests banning a user that exists in the database
+     * @throws Exception if any Exceptions occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testBanExistingUser() throws Exception {
         sc[0] = new StatusChange("aaa");
@@ -39,6 +36,10 @@ public class BanTests extends TestCase {
         assertTrue(sc[2].changeBanStatus("ban"));
     }
 
+    /**
+     * Tests unbanning a user that exists in the database
+     * @throws Exception if any Exceptions occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testUnbanExistingUser() throws Exception {
         sc[3] = new StatusChange("ddd");
@@ -49,6 +50,10 @@ public class BanTests extends TestCase {
         assertTrue(sc[5].changeBanStatus("unban"));
     }
 
+    /**
+     * Tests banning a user that doesn't exist in the database
+     * @throws Exception if any Exceptions occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testBanNonexistentUser() throws Exception {
         assertTrue(!sc[6].changeBanStatus("ban"));
@@ -56,6 +61,10 @@ public class BanTests extends TestCase {
         assertTrue(!sc[8].changeBanStatus("ban"));
     }
 
+    /**
+     * Tests unbanning a user that doesn't exist in the database
+     * @throws Exception if any Exceptions occur
+     */
     @Test (timeOut = TIMEOUT)
     public void testUnbanNonexistentUser() throws Exception {
         assertTrue(!sc[6].changeBanStatus("unban"));

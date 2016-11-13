@@ -18,6 +18,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Controller linked to the Login Screen.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class LoginScreenController {
 
     /** a link back to the main application class */

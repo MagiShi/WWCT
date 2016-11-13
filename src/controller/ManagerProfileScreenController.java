@@ -11,6 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 
+/**
+ * Controller linked to the Profile Screen for Manager accounts.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class ManagerProfileScreenController {
 
     /** a link back to the main application class */
@@ -18,36 +23,19 @@ public class ManagerProfileScreenController {
 
     /* references to the widgets in the fxml file */
 
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button saveName;
-    @FXML
-    private Button saveEmail;
-    @FXML
-    private Button saveAddress;
-
-    @FXML
-    private Label currentName;
-    @FXML
-    private Label currentEmail;
-    @FXML
-    private Label currentAddress;
-
-    @FXML
-    private TextField newName;
-    @FXML
-    private TextField newEmail;
-    @FXML
-    private TextField newAddress;
-
-    @FXML
-    private Label username;
-    @FXML
-    private Label userType;
-    @FXML
-    private Label currentBanStatus;
-
+    @FXML private Button backButton;
+    @FXML private Button saveName;
+    @FXML private Button saveEmail;
+    @FXML private Button saveAddress;
+    @FXML private Label currentName;
+    @FXML private Label currentEmail;
+    @FXML private Label currentAddress;
+    @FXML private TextField newName;
+    @FXML private TextField newEmail;
+    @FXML private TextField newAddress;
+    @FXML private Label username;
+    @FXML private Label userType;
+    @FXML private Label currentBanStatus;
 
     private User currentUser;
 
@@ -106,12 +94,12 @@ public class ManagerProfileScreenController {
         newAddress.clear();
     }
 
-        /**
-         * Setup the main application link so we can call methods there
-         *
-         * @param mainFXApplication  a reference (link) to our main class
-         */
-        public void setMainApp(WaterzMainFXApplication mainFXApplication) {
-            mainApplication = mainFXApplication;
-        }
+    /**
+     * Setup the main application link so we can call methods there
+     *
+     * @param mainFXApplication  a reference (link) to our main class
+     */
+    public void setMainApp(WaterzMainFXApplication mainFXApplication) {
+        mainApplication = mainFXApplication;
+    }
 }

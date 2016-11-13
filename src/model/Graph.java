@@ -2,6 +2,9 @@ package src.model;
 
 import java.util.ArrayList;
 
+/**
+ * A class representing the PPM Graph displayed for Managers
+ */
 public class Graph {
     private int upperXNum;
     private int lowerXNum;

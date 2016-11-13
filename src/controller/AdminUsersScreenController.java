@@ -16,9 +16,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
+/**
+ * Controller linked to the User List Screen for Admin accounts.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class AdminUsersScreenController {
 
     private WaterzMainFXApplication mainApplication;
@@ -33,7 +37,7 @@ public class AdminUsersScreenController {
 
 
 
-    private final Collection<String> allUsers = new ArrayList<>();
+//    private final Collection<String> allUsers = new ArrayList<>();
     private StatusChange sc;
     private User currentUser;
 
@@ -80,15 +84,17 @@ public class AdminUsersScreenController {
     }
 
     private void loadDatabase() {
-        allUsers.clear();
-        usersList.getItems().clear();
-        boolean alreadyExists = new File("database.csv").exists();
+//        allUsers.clear();
+        List tempList = usersList.getItems();
+        tempList.clear();
+        File tempFile = new File("database.csv");
+        boolean alreadyExists = tempFile.exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
                 String line = br.readLine();
                 while (line != null) {
                     usersList.getItems().add(line);
-                    allUsers.add(line);
+//                    allUsers.add(line);
                     line = br.readLine();
                 }
             } catch (IOException e) {

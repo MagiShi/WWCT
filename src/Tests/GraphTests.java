@@ -17,6 +17,9 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+/**
+ * JUnits for the Graph Object's methods
+ */
 public class GraphTests {;
     private static final int TIMEOUT = 200;
     private Graph graph;
@@ -56,10 +59,14 @@ public class GraphTests {;
         }
     }
 
+    /**
+     * Prepares for testing
+     */
     @Before
     public void setUp() {
         ArrayList<Report> currentReports = new ArrayList<>();
-        boolean alreadyExists = new File("purityReports.csv").exists();
+        File tempFile = new File("purityReports.csv");
+        boolean alreadyExists = tempFile.exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
                 String line;
@@ -82,6 +89,9 @@ public class GraphTests {;
         graph = new Graph(currentReports);
     }
 
+    /**
+     * Sets initial values in the graph for testing
+     */
     @Test(timeout = TIMEOUT)
     public void initialGraphValues() {
         Collection<Float> expectedAllVirus = new ArrayList<>();
@@ -113,6 +123,10 @@ public class GraphTests {;
         assertEquals(expectedMonth, graph.getCurrentMonthList());
         assertEquals(expectedYear, graph.getCurrentYearList());
     }
+
+    /**
+     * Check all years
+     */
     @Test(timeout = TIMEOUT)
     public void allYears() {
         graph.setShowAll();
@@ -161,6 +175,9 @@ public class GraphTests {;
         assertEquals(expectedYear, graph.getCurrentYearList());
     }
 
+    /**
+     * Checks years that aren't valid (<2000 or >2020)
+     */
     @Test(timeout = TIMEOUT)
     public void testInvalidYears() {
         assertException(
@@ -174,6 +191,10 @@ public class GraphTests {;
                 () -> graph.setCurrentYear(2021));
 
     }
+
+    /**
+     * Checks years that are valid
+     */
     @Test(timeout = TIMEOUT)
     public void testValidYears() {
         graph.setCurrentYear(2016);

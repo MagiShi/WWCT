@@ -192,7 +192,8 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
     }
     @FXML
     private void initialize() {
-        boolean alreadyExists = new File("purityReports.csv").exists();
+        File tempFile = new File("purityReports.csv");
+        boolean alreadyExists = tempFile.exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
                 String line;

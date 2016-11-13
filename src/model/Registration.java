@@ -12,7 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * The Report class represents an object for Refistration
+ * The Report class represents an object for Registration
  */
 public class Registration {
 
@@ -88,7 +88,8 @@ public class Registration {
 
         boolean usernameOriginal = true;
         //check if username exists
-        boolean alreadyExists = new File("database.csv").exists();
+        File tempFile = new File("database.csv");
+        boolean alreadyExists = tempFile.exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
                 String line;

@@ -34,6 +34,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controller linked to the Map Screen for Manager accounts.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public final class ManagerMapScreenController implements Initializable, MapComponentInitializedListener {
 
     /** a link back to the main application class */
@@ -68,12 +73,20 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
     /**remember stage for dialogs */
     private Stage mainStage;
 
+    /**
+     * Constructor for a ManagerMapScreenController object
+     * @param app   a WaterzMainFXApplication that the controller was a part of
+     * @param stage The stage for the controller to work with
+     */
     public ManagerMapScreenController(WaterzMainFXApplication app, Stage stage) {
         theApp = app;
         mainStage = stage;
         setUpMapView(stage);
     }
 
+    /**
+     * a no params constructor for a UserMapScreenController object
+     */
     public ManagerMapScreenController() {
     }
 

@@ -85,7 +85,8 @@ public class waterSourceReportScreenController {
         longit = getLongit();
 
         if (checkValidity()) {
-            boolean alreadyExists = new File("sourceReports.csv").exists();
+            File tempFile = new File("database.csv");
+            boolean alreadyExists = tempFile.exists();
             if (!alreadyExists) {
                 handleExists();
             }

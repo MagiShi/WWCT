@@ -118,7 +118,8 @@ public class WorkerSourceDetailScreenController {
      */
     @FXML
     private void initialize() {
-        boolean alreadyExists = new File("sourceReports.csv").exists();
+        File tempFile = new File("sourceReports.csv");
+        boolean alreadyExists = tempFile.exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
                 String line;//make into water source
@@ -142,7 +143,8 @@ public class WorkerSourceDetailScreenController {
                 e.printStackTrace();
             }
         }
-        alreadyExists = new File("purityReports.csv").exists();
+        tempFile = new File("purityReports.csv");
+        alreadyExists = tempFile.exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
                 String line;

@@ -11,12 +11,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * A class with methods that can be used to ban/unban users and delete accounts.
+ */
 public class StatusChange {
 
     private final String username;
     private final List<String> allUsers = new ArrayList<>();
 
+    /**
+     * A constructor to create a Status Change object.
+     * @param username the String username of the user who will be banned/unbanned/deleteds
+     */
     public StatusChange(String username) {
         this.username = username;
 
@@ -31,6 +37,13 @@ public class StatusChange {
         }
     }
 
+    /**
+     * A method to change the ban status of the user.
+     * @param action String representation of the action to
+     *               take- either "ban" or "unban"
+     * @return boolean to indicate whether the user
+     * was found (true) or not (false)
+     */
     public boolean changeBanStatus(String action) {
         boolean found = false;
         for (int i = 0; (i < allUsers.size()) && !found; i++) {
@@ -53,6 +66,11 @@ public class StatusChange {
         return found;
     }
 
+    /**
+     * A method to delete the account.
+     * @return boolean to indicate whether the user
+     * was found (true) or not (false).
+     */
     public boolean deleteUser() {
         boolean found = false;
         for (int i = 0; (i < allUsers.size()) && !found; i++) {

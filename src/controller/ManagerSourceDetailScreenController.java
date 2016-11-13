@@ -33,61 +33,57 @@ import src.model.Report;
 import src.model.User;
 import src.model.WaterSource;
 
+/**
+ * Controller linked to the Source Detail Screen for Manager accounts.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class ManagerSourceDetailScreenController {
 
     private WaterzMainFXApplication mainApplication;
-
     private AnchorPane anchorLayout;
-
     private WaterSource currentSource;
-
     private Location currLoc;
     private final boolean allDisplayed = true;
     private final boolean virusSelected = false;
     private final boolean contaminantSelected = false;
 
-    @FXML
-    private Button backButton;
-    @FXML
-    private Label sourceLocation;
-    @FXML
-    private Label waterType;
-    @FXML
-    private Label waterCondition;
-    @FXML
-    private Label sourceCreator;
-    @FXML
-    private Label creationDate;
-    @FXML
-    private ListView<String> reportsList;
-    @FXML
-    private ScatterChart<Double, Double> historicalGraph;
-    @FXML
-    private NumberAxis xAxis;
-    @FXML
-    private TextField yearField;
-    @FXML
-    private CheckBox virusCheckBox;
-    @FXML
-    private CheckBox contaminantCheckBox;
-    @FXML
-    private TextField reportNumField;
+    @FXML private Button backButton;
+    @FXML private Label sourceLocation;
+    @FXML private Label waterType;
+    @FXML private Label waterCondition;
+    @FXML private Label sourceCreator;
+    @FXML private Label creationDate;
+    @FXML private ListView<String> reportsList;
+    @FXML private ScatterChart<Double, Double> historicalGraph;
+    @FXML private NumberAxis xAxis;
+    @FXML private TextField yearField;
+    @FXML private CheckBox virusCheckBox;
+    @FXML private CheckBox contaminantCheckBox;
+    @FXML private TextField reportNumField;
 
     private Graph graph;
-
-
     private User currentUser;
     private final int displayedYear = 0;
+
+    /**
+     * Sets the user that is currently logged in.
+     * @param newUser the User using the app.
+     */
     public void setUser(User newUser) {
         currentUser = newUser;
     }
 
 
+    /**
+     * Sets the location of the selected source.
+     * @param loc the Location to use (i.e. when submitting report).
+     */
     public void setLocation (Location loc) { currLoc = loc; }
 
     private final Collection<WaterSource> allReports = new ArrayList<>();
 
-    private final Collection<WaterSource> thisSource = new ArrayList<>();
+//    private final Collection<WaterSource> thisSource = new ArrayList<>();
 
     private final ArrayList<Report> currentReports = new ArrayList<>();
 
@@ -243,7 +239,8 @@ public class ManagerSourceDetailScreenController {
     @FXML
     private void initialize() {
         currentUser = new User("manager", "pass", "name", "MANAGER", "a email", "a address", "Not Banned");
-        boolean alreadyExists = new File("sourceReports.csv").exists();
+        File tempFile = new File("sourceReports.csv");
+        boolean alreadyExists = tempFile.exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("sourceReports.csv"))) {
                 String line;//make into water source
@@ -280,13 +277,17 @@ public class ManagerSourceDetailScreenController {
         setCurrentSource(l);
     }
 
+    /**
+     * Sets the current source as a Location.
+     * @param newSource the Location of the selected source
+     */
     public void setCurrentSource(Location newSource) {
         currLoc = newSource;
 
         allReports.stream().filter(source -> source.getLatitude().equals(currLoc.getLatitude())
                 && source.getLongitude().equals(currLoc.getLongitude())).forEach(source -> {
             currentSource = source;
-            thisSource.add(currentSource);
+//            thisSource.add(currentSource);
         });
 
         sourceLocation.setText(currentSource.getLocation());
@@ -336,7 +337,8 @@ public class ManagerSourceDetailScreenController {
         reportsList.getItems().clear();
         reportStrings.clear();
         currentReports.clear();
-        boolean alreadyExists = new File("purityReports.csv").exists();
+        File tempFile = new File("purityReports.csv");
+        boolean alreadyExists = tempFile.exists();
         if (alreadyExists) {
             try (BufferedReader br = new BufferedReader(new FileReader("purityReports.csv"))) {
                 String line;

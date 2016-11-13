@@ -77,7 +77,8 @@ public class waterQualityReportScreenController {
         userInputOverallCondition = waterOverallCondition.getValue();
 
         if (checkValidity() && verifyvPPM() && verifycPPM()) {
-            boolean alreadyExists = new File("purityReports.csv").exists();
+            File tempFile = new File("purityReports.csv");
+            boolean alreadyExists = tempFile.exists();
             if (!alreadyExists) {
                 BufferedWriter writer = null;
                 try {

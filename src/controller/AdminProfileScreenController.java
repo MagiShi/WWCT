@@ -13,6 +13,11 @@ import src.model.User;
 
 import java.util.ArrayList;
 
+/**
+ * Controller linked to the Profile Screen for Admin accounts.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class AdminProfileScreenController {
 
     /** a link back to the main application class */

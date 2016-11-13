@@ -84,7 +84,8 @@ public class UserWaterSourceReportScreenController {
         //making sure latitude input and longitude input are int/decimal values
 
         if (checkValidity()) {
-            boolean alreadyExists = new File("sourceReports.csv").exists();
+            File tempFile = new File("sourceReports.csv");
+            boolean alreadyExists = tempFile.exists();
             if (!alreadyExists) {
                 BufferedWriter writer = null;
                 try {

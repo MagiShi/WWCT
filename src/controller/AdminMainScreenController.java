@@ -8,7 +8,11 @@ import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
 import src.model.User;
 
-
+/**
+ * Controller linked to the Main Screen for Admin accounts.
+ * It handles what happens when actions are taken for the view
+ * i.e. what happens when buttons are clicked etc.
+ */
 public class AdminMainScreenController {
 
     private WaterzMainFXApplication mainApplication;
