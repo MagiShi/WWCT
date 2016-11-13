@@ -69,9 +69,6 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
     /**remember stage for dialogs */
     private Stage mainStage;
 
-    private final int STARTLAT = 34;
-    private final int STARTLONGIT = -88;
-
     /**
      * Constructor for a UserMapScreenController object
      * @param app   a WaterzMainFXApplication that the controller was a part of
@@ -196,6 +193,8 @@ public class UserMapScreenController implements Initializable, MapComponentIniti
         MapOptions options = new MapOptions();
 
         //set up the center location for the map
+        int STARTLONGIT = -88;
+        int STARTLAT = 34;
         LatLong center = new LatLong(STARTLAT, STARTLONGIT);
 
         options.center(center)

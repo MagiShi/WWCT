@@ -16,13 +16,11 @@ import java.io.IOException;
  */
 public class Registration {
 
-    String userInputUsername;
-    String userInputPassword;
-    String matchPassword;
-    UserType userInputUserType;
-    String userNameInput;
-
-    User currentUser;
+    private final String userInputUsername;
+    private final String userInputPassword;
+    private final String matchPassword;
+    private final UserType userInputUserType;
+    private final String userNameInput;
 
     /**
      * A constructor to create a registration object
@@ -132,7 +130,7 @@ public class Registration {
      * @return boolean of whether or not the two passwords match
      */
     public boolean checkPassword() {
-        return !(matchPassword.equals("") || userInputPassword.equals("")) && matchPassword.equals(userInputPassword);
+        return !("".equals(matchPassword) || "".equals(userInputPassword)) && matchPassword.equals(userInputPassword);
     }
 
     private void addToFile() {
@@ -169,11 +167,10 @@ public class Registration {
     }
 
     private User createUser() {
-        currentUser = new User(userInputUsername,userInputPassword,
-                userNameInput , userInputUserType.toString(),
-                "[set email]", "[set address]", "Not Banned");
 
-        return currentUser;
+        return new User(userInputUsername, userInputPassword,
+                userNameInput, userInputUserType.toString(),
+                "[set email]", "[set address]", "Not Banned");
     }
 
 

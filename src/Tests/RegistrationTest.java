@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RegistrationTest extends TestCase {
 
-    public static final int TIMEOUT = 200;
+    private static final int TIMEOUT = 200;
 
     //need to check : checkOriginal -> in, not in. (Is String so no other testing). //database empty
     //passwords match/don't match/both blank/one blank

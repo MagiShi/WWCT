@@ -9,16 +9,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import src.fxapp.WaterzMainFXApplication;
+import src.model.StatusChange;
 import src.model.User;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class AdminUsersScreenController {
 
@@ -34,8 +33,8 @@ public class AdminUsersScreenController {
 
 
 
-    private final List<String> allUsers = new ArrayList<>();
-
+    private final Collection<String> allUsers = new ArrayList<>();
+    private StatusChange sc;
     private User currentUser;
 
     /**
@@ -80,133 +79,6 @@ public class AdminUsersScreenController {
         loadDatabase();
     }
 
-
-    @FXML protected void handleBanUserButtonAction() {
-        String username = userIDField.getText();
-        if ("".equals(username)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No ID Entered");
-            alert.setHeaderText("Please Enter an ID");
-            alert.showAndWait();
-        } else if (username.equals(currentUser.getUserID())) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("Cannot Ban That User");
-            alert.setContentText("You cannot ban yourself.");
-            alert.showAndWait();
-        } else {
-            banUser(username);
-        }
-    }
-
-    private void banUser(String username) {
-        boolean found = false;
-        for (int i = 0; i < allUsers.size(); i++) {
-            String user = allUsers.get(i);
-            String[] userData = user.split(",");
-            if (userData[1].equals(username)) {
-                allUsers.remove(i);
-                userData[6] = "BANNED";
-                user = userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
-                        + "," + userData[4] + "," + userData[5] + "," + userData[6];
-                allUsers.add(i, user);
-                found = true;
-            }
-        }
-        if (found) {
-            rewriteDatabase();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("User ID not found");
-            alert.setHeaderText("The User ID was not found.");
-            alert.showAndWait();
-            userIDField.clear();
-        }
-    }
-
-    @FXML protected void handleUnbanUserButtonAction() {
-        String username = userIDField.getText();
-        if ("".equals(username)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No ID Entered");
-            alert.setHeaderText("Please Enter an ID");
-            alert.showAndWait();
-        } else if (username.equals(currentUser.getUserID())) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("Cannot Unban That User");
-            alert.setContentText("You cannot unban yourself.");
-            alert.showAndWait();
-        } else {
-            unbanUser(username);
-        }
-    }
-
-    private void unbanUser(String username) {
-        boolean found = false;
-        for (int i = 0; i < allUsers.size(); i++) {
-            String user = allUsers.get(i);
-            String[] userData = user.split(",");
-            if (userData[1].equals(username)) {
-                allUsers.remove(i);
-                userData[6] = "Not Banned";
-                user = userData[0] + "," + userData[1] + "," + userData[2] + "," + userData[3]
-                        + "," + userData[4] + "," + userData[5] + "," + userData[6];
-                allUsers.add(i, user);
-                found = true;
-            }
-        }
-        if (found) {
-            rewriteDatabase();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("User ID not found");
-            alert.setHeaderText("The User ID was not found.");
-            alert.showAndWait();
-            userIDField.clear();
-        }
-    }
-
-    @FXML protected void handleDeleteUserButtonAction(){
-        String username = userIDField.getText();
-        if ("".equals(username)) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No ID Entered");
-            alert.setHeaderText("Please Enter an ID");
-            alert.showAndWait();
-        } else if (username.equals(currentUser.getUserID())) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("Cannot Delete That User");
-            alert.setContentText("You cannot delete yourself.");
-            alert.showAndWait();
-        } else {
-            deleteUser(username);
-        }
-    }
-
-    private void deleteUser(String username) {
-        boolean found = false;
-        for (int i = 0; i < allUsers.size(); i++) {
-            String user = allUsers.get(i);
-            String[] userData = user.split(",");
-            if (userData[1].equals(username)) {
-                allUsers.remove(i);
-                i--;
-                found = true;
-            }
-        }
-        if (found) {
-            rewriteDatabase();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("User ID not found");
-            alert.setHeaderText("The User ID was not found.");
-            alert.showAndWait();
-            userIDField.clear();
-        }
-    }
-
     private void loadDatabase() {
         allUsers.clear();
         usersList.getItems().clear();
@@ -225,50 +97,86 @@ public class AdminUsersScreenController {
         }
     }
 
-    private void rewriteDatabase() {
-        BufferedWriter writer = null;
-        try {
-            File newFile = new File("database.csv");
-            writer = new BufferedWriter(new FileWriter(newFile));
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (writer != null) {
-                    writer.flush();
-                    writer.close();
-                }
-            } catch (IOException ioe) {
+    @FXML protected void handleBanUserButtonAction() {
+        String username = userIDField.getText();
+        if ("".equals(username)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No ID Entered");
+            alert.setHeaderText("Please Enter an ID");
+            alert.showAndWait();
+        } else if (username.equals(currentUser.getUserID())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Cannot Ban That User");
+            alert.setContentText("You cannot ban yourself.");
+            alert.showAndWait();
+        } else {
+            sc = new StatusChange(username);
+            if (!sc.changeBanStatus("ban")) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("File Rewrite Error");
-                alert.setHeaderText("Error while flushing: " + ioe.toString());
+                alert.setTitle("User ID not found");
+                alert.setHeaderText("The User ID was not found.");
                 alert.showAndWait();
             }
+            userIDField.clear();
+            loadDatabase();
         }
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter("database.csv", true);
-            while (!allUsers.isEmpty()) {
-                fileWriter.append(allUsers.remove(0));
-                fileWriter.append("\n");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fileWriter != null) {
-                    fileWriter.flush();
-                    fileWriter.close();
-                }
-            } catch (IOException ioe) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("File Rewrite Error");
-                alert.setHeaderText("Error while flushing: " + ioe.toString());
-                alert.showAndWait();
-            }
-        }
-        loadDatabase();
     }
+
+
+    @FXML protected void handleUnbanUserButtonAction() {
+        String username = userIDField.getText();
+        if ("".equals(username)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No ID Entered");
+            alert.setHeaderText("Please Enter an ID");
+            alert.showAndWait();
+        } else if (username.equals(currentUser.getUserID())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Cannot Unban That User");
+            alert.setContentText("You cannot unban yourself.");
+            alert.showAndWait();
+        } else {
+            sc = new StatusChange(username);
+            if (!sc.changeBanStatus("unban")) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("User ID not found");
+                alert.setHeaderText("The User ID was not found.");
+                alert.showAndWait();
+            }
+            userIDField.clear();
+            loadDatabase();
+        }
+    }
+
+
+    @FXML protected void handleDeleteUserButtonAction(){
+        String username = userIDField.getText();
+        if ("".equals(username)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No ID Entered");
+            alert.setHeaderText("Please Enter an ID");
+            alert.showAndWait();
+        } else if (username.equals(currentUser.getUserID())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Cannot Delete That User");
+            alert.setContentText("You cannot delete yourself.");
+            alert.showAndWait();
+        } else {
+            sc = new StatusChange(username);
+            if (!sc.deleteUser()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("User ID not found");
+                alert.setHeaderText("The User ID was not found.");
+                alert.showAndWait();
+            }
+            userIDField.clear();
+            loadDatabase();
+        }
+    }
+
 
     /**
      * Setup the main application link so we can call methods there
@@ -277,7 +185,6 @@ public class AdminUsersScreenController {
      */
     public void setMainApp(WaterzMainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
-
     }
 
 }

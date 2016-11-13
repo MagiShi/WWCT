@@ -18,7 +18,6 @@ public class MainScreenController {
      * */
     public void setMainApp(WaterzMainFXApplication main) {
         /* reference back to mainApplication if needed */
-        WaterzMainFXApplication mainApplication = main;
     }
 
     /**

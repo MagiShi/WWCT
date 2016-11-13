@@ -32,9 +32,9 @@ public class waterQualityReportScreenController {
 
     /* references to the widgets in the fxml file */
 
-    @FXML private Button submitBttn;
-    @FXML private Button waterSourceReportBttn;
-    @FXML private Button cancelBttn;
+    @FXML private Button submitButton;
+    @FXML private Button waterSourceReportButton;
+    @FXML private Button cancelButton;
     @FXML private TextField workerName;
     @FXML private TextField waterLocation;
     @FXML private TextField virusPPM;
@@ -48,7 +48,6 @@ public class waterQualityReportScreenController {
     private String userInputVirusPPM;
     private String userInputContaminantPPM;
     private PurityCondition userInputOverallCondition;
-    private final int RANDMAXNUM = 9999;
 
     //private ArrayList<WaterSource> thisSource = new ArrayList<>();
 
@@ -70,7 +69,7 @@ public class waterQualityReportScreenController {
      */
     public void setLocation (Location loc) { currLoc = loc; }
 
-    @FXML protected void submitBttnAction() {
+    @FXML protected void submitButtonAction() {
         userInputName = workerName.getText();
         userInputLocation = waterLocation.getText();
         userInputVirusPPM = virusPPM.getText();
@@ -214,6 +213,7 @@ public class waterQualityReportScreenController {
             String latitude = String.valueOf(currLoc.getLatitude());
             String longitude = String.valueOf(currLoc.getLongitude());
 
+            int RANDMAXNUM = 9999;
             fileWriter.append("Report #" + 1000)
                     .append(Integer.toString((int)(Math.random() * ((RANDMAXNUM - 1000) + 1)))).append(", ");
             fileWriter.append(userInputName).append(", ");
@@ -241,7 +241,7 @@ public class waterQualityReportScreenController {
         }
     }
 
-    @FXML protected void cancelBttnAction() {
+    @FXML protected void cancelButtonAction() {
         try {
             if ("MANAGER".equals(currentUser.getType())) {
                 changeToManagerSource();

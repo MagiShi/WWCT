@@ -34,9 +34,9 @@ public class waterSourceReportScreenController {
 
     /* references to the widgets in the fxml file */
 
-    @FXML private Button submitBttn;
-    @FXML private Button waterPurityReportBttn;
-    @FXML private Button cancelBttn;
+    @FXML private Button submitButton;
+    @FXML private Button waterPurityReportButton;
+    @FXML private Button cancelButton;
     @FXML private TextField reporterName;
     @FXML private TextField waterLocation;
     @FXML private ComboBox<SourceType> waterType;
@@ -54,8 +54,6 @@ public class waterSourceReportScreenController {
     private double lat;
     private final int MINNUM = -90;
     private final int MAXNUM = 90;
-    private final int RANDMAXNUM = 9999;
-
 
 
     /**
@@ -77,7 +75,7 @@ public class waterSourceReportScreenController {
      */
     public void setFacade(Facade fc) {this.fc = fc;}
 
-    @FXML protected void submitBttnAction() {
+    @FXML protected void submitButtonAction() {
         userInputName = reporterName.getText();
         userInputLocation = waterLocation.getText();
         userInputWaterType = waterType.getValue();
@@ -232,6 +230,7 @@ public class waterSourceReportScreenController {
             Date dateObject = new Date();
             String dateString = dateFormat.format(dateObject);
 
+            int RANDMAXNUM = 9999;
             int num = 1000 + (int) (Math.random() * ((RANDMAXNUM - 1000) + 1));
 
             fileWriter.append("Report #").append(Integer.toString(num)).append(", ");
@@ -266,7 +265,7 @@ public class waterSourceReportScreenController {
     }
 
 
-    @FXML protected void cancelBttnAction() {
+    @FXML protected void cancelButtonAction() {
         switch (currentUser.getType()) {
             case "MANAGER":
                 changeToManagerMap();

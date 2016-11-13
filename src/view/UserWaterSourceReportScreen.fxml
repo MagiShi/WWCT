@@ -65,9 +65,9 @@
                    prefWidth="100.0" promptText="Longitude" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                    GridPane.rowIndex="2"/>
     </GridPane>
-    <Button fx:id="cancelBttn" layoutX="572.0" layoutY="413.0" mnemonicParsing="false" onAction="#cancelBttnAction"
+    <Button fx:id="cancelButton" layoutX="572.0" layoutY="413.0" mnemonicParsing="false" onAction="#cancelButtonAction"
             text="Cancel"/>
-    <Button fx:id="submitBttn" layoutX="505.0" layoutY="413.0" mnemonicParsing="false" onAction="#submitBttnAction"
+    <Button fx:id="submitButton" layoutX="505.0" layoutY="413.0" mnemonicParsing="false" onAction="#submitButtonAction"
             text="Submit"/>
     <Label layoutX="240.0" layoutY="37.0" text="Water Source Report">
         <font>

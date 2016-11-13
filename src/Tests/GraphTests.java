@@ -12,7 +12,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertEquals;
@@ -21,10 +20,10 @@ import static org.junit.Assert.assertNotNull;
 public class GraphTests {;
     private static final int TIMEOUT = 200;
     private Graph graph;
-    private final ArrayList<Float> expectedVirus = new ArrayList<>();
-    private final ArrayList<Float> expectedContam = new ArrayList<>();
-    private final ArrayList<Integer> expectedYear = new ArrayList<>();
-    private final ArrayList<Integer> expectedMonth = new ArrayList<>();
+    private final Collection<Float> expectedVirus = new ArrayList<>();
+    private final Collection<Float> expectedContam = new ArrayList<>();
+    private final Collection<Integer> expectedYear = new ArrayList<>();
+    private final Collection<Integer> expectedMonth = new ArrayList<>();
 
     private void assertException(Class<? extends Exception> exceptionClass, Runnable code) {
         assertException(
@@ -90,17 +89,17 @@ public class GraphTests {;
         expectedAllVirus.add(23f);
         expectedAllVirus.add(13f);
         expectedAllVirus.add(1f);
-        List<Float> expectedAllContam = new ArrayList<>();
+        Collection<Float> expectedAllContam = new ArrayList<>();
         expectedAllContam.add(98f);
         expectedAllContam.add(325f);
         expectedAllContam.add(13f);
         expectedAllContam.add(1f);
-        List<Integer> expectedAllMonth = new ArrayList<>();
+        Collection<Integer> expectedAllMonth = new ArrayList<>();
         expectedAllMonth.add(10);
         expectedAllMonth.add(10);
         expectedAllMonth.add(10);
         expectedAllMonth.add(10);
-        ArrayList<Integer> expectedAllYear = new ArrayList<>();
+        Collection<Integer> expectedAllYear = new ArrayList<>();
         expectedAllYear.add(2016);
         expectedAllYear.add(2016);
         expectedAllYear.add(2016);

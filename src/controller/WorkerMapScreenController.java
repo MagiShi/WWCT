@@ -85,9 +85,6 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
 
     private Location currLoc;
 
-    final int STARTLAT = 34;
-    final int STARTLONGIT = 88;
-
     /**
      * Constructor for a WorkerMapScreenController object
      * @param app   a WaterzMainFXApplication that the controller was a part of
@@ -256,6 +253,8 @@ public class WorkerMapScreenController implements Initializable, MapComponentIni
 
         //set up the center location for the map
 
+        int STARTLONGIT = 88;
+        int STARTLAT = 34;
         LatLong center = new LatLong(STARTLAT, STARTLONGIT);
 
         options.center(center)
