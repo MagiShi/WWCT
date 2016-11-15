@@ -11,6 +11,8 @@ import javafx.scene.layout.BorderPane;
 import src.fxapp.WaterzMainFXApplication;
 import javafx.fxml.FXML;
 import src.model.User;
+import src.model.LogIn;
+import src.model.UserType;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -41,31 +43,24 @@ public class LoginScreenController {
 
 
     @FXML protected void handleLoginButtonAction() {
-        try (BufferedReader br = new BufferedReader(new FileReader("database.csv"))) {
-            String line;
-            String[] info = null;
-            boolean usernameFound = false;
-            line = br.readLine();
-            while (!usernameFound && (line != null)) {
-                info = line.split(",");
-                if (info[1].equals(usernameInput.getText())) {
-                    usernameFound = true;
-                }
-                line = br.readLine();
-            }
-            if (!usernameFound) {
-                soundAlert();
-            } else if (info[2].equals(passwordInput.getText())){
-                login(info);
-            } else {
-                soundAlert();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        String userInputUsername = usernameInput.getText();
+        String userInputPassword = passwordInput.getText();
+        LogIn log = new LogIn(userInputUsername, userInputPassword);
+        User currentUser = log.logIn();
+        if (currentUser != null) {
+            changeScreen(currentUser);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Wrong/Invalid Input");
+            alert.setHeaderText("Wrong/Invalid Input");
+            alert.setContentText("Wrong credentials or invalid input. Please try again.");
+            alert.showAndWait();
+            usernameInput.clear();
+            passwordInput.clear();
         }
     }
 
-    private void login(String[] info) {
+    /*private void login(String[] info) {
         User currentUser = new User(info[1], info[2], info[0], info[3], info[4], info[5], info[6]);
         if (info[2].equals(passwordInput.getText()) && "WORKER".equals(info[3])) {
             changeToWorkerScreen(currentUser);
@@ -78,16 +73,22 @@ public class LoginScreenController {
         } else {
             soundAlert();
         }
-    }
-
-    private void soundAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Wrong Credentials");
-        alert.setHeaderText("Wrong Credentials");
-        alert.setContentText("Username does not exist. Please try again.");
-        alert.showAndWait();
-        usernameInput.clear();
-        passwordInput.clear();
+    }*/
+    private void changeScreen(User currentUser) {
+        switch (currentUser.getType()) {
+            case "WORKER":
+                changeToWorkerScreen(currentUser);
+                break;
+            case "USER":
+                changeToUserScreen(currentUser);
+                break;
+            case "MANAGER":
+                changeToManagerScreen(currentUser);
+                break;
+            case "ADMINISTRATOR":
+                changeToAdminScreen(currentUser);
+                break;
+        }
     }
 
     private void changeToUserScreen(User currentUser) {
