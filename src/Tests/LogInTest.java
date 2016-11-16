@@ -50,9 +50,11 @@ public class LogInTest extends TestCase {
     @Test (timeOut = TIMEOUT)
     public void validUsernamePassword() throws Exception {
         login[4] = new LogIn("user","pass");
-        assertTrue((login[4].logIn()).equals(new User("user", "pass", "user", "USER", "[set email]", "[set address]", "Not Banned")));
+        assertTrue((login[4].logIn()).equals(new User("user", "pass", "user", "USER", "[set email]", "[set address]",
+                "Not Banned")));
         login[5] = new LogIn("bbb","bbb");
-        assertTrue((login[5].logIn()).equals(new User("bbb", "bbb", "bbb", "USER", "[set email]", "[set address]", "Not Banned")));
+        assertTrue((login[5].logIn()).equals(new User("bbb", "bbb", "bbb", "USER", "[set email]", "[set address]",
+                "Not Banned")));
     }
     /**
      * tries logging in with both invalid username and invalid password
