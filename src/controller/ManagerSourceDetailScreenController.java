@@ -190,6 +190,7 @@ public class ManagerSourceDetailScreenController {
         }
         series.setName("Contaminant PPM");
         historicalGraph.getData().add(series);
+        //have Graph object be doing this
     }
 
 

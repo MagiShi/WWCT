@@ -1,6 +1,7 @@
 package src.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class representing the PPM Graph displayed for Managers
@@ -39,7 +40,7 @@ public class Graph {
             allContamNumList.add(r.getContaminantPPM());
             allYearList.add(r.getYear());
             allMonthList.add(r.getMonth());
-        }
+        } //pass list into report object
         currentYearList = new ArrayList<>();
         currentMonthList = new ArrayList<>();
         currentVirusNumList = new ArrayList<>();
@@ -93,7 +94,7 @@ public class Graph {
      */
     public void setShowAll() {
         allYears = true;
-        currentYear = null;
+        //currentYear = null;
         currentMonthList.clear();
         currentYearList.clear();
         currentVirusNumList.clear();
@@ -215,28 +216,28 @@ public class Graph {
      * Getter for all virus data list
      * @return ArrayList of all virus data
      */
-    public ArrayList<Float> getAllVirusNumList() {
+    public List<Float> getAllVirusNumList() {
         return allVirusNumList;
     }
     /**
      * Getter for all contaminant data list
      * @return ArrayList of all contaminant data
      */
-    public ArrayList<Float> getAllContamNumList() {
+    public List<Float> getAllContamNumList() {
         return allContamNumList;
     }
     /**
      * Getter for all month data list
      * @return ArrayList of all months
      */
-    public ArrayList<Integer> getAllMonthList() {
+    public List<Integer> getAllMonthList() {
         return allMonthList;
     }
     /**
      * Getter for all year data list
      * @return ArrayList of all year
      */
-    public ArrayList<Integer> getAllYearList() {
+    public List<Integer> getAllYearList() {
         return allYearList;
     }
 

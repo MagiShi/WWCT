@@ -261,6 +261,7 @@ public final class ManagerMapScreenController implements Initializable, MapCompo
                         sourceSelectedLabel.setText("Source Selected");
                         window.open(map, marker);});
             map.addMarker(marker);
+            //make Location do all of this stuff
         }
     }
 

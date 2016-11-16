@@ -77,23 +77,23 @@ public final class Facade {
         pm.loadFromText(file);
     }
 
-    /**
-     * Save data into the passed-in file as binary
-     * @param file the File to which we save
-     */
-    public void saveModelToBinary(File file) {
-        PersistenceManager pm = new PersistenceManager(locations);
-        pm.saveToBinary(file);
-    }
+//    /**
+//     * Save data into the passed-in file as binary
+//     * @param file the File to which we save
+//     */
+//    public void saveModelToBinary(File file) {
+//        PersistenceManager pm = new PersistenceManager(locations);
+//        pm.saveToBinary(file);
+//    }
 
-    /**
-     * Load data from the passed-in file as binary
-     * @param file the File from which we load
-     */
-    public void loadModelFromBinary(File file) {
-        PersistenceManager pm = new PersistenceManager(locations);
-        pm.loadFromBinary(file);
-    }
+//    /**
+//     * Load data from the passed-in file as binary
+//     * @param file the File from which we load
+//     */
+//    public void loadModelFromBinary(File file) {
+//        PersistenceManager pm = new PersistenceManager(locations);
+//        pm.loadFromBinary(file);
+//    }
 
 //
 //    /**
