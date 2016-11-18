@@ -91,14 +91,14 @@
             </font>
         </TextField>
     </GridPane>
-    <Button fx:id="cancelBttn" layoutX="336.0" layoutY="393.0" mnemonicParsing="false" onAction="#cancelBttnAction"
+    <Button fx:id="cancelButton" layoutX="336.0" layoutY="393.0" mnemonicParsing="false" onAction="#cancelButtonAction"
             style="-fx-border-color: F7C39F; -fx-border-width: 3; -fx-background-color: F5FCFF;" text="Cancel"
             textFill="#aa7d5d">
         <font>
          <Font name="Arial Rounded MT Bold" size="18.0"/>
         </font>
     </Button>
-    <Button fx:id="submitBttn" layoutX="218.0" layoutY="393.0" mnemonicParsing="false" onAction="#submitBttnAction"
+    <Button fx:id="submitButton" layoutX="218.0" layoutY="393.0" mnemonicParsing="false" onAction="#submitButtonAction"
             style="-fx-border-color: F7C39F; -fx-border-width: 3; -fx-background-color: F5FCFF;" text="Submit"
             textFill="#aa7d5d">
         <font>

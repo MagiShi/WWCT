@@ -41,7 +41,7 @@
                     <RowConstraints maxHeight="100.0" minHeight="10.0"
                                     prefHeight="92.99996948242188" vgrow="SOMETIMES"/>
                 </rowConstraints>
-                <Button id="submitReportBttn" fx:id="submitButton" mnemonicParsing="false"
+                <Button id="submitReportButton" fx:id="submitButton" mnemonicParsing="false"
                         onAction="#handleSubmitButtonAction" prefHeight="44.0"
                         prefWidth="185.0" style="-fx-background-color: C7EAFB;"
                         text="Submit a Source" textFill="#aa7d5d" GridPane.columnIndex="1"
