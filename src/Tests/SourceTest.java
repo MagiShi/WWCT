@@ -30,7 +30,7 @@ public class SourceTest extends TestCase {
     /**
      * checks that the location is within range -180 to 180
      *
-     * @throws Exception Any exceptions that occur
+     * @throws Exception exceptions
      */
     @Test(timeOut = TIMEOUT)
     public void testValidLocation() throws Exception {
@@ -41,7 +41,7 @@ public class SourceTest extends TestCase {
     /**
      * checks that the String values are not null
      *
-     * @throws Exception Any exceptions that occur
+     * @throws Exception exceptions
      */
     @Test(timeOut = TIMEOUT)
     public void testValidString() throws Exception {

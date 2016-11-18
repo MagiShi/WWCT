@@ -55,6 +55,7 @@ public class SourceFinding {
     }
 
     /**
+     * *
      * @return
      */
     public boolean valid() {
