@@ -12,6 +12,32 @@
     background-color: #aa7d5d;
     color: #F5FCFF;
 }
+#button4{
+    background-color: #C7EAFB;
+    color: #AA7D5D;
+    border-style: solid;
+    border-color:  #F7C39F;
+    border-width: 5px;
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-size: 36px;
+}
+#button4:hover{
+    color: #C7EAFB;
+    background-color: #AA7D5D;
+}
+#button2{
+    background-color: #AA7D5D;
+    color: #66ccff;
+    border-style: solid;
+    border-color:  #F7C39F;
+    border-width: 5px;
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-size: 40px;
+}
+#button2:hover{
+    color: #AA7D5D;
+    background-color: #66ccff;
+}
 input{
 padding:5px;
 font-size:16px;
