@@ -7,47 +7,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0"
-            style="-fx-background-color: C7EAFB; -fx-border-color: F7C39F; -fx-border-width: 8;"
-            xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="src.controller.AdminMainScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: C7EAFB; -fx-border-color: F7C39F; -fx-border-width: 8;" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.AdminMainScreenController">
     <padding>
-        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
     </padding>
-    <ImageView fitHeight="114.0" fitWidth="331.0" layoutX="185.0" layoutY="31.0"
-               pickOnBounds="true" preserveRatio="true">
-        <Image url="@../img/Waterz5.png"/>
+    <ImageView fitHeight="114.0" fitWidth="331.0" layoutX="185.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../img/Waterz5.png" />
     </ImageView>
-    <Button fx:id="logoutButton" layoutX="391.0" layoutY="342.0" mnemonicParsing="false"
-            onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="250.0"
-            style="-fx-background-color: AA7D5D; -fx-border-color: F7C39F; -fx-border-width: 5;"
-            text="Logout" textFill="#66ccff">
+    <Button fx:id="logoutButton" layoutX="391.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="250.0" style="-fx-border-color: F7C39F; -fx-border-width: 5;" stylesheets="@buttons2.css" text="Logout" textFill="#66ccff">
         <font>
-          <Font name="Arial Rounded MT Bold" size="36.0"/>
+          <Font name="Arial Rounded MT Bold" size="36.0" />
         </font>
     </Button>
-    <Button fx:id="profileButton" layoutX="60.0" layoutY="342.0" mnemonicParsing="false"
-            onAction="#handleProfileButtonAction" prefHeight="43.0" prefWidth="250.0"
-            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 5;"
-            text="Profile" textFill="#aa7d5d">
+    <Button fx:id="profileButton" layoutX="60.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleProfileButtonAction" prefHeight="43.0" prefWidth="250.0" style="-fx-border-color: F7C39F; -fx-border-width: 5;" stylesheets="@buttons.css" text="Profile" textFill="#aa7d5d">
         <font>
-          <Font name="Arial Rounded MT Bold" size="36.0"/>
+          <Font name="Arial Rounded MT Bold" size="36.0" />
         </font>
     </Button>
-    <Button fx:id="logButton" layoutX="391.0" layoutY="204.0" mnemonicParsing="false"
-             prefHeight="77.0" prefWidth="250.0"
-            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 5;"
-            text="Log" textFill="#aa7d5d">
+    <Button fx:id="logButton" layoutX="391.0" layoutY="204.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="250.0" style="-fx-border-color: F7C39F; -fx-border-width: 5;" stylesheets="@buttons.css" text="Log" textFill="#aa7d5d">
         <font>
-          <Font name="Arial Rounded MT Bold" size="36.0"/>
+          <Font name="Arial Rounded MT Bold" size="36.0" />
         </font>
     </Button>
-    <Button fx:id="usersButton" layoutX="60.0" layoutY="204.0" mnemonicParsing="false"
-            onAction="#handleUsersButtonAction" prefHeight="43.0" prefWidth="250.0"
-            style="-fx-background-color: F5FCFF; -fx-border-color: F7C39F; -fx-border-width: 5;" text="Users"
-            textFill="#aa7d5d">
+    <Button fx:id="usersButton" layoutX="60.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleUsersButtonAction" prefHeight="43.0" prefWidth="250.0" style="-fx-border-color: F7C39F; -fx-border-width: 5;" stylesheets="@buttons.css" text="Users" textFill="#aa7d5d">
         <font>
-          <Font name="Arial Rounded MT Bold" size="36.0"/>
+          <Font name="Arial Rounded MT Bold" size="36.0" />
         </font>
     </Button>
 </AnchorPane>
