@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../CSS/theme.css">
 </head>
 <body bgcolor=" F7C39F">
-<script src="../JavaScript/welcomeJS.js"></script>
+<script src="../JavaScript/loginJS.js"></script>
 <table style="width:100%; height:100%">
     <tr>
         <th bgcolor="F5FCFF" width="50%" height="600">
@@ -14,7 +14,51 @@
             <img src="../img/introCup.png" alt="some_text" width="280" height="400">
         </th>
         <th bgcolor="C7EAFB" width="50%" height="600">
+            <table height="600" width="100%">
+                <tr height="30%">
+                    <th>
+                        <p id="title1">Login</p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p id="text1">Username:</p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <form id="loginForm">
+                            <input type="text" name="username" id="name">
+                        </form>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p id="text1">Password:</p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <form id="loginForm">
+                            <input type="text" name="password" id="PasswordInput">
+                        </form>
+                    </th>
+                </tr>
+                <tr height="5%">
 
+                </tr>
+                <tr>
+                    <th>
+                        <button type="button" id="button1" onclick="loginButtonPress()">Login</button>
+                        <button type="button" id="button1" onclick="cancelButtonPress()">Cancel</button>
+                    </th>
+                </tr>
+                <tr height="30%">
+                    <th>
+
+                    </th>
+                </tr>
+            </table>
         </th>
     </tr>
 </table>
