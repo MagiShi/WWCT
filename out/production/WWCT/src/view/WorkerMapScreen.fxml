@@ -14,56 +14,74 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: F7C39F;" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controller.WorkerMapScreenController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: F7C39F;"
+            xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="src.controller.WorkerMapScreenController">
     <padding>
-        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
     </padding>
-    <SplitPane dividerPositions="0.67" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@buttons.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <BorderPane fx:id="mapViewer" prefHeight="488.0" prefWidth="465.0" style="-fx-background-color: #66ccff;" />
+    <SplitPane dividerPositions="0.67" layoutX="179.0" layoutY="98.0" prefHeight="500.0" prefWidth="700.0"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane fx:id="mapViewer" prefHeight="488.0" prefWidth="465.0" style="-fx-background-color: #66ccff;"/>
         <VBox prefHeight="488.0" prefWidth="341.0" style="-fx-background-color: F5FCFF;">
             <GridPane prefHeight="487.0" prefWidth="341.0" style="-fx-background-color: F5FCFF;">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.33331298828125" minWidth="10.0" prefWidth="15.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="185.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="15.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.33331298828125"
+                                       minWidth="10.0" prefWidth="15.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="185.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="15.0"/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="103.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="92.99996948242188" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES"/>
+                    <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="103.0" vgrow="SOMETIMES"/>
+                    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES"/>
+                    <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES"/>
+                    <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES"/>
+                    <RowConstraints maxHeight="100.0" minHeight="10.0"
+                                    prefHeight="92.99996948242188" vgrow="SOMETIMES"/>
                 </rowConstraints>
-                <Button id="submitReportBttn" fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="44.0" prefWidth="185.0" stylesheets="@buttons4.css" text="Submit a Source" textFill="#aa7d5d" GridPane.columnIndex="1" GridPane.rowIndex="1">
-
-                </Button>
-                <Button id="submitReportButton" fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="44.0" prefWidth="185.0" stylesheets="@buttons4.css" text="Submit a Source" textFill="#aa7d5d" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Button id="submitReportButton" fx:id="submitButton" mnemonicParsing="false"
+                        onAction="#handleSubmitButtonAction" prefHeight="44.0"
+                        prefWidth="185.0" style="-fx-background-color: C7EAFB;"
+                        text="Submit a Source" textFill="#aa7d5d" GridPane.columnIndex="1"
+                        GridPane.rowIndex="1">
                     <font>
-                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                        <Font name="Arial Rounded MT Bold" size="18.0"/>
                     </font>
                 </Button>
-                <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="190.0" stylesheets="@buttons2.css" text="Logout" textFill="#66ccff" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction"
+                        prefHeight="44.0" prefWidth="190.0" style="-fx-background-color: AA7D5D;"
+                        text="Logout"
+                        textFill="#66ccff" GridPane.columnIndex="1" GridPane.rowIndex="5">
                     <font>
-                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                        <Font name="Arial Rounded MT Bold" size="24.0"/>
                     </font>
                 </Button>
-                <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileButtonAction" prefHeight="43.0" prefWidth="185.0" stylesheets="@buttons4.css" text="Profile" textFill="#aa7d5d" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileButtonAction"
+                        prefHeight="43.0" prefWidth="185.0" style="-fx-background-color: C7EAFB;"
+                        text="Profile" textFill="#aa7d5d" GridPane.columnIndex="1" GridPane.rowIndex="4">
                     <font>
-                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                        <Font name="Arial Rounded MT Bold" size="18.0"/>
                     </font>
                 </Button>
-                <Button fx:id="viewReportDetailButton" mnemonicParsing="false" onAction="#handleViewReportDetailButtonAction" prefHeight="44.0" prefWidth="190.0" stylesheets="@buttons4.css" text="Source Details" textFill="#aa7d5d" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Button fx:id="viewReportDetailButton" mnemonicParsing="false"
+                        onAction="#handleViewReportDetailButtonAction" prefHeight="44.0" prefWidth="190.0"
+                        style="-fx-background-color: C7EAFB;" text="Source Details" textFill="#aa7d5d"
+                        GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <font>
-                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                        <Font name="Arial Rounded MT Bold" size="18.0"/>
                     </font>
                 </Button>
-                <ImageView fitHeight="61.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                    <Image url="@../img/Waterz5.png" />
+                <ImageView fitHeight="61.0" fitWidth="189.0" pickOnBounds="true"
+                           preserveRatio="true" GridPane.columnIndex="1">
+                    <Image url="@../img/Waterz5.png"/>
                 </ImageView>
-                <Label fx:id="sourceSelectedLabel" text="Source Not Selected" textFill="#aa7d5d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                <Label fx:id="sourceSelectedLabel" text="Source Not Selected" textFill="#aa7d5d"
+                       GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+                       GridPane.valignment="CENTER">
                     <font>
-                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                        <Font name="Arial Rounded MT Bold" size="14.0"/>
                     </font>
                 </Label>
             </GridPane>
