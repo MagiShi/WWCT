@@ -63,3 +63,16 @@ font-size:40px;
 color: #aa7d5d;
 font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
 }
+#selectTypeBox{
+background-color: #F5FCFF;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   color: #aa7d5d;
+       font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+       font-size: 24px;
+       border-style: solid;
+           border-color:  #F7C39F;
+           border-width: 5px;
+
+}

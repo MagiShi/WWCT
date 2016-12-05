@@ -3,15 +3,13 @@ function loginButtonPress() {
     var password = document.getElementById('PasswordInput').value;
     console.log(username);
     console.log(password);
-    var valid = false;
-    if (username == "user" && password == "pass") {
-        valid = true;
-    }
-    if (valid){
+    var users = TAFFY();
+    var realPassword = users({name:username}).password;
+    console.log(realPassword);
+    if (username == user && password == pass) {
         window.location.href = "../HTML/userMap.html";
-    } else {
-        alert("Invalid Username/Password");
     }
+alert("Invalid Username/Password");
 }
 function cancelButtonPress() {
     window.location.href = "../HTML/index.html";
